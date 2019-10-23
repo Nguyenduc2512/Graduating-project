@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin1', function () {
+    return view('admin/layouts/main');
+});
