@@ -17,14 +17,12 @@ class CreateCartsTable extends Migration
             $table->Increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('product_id');
-            $table->unsignedInteger('size_id');
             $table->unsignedInteger('admin_id');
             $table->integer('price');
             $table->tinyInteger('amount');
             $table->tinyInteger('status');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('size_id')->references('id')->on('sizes');
             $table->foreign('admin_id')->references('id')->on('admins');
             $table->timestamps();
         });
