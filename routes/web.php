@@ -11,8 +11,32 @@
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('client/index');
+});
+Route::get('/contact', function () {
+    return view('client/contact');
+});
+Route::get('/about', function () {
+    return view('client/about');
+});
+Route::get('/cate', function () {
+    return view('client/cate');
+});
+Route::get('editcustomer', function () {
+    return view('client/editcustomer');
+});
+Route::get('/listcart', function () {
+    return view('client/listcart');
+});
+Route::get('/hiscart', function () {
+    return view('client/hiscart');
+});
+
+Route::get('/detail-product', function () {
+    return view('client/detail-product');
 });
 
 Route::get('/admin1', function () {
