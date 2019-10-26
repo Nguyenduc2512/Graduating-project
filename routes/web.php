@@ -11,7 +11,12 @@
 |
 */
 
-
+Route::group(
+    ['prefix' => 'guest',
+        'as'     => 'guest.',
+        'middleware' => 'admin'] , function () {
+    Route::get('admin');
+});
 
 Route::get('/', function () {
     return view('client/index');
