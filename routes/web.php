@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,17 +9,27 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Http\Request;
 
 Route::group(
-    ['prefix' => 'guest',
-        'as'     => 'guest.',
+    ['prefix' => 'admin',
+        'as'     => 'admin.',
         'middleware' => 'admin'] , function () {
     Route::get('admin');
 });
 
-Route::get('/', function () {
-    return view('client/index');
+Route::group(
+    ['prefix' => 'member',
+        'as' => 'member.',
+        'middleware' => 'auth'], function (){
+    Route::get('profile', 'User\UserController@profile')->name('profile');
+    Route::get('cart', 'User\PageController@index')->name('cart');
+
 });
+
+Route::get('login', 'User\UserController@login')->name('login');
+Route::get('/', 'User\PageController@index')->name('home');
+Route::post('login', 'Auth\LoginController@login');
 Route::get('/contact', function () {
     return view('client/contact');
 });

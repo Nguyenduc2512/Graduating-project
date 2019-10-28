@@ -15,9 +15,6 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(!$request->email){
-            return
-        }
         return $next($request);
     }
 }
