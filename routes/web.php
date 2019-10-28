@@ -13,9 +13,10 @@
 
 
 
-Route::get('/', function () {
-    return view('client/index');
-});
+Route::get('/', 'IndexController@index')->name('index');
+
+Route::get('/search', 'SearchController@index')->name('search');
+
 Route::get('/contact', function () {
     return view('client/contact');
 });
