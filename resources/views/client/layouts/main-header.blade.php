@@ -205,7 +205,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contact">Liên hệ</a>
                         </li>
-                        <form action="#" method="get" class="searchform navbar-form" role="search">
+                        <form action="{{route('search')}}" method="get" class="searchform navbar-form" role="search">
                             <input type="hidden" value="search" name="view">
                             <div class="input-group">
                                 <input type="text" name="searchword" required class="form-control" placeholder="Search"
@@ -226,4 +226,4 @@
                 </div>
             </div>
         </nav>
-    </header>
+</header>
