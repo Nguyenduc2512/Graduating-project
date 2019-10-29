@@ -9,6 +9,4 @@
     <script src="client/js/lightslider.js"></script>
     <script>
         new WOW().init();
-    </script>   
-
-    
+    </script>

@@ -8,138 +8,150 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mn0">
-                            <ul>
-                                <li>
-                                    <a href="#" data-toggle="modal" data-target="#dangky"><i class="far fa-edit"></i>
-                                        Đăng ký</a>
-                                    <div class="modal fade" id="dangky">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Đăng ký</h4>
-                                                    <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Tên</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Nhập tên của bạn">
+                            @if(!Auth::user())
+                                <ul>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#dangky"><i class="far fa-edit"></i>
+                                            Đăng ký</a>
+                                        <div class="modal fade" id="dangky">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Đăng ký</h4>
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="">Tên</label>
+                                                                        <input type="text" class="form-control"
+                                                                               placeholder="Nhập tên của bạn">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Email</label>
+                                                                        <input type="email" class="form-control"
+                                                                               placeholder="Nhập email của bạn">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Ngày sinh</label>
+                                                                        <input type="date" class="form-control"
+                                                                               placeholder="Nhập ngày sinh của bạn">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Mật khẩu</label>
+                                                                        <input type="password" class="form-control"
+                                                                               placeholder="Nhập mật khẩu của bạn">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Chọn ảnh đại điện</label>
+                                                                        <input type="file" class="form-control"
+                                                                               placeholder="Nhập mật khẩu của bạn">
+                                                                    </div>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Email</label>
-                                                                    <input type="email" class="form-control"
-                                                                        placeholder="Nhập email của bạn">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Ngày sinh</label>
-                                                                    <input type="date" class="form-control"
-                                                                        placeholder="Nhập ngày sinh của bạn">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Mật khẩu</label>
-                                                                    <input type="password" class="form-control"
-                                                                        placeholder="Nhập mật khẩu của bạn">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Chọn ảnh đại điện</label>
-                                                                    <input type="file" class="form-control"
-                                                                        placeholder="Nhập mật khẩu của bạn">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="">Giới tính</label>
+                                                                        <select name="" id="" class="form-control">
+                                                                            <option value="">Nam</option>
+                                                                            <option value="">Nữ</option>
+                                                                            <option value="">Khác</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Số điện thoại</label>
+                                                                        <input type="number" class="form-control"
+                                                                               placeholder="Nhập sđt của bạn">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Địa chỉ</label>
+                                                                        <input type="text" class="form-control"
+                                                                               placeholder="Nhập địa chỉ của bạn">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Xác nhận mật khẩu</label>
+                                                                        <input type="password" class="form-control"
+                                                                               placeholder="Nhập mật khẩu của bạn">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Giới tính</label>
-                                                                    <select name="" id="" class="form-control">
-                                                                        <option value="">Nam</option>
-                                                                        <option value="">Nữ</option>
-                                                                        <option value="">Khác</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Số điện thoại</label>
-                                                                    <input type="number" class="form-control"
-                                                                        placeholder="Nhập sđt của bạn">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Địa chỉ</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Nhập địa chỉ của bạn">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Xác nhận mật khẩu</label>
-                                                                    <input type="password" class="form-control"
-                                                                        placeholder="Nhập mật khẩu của bạn">
-                                                                </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-info">
+                                                                    Đăng ký
+                                                                </button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                        data-dismiss="modal">Thoát</button>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-info">
-                                                                Đăng ký
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">Thoát</button>
-                                                        </div>
-                                                    </form>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="modal" data-target="#dangnhap"><i
-                                            class="fas fa-sign-in-alt"></i> Đăng nhập
-                                    </a>
-                                    <div class="modal fade" id="dangnhap">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">Đăng Nhập</h4>
-                                                    <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <img src="client/images/logoblue.png" width="100%" alt="">
-                                                        </div>
-                                                        <div class="col-md-6" style="margin: auto;">
-                                                            <form action="">
-                                                                <div class="form-group">
-                                                                    <label for="">Tên tài khoản</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Nhập tên của bạn">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="">Mật khẩu</label>
-                                                                    <input type="password" class="form-control"
-                                                                        placeholder="Nhập mật khẩu của bạn">
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="submit" class="btn btn-info">
-                                                                        Đăng nhập
-                                                                    </button>
-                                                                    <button type="button" class="btn btn-danger"
-                                                                        data-dismiss="modal">Thoát</button>
-                                                                </div>
-                                                            </form>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#dangnhap" role="dialog"><i
+                                                class="fas fa-sign-in-alt"></i> Đăng nhập
+                                        </a>
+                                        <div class="modal fade" id="dangnhap">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Đăng Nhập</h4>
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <img src="client/images/logoblue.png" width="100%" alt="">
+                                                            </div>
+                                                            <div class="col-md-6" style="margin: auto;">
+                                                                <form action="{{route('login')}}" method="post" enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    <div class="form-group">
+                                                                        <label for="">Email</label>
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control" name="email"
+                                                                                   placeholder="Nhập email của bạn">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="">Mật khẩu</label>
+                                                                        <div class="input-group">
+                                                                            <input type="password" class="form-control" name="password"
+                                                                                   placeholder="Nhập mật khẩu của bạn">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn btn-info">
+                                                                            Đăng nhập
+                                                                        </button>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                                data-dismiss="modal">
+                                                                            Thoát
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
+                                    </li>
+                                </ul>
+                            @else
+                                <ul>
+                                    <li>
                                     <div class="dropdown">
                                         <a data-toggle="dropdown" style="color: white;">
-                                            <i class="fas fa-user-alt"></i> Trịnh Quốc Hưng
+                                            <i class="fas fa-user-alt"></i> {{Auth::user()->name}}
                                         </a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="editcustomer"><i
+                                            <a class="dropdown-item" href="{{route('member.profile')}}"><i
                                                     class="fas fa-user-edit"></i> Chỉnh sửa
                                                 tài khoản</a>
                                             <a class="dropdown-item" href="listcart"><i
@@ -152,7 +164,8 @@
                                         </div>
                                     </div>
                                 </li>
-                            </ul>
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -204,7 +217,7 @@
                         </form>
                         <li class="nav-item">
                             <div class="link_cart">
-                                <a href="listcart.html"><i class="fa fa-shopping-cart"></i></a> 1
+                                <a href="{{route('member.cart')}}"><i class="fa fa-shopping-cart"></i></a> 1
                             </div>
                         </li>
                     </ul>
