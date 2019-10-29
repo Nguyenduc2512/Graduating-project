@@ -28,8 +28,13 @@ Route::group(
 });
 
 Route::get('login', 'User\UserController@login')->name('login');
+
 Route::get('/', 'User\PageController@index')->name('home');
+
+Route::get('/search', 'User\PageController@search')->name('search');
+
 Route::post('login', 'Auth\LoginController@login');
+
 Route::get('/contact', function () {
     return view('client/contact');
 });
