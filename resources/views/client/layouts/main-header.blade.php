@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><i class="fas fa-phone"></i> Hotline: <a href="tel:0123.456.789">0123.456.789</a></p>
+                        <p><i class="fas fa-phone"></i> Hotline: <a href="tel:0123.456.789">{{$web->hotline}}</a></p>
                     </div>
                     <div class="col-md-6">
                         <div class="mn0">
@@ -175,7 +175,7 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <img src="./client/images/logoblue.png" height="80" alt="">
+                    <img src="{{url('/')}}/{{$web->logoblue}}" height="80" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

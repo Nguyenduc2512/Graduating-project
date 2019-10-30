@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWebSetting extends Migration
+class CreateSlideShowTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateWebSetting extends Migration
      */
     public function up()
     {
-        Schema::create('web_setting', function (Blueprint $table) {
-            $table->Increments('id');
-            $table->string('logo');
-            $table->string('logoblue');
-            $table->string('address');
-            $table->string('email');
-            $table->string('hotline');
+        Schema::create('slideshows', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('picture');
+            $table->string('url');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateWebSetting extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('web_setting');
+        Schema::dropIfExists('slideshows');
     }
 }
