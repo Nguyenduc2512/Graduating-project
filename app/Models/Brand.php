@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model

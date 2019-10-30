@@ -3,16 +3,16 @@
             <div class="ft">
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="index.html"><img src="client/images/logo.png" height="100" alt=""></a>
-                        <p><i class="fas fa-envelope"></i> Email: <span>quochung30399@gmail.com</span></p>
-                        <p><i class="fas fa-phone-alt"></i> Hotline: <span> 0868.044.644</span></p>
+                        <a href="index.html"><img src="{{url('/')}}/{{$web->logo}}" height="100" alt=""></a>
+                        <p><i class="fas fa-envelope"></i> Email: <span>{{$web->email}}</span></p>
+                        <p><i class="fas fa-phone-alt"></i> Hotline: <span> {{$web->hotline}}</span></p>
                     </div>
                     <div class="col-md-3">
                         <p>
-                            Shop bán giày online Auth Shoes, 15 Đông Quan, Cầu Giấy, Hà Nội
+                            Shop bán giày online Auth Shoes, {{$web->address}}
 
                         </p>
-                        <p>+84-24-333-000</p>
+                        <p>+{{$web->hotline}}</p>
                     </div>
                     <div class="col-md-3">
                         <div class="mn-ft">
