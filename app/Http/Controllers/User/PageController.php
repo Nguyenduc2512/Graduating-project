@@ -43,7 +43,7 @@ class PageController extends Controller
         $product = Product::find($id);
         $cate_id = $product->category_id;
         $item = DB::table('items')->where('product_id', '=', "$id")->get();
-        $productCategory = DB::table('products')->whereNotIn('id', [1])->where('category_id', '=', "$cate_id")->get();
+        $productCategory = DB::table('products')->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
         $comment = Comment::where('product_id', $id)->get();
         if(!$product){
             return redirect(route('home'));

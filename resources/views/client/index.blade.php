@@ -67,10 +67,10 @@
                         <a href="detail-product"> <img src="{{$pm->picture}}" width="100%" alt=""></a>
                         <div class="nd_hover">
                             <a href="listcart"><i class="fas fa-cart-plus"></i></a>
-                            <a href="detail-product"><i class="far fa-eye"></i></a>
+                            <a href="{{route('detail', ['id' => $pm->id])}}"><i class="far fa-eye"></i></a>
                             <a href="#"> <i class="fas fa-less-than-equal"></i></a>
                         </div>
-                        <a href="detail-product">
+                        <a href="{{route('detail', ['id' => $pm->id])}}">
                             <h3>{{$pm->name}}</h3>
                         </a>
                         <p>{{$pm->price}}đ <span class="km">750.000đ</span></p>

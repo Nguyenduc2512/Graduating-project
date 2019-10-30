@@ -142,10 +142,10 @@
                         <a href="#"> <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt=""></a>
                         <div class="nd_hover">
                             <a href="#"><i class="fas fa-cart-plus"></i></a>
-                            <a href="#"><i class="far fa-eye"></i></a>
+                            <a href="{{route('detail', ['id' => $pc->id])}}"><i class="far fa-eye"></i></a>
                             <a href="#"> <i class="fas fa-less-than-equal"></i></a>
                         </div>
-                        <a href="#">
+                        <a href="{{route('detail', ['id' => $pc->id])}}">
                             <h3>{{$pc->name}}</h3>
                         </a>
                         <p>{{$pc->price}} đ</p>
