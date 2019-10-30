@@ -24,7 +24,6 @@ Route::group(
         'middleware' => 'auth'], function (){
     Route::get('profile', 'User\UserController@profile')->name('profile');
     Route::get('cart', 'User\PageController@index')->name('cart');
-
 });
 
 Route::get('login', 'User\UserController@login')->name('login');
@@ -32,6 +31,10 @@ Route::get('login', 'User\UserController@login')->name('login');
 Route::get('/', 'User\PageController@index')->name('home');
 
 Route::get('/search', 'User\PageController@search')->name('search');
+
+Route::get('/detail/{id}', 'User\PageController@detail')->name('detail');
+
+Route::post('/detail', 'User\PageController@comment')->name('comment');   
 
 Route::post('login', 'Auth\LoginController@login');
 
@@ -54,9 +57,6 @@ Route::get('/hiscart', function () {
     return view('client/hiscart');
 });
 
-Route::get('/detail-product', function () {
-    return view('client/detail-product');
-});
 
 Route::get('/admin1', function () {
     return view('admin/layouts/main');

@@ -8,19 +8,19 @@
         </div>
         <div class="container">
             <div class="row">
-                @foreach($productNew as $p)
+                @foreach($productNew as $pn)
                 <div class="col-md-3 col-6">
                     <div class="p_nd wow fadeInUp">
-                        <a href="detail-product"> <img src="{{$p->picture}}" width="100%" alt=""></a>
+                        <a href="detail-product"> <img src="{{$pn->picture}}" width="100%" alt=""></a>
                         <div class="nd_hover">
                             <a href="listcart"><i class="fas fa-cart-plus"></i></a>
-                            <a href="detail-product"><i class="far fa-eye"></i></a>
+                            <a href="{{route('detail', ['id' => $pn->id])}}"><i class="far fa-eye"></i></a>
                             <a href="#"> <i class="fas fa-less-than-equal"></i></a>
                         </div>
-                        <a href="detail-product">
-                            <h3>{{$p->name}}</h3>
+                        <a href="{{route('detail', ['id' => $pn->id])}}">
+                            <h3>{{$pn->name}}</h3>
                         </a>
-                        <p>{{$p->price}}đ</p>
+                        <p>{{$pn->price}}đ</p>
                     </div>
                 </div>
                 @endforeach

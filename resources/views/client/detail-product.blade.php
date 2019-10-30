@@ -2,7 +2,7 @@
 @section('content')
    <div class="path_link">
         <div class="container">
-            <a href="index.html">Trang chủ</a> > <span>Tên Sản phẩm</span>
+            <a href="{{route('home')}}">Trang chủ</a> > <span>{{$product->name}}</span>
         </div>
     </div>
 
@@ -11,26 +11,26 @@
             <div class="row">
                 <div class="col-md-4">
                     <ul id="imageGallery">
-                        <li data-thumb="client/images/1.png" data-src="client/images/1.png">
-                            <img src="client/images/1.png" width="100%" />
+                        <li data-thumb="{{url('/')}}/{{$product->picture}}" data-src="{{url('/')}}/{{$product->picture}}">
+                            <img src="{{url('/')}}/{{$product->picture}}" width="100%" />
                         </li>
-                        <li data-thumb="client/images/2.png" data-src="client/images/2.png">
-                            <img src="client/images/2.png" width="100%" />
+                        <li data-thumb="{{url('/')}}/client/images/2.png" data-src="{{url('/')}}/client/images/2.png">
+                            <img src="{{url('/')}}/client/images/2.png" width="100%" />
                         </li>
-                        <li data-thumb="client/images/3.png" data-src="client/images/3.png">
-                            <img src="client/images/3.png" width="100%" />
+                        <li data-thumb="{{url('/')}}/client/images/3.png" data-src="{{url('/')}}/client/images/3.png">
+                            <img src="{{url('/')}}/client/images/3.png" width="100%" />
                         </li>
-                        <li data-thumb="client/images/4.png" data-src="client/images/4.png">
-                            <img src="client/images/4.png" width="100%" />
+                        <li data-thumb="{{url('/')}}/client/images/4.png" data-src="{{url('/')}}/client/images/4.png">
+                            <img src="{{url('/')}}/client/images/4.png" width="100%" />
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-8">
-                    <h3>Tên sản phẩm</h3>
-                    <p>Giá bán: <span class="price">640.000đ</span></p>
+                    <h3>{{$product->name}}</h3>
+                    <p>Giá bán: <span class="price">{{$product->price}}</span></p>
                     <p>Tình trạng: Còn hàng</p>
                     <hr>
-                    <p>Danh mục <span class="cate"><a href="cate.html">Nike</a></span></p>
+                    <p>Danh mục <span class="cate"><a href="cate.html">{{$product->category->name}}</a></span></p>
                     <hr>
                     <div class="col-lg-6">
                         <form action="">
@@ -39,11 +39,9 @@
                                     <div class="form-group">
                                         <label for="">Size*</label>
                                         <select name="" id="" class="form-control">
-                                            <option value="">40</option>
-                                            <option value="">41</option>
-                                            <option value="">42</option>
-                                            <option value="">43</option>
-                                            <option value="">39</option>
+                                            @foreach($item as $i)
+                                            <option value="{{$i->id}}">{{$i->size}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -92,33 +90,68 @@
             <div class="tab-content">
                 <div class="tab-pane active" id="tabs-1" role="tabpanel">
                     <h4>Mô tả</h4>
-                    <p>Thiết kế trẻ trung.
-                        Đường may tỉ mỉ.
-                        Dễ dàng phối trang phục.
-                        Đồng kiểm: xem hàng khi nhận hàng.
-                        Chất liệu cao cấp.
-                        Mũi giày tròn.
-                        Đế bằng cao su tổng hợp; xẻ rãnh chống trơn trượt.
-                        Thương Hiệu: PASSO.</p>
+                    <p>{{$product->description}}.</p>
                 </div>
                 <div class="tab-pane" id="tabs-2" role="tabpanel">
                     <div class="col-lg-8">
                         <h4>Đánh giá nhận xét</h4>
-                        <form action="">
+                        <form action="{{route('comment')}}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-2">
                                     <img src="client/images/member.png" width="100%" alt="">
                                 </div>
                                 <div class="col-10">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Thêm bình luận" class="form-control">
+                                    {{--<input type="hidden" name="user_id" value="{{Auth::user()->id}}">--}}
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        <input type="text" placeholder="Thêm bình luận" name="content" class="form-control">
                                     </div>
                                     <button type="submit" class="btn btn-info">Bình luận</button>
                                 </div>
                             </div>
                         </form>
+                        <div class="allcmt">
+                            <h4>Các bình luân trước</h4>
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="images/member.png" width="100%" alt="">
+                                </div>
+                                @foreach($comment as $c)
+                                <div class="col-1o">
+                                    <h5>Tên người bl:{{$c->user->name}}</h5>
+                                    <p>{{$c->content}}</p>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="spcate">
+        <div class="title">
+            <h1>Sản phẩm liên quan</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                @foreach($productCategory as $pc)
+                <div class="col-md-3 col-6">
+                    <div class="p_nd">
+                        <a href="#"> <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt=""></a>
+                        <div class="nd_hover">
+                            <a href="#"><i class="fas fa-cart-plus"></i></a>
+                            <a href="#"><i class="far fa-eye"></i></a>
+                            <a href="#"> <i class="fas fa-less-than-equal"></i></a>
+                        </div>
+                        <a href="#">
+                            <h3>{{$pc->name}}</h3>
+                        </a>
+                        <p>{{$pc->price}} đ</p>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
     </div>
