@@ -39,7 +39,7 @@
                             @endforeach
                             <div class="col-12">
                                 <ul class="pagination" style="float: right;">
-                                    {{$productSearch->links()}}
+
                                 </ul>
                             </div>
                         </div>

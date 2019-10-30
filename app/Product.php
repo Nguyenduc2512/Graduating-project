@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -15,5 +16,9 @@ class Product extends Model
     {
     	return $this->belongsTo('App\Category', 'category_id', 'id');
     }
-    
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id', 'id');
+    }
 }
