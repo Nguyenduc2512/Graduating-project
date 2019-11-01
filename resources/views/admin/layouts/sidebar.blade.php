@@ -207,6 +207,10 @@
                     <i class="fas fa-newspaper nav-icon"></i>
                     <p>Thông tin chung</p>
                   </a>
+                    <a href="{{route('logout_admin')}}" class="nav-link active">
+                    <i class="fas fa-newspaper nav-icon"></i>
+                    <p>Đăng xuất</p>
+                  </a>
                 </li>
               </ul>
             </li>

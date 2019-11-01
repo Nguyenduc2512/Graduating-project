@@ -211,7 +211,7 @@
                         <form action="{{route('search')}}" method="get" class="searchform navbar-form" role="search">
                             <input type="hidden" value="search" name="view">
                             <div class="input-group">
-                                <input type="text" name="searchword" required class="form-control" placeholder="Search"
+                                <input type="text" name="keyWord" required class="form-control" placeholder="Search"
                                     name="q">
                                 <div class="input-group-btn">
                                     <button class="btn" type="submit">

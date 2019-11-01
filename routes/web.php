@@ -9,13 +9,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Illuminate\Http\Request;
 
 Route::group(
     ['prefix' => 'admin',
         'as'     => 'admin.',
         'middleware' => 'admin'] , function () {
-    Route::get('admin');
+    Route::get('adminHome', 'Admin\AdminController@index')->name('adminHome');
+
 });
 
 Route::group(
@@ -38,6 +38,12 @@ Route::get('/search', 'User\PageController@search')->name('search');
 Route::post('login', 'Auth\LoginController@login');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('loginAdmin', 'Auth\LoginController@loginAdminForm')->name('login_admin');
+
+Route::post('loginAdmin', 'Auth\LoginController@loginAdmin');
+
+Route::get('logout_admin', 'Auth\LoginController@logoutAdmin')->name('logout_admin');
 
 Route::get('/contact', function () {
     return view('client/contact');

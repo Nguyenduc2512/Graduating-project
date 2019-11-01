@@ -31,7 +31,7 @@ class PageController extends Controller
 
     public function search(Request $request)
     {
-        $kw = $request->searchword;
+        $kw = $request->keyWord;
         $brandSearch = Brand::where('name', 'like', "%$kw%")->first();
         $id = $brandSearch->id;
         $productSearch = $brandSearch->product->where('brand_id', $id);
@@ -41,7 +41,11 @@ class PageController extends Controller
         else{
             $msg="Kết quả tìm kiếm cho: ".$kw;
         }
+<<<<<<< HEAD
         return view ('client.search', compact('productSearch', 'msg', 'web'));
+=======
+        return view ('client.search', compact('productSearch', 'msg'));
+>>>>>>>  make login admin
     }
 
     public function showListCart() {
