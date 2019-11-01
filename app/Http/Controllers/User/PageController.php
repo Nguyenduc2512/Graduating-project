@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Services\CartService;
 use App\Models\Product;
 use App\Models\Slide;
-use App\Models\Web_Setting;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -25,8 +24,7 @@ class PageController extends Controller
         $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
         $brands = Brand::all();
         $slides = Slide::all();
-        $webs = Web_Setting::first();
-        return view('client/index', compact('showModal','webs', 'productsNew', 'brands', 'productsMost', 'slides'));
+        return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slides'));
     }
 
     public function search(Request $request)
@@ -41,29 +39,23 @@ class PageController extends Controller
         else{
             $msg="Kết quả tìm kiếm cho: ".$kw;
         }
-<<<<<<< HEAD
-        return view ('client.search', compact('productSearch', 'msg', 'web'));
-=======
         return view ('client.search', compact('productSearch', 'msg'));
->>>>>>>  make login admin
     }
 
     public function showListCart() {
         if (Auth::user()) {
             $showModal = false;
             $slides = Slide::all();
-            $webs = Web_Setting::first();
             $carts = $this->cartService->getListCart();
             $count = count($carts);
-            return view('client/listcart', compact('slides', 'webs', 'carts', 'count', 'showModal'));
+            return view('client/listcart', compact('slides', 'carts', 'count', 'showModal'));
         }
             $showModal = true;
             $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
             $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
             $brands = Brand::all();
             $slides = Slide::all();
-            $webs = Web_Setting::first();
-            return view('client/index', compact('showModal','webs', 'productsNew', 'brands', 'productsMost', 'slides'));
+            return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slides'));
     }
 
 }
