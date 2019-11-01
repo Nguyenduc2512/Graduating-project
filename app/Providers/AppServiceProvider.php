@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Web_Setting;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('client.layouts.main',function($view){
+            $web = Web_Setting::first(); 
+            $view->with('web',$web);
+            });
     }
 }
