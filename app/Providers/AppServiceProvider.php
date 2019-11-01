@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('client.layouts.main',function($view){
-            $web = Web_Setting::first(); 
-            $view->with('web',$web);
+            $webs = Web_Setting::first(); 
+            $view->with('webs',$webs);
             });
     }
 }

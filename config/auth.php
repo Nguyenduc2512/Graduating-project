@@ -52,7 +52,6 @@ return [
             'provider' => 'admins',
 
         ],
-º
     ],
 
     /*
