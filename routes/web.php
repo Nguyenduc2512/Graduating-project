@@ -23,9 +23,11 @@ Route::group(
         'as' => 'member.',
         'middleware' => 'auth'], function (){
     Route::get('profile', 'User\UserController@profile')->name('profile');
-    Route::get('cart', 'User\PageController@index')->name('cart');
+    Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
 
 });
+
+Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
 
 Route::get('login', 'User\UserController@login')->name('login');
 
@@ -34,6 +36,8 @@ Route::get('/', 'User\PageController@index')->name('home');
 Route::get('/search', 'User\PageController@search')->name('search');
 
 Route::post('login', 'Auth\LoginController@login');
+
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/contact', function () {
     return view('client/contact');

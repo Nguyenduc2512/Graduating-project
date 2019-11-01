@@ -13,11 +13,12 @@ class AdminTableSeeder extends Seeder
     {
         $admins = [];
         $faker = Faker\Factory::create();
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
         	$item = [
         		'name' => $faker->name,
         		'email' => $faker->freeEmail,
         		'password' => bcrypt('12312'),
+                'gender' => rand(1,3),
           		'avatar' => 'images/'. $faker->image($dir = 'public/images', $width = 640, $height = 480, 'cats', false),
         	];
         	$admins[] = $item;

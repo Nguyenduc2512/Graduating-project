@@ -5,19 +5,28 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Services\CartService;
 use App\Models\Product;
 use App\Models\Slide;
-use DB;
+use App\Models\Web_Setting;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
+    protected $cartService;
+    public function __construct(CartService $cartService)
+    {
+        $this->cartService = $cartService;
+    }
+
     public function index() {
         $showModal = false;
-        $productNew = DB::table('products')->orderBy('created_at', 'desc')->limit(8)->get();
-        $productMost = DB::table('products')->orderBy('id', 'desc')->limit(8)->get();   
+        $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
+        $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
         $brands = Brand::all();
-        $slide = Slide::all();
-        return view('client/index', compact('showModal', 'productNew', 'brands', 'productMost', 'slide',));
+        $slides = Slide::all();
+        $webs = Web_Setting::first();
+        return view('client/index', compact('showModal','webs', 'productsNew', 'brands', 'productsMost', 'slides'));
     }
 
     public function search(Request $request)
@@ -32,19 +41,25 @@ class PageController extends Controller
         else{
             $msg="Kết quả tìm kiếm cho: ".$kw;
         }
-//        $productSearch->withPath("?searchword=$kw");
-        return view ('client.search', compact('productSearch', 'msg',));
+        return view ('client.search', compact('productSearch', 'msg', 'web'));
     }
 
-    public function listCart() {
+    public function showListCart() {
         if (Auth::user()) {
             $showModal = false;
+            $slides = Slide::all();
+            $webs = Web_Setting::first();
+            $carts = $this->cartService->getListCart();
+            $count = count($carts);
+            return view('client/listcart', compact('slides', 'webs', 'carts', 'count', 'showModal'));
         }
             $showModal = true;
-        return view('client/index', compact('showModal'));
+            $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
+            $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
+            $brands = Brand::all();
+            $slides = Slide::all();
+            $webs = Web_Setting::first();
+            return view('client/index', compact('showModal','webs', 'productsNew', 'brands', 'productsMost', 'slides'));
     }
 
-    public function abc(Request $request) {
-        dd($request);
-    }
 }

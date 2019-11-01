@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <p><i class="fas fa-phone"></i> Hotline: <a href="tel:0123.456.789">{{$web->hotline}}</a></p>
+                        <p><i class="fas fa-phone"></i> Hotline: <a href="tel:0123.456.789">{{$webs->hotline}}</a></p>
                     </div>
                     <div class="col-md-6">
                         <div class="mn0">
@@ -125,6 +125,9 @@
                                                                                    placeholder="Nhập mật khẩu của bạn">
                                                                         </div>
                                                                     </div>
+                                                                    @if (session('false'))
+                                                                        <p class="text-danger"> {{session('false')}} </p>
+                                                                    @endif
                                                                     <div class="modal-footer">
                                                                         <button type="submit" class="btn btn-info">
                                                                             Đăng nhập
@@ -159,7 +162,7 @@
                                             <a class="dropdown-item" href="hiscart"><i class="fas fa-history"></i>
                                                 Lịch sửa
                                                 mua hàng</a>
-                                            <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Đăng
+                                            <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i> Đăng
                                                 xuất</a>
                                         </div>
                                     </div>
@@ -174,8 +177,8 @@
         <!-- menu -->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="{{url('/')}}/{{$web->logoblue}}" height="80" alt="">
+                <a class="navbar-brand" href="{{route('home')}}">
+                    <img src="{{$webs->logoblue}}" height="80" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -219,7 +222,7 @@
                         </form>
                         <li class="nav-item">
                             <div class="link_cart">
-                                <a href="{{route('member.cart')}}"><i class="fa fa-shopping-cart"></i></a> 1
+                                <a href="{{route('member.list_cart')}}"><i class="fa fa-shopping-cart"></i></a> 1
                             </div>
                         </li>
                     </ul>

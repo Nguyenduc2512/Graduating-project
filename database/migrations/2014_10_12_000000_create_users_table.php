@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('phone');
             $table->string('location');
             $table->string('avatar');
+            $table->integer('role');
             $table->tinyInteger('status');
             $table->tinyInteger('gender');
             $table->dateTime('date_of_birth');

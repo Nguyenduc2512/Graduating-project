@@ -3,10 +3,10 @@
                 data-interval="2000">
                 <div class="carousel-inner img-banner">
                     <?php $count = 0; ?>
-                    @foreach($slide as $sl)
-                        <<?php $active = $count === 0 ? "active" : ""; ?> 
+                    @foreach($slides as $slide)
+                        <<?php $active = $count === 0 ? "active" : ""; ?>
                     <div class="carousel-item {{$active}}">
-                        <img class="d-block w-100" src="{{url('/')}}/{{$sl->picture}}">
+                        <img class="d-block w-100" src="{{$slide->picture}}">
                     </div>
                     <?php  $count++; ?>
                     @endforeach
