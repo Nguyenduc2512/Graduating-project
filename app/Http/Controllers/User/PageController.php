@@ -7,7 +7,6 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Slide;
-use App\Models\Web_setting;
 use DB;
 
 class PageController extends Controller
@@ -18,8 +17,7 @@ class PageController extends Controller
         $productMost = DB::table('products')->orderBy('id', 'desc')->limit(8)->get();   
         $brands = Brand::all();
         $slide = Slide::all();
-        $web = Web_setting::first();
-        return view('client/index', compact('showModal','web', 'productNew', 'brands', 'productMost', 'slide',));
+        return view('client/index', compact('showModal', 'productNew', 'brands', 'productMost', 'slide',));
     }
 
     public function search(Request $request)
@@ -35,7 +33,7 @@ class PageController extends Controller
             $msg="Kết quả tìm kiếm cho: ".$kw;
         }
 //        $productSearch->withPath("?searchword=$kw");
-        return view ('client.search', compact('productSearch', 'msg', 'web',));
+        return view ('client.search', compact('productSearch', 'msg',));
     }
 
     public function listCart() {
