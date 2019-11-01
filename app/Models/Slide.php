@@ -9,5 +9,6 @@ class Slide extends Model
     protected $table = 'slideshows';
     protected $fillable = [
         'url',
+        'picture'
     ];
 }

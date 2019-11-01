@@ -3,16 +3,15 @@
             <div class="ft">
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="index.html"><img src="{{url('/')}}/{{$web->logo}}" height="100" alt=""></a>
-                        <p><i class="fas fa-envelope"></i> Email: <span>{{$web->email}}</span></p>
-                        <p><i class="fas fa-phone-alt"></i> Hotline: <span> {{$web->hotline}}</span></p>
+                        <a href="index.html"><img src="{{$webs->logo}}" height="100" alt=""></a>
+                        <p><i class="fas fa-envelope"></i> Email: <span>{{$webs->email}}</span></p>
+                        <p><i class="fas fa-phone-alt"></i> Hotline: <span> {{$webs->hotline}}</span></p>
                     </div>
                     <div class="col-md-3">
                         <p>
-                            Shop bán giày online Auth Shoes, {{$web->address}}
-
+                            Shop bán giày online Auth Shoes, {{$webs->address}}
                         </p>
-                        <p>+{{$web->hotline}}</p>
+                        <p>+{{$webs->hotline}}</p>
                     </div>
                     <div class="col-md-3">
                         <div class="mn-ft">

@@ -12,15 +12,16 @@ class CartTableSeeder extends Seeder
     public function run()
     {
         $carts = [];
+        $UserIDs  = DB::table('users')->pluck('id');
+        $PropertiesIDs  = DB::table('properties')->pluck('id');
         $faker = Faker\Factory::create();
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
         	$item = [
-        		'user_id' => rand(1, 10),
-        		'product_id' => rand(1, 10),
-        		'admin_id' => rand(1, 10),
-        		'price' => rand(1, 100000000),
+                'user_id'      => $faker->randomElement($UserIDs),
+        		'properties_id' =>  $faker->randomElement($PropertiesIDs),
+        		'admin_id' => null,
         		'amount' => rand(10, 20),
-        		'status' => rand(0, 1)
+        		'status' => rand(0,3)
         	];
         	$carts[] = $item;
         }

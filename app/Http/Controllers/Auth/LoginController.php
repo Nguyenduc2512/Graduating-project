@@ -26,7 +26,7 @@ class LoginController extends Controller
             'password' => $request->password])) {
             return redirect('/');
         }
-        return redirect()->route('login');
+        return redirect()->route('login')->with(['false' => 'Sai tài khoản hoặc mật khẩu']);
     }
 
     public function logout()

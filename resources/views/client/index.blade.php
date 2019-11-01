@@ -1,28 +1,27 @@
 @extends('client/layouts/main')
 @section('content')
     @include('client/layouts/slider')
-
     <div class="p_new">
         <div class="title wow fadeInUp">
             <h1>Sản phẩm mới nhất</h1>
         </div>
         <div class="container">
             <div class="row">
-                @foreach($productNew as $pn)
-                <div class="col-md-3 col-6">
-                    <div class="p_nd wow fadeInUp">
-                        <a href="detail-product"> <img src="{{url('/')}}/{{$pn->picture}}" width="100%" alt=""></a>
-                        <div class="nd_hover">
-                            <a href="listcart"><i class="fas fa-cart-plus"></i></a>
-                            <a href="detail"><i class="far fa-eye"></i></a>
-                            <a href="#"> <i class="fas fa-less-than-equal"></i></a>
+                @foreach($productsNew as $productNew)
+                    <div class="col-md-3 col-6">
+                        <div class="p_nd wow fadeInUp">
+                            <a href="detail-product"> <img src="{{$productNew->picture}}" width="100%" alt=""></a>
+                            <div class="nd_hover">
+                                <a href="listcart"><i class="fas fa-cart-plus"></i></a>
+                                <a href="detail"><i class="far fa-eye"></i></a>
+                                <a href="#"> <i class="fas fa-less-than-equal"></i></a>
+                            </div>
+                            <a href="detail">
+                                <h3>{{$productNew->name}}</h3>
+                            </a>
+                            <p>{{$productNew->price}}đ</p>
                         </div>
-                        <a href="detail">
-                            <h3>{{$pn->name}}</h3>
-                        </a>
-                        <p>{{$pn->price}}đ</p>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -61,19 +60,19 @@
         </div>
         <div class="container">
             <div class="row">
-                @foreach($productMost as $pm)
+                @foreach($productsMost as $productMost)
                 <div class="col-md-3 col-6">
                     <div class="p_nd wow fadeInUp">
-                        <a href="detail-product"> <img src="{{url('/')}}/{{$pm->picture}}" width="100%" alt=""></a>
+                        <a href="detail-product"> <img src="{{$productMost->picture}}" width="100%" alt=""></a>
                         <div class="nd_hover">
                             <a href="listcart"><i class="fas fa-cart-plus"></i></a>
                             <a href="detail"><i class="far fa-eye"></i></a>
                             <a href="#"> <i class="fas fa-less-than-equal"></i></a>
                         </div>
                         <a href="detail">
-                            <h3>{{$pm->name}}</h3>
+                            <h3>{{$productMost->name}}</h3>
                         </a>
-                        <p>{{$pm->price}}đ <span class="km">750.000đ</span></p>
+                        <p>{{$productMost->price}}đ <span class="km">750.000đ</span></p>
                     </div>
                 </div>
                 @endforeach
@@ -89,13 +88,14 @@
             <div class="owl-carousel owl-theme owl-loaded" id="sl1">
                 <div class="owl-stage-outer  wow fadeInUp">
                     <div class="owl-stage">
-                        @foreach($brands as $b)
-                        <div class="owl-item">
-                            <a href="#">
-                                <img src="{{url('/')}}/{{$b->logo}}" width="100%">
-                            </a>
-                        </div>
-                        @endforeach
+{{--                        @dd($brands)--}}
+{{--                        @foreach($brands as $brand)--}}
+{{--                        <div class="owl-item">--}}
+{{--                            <a href="#">--}}
+{{--                                <img src="{{$bran->logo}}" width="100%">--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                        @endforeach--}}
                     </div>
                 </div>
             </div>

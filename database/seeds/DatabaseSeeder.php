@@ -16,15 +16,16 @@ class DatabaseSeeder extends Seeder
         $this->call(BrandTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(ProductsTableSeeder::class);
+        $this->call(ColorTableSeeder::class);
+        $this->call(PropertiesTableSeeder::class);
         $this->call(CartTableSeeder::class);
-        $this->call(ItemTableSeeder::class);
         $this->call(DeliveryBrandTableSeeder::class);
-        $this->call(CartItemTableSeeder::class);
         $this->call(CartShippingTableSeeder::class);
         $this->call(CommentTableSeeder::class);
         $this->call(DeliveryTableSeeder::class);
         $this->call(ContactTableSeeder::class);
-        $this->call(PromoTableSeeder::class);
+//        $this->call(PromoTableSeeder::class);
         $this->call(WebSettingTableSeeder::class);
+        $this->call(SlideShowTableSeeder::class);
     }
 }

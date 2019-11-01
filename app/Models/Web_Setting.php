@@ -9,7 +9,12 @@ class Web_Setting extends Model
 {
     protected $table = 'web_setting';
     protected $fillable = [
-    	'logo','logoblue','address','hotline','email','map',
+    	'logo',
+        'logoblue',
+        'address',
+        'hotline',
+        'email',
+        'map',
     ];
-    
+
 }

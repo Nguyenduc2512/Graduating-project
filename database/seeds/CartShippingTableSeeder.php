@@ -12,10 +12,11 @@ class CartShippingTableSeeder extends Seeder
     public function run()
     {
         $cart_shipping = [];
+        $CartIDs  = DB::table('carts')->pluck('id');
         $faker = Faker\Factory::create();
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
         	$item = [
-        		'cart_id' => rand(1, 10)
+                'cart_id'      => $faker->randomElement($CartIDs),
         	];
         	$cart_shipping[] = $item;
         }

@@ -18,6 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->text('content');
+            $table->integer('rep_by_admin_id')->nullable();
             $table->timestamps();
         });
     }
