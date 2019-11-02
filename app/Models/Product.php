@@ -9,7 +9,7 @@ class Product extends Model
 {
     protected $table = 'products';
     protected $fillable = [
-    	'brand_id',
+        'brand_id',
         'category_id',
         'name',
         'description',
@@ -17,7 +17,7 @@ class Product extends Model
     ];
     public function category()
     {
-    	return $this->belongsTo('App\Category', 'category_id', 'id');
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
 
     public function brand()
