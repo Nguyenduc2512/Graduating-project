@@ -68,3 +68,9 @@
   opacity: 1;
 border: 1px solid #1d62b7;
 }
+
+.allcmt {
+  margin-top: 50px;
+  background: #eee;
+  padding: 20px;
+}
