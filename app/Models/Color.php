@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use App\Models\Brand;
 use Illuminate\Database\Eloquent\Model;
 

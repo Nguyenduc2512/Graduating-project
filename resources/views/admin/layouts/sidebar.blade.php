@@ -37,7 +37,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/admin1/product/add" class="nav-link active">
+                  <a href="{{route('admin.add_product')}}" class="nav-link active">
                     <i class="fas fa-plus-circle nav-icon"></i>
                     <p>Thêm sản phẩm</p>
                   </a>
