@@ -38,6 +38,8 @@ Route::get('/search', 'User\PageController@search')->name('search');
 
 Route::get('/detail/{id}', 'User\PageController@detail')->name('detail');
 
+Route::get('/about', 'User\PageController@about')->name('about');
+
 Route::post('login', 'Auth\LoginController@login');
 
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
@@ -51,9 +53,7 @@ Route::get('logout_admin', 'Auth\LoginController@logoutAdmin')->name('logout_adm
 Route::get('/contact', function () {
     return view('client/contact');
 });
-Route::get('/about', function () {
-    return view('client/about');
-});
+
 Route::get('/cate', function () {
     return view('client/cate');
 });
