@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Properties;
+use App\Models\About;
 use DB;
 
 class PageController extends Controller
@@ -85,6 +86,13 @@ class PageController extends Controller
             $brands = Brand::all();
             $slides = Slide::all();
             return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slides'));
+    }
+
+    public function about()
+    {
+        $about = About::first();
+        $productsNew = Product::orderBy('created_at', 'desc')->limit(2)->get();
+        return view('client/about', compact('about', 'productsNew')); 
     }
 
 }

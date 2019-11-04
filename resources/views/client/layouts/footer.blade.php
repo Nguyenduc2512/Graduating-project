@@ -3,7 +3,7 @@
             <div class="ft">
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="index.html"><img src="{{$webs->logo}}" height="100" alt=""></a>
+                        <a href="/"><img src="{{url('/')}}/{{$webs->logo}}" height="100" alt=""></a>
                         <p><i class="fas fa-envelope"></i> Email: <span>{{$webs->email}}</span></p>
                         <p><i class="fas fa-phone-alt"></i> Hotline: <span> {{$webs->hotline}}</span></p>
                     </div>
@@ -16,7 +16,7 @@
                     <div class="col-md-3">
                         <div class="mn-ft">
                             <ul>
-                                <li><a href="about.html">Về chúng tôi</a></li>
+                                <li><a href="{{route('about')}}">Về chúng tôi</a></li>
                                 <li><a href="contact.html">Liên Hệ</a></li>
                                 <li><a href="contact.html#map">Bản đồ</a></li>
                             </ul>
