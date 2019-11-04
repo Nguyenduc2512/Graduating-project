@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Slide;
+use App\Models\Web_Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -37,7 +39,9 @@ class LoginController extends Controller
 
     public function loginAdminForm()
     {
-        return view('admin/layouts/form_login');
+        $slides = Slide::all();
+        $webs = Web_Setting::first();
+        return view('admin/layouts/form_login', compact('slides', 'webs'));
     }
 
     public function loginAdmin(Request $request)
