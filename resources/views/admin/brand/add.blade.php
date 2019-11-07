@@ -21,17 +21,17 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <form enctype="" method="post" action="" id="" novalidate="novalidate">
+          <form method="post" action="{{route('admin.add_brand')}}" id="" novalidate="novalidate" enctype="multipart/form-data">
+            @csrf
             <div class="col-md-9">
               <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                  <img id="imageTarget" src="../../dist/img/avatar2.png" class="img-responsive" required=""
-                    aria-required="true">
+                  <img name="picture" id="imageTarget" class="img-responsive" src="{{asset('/admin/dist/img/photo1.png')}}" width="100%" required="" aria-required="true">
                 </div>
               </div>
               <div class="form-group">
                 <b>Ảnh đối tác</b>
-                <input type="file" id="brand_image" name="image" class="form-control">
+                <input type="file" id="image" name="logo" class="form-control">
               </div>
             </div>
             <div class="col-md-9" center="">
@@ -41,10 +41,11 @@
               </div>
               <div class="form-group">
                 <b>Đường liên kết</b>
-                <input type="text" name="name" class="form-control" required="" aria-required="true">
+                <input type="text" name="link" class="form-control" required="" aria-required="true">
               </div>
+              <input type="hidden" value="1" name="status">
               <div class="text-center">
-                <a href="listbrand.html" class="btn btn-danger btn-xs">Huỷ</a>
+                <a href="{{route('admin.list_brand')}}" class="btn btn-danger btn-xs">Huỷ</a>
                 <button type="submit" class="btn btn-primary btn-xs" value="upload">Tạo mới</button>
               </div>
 

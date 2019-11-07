@@ -18,6 +18,16 @@ Route::group(
     Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
     Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
 
+    Route::get('brand', 'Admin\BrandController@listBrand')->name('list_brand');
+
+    Route::get('brand/add', 'Admin\BrandController@newBrand')->name('add_brand'); 
+
+    Route::post('brand/add', 'Admin\BrandController@addNewBrand'); 
+
+    Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
+
+    Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
+
 });
 
 Route::group(
@@ -29,6 +39,8 @@ Route::group(
     Route::post('/comment', 'User\PageController@comment')->name('comment');
 
 });
+
+// brand
 
 Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
 
@@ -133,19 +145,6 @@ Route::get('/admin1/discount/edit', function () {
 // contact
 Route::get('/admin1/contact', function () {
     return view('admin/contact/index');
-});
-
-// brand
-Route::get('/admin1/brand', function () {
-    return view('admin/brand/index');
-});
-
-Route::get('/admin1/brand/add', function () {
-    return view('admin/brand/add');
-});
-
-Route::get('/admin1/brand/edit', function () {
-    return view('admin/brand/edit');
 });
 
 // customer
