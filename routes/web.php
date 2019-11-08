@@ -40,7 +40,13 @@ Route::get('/search', 'User\PageController@search')->name('search');
 
 Route::get('/detail/{id}', 'User\PageController@detail')->name('detail');
 
+Route::get('/cate/{id}', 'User\PageController@cate')->name('cate');
+
 Route::get('/about', 'User\PageController@about')->name('about');
+
+Route::get('/contact', 'User\PageController@contact')->name('contact');
+   
+Route::post('/contact', 'User\PageController@addcontact');
 
 Route::post('login', 'Auth\LoginController@login');
 
@@ -52,13 +58,6 @@ Route::post('login_admin', 'Auth\LoginController@loginAdmin');
 
 Route::get('logout_admin', 'Auth\LoginController@logoutAdmin')->name('logout_admin');
 
-Route::get('/contact', function () {
-    return view('client/contact');
-});
-
-Route::get('/cate', function () {
-    return view('client/cate');
-});
 Route::get('editcustomer', function () {
     return view('client/editcustomer');
 });

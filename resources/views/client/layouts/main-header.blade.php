@@ -193,20 +193,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
                         </li>
+                        @foreach($category as $cate)
                         <li class="nav-item">
-                            <a class="nav-link" href="cate">Nike</a>
+                            <a class="nav-link" href="{{route('cate', ['id' => $cate->id])}}">{{$cate->name}}</a>
                         </li>
+                        @endforeach
                         <li class="nav-item">
-                            <a class="nav-link" href="cate">Adidas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cate">Converse</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="cate">Gucci</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact">Liên hệ</a>
+                            <a class="nav-link" href="{{route('contact')}}">Liên hệ</a>
                         </li>
                         <form action="{{route('search')}}" method="get" class="searchform navbar-form" role="search">
                             <input type="hidden" value="search" name="view">
