@@ -22,24 +22,33 @@
       <section class="content">
         <div class="container-fluid">
           <div class="col-md-8">
-            <form action="#" method="post" enctype="multipart/form-data">
-              <input type="hidden" name="id" value="1">
+            <form action="{{route('admin.edit_brand', ['id' => $brand->id])}}" method="post" enctype="multipart/form-data">
+              @csrf
+              <input type="hidden" name="id" value="{{$brand->id}}" value="1">
               <div class="form-group">
                 <label>Tên đối tác</label>
-                <input type="text" name="name" class="form-control" value="Tên đối tác">
+                <input type="text" name="name" class="form-control" value="{{$brand->name}}">
               </div>
               <div class="form-group">
                 <label>Đường dẫn</label>
-                <input type="text" name="name" class="form-control" value="doitac.com.vn">
+                <input type="text" name="link" class="form-control" value="{{$brand->link}}">
               </div>
               <div class="form-group">
                 <label>Ảnh đối tác</label> <br>
-                <input type="hidden" name="old_filename" value="">
-                <img id="imageTarget" src="../../dist/img/avatar2.png" class="img-responsive">
-                <input type="file" id="product_image" name="image" class="form-control">
+                <img id="imageTarget" src="{{url('/')}}/{{$brand->logo}}" height="100px" class="img-responsive">
+                <input type="file" id="image" name="logo" value="" class="form-control">
               </div>
+              <label>
+                @if($brand->status == 1)
+                  <input type="radio" checked name="status" value="1"> Hoạt động&nbsp;&nbsp;&nbsp;&nbsp; 
+                  <input type="radio"  name="status" value="0"> Ngưng hoạt động
+                @else
+                  <input type="radio"  name="status" value="1"> Hoạt động&nbsp;&nbsp;&nbsp;&nbsp;                    
+                  <input type="radio" checked  name="status" value="0"> Ngưng hoạt động
+                @endif
+              </label>
               <div class="text-center">
-                <a href="listbrand.html" class=" btn btn-danger btn-xs">Huỷ</a>
+                <a href="{{route('admin.list_brand')}}" class=" btn btn-danger btn-xs">Huỷ</a>
                 <button type="submit" class="btn btn-primary btn-xs">Cập nhật</button>
               </div>
             </form>

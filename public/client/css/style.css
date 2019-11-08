@@ -250,12 +250,52 @@ footer p{
 }
 
 /* listcart */
+
+#site-footer {
+    border: 1px solid #1e3650;
+    padding: 10px;
+    text-align: center;
+}
+
+#site-footer button {
+    background: #1e3650;
+    width: 100%;
+    margin: auto;
+    color: white;
+}
+#site-footer h2,h3{
+    font-size: 15px !important;
+}
+#site-footer button:hover {
+    background: #0f1b27;
+}
+
+#site-footer span {
+    font-size: 1rem;
+}
+
+#site-footer input{
+    width: 100%;
+    margin: auto;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #1e3650;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+#site-footer .total span{
+    color: red;
+    font-size: 24px !important;
+}
+#site-footer .total{
+    color: red;
+    font-size: 24px !important;
+}
+
+
 .listcart{
     padding-top: 30px;
     padding-bottom: 100px;
-}
-.listcart .row{
-    margin-bottom: 30px;
 }
 .listcart span{
     font-size: 14px;
@@ -277,21 +317,6 @@ footer p{
 }
 .linkdel a:hover{
     border: 1px solid #0a1929;
-}
-.number input{
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    border: 1px solid #ddd;
-}
-.number span{
-    cursor: pointer;
-}
-.minus, .plus{
-    border-radius:4px;
-    padding:5px 10px 5px 10px;
-    border: 1px solid #ddd;
-    background: #fff;
 }
 .cart1{
     border: 1px solid #ddd; padding: 10px; margin-bottom: 20px;
