@@ -35,82 +35,33 @@
                       <tr role="row">
                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                           aria-sort="ascending" aria-label="ID: activate to sort column descending">
-                          ID</th>
+                          STT</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Nội dung
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Email
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên
                         </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Số điện
-                          thoại
-                        </th>
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Tôi muốn làm đối tác</td>
-                        <td>duc@gmail.com</td>
-                        <td>Hưng</td>
-                        <td>0312445454</td>
-                        <td>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Tôi muốn làm đối tác</td>
-                        <td>duc@gmail.com</td>
-                        <td>Hưng</td>
-                        <td>0312445454</td>
-                        <td>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Tôi muốn làm đối tác</td>
-                        <td>duc@gmail.com</td>
-                        <td>Hưng</td>
-                        <td>0312445454</td>
-                        <td>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Tôi muốn làm đối tác</td>
-                        <td>duc@gmail.com</td>
-                        <td>Hưng</td>
-                        <td>0312445454</td>
-                        <td>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Tôi muốn làm đối tác</td>
-                        <td>duc@gmail.com</td>
-                        <td>Hưng</td>
-                        <td>0312445454</td>
-                        <td>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                        </td>
-                      </tr>
+                      @foreach($contacts as $contact)
+                          <tr role="row" class="odd">
+                              <td>{{$contact->id}}</td>
+                              <td>{{$contact->content}}</td>
+                              <td>{{$contact->email}}</td>
+                              <td>{{$contact->name}}</td>
+                              <td>
+                                  <a href="#" class="btn btn-xs btn-danger btn-remove">
+                                      <i class="fa fa-trash"></i> Xoá
+                                  </a>
+                              </td>
+                          </tr>
+                          @endforeach
                     </tbody>
                   </table>
+{{--                    {{$contacts->links()}}--}}
                 </div>
               </div>
               <div class="row">
@@ -144,6 +95,6 @@
       <!-- /.content -->
     </div>
 
-    
+
 @endsection
 
