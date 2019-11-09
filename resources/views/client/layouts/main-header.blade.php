@@ -125,6 +125,8 @@
                                                                                    placeholder="Nhập mật khẩu của bạn">
                                                                         </div>
                                                                     </div>
+                                                                    <a href="{{ route('password.request') }}" data-target="#reset" role="dialog" style="color: red;font-size: 20px ">Quên mật khẩu?</a>
+                                                                    
                                                                     @if (session('false'))
                                                                         <p class="text-danger"> {{session('false')}} </p>
                                                                     @endif

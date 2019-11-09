@@ -18,6 +18,7 @@ class UserController extends Controller
 
     public function login()
     {
+
         $showModal = true;
         $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
         $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
@@ -26,4 +27,5 @@ class UserController extends Controller
         $webs = Web_Setting::first();
         return view('client/index', compact('showModal','webs', 'productsNew', 'brands', 'productsMost', 'slides'));
     }
+
 }

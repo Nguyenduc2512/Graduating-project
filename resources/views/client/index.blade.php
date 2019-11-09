@@ -106,6 +106,6 @@
     $( document ).ready(function() {
         var showModal = {!! json_encode($showModal) !!};
         if (showModal)
-            $('#dangnhap').modal('show');
+            $('#dangnhap').modal('show');  
     });
 </script>

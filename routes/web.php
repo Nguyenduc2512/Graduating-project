@@ -30,6 +30,8 @@ Route::group(
 
 });
 
+Auth::routes();
+
 Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
 
 Route::get('login', 'User\UserController@login')->name('login');
