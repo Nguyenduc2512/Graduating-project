@@ -1,4 +1,36 @@
- <script src="{{asset('/admin/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('/admin/plugins/jquery/jquery.min.js')}}"></script>
+  
+  <script type="text/javascript">
+  $(document).ready(function(){
+  function getBase64(file, selector) {
+     var reader = new FileReader();
+     reader.readAsDataURL(file);
+     reader.onload = function () {
+      $(selector).attr('src', reader.result);
+     };
+     reader.onerror = function (error) {
+       console.log('Error: ', error);
+     };
+  }
+  var img = document.querySelector('#image');
+  img.onchange = function(){
+    var file = this.files[0];
+    if(file == undefined){
+      $('#imageTarget').attr('src', "{{asset('/admin/dist/img/photo1.png')}}");
+    }else{
+      getBase64(file, '#imageTarget');
+    }
+  }
+  });
+</script>
+
+  <script src="{{asset('/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+  <script src="{{asset('/admin/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>    
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('#example').DataTable();
+  } );
+  </script>
   <!-- jQuery UI 1.11.4 -->
   <script src="{{asset('/admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -27,7 +59,7 @@
   <script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
   <!-- AdminLTE App -->
   <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
-  <script src="{{asset('admin/dist/js/hours.js')}}"></script>
+ 
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <!-- <script src="./admin/dist/js/pages/dashboard.js"></script> -->
   <!-- AdminLTE for demo purposes -->
