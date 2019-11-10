@@ -22,16 +22,22 @@
       <section class="content">
         <div class="container-fluid">
           <div class="col-md-8">
-            <form action="#" method="post" enctype="multipart/form-data">
+          <form action="{{ route('admin.edit_category', ['id' => $category->id]) }}" method="post" enctype="multipart/form-data">
+              @csrf
               <input type="hidden" name="id" value="1">
               <div class="form-group">
                 <label>Tên danh mục</label>
-                <input type="text" name="name" class="form-control" value="Tên danh mục">
+                <input type="text" name="name" class="form-control" value="{{ $category->name }}">
               </div>
-              <div class="form-group">
-                <b>Mô tả</b>
-                <textarea class="form-control" name="description" rows="5">Mới nhất 2018</textarea>
-              </div>
+              <label>
+                @if($category->status == 1)
+                  <input type="radio" checked name="status" value="1"> Hoạt động&nbsp;&nbsp;&nbsp;&nbsp; 
+                  <input type="radio"  name="status" value="0"> Ngưng hoạt động
+                @else
+                  <input type="radio"  name="status" value="1"> Hoạt động&nbsp;&nbsp;&nbsp;&nbsp;                    
+                  <input type="radio" checked  name="status" value="0"> Ngưng hoạt động
+                @endif
+              </label>
               <div class="text-center">
                 <a href="listcate.html" class=" btn btn-danger btn-xs">Huỷ</a>
                 <button type="submit" class="btn btn-primary btn-xs">Cập nhật</button>

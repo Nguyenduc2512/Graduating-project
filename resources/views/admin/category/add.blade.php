@@ -22,17 +22,14 @@
       <section class="content">
         <div class="container-fluid">
           <div class="col-8">
-            <form action="#" method="post">
+            <form method="post" action="{{ route('admin.add_category') }}"  enctype="multipart/form-data">
+              @csrf
               <div class="form-group">
                 <b>Tên danh mục</b>
                 <input type="text" name="name" class="form-control">
               </div>
-              <div class="form-group">
-                <b>Mô tả</b>
-                <textarea class="form-control" name="description" rows="5"></textarea>
-              </div>
               <div class="text-center">
-                <a href="listcate.html" class="btn btn-danger btn-xs">Huỷ</a>
+                <a href="{{ route('admin.list_category') }}" class="btn btn-danger btn-xs">Huỷ</a>
                 <button type="submit" class="btn btn-primary btn-xs">Tạo mới</button>
               </div>
             </form>
