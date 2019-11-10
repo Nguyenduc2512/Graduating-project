@@ -29,6 +29,9 @@
               </div>
               <div class="row">
                 <div class="col-sm-12">
+                    @if (session('success'))
+                        <p class="text-danger"> {{session('success')}} </p>
+                    @endif
                   <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                     aria-describedby="example2_info">
                     <thead>
@@ -53,7 +56,10 @@
                               <td>{{$contact->email}}</td>
                               <td>{{$contact->name}}</td>
                               <td>
-                                  <a href="#" class="btn btn-xs btn-danger btn-remove">
+                                  <a href="http://gmail.com" class="btn btn-xs btn-primary">
+                                      <i class="fa"></i> Trả lời
+                                  </a>
+                                  <a href="{{route('admin.remove_contact', ['id' => $contact->id])}}" class="btn btn-xs btn-danger btn-remove">
                                       <i class="fa fa-trash"></i> Xoá
                                   </a>
                               </td>
@@ -62,30 +68,6 @@
                     </tbody>
                   </table>
 {{--                    {{$contacts->links()}}--}}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
-                          aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1"
-                          tabindex="0" class="page-link">1</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2"
-                          tabindex="0" class="page-link">2</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3"
-                          tabindex="0" class="page-link">3</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4"
-                          tabindex="0" class="page-link">4</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5"
-                          tabindex="0" class="page-link">5</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6"
-                          tabindex="0" class="page-link">6</a></li>
-                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2"
-                          data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>

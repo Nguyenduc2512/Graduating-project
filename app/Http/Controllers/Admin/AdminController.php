@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    protected $adminService;
+    protected $contactService;
     public function __construct(contactService $contactService)
     {
-        $this->adminService = $contactService;
+        $this->contactService = $contactService;
     }
 
     public function index() {
@@ -19,7 +19,15 @@ class AdminController extends Controller
 
     public function contact()
     {
-       $contacts = $this->adminService->getContact();
+       $contacts = $this->contactService->getContact();
         return view('admin/contact/index', compact('contacts'));
     }
+
+    public function removeContact($id)
+    {
+        $contact = $this->contactService->removeContact($id);
+
+        return redirect()->route('admin.contact')->with(['success'=> 'Xóa thành công']);
+    }
+
 }
