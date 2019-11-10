@@ -14,18 +14,11 @@
                         <div class="row">
                             <div class="col-lg-12 col-6">
                                 <h3>Tên dang mục</h3>
+                                @foreach($category as $cate)
                                 <div class="col-lg-12">
-                                    <a href="#"> Nike <span>(14)</span></a>
+                                    <a href="{{route('cate', ['id' => $cate->id])}}"> {{$cate->name}} <span>({{$cate->products_count}})</span></a>
                                 </div>
-                                <div class="col-lg-12">
-                                    <a href="#"> Addidas <span>(7)</span></a>
-                                </div>
-                                <div class="col-lg-12">
-                                    <a href="#"> Gucci <span>(12)</span></a>
-                                </div>
-                                <div class="col-lg-12">
-                                    <a href="#"> Converse <span>(14)</span></a>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="col-lg-12 col-6">
                                 <h3 style="margin-top: 20px;">Size</h3>
@@ -61,98 +54,29 @@
                     </div>
                     <div class="pcate">
                         <div class="row">
+                            @if(count($productcate) == 0)
+                            Không có sản phẩm thuộc danh mục này!
+                            @else
+                            @foreach($productcate as $pc)
                             <div class="col-md-4 col-6">
                                 <div class="p_nd">
-                                    <a href="#"> <img src="client/images/p1.jpg" width="100%" alt=""></a>
+                                    <a href="{{route('detail', ['id' => $pc->id])}}"> <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt=""></a>
                                     <div class="nd_hover">
                                         <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-eye"></i></a>
+                                        <a href="{{route('detail', ['id' => $pc->id])}}"><i class="far fa-eye"></i></a>
                                         <a href="#"> <i class="fas fa-less-than-equal"></i></a>
                                     </div>
-                                    <a href="#">
-                                        <h3>Nike 1</h3>
+                                    <a href="{{route('detail', ['id' => $pc->id])}}">
+                                        <h3>{{$pc->name}}</h3>
                                     </a>
-                                    <p>630.000 đ</p>
+                                    <p>{{$pc->price}} đ</p>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-6">
-                                <div class="p_nd">
-                                    <a href="#"> <img src="client/images/p2.jpg" width="100%" alt=""></a>
-                                    <div class="nd_hover">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-eye"></i></a>
-                                        <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                    </div>
-                                    <a href="#">
-                                        <h3>Adidas 1</h3>
-                                    </a>
-                                    <p>430.000 đ</p>
-
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6">
-                                <div class="p_nd">
-                                    <a href="#"> <img src="client/images/p3.jpg" width="100%" alt=""></a>
-                                    <div class="nd_hover">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-eye"></i></a>
-                                        <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                    </div>
-                                    <a href="#">
-                                        <h3>Gucci 1</h3>
-                                    </a>
-                                    <p>730.000 đ</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6">
-                                <div class="p_nd">
-                                    <a href="#"> <img src="client/images/p1.jpg" width="100%" alt=""></a>
-                                    <div class="nd_hover">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-eye"></i></a>
-                                        <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                    </div>
-                                    <a href="#">
-                                        <h3>Nike 1</h3>
-                                    </a>
-                                    <p>630.000 đ</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6">
-                                <div class="p_nd">
-                                    <a href="#"> <img src="client/images/p2.jpg" width="100%" alt=""></a>
-                                    <div class="nd_hover">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-eye"></i></a>
-                                        <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                    </div>
-                                    <a href="#">
-                                        <h3>Adidas 1</h3>
-                                    </a>
-                                    <p>430.000 đ</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-6">
-                                <div class="p_nd">
-                                    <a href="#"> <img src="client/images/p3.jpg" width="100%" alt=""></a>
-                                    <div class="nd_hover">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-eye"></i></a>
-                                        <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                    </div>
-                                    <a href="#">
-                                        <h3>Gucci 1</h3>
-                                    </a>
-                                    <p>730.000 đ</p>
-                                </div>
-                            </div>
+                            @endforeach
+                            @endif
                             <div class="col-12">
                                 <ul class="pagination" style="float: right;">
-                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                {{ $productcate->links() }}
                                 </ul>
                             </div>
                         </div>

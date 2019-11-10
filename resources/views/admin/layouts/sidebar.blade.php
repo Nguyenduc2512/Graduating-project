@@ -137,7 +137,7 @@
             </li>
             <li class="nav-item has-treeview">
               <!--menu-open -->
-              <a href="/admin1/brand" class="nav-link bg-info">
+              <a href="{{route('admin.list_brand')}}" class="nav-link bg-info">
                 <i class="fas fa-user-shield"></i>
                 <p>
                   Quản lý đối tác
@@ -146,13 +146,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/brand" class="nav-link active">
+                  <a href="{{route('admin.list_brand')}}" class="nav-link active">
                     <i class="fas fa-id-card-alt nav-icon"></i>
                     <p>Danh sách đối tác</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/admin1/brand/add" class="nav-link active">
+                  <a href="{{route('admin.add_brand')}}" class="nav-link active">
                     <i class="fas fa-user-plus nav-icon"></i>
                     <p>Thêm đối tác</p>
                   </a>

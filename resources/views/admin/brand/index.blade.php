@@ -27,68 +27,176 @@
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>
               </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
-                    aria-describedby="example2_info">
-                    <thead>
-                      <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-sort="ascending" aria-label="ID: activate to sort column descending">
-                          ID</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên đối tác
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ảnh
-                        </th>
-                        <th>Đường dẫn liên kết</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"> <a
-                            href="/admin1/brand/add" class="btn btn-xs btn-success">
-                            <i class="fa fa-plus"></i> Thêm mới
-                          </a>
-                        </th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>DDoo</td>
-                        <td><img src="../../dist/img/avatar2.png" height="100px" alt=""></td>
-                        <td><a href="#">doitac.com.vn</a></td>
-                        <td>
-                          <a href="/admin1/brand/edit" class="btn btn-xs btn-info">
-                            <i class="fa fa-pencil"></i> Cập nhật
-                          </a>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
-                          aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1"
-                          tabindex="0" class="page-link">1</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2"
-                          tabindex="0" class="page-link">2</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3"
-                          tabindex="0" class="page-link">3</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4"
-                          tabindex="0" class="page-link">4</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5"
-                          tabindex="0" class="page-link">5</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6"
-                          tabindex="0" class="page-link">6</a></li>
-                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2"
-                          data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                    </ul>
+              <div>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Tất cả</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Ngưng hợp tác</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Đang hợp tác</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên đối tác</th>
+                              <th>Logo</th>
+                              <th width="200px">Số lượng sản phẩm</th>
+                              <th>Đường dẫn</th>
+                              <th>Trạng thái</th>
+                              <th width="150px"> <a
+                              href="{{route('admin.add_brand')}}" class="btn btn-xs btn-success">
+                              <i class="fa fa-plus"></i> Thêm mới
+                            </a></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php $i=1 ?>
+                        @foreach($brands as $brand)
+                          <tr>
+                              <td>{{$i++}}</td>
+                              <td>{{$brand->name}}</td>
+                              <td><img src="{{url('/')}}/{{$brand->logo}}" height="50px"></td>
+                              <td>{{$brand->products_count}}</td>
+                              <td>{{$brand->link}}</td>
+                              <td width="200px">
+                                @if($brand->status == 1)
+                                hợp tác
+                                @else
+                                Ngưng hợp tác
+                                @endif
+                              </td>
+                              <td><a href="{{route('admin.edit_brand', ['id' => $brand->id])}}" class="btn btn-xs btn-info">
+                              <i class="fa fa-pencil"></i> Cập nhật
+                            </a>
+                            <a href="#" class="btn btn-xs btn-danger btn-remove">
+                              <i class="fa fa-trash"></i> Xoá
+                            </a></td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên đối tác</th>
+                              <th>Logo</th>
+                              <th>Số lượng sản phẩm</th>
+                              <th>Đường dẫn</th>
+                              <th>  </th>
+                          </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên đối tác</th>
+                              <th>Logo</th>
+                              <th width="200px">Số lượng sản phẩm</th>
+                              <th>Đường dẫn</th>
+                              <th>Trạng thái</th>
+                              <th width="150px"> <a
+                              href="{{route('admin.add_brand')}}" class="btn btn-xs btn-success">
+                              <i class="fa fa-plus"></i> Thêm mới
+                            </a></th>
+                          </tr>
+                      </thead>
+                      <?php $i = 1 ?>
+                      <tbody>
+                        @foreach($brands0 as $brand)
+                          <tr>
+                              <td>{{$i++}}</td>
+                              <td>{{$brand->name}}</td>
+                              <td><img src="{{url('/')}}/{{$brand->logo}}" height="50px"></td>
+                              <td>{{$brand->products_count}}</td>
+                              <td>{{$brand->link}}</td>
+                              <td width="200px">
+                                @if($brand->status == 1)
+                                hợp tác
+                                @else
+                                Ngưng hợp tác
+                                @endif
+                              </td>
+                              <td><a href="{{route('admin.edit_brand', ['id' => $brand->id])}}" class="btn btn-xs btn-info">
+                              <i class="fa fa-pencil"></i> Cập nhật
+                            </a>
+                            <a href="#" class="btn btn-xs btn-danger btn-remove">
+                              <i class="fa fa-trash"></i> Xoá
+                            </a></td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên đối tác</th>
+                              <th>Logo</th>
+                              <th>Số lượng sản phẩm</th>
+                              <th>Đường dẫn</th>
+                              <th>  </th>
+                          </tr>
+                      </tfoot>
+                    </table></div>
+                  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên đối tác</th>
+                              <th>Logo</th>
+                              <th width="200px">Số lượng sản phẩm</th>
+                              <th>Đường dẫn</th>
+                              <th>Trạng thái</th>
+                              <th width="150px"> <a
+                              href="{{route('admin.add_brand')}}" class="btn btn-xs btn-success">
+                              <i class="fa fa-plus"></i> Thêm mới
+                            </a></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php $i = 1 ?>
+                        @foreach($brands1 as $brand)
+                          <tr>
+                              <td>{{$i++}}</td>
+                              <td>{{$brand->name}}</td>
+                              <td><img src="{{url('/')}}/{{$brand->logo}}" height="50px"></td>
+                              <td>{{$brand->products_count}}</td>
+                              <td>{{$brand->link}}</td>
+                              <td width="200px">
+                                @if($brand->status == 1)
+                                hợp tác
+                                @else
+                                Ngưng hợp tác
+                                @endif
+                              </td>
+                              <td><a href="{{route('admin.edit_brand', ['id' => $brand->id])}}" class="btn btn-xs btn-info">
+                              <i class="fa fa-pencil"></i> Cập nhật
+                            </a>
+                            <a href="#" class="btn btn-xs btn-danger btn-remove">
+                              <i class="fa fa-trash"></i> Xoá
+                            </a></td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên đối tác</th>
+                              <th>Logo</th>
+                              <th>Số lượng sản phẩm</th>
+                              <th>Đường dẫn</th>
+                              <th>  </th>
+                          </tr>
+                      </tfoot>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -101,4 +209,5 @@
 
     
 @endsection
+
 

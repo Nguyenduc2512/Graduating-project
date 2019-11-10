@@ -13,6 +13,9 @@ use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Properties;
 use App\Models\About;
+use App\Models\Web_Setting;
+use App\Models\Contact;
+use App\Http\Requests\ContactRequest;
 use DB;
 
 class PageController extends Controller
@@ -49,12 +52,33 @@ class PageController extends Controller
         return view ('client/detail-product', compact('product', 'productCategory', 'size', 'comment','color'));
     }
 
+    public function cate($id)
+    {
+        $productcate = Product::where('category_id', $id)->paginate(3);
+        $category = Category::withCount(['products'])->get(); 
+        return view('client/cate', compact('productcate','category'));
+    }
+
     public function comment(Request $request)
     {
         $model = new Comment();
         $model->fill($request->all());
         $model->save();
         return redirect()->back();
+    }
+
+    public function contact()
+    { 
+        $webs = Web_Setting::first();
+        return view('client/contact', compact('webs'));
+    }
+
+    public function addcontact(ContactRequest $request)
+    { 
+        $model = new Contact();
+        $model->fill($request->all());
+        $model->save();
+        return redirect()->back()->with('msg', 'Cảm ơn bạn đã liên hệ với chúng tôi!');;
     }
 
     public function search(Request $request)

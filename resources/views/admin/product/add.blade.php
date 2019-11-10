@@ -57,12 +57,12 @@
                 </div>
                   <div class="row">
                       <div class="col-md-6 col-md-offset-3">
-                          <img name="picture" id="" src="{{asset('/admin/dist/img/photo1.png')}}" width="100%" required="" aria-required="true">
+                          <img name="picture" id="imageTarget" class="img-responsive" src="{{asset('/admin/dist/img/photo1.png')}}" width="100%" required="" aria-required="true">
                       </div>
                   </div>
                   <div class="form-group">
                       <b>Ảnh sản phẩm</b>
-                      <input type="file" id="product_image" name="picture" class="form-control">
+                      <input type="file" id="image" name="picture" class="form-control">
                       @if($errors->first('picture'))
                           <span class="text-danger"> {{$errors->first('picture')}} </span>
                       @endif

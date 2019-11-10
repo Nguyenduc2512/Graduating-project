@@ -30,7 +30,7 @@
                     <p>Giá bán: <span class="price">{{$product->price}}</span></p>
                     <p>Tình trạng: Còn hàng</p>
                     <hr>
-                    <p>Danh mục <span class="cate"><a href="cate.html">{{$product->category->name}}</a></span></p>
+                    <p>Danh mục <span class="cate"><a href="{{route('cate', ['id' => $product->category_id])}}">{{$product->category->name}}</a></span></p>
                     <hr>
                     <div class="col-lg-6">
                         <form action="">

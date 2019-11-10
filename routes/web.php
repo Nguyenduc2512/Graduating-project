@@ -30,6 +30,16 @@ Route::group(
 
 
 
+    Route::get('brand', 'Admin\BrandController@listBrand')->name('list_brand');
+
+    Route::get('brand/add', 'Admin\BrandController@newBrand')->name('add_brand'); 
+
+    Route::post('brand/add', 'Admin\BrandController@addNewBrand'); 
+
+    Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
+
+    Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
+
 });
 
 Route::group(
@@ -42,7 +52,6 @@ Route::group(
 
 });
 
-// category
 Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
 
 Route::get('login', 'User\UserController@login')->name('login');
@@ -53,7 +62,13 @@ Route::get('/search', 'User\PageController@search')->name('search');
 
 Route::get('/detail/{id}', 'User\PageController@detail')->name('detail');
 
+Route::get('/cate/{id}', 'User\PageController@cate')->name('cate');
+
 Route::get('/about', 'User\PageController@about')->name('about');
+
+Route::get('/contact', 'User\PageController@contact')->name('contact');
+   
+Route::post('/contact', 'User\PageController@addcontact');
 
 Route::post('login', 'Auth\LoginController@login');
 
@@ -65,13 +80,6 @@ Route::post('login_admin', 'Auth\LoginController@loginAdmin');
 
 Route::get('logout_admin', 'Auth\LoginController@logoutAdmin')->name('logout_admin');
 
-Route::get('/contact', function () {
-    return view('client/contact');
-});
-
-Route::get('/cate', function () {
-    return view('client/cate');
-});
 Route::get('editcustomer', function () {
     return view('client/editcustomer');
 });
@@ -133,19 +141,6 @@ Route::get('/admin1/discount/edit', function () {
 // contact
 Route::get('/admin1/contact', function () {
     return view('admin/contact/index');
-});
-
-// brand
-Route::get('/admin1/brand', function () {
-    return view('admin/brand/index');
-});
-
-Route::get('/admin1/brand/add', function () {
-    return view('admin/brand/add');
-});
-
-Route::get('/admin1/brand/edit', function () {
-    return view('admin/brand/edit');
 });
 
 // customer
