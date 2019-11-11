@@ -40,6 +40,7 @@ Route::group(
 
 });
 
+Auth::routes();
 // brand
 
 Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
