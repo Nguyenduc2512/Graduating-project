@@ -15,7 +15,9 @@ use App\Models\Properties;
 use App\Models\About;
 use App\Models\Web_Setting;
 use App\Models\Contact;
+use App\Models\Promo;
 use App\Http\Requests\ContactRequest;
+use Carbon\Carbon;
 use DB;
 
 class PageController extends Controller
@@ -78,7 +80,7 @@ class PageController extends Controller
         $model = new Contact();
         $model->fill($request->all());
         $model->save();
-        return redirect()->back()->with('msg', 'Cảm ơn bạn đã liên hệ với chúng tôi!');;
+        return redirect()->back()->with('msg', 'Cảm ơn bạn đã liên hệ với chúng tôi!');
     }
 
     public function search(Request $request)
@@ -118,5 +120,30 @@ class PageController extends Controller
         $productsNew = Product::orderBy('created_at', 'desc')->limit(2)->get();
         return view('client/about', compact('about', 'productsNew')); 
     }
-
+    public function promo(Request $request)
+    {
+        $code = $request->code;
+        $role = $request->role;
+        $promo = Promo::where('code', 'like', "$code")->first();
+        $date = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        if(!$promo){
+            $request->session()->forget('coupon');
+            return redirect()->back()->with('msg', 'Mã giảm giá không hợp lệ!');
+        }
+        elseif($promo->start_time > $date || $promo->end_time < $date) {
+           $request->session()->forget('coupon');
+           return redirect()->back()->with('msg', 'Mã giảm giá của bạn đã hết hạn!');
+        }
+        elseif ($role < $promo->role) {
+            $request->session()->forget('coupon');
+            return redirect()->back()->with('msg', 'Bạn không thể sử dụng mã giảm giá này!'); 
+        }
+        else{    
+        session()->put('coupon', [
+            'code' => $promo->code,
+            'down' => $promo->down,
+        ]);
+            return redirect()->back()->with('msg', 'Nhập mã giảm giá thành công');
+        }
+}
 }

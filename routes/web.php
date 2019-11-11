@@ -52,6 +52,7 @@ Route::group(
     Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
     Route::post('/comment', 'User\PageController@comment')->name('comment');
 
+    Route::post('list_cart', 'User\PageController@promo')->name('promo');    
 });
 
 Auth::routes();

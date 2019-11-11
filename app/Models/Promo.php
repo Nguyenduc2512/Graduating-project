@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Models\Product;
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Model;
 
 class Promo extends Model
 {
     protected $table = 'promos';
-
     protected $fillable = [
       'code',
       'down',
@@ -23,5 +23,4 @@ class Promo extends Model
     {
         return $this->belongsTo('App\Models\Admin', 'admin_id', 'id');
     }
-
 }

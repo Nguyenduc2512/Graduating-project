@@ -14,12 +14,12 @@ class PromoService
     }
     public function listPromoRole2()
     {
-        $promos2 = Promo::where('role', 2);
+        $promos2 = Promo::where('role', 2)->get();
         return $promos2;
     }
     public function listPromoRole3()
     {
-        $promos3 = Promo::where('role', 3);
+        $promos3 = Promo::where('role', 3)->get();
         return $promos3;
     }
     public function addNewPromo(Request $request)
