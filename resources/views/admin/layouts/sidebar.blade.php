@@ -102,7 +102,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/admin1/discount" class="nav-link bg-info">
+              <a href="{{route('admin.list_promo')}}" class="nav-link bg-info">
                 <i class="fas fa-code"></i>
                 <p>
                   Mã giảm giá
@@ -111,7 +111,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/discount" class="nav-link active">
+                  <a href="{{route('admin.list_promo')}}" class="nav-link active">
                     <i class="fas fa-file-code nav-icon"></i>
                     <p>Quản lý mã giảm giá</p>
                   </a>

@@ -17,7 +17,8 @@ class CreatePromosTable extends Migration
             $table->Increments('id');
             $table->string('code');
             $table->integer('down');
-            $table->integer('r');
+            $table->integer('role');
+            $table->integer('amount');
             $table->date('start_time');
             $table->date('end_time');
             $table->integer('admin_id')->unsigned();
