@@ -17,6 +17,8 @@ Route::group(
     Route::get('admin_home', 'Admin\AdminController@index')->name('adminHome');
     Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
     Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
+    Route::get('contact', 'Admin\AdminController@contact')->name('contact');
+    Route::get('remove_contact/{id}', 'Admin\AdminController@removeContact')->name('remove_contact');
 
     Route::get('brand', 'Admin\BrandController@listBrand')->name('list_brand');
 
