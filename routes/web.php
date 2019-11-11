@@ -17,13 +17,17 @@ Route::group(
     Route::get('admin_home', 'Admin\AdminController@index')->name('adminHome');
     Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
     Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
+    Route::get('contact', 'Admin\AdminController@contact')->name('contact');
+    Route::get('remove_contact/{id}', 'Admin\AdminController@removeContact')->name('remove_contact');
+
+    Route::get('show_list_product', 'Admin\ProductController@showListProduct')->name('show_product');
 
     //brand
     Route::get('brand', 'Admin\BrandController@listBrand')->name('list_brand');
 
-    Route::get('brand/add', 'Admin\BrandController@newBrand')->name('add_brand'); 
+    Route::get('brand/add', 'Admin\BrandController@newBrand')->name('add_brand');
 
-    Route::post('brand/add', 'Admin\BrandController@addNewBrand'); 
+    Route::post('brand/add', 'Admin\BrandController@addNewBrand');
 
     Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
 
@@ -50,6 +54,7 @@ Route::group(
 
 });
 
+Auth::routes();
 // brand
 
 Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
@@ -67,7 +72,7 @@ Route::get('/cate/{id}', 'User\PageController@cate')->name('cate');
 Route::get('/about', 'User\PageController@about')->name('about');
 
 Route::get('/contact', 'User\PageController@contact')->name('contact');
-   
+
 Route::post('/contact', 'User\PageController@addcontact');
 
 Route::post('login', 'Auth\LoginController@login');

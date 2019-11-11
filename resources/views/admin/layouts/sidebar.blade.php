@@ -31,7 +31,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/product" class="nav-link active">
+                  <a href="{{route('admin.show_product')}}" class="nav-link active">
                     <i class="fas fa-clipboard-list nav-icon"></i>
                     <p>Danh sách sản phẩm</p>
                   </a>
@@ -128,7 +128,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/contact" class="nav-link active">
+                  <a href="{{route('admin.contact')}}" class="nav-link active">
                     <i class="fas fa-comment-alt nav-icon"></i>
                     <p>Danh sách liên hệ</p>
                   </a>

@@ -42,4 +42,11 @@ class ProductController extends Controller
 
         return redirect()->route('admin.adminHome');
     }
+
+    public function showListProduct()
+    {
+        $products = $this->productService->getProduct();
+        $activeProducts = $this->productService->getProductActive();
+        return view('admin/product/index', compact('products', 'activeProducts'));
+    }
 }
