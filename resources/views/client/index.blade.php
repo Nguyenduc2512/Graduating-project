@@ -8,20 +8,20 @@
         <div class="container">
             <div class="row">
                 @foreach($productsNew as $productNew)
-                    <div class="col-md-3 col-6">
-                        <div class="p_nd wow fadeInUp">
-                            <a href="detail-product"> <img src="{{$productNew->picture}}" width="100%" alt=""></a>
-                            <div class="nd_hover">
-                                <a href="listcart"><i class="fas fa-cart-plus"></i></a>
-                                <a href="{{route('detail', ['id' => $productNew->id])}}"><i class="far fa-eye"></i></a>
-                                <a href="#"> <i class="fas fa-less-than-equal"></i></a>
+                    <a href="{{route('detail', ['id' => $productNew->id])}}">
+                        <div class="col-md-3 col-6">
+                            <div class="p_nd wow fadeInUp">
+                                <img src="{{$productNew->picture}}" width="100%" alt="">
+                                <div class="nd_hover">
+                                    <a href="listcart"><i class="fas fa-cart-plus"></i></a>
+                                    <a href="{{route('detail', ['id' => $productNew->id])}}"><i class="far fa-eye"></i></a>
+                                    <a href="#"> <i class="fas fa-less-than-equal"></i></a>
+                                </div>
+                                    <h3>{{$productNew->name}}</h3>
+                                <p>{{$productNew->price}}đ</p>
                             </div>
-                            <a href="{{route('detail', ['id' => $productNew->id])}}">
-                                <h3>{{$productNew->name}}</h3>
-                            </a>
-                            <p>{{$productNew->price}}đ</p>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -61,20 +61,21 @@
         <div class="container">
             <div class="row">
                 @foreach($productsMost as $productMost)
-                <div class="col-md-3 col-6">
-                    <div class="p_nd wow fadeInUp">
-                        <a href="detail-product"> <img src="{{$productMost->picture}}" width="100%" alt=""></a>
-                        <div class="nd_hover">
-                            <a href="listcart"><i class="fas fa-cart-plus"></i></a>
-                            <a href="{{route('detail', ['id' => $productMost->id])}}"><i class="far fa-eye"></i></a>
-                            <a href="#"> <i class="fas fa-less-than-equal"></i></a>
+                    <a href="{{route('detail', ['id' => $productMost->id])}}">
+                        <div class="col-md-3 col-6">
+                            <div class="p_nd wow fadeInUp">
+                                <img src="{{$productMost->picture}}" width="100%" alt="">
+                                <div class="nd_hover">
+                                    <a href="listcart"><i class="fas fa-cart-plus"></i></a>
+                                    <a href="{{route('detail', ['id' => $productMost->id])}}"><i class="far fa-eye"></i></a>
+                                    <a href="#"> <i class="fas fa-less-than-equal"></i></a>
+                                </div>
+                                    <h3>{{$productMost->name}}</h3>
+                                <p>{{$productMost->price}}đ </p>
+                            </div>
                         </div>
-                        <a href="{{route('detail', ['id' => $productMost->id])}}">
-                            <h3>{{$productMost->name}}</h3>
-                        </a>
-                        <p>{{$productMost->price}}đ </p>
-                    </div>
-                </div>
+                    </a>
+
                 @endforeach
             </div>
         </div>

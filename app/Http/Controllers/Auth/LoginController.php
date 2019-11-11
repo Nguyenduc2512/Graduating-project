@@ -26,7 +26,11 @@ class LoginController extends Controller
     {
         if (Auth::attempt(['email'   => $request->email,
             'password' => $request->password])) {
-            return redirect('/');
+            if (Auth::user()->status == 0) {
+                return redirect()->route('/');
+            }else {
+                return redirect()->route('login')->with(['false' => 'Tài khoản của bạn bị khóa liên hệ hotline để kích hoạt']);
+            }
         }
         return redirect()->route('login')->with(['false' => 'Sai tài khoản hoặc mật khẩu']);
     }

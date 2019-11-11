@@ -55,7 +55,7 @@ class PageController extends Controller
     public function cate($id)
     {
         $productcate = Product::where('category_id', $id)->paginate(3);
-        $category = Category::withCount(['products'])->get(); 
+        $category = Category::withCount(['products'])->get();
         return view('client/cate', compact('productcate','category'));
     }
 
@@ -68,13 +68,13 @@ class PageController extends Controller
     }
 
     public function contact()
-    { 
+    {
         $webs = Web_Setting::first();
         return view('client/contact', compact('webs'));
     }
 
     public function addcontact(ContactRequest $request)
-    { 
+    {
         $model = new Contact();
         $model->fill($request->all());
         $model->save();
@@ -116,7 +116,7 @@ class PageController extends Controller
     {
         $about = About::first();
         $productsNew = Product::orderBy('created_at', 'desc')->limit(2)->get();
-        return view('client/about', compact('about', 'productsNew')); 
+        return view('client/about', compact('about', 'productsNew'));
     }
 
 }

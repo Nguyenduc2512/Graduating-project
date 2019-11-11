@@ -169,7 +169,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/customer" class="nav-link active">
+                  <a href="{{route('admin.customer')}}" class="nav-link active">
                     <i class="far fa-address-card nav-icon"></i>
                     <p>Danh sách khách hàng</p>
                   </a>

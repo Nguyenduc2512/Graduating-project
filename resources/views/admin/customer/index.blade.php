@@ -32,11 +32,7 @@
                   <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
                     aria-describedby="example2_info">
                     <thead>
-                      <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-sort="ascending" aria-label="ID: activate to sort column descending">
-                          ID</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên đối tác
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên thành viên
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Email
                         </th>
@@ -45,48 +41,36 @@
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Số lượt mua
                         </th>
                         <th>
+                            Loại thành viên
                         </th>
-                      </tr>
+                    <th></th>
                     </thead>
-                    <tbody>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Nguyễn văn A</td>
-                        <td>A@gmail.com</td>
-                        <td>032654654</td>
-                        <td>12</td>
+                    @foreach($members as $member)
+                          <tbody>
+                        <td>{{$member->name}}</td>
+                        <td>{{$member->email}}</td>
+                        <td>{{$member->phone}}</td>
+                        @foreach($counts as $count)
+                            <td>
+                                {{$count}}
+                            </td>
+                        @endforeach
+                        <td></td>
                         <td>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
+                            @if($member->status == 0)
+                                <a href="{{route('admin.block', ['id'=> $member->id ])}}" class="btn btn-xs btn-danger btn-remove">
+                                    <i></i> Khóa tài khoản
+                                </a>
+                            @else
+                                <a href="{{route('admin.unblock', ['id'=> $member->id ])}}" class="btn btn-xs btn-primary btn-remove">
+                                    <i></i> Tái kích hoạt
+                                </a>
+                            @endif
                         </td>
-                      </tr>
-                    </tbody>
+                          </tbody>
+
+                      @endforeach
                   </table>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
-                          aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1"
-                          tabindex="0" class="page-link">1</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2"
-                          tabindex="0" class="page-link">2</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3"
-                          tabindex="0" class="page-link">3</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4"
-                          tabindex="0" class="page-link">4</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5"
-                          tabindex="0" class="page-link">5</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6"
-                          tabindex="0" class="page-link">6</a></li>
-                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2"
-                          data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>
@@ -96,6 +80,6 @@
       <!-- /.content -->
     </div>
 
-    
+
 @endsection
 
