@@ -20,7 +20,7 @@ class CreateWebSetting extends Migration
             $table->string('address');
             $table->string('email');
             $table->string('hotline');
-            $table->string('map');
+            $table->text('map');
             $table->timestamps();
         });
     }

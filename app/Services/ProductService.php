@@ -31,4 +31,16 @@ class ProductService
         }
         $product->save();
     }
+
+    public function getProduct()
+    {
+        $product = Product::all();
+        return $product;
+    }
+
+    public function getProductActive()
+    {
+        $products = Product::where('status', 1);
+        return $products;
+    }
 }
