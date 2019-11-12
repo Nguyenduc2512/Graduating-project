@@ -58,13 +58,7 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="">Số lượng*</label>
-                                        <select name="" id="" class="form-control">
-                                            <option value="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">5</option>
-                                        </select>
+                                        <input type="number" name="amount" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +69,7 @@
                         <form action="">
                             <div class="row">
                                 <div class="col-6">
-                                    <a href="order.html" class="btn btn-block btn-danger">Đăng ký mua</a>
+                                    <a href="order.html" class="btn btn-block btn-danger">Đặt hàng</a>
                                 </div>
                                 <div class="col-6">
                                     <div class="linkcart">

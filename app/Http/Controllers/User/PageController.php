@@ -45,7 +45,7 @@ class PageController extends Controller
         $size = DB::table('properties')->where('product_id', '=', "$id")->get();
         $color = DB::table('colors')
             ->join('properties', 'colors.id', '=', 'properties.color_id')
-            ->where('product_id', '=', "$id")
+            ->where('product_id', '=', "$id")->distinct()
             ->get();
         $productCategory = DB::table('products')->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
         $comment = Comment::where('product_id', $id)->get();
@@ -116,7 +116,7 @@ class PageController extends Controller
     {
         $about = About::first();
         $productsNew = Product::orderBy('created_at', 'desc')->limit(2)->get();
-        return view('client/about', compact('about', 'productsNew')); 
+        return view('client/about', compact('about', 'productsNew'));
     }
 
 }
