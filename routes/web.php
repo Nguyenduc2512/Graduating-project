@@ -22,6 +22,7 @@ Route::group(
 
     Route::get('show_list_product', 'Admin\ProductController@showListProduct')->name('show_product');
 
+    //brand
     Route::get('brand', 'Admin\BrandController@listBrand')->name('list_brand');
 
     Route::get('brand/add', 'Admin\BrandController@newBrand')->name('add_brand');
@@ -32,6 +33,15 @@ Route::group(
 
     Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
 
+    //promo
+    Route::get('promo', 'Admin\PromoController@listPromo')->name('list_promo');
+
+    Route::get('promo/add', 'Admin\PromoController@newPromo')->name('add_promo'); 
+
+    Route::post('promo/add', 'Admin\PromoController@addNewPromo'); 
+
+
+    
 });
 
 Route::group(
@@ -42,6 +52,7 @@ Route::group(
     Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
     Route::post('/comment', 'User\PageController@comment')->name('comment');
 
+    Route::post('list_cart', 'User\PageController@promo')->name('promo');    
 });
 
 Auth::routes();
@@ -133,18 +144,6 @@ Route::get('/admin1/cart/detail', function () {
     return view('admin/cart/detailcart');
 });
 
-// discount
-Route::get('/admin1/discount', function () {
-    return view('admin/discount/index');
-});
-
-Route::get('/admin1/discount/add', function () {
-    return view('admin/discount/add');
-});
-
-Route::get('/admin1/discount/edit', function () {
-    return view('admin/discount/edit');
-});
 
 // contact
 Route::get('/admin1/contact', function () {
