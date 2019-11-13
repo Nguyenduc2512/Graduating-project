@@ -28,8 +28,8 @@ class PageController extends Controller
 
     public function index() {
         $showModal = false;
-        $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
-        $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
+        $productsNew = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
+        $productsMost = Product::where('status', 1)->orderBy('id', 'desc')->limit(8)->get();
         $brands = Brand::all();
         $slides = Slide::all();
         return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slides'));
@@ -38,7 +38,8 @@ class PageController extends Controller
     public function detail($id)
     {
         $product = Product::find($id);
-        if(!$product){
+        $productStatus = Product::where('id', $id)->where('status', 1)->get();
+        if(!$product || count($productStatus) == 0){
             return redirect(route('home'));
         }
         $cate_id = $product->category_id;
@@ -54,7 +55,7 @@ class PageController extends Controller
 
     public function cate($id)
     {
-        $productcate = Product::where('category_id', $id)->paginate(3);
+        $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(3);
         $category = Category::withCount(['products'])->get(); 
         return view('client/cate', compact('productcate','category'));
     }
@@ -115,7 +116,7 @@ class PageController extends Controller
     public function about()
     {
         $about = About::first();
-        $productsNew = Product::orderBy('created_at', 'desc')->limit(2)->get();
+        $productsNew = Product::orderBy('created_at', 'desc')->where('status', 1)->limit(2)->get();
         return view('client/about', compact('about', 'productsNew')); 
     }
 

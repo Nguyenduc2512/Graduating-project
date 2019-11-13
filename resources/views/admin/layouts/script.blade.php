@@ -21,6 +21,16 @@
       getBase64(file, '#imageTarget');
     }
   }
+
+  var img = document.querySelector('#image1');
+  img.onchange = function(){
+    var file = this.files[0];
+    if(file == undefined){
+      $('#imageTarget1').attr('src', "{{asset('/admin/dist/img/photo1.png')}}");
+    }else{
+      getBase64(file, '#imageTarget1');
+    }
+  }
   });
 </script>
 

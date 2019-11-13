@@ -68,7 +68,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/admin1/comment" class="nav-link bg-info">
+              <a href="{{route('admin.list_comment')}}" class="nav-link bg-info">
                 <i class="far fa-comments"></i>
                 <p>
                   Phản hồi
@@ -77,7 +77,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/comment" class="nav-link active">
+                  <a href="{{route('admin.list_comment')}}" class="nav-link active">
                     <i class="fas fa-calendar-alt nav-icon"></i>
                     <p>Danh sách phản hồi</p>
                   </a>
@@ -160,18 +160,26 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/admin1/customer" class="nav-link bg-info">
+              <a href="" class="nav-link bg-info">
                 <i class="far fa-user"></i>
                 <p>
-                  Tài khoản khách hàng
+                  Quản lí tài khoản 
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/customer" class="nav-link active">
+                  <a href="" class="nav-link active">
                     <i class="far fa-address-card nav-icon"></i>
                     <p>Danh sách khách hàng</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.list_admin')}}" class="nav-link active">
+                    <i class="far fa-address-card nav-icon"></i>
+                    <p>Danh sách quản trị viên</p>
                   </a>
                 </li>
               </ul>
@@ -194,7 +202,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/admin1/websetting" class="nav-link bg-info">
+              <a href="#" class="nav-link bg-info">
                 <i class="fas fa-tools"></i>
                 <p>
                   Hệ thống
@@ -203,7 +211,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/websetting" class="nav-link active">
+                  <a href="{{route('admin.list_web')}}" class="nav-link active">
                     <i class="fas fa-newspaper nav-icon"></i>
                     <p>Thông tin chung</p>
                   </a>

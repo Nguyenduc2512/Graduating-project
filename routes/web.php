@@ -32,6 +32,20 @@ Route::group(
 
     Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
 
+    Route::get('admin', 'Admin\AdminController@listAdmin')->name('list_admin');
+
+    Route::get('admin/edit/{id}', 'Admin\AdminController@editFormAdmin')->name('edit_admin');
+
+    Route::post('admin/edit/{id}', 'Admin\AdminController@editAdmin');
+
+    Route::get('web', 'Admin\AdminController@listWeb')->name('list_web');
+
+    Route::get('web/edit/{id}', 'Admin\AdminController@editFormWeb')->name('edit_web');
+
+    Route::post('web/edit/{id}', 'Admin\AdminController@editWeb');
+
+    Route::get('comment', 'Admin\CommentController@listComment')->name('list_comment');
+
 });
 
 Route::group(
