@@ -13,10 +13,11 @@ class BrandTableSeeder extends Seeder
     {
         $brands = [];
         $faker = Faker\Factory::create();
-        for ($i=0; $i < 10; $i++) { 
+        for ($i=0; $i < 10; $i++) {
         	$item = [
         		'name' => $faker->name,
         		'logo' => 'images/'. $faker->image($dir = 'public/images', $width = 640, $height = 480, 'cats', false),
+                'status' => rand(0,2),
         		'link' => $faker->url,
         	];
         	$brands[] = $item;
@@ -24,4 +25,3 @@ class BrandTableSeeder extends Seeder
         DB::table('brands')->insert($brands);
     }
 }
- 

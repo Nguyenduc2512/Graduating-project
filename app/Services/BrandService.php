@@ -3,6 +3,7 @@
 
 namespace App\Services;
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BrandService
@@ -64,13 +65,12 @@ class BrandService
             'status' => $request->status,
         ];
         if($request->status == 0){
-            $request->status = 1;
+            $product = Product::where('brand_id', $request->id)->update(['status' => 0]);    
         }
         else{
-        	$request->status = 0;
+        	$product = Product::where('brand_id', $request->id)->update(['status' => 1]);
         }
         $brand->fill($data);
-
         $brand->save();
     }
 }

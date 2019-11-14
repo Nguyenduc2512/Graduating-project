@@ -9,14 +9,14 @@
             <div class="row">
                 @foreach($productsNew as $productNew)
                     <div class="col-md-3 col-6">
-                        <div class="p_nd wow fadeInUp">
-                            <a href="detail-product"> <img src="{{$productNew->picture}}" width="100%" alt=""></a>
+                        <div class="p_nd wow fadeInUp" href="{{route('detail', ['id' => $productNew->id])}}">
+                            <a href="{{route('detail', ['id' => $productNew->id])}}"> <img src="{{$productNew->picture}}" width="100%" alt=""></a>
                             <div class="nd_hover">
                                 <a href="listcart"><i class="fas fa-cart-plus"></i></a>
                                 <a href="{{route('detail', ['id' => $productNew->id])}}"><i class="far fa-eye"></i></a>
                                 <a href="#"> <i class="fas fa-less-than-equal"></i></a>
                             </div>
-                            <a href="{{route('detail', ['id' => $productNew->id])}}">
+                            <a>
                                 <h3>{{$productNew->name}}</h3>
                             </a>
                             <p>{{$productNew->price}}đ</p>
@@ -106,6 +106,6 @@
     $( document ).ready(function() {
         var showModal = {!! json_encode($showModal) !!};
         if (showModal)
-            $('#dangnhap').modal('show');
+            $('#dangnhap').modal('show');  
     });
 </script>

@@ -17,21 +17,42 @@
           </div>
         </div><!-- /.container-fluid -->
       </section>
-
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <form enctype="" method="post" action="" id="" novalidate="novalidate">
+          <form enctype="" method="post" action="{{route('admin.add_promo')}}" id="" novalidate="novalidate">
+            @csrf
+            <input type="" name="admin_id" value="1">
             <div class="col-md-9">
               <div class="form-group">
                 <b>Mã giảm giá</b>
-                <input type="number" class="form-control">
+                <input type="text" name="code" class="form-control">
               </div>
             </div>
             <div class="col-md-9" center="">
               <div class="form-group">
-                <b>Chiếu khấu</b>
-                <input type="text" name="name" class="form-control" required="" aria-required="true">
+                <b>Chiếu khấu(%)</b>
+                <input type="number" name="down" class="form-control" required="" aria-required="true">
+              </div>
+              <div class="form-group">
+                <b>Ngày bắt đầu</b>
+                <input type="date" name="start_time" class="form-control" required="" aria-required="true">
+              </div>
+              <div class="form-group">
+                <b>Ngày kết thúc</b>
+                <input type="date" name="end_time" class="form-control" required="" aria-required="true">
+              </div>
+              <div class="form-group">
+                <b>Số lượng</b>
+                <input type="number" name="amount" class="form-control" required="" aria-required="true">
+              </div>
+              <div class="form-group">
+                <b>Đôi tượng</b>
+                <select name="role" class="form-control" aria-required="true">
+                  <option value="1">Tất cả</option>
+                  <option value="2">Bạc</option>
+                  <option value="3">Vàng</option>
+                </select>
               </div>
               <div class="text-center">
                 <a href="listcode.html" class="btn btn-danger btn-xs">Huỷ</a>
