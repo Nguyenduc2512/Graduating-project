@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use Imagick;
+
 
 class CategoryController extends Controller
 {
@@ -33,7 +35,7 @@ class CategoryController extends Controller
         return view('admin/category/add');
     }
 
-    public function addNewCategory(Request $request)
+    public function addNewCategory(CategoryRequest $request)
     {
         $this
             ->categoryService
@@ -41,14 +43,14 @@ class CategoryController extends Controller
         return redirect()->route('admin.list_category');
     }
 
-    public function editFormCategory($id)
+    public function editFormCategory( $id)
     {
         $category = $this
             ->categoryService
             ->editFormCategory($id);
         return view('admin/category/edit', compact('category'));
     }
-    public function editCategory(Request $request)
+    public function editCategory(CategoryRequest $request)
     {
         $category = $this
             ->categoryService

@@ -47,6 +47,7 @@
         <th>STT</th>
         <th>Tên danh mục</th>
         <th width="200px">Số lượng sản phẩm</th>
+        <th>Mô tả</th>
         <th>Trạng thái</th>
         <th width="150px"> <a
         href="{{route('admin.add_category')}}" class="btn btn-xs btn-success">
@@ -61,6 +62,7 @@
         <td>{{$i++}}</td>
         <td>{{$category->name}}</td>
         <td>{{$category->products_count}}</td>
+        <td>{{ $category->description }}</td>
         <td width="200px">
         @if($category->status == 1)
         hợp tác
@@ -82,6 +84,7 @@
         <th>STT</th>
         <th>Tên danh mục</th>
         <th>Số lượng sản phẩm</th>
+        <th>Mô tả</th>
         <th></th>
         </tr>
         </tfoot>
@@ -94,6 +97,7 @@
         <th>STT</th>
         <th>Tên danh mục</th>
         <th width="200px">Số lượng sản phẩm</th>
+        <th>Mô tả</th>
         <th>Trạng thái</th>
         <th width="150px"> <a
         href="{{route('admin.add_category')}}" class="btn btn-xs btn-success">
@@ -108,6 +112,7 @@
         <td>{{$i++}}</td>
         <td>{{$category->name}}</td>
         <td>{{$category->products_count}}</td>
+        <td>{{ $category->description }}</td>
         <td width="200px">
         @if($category->status == 1)
         hợp tác
@@ -129,6 +134,7 @@
         <th>STT</th>
         <th>Tên đối tác</th>
         <th>Số lượng sản phẩm</th>
+        <th>Mô tả</th>
         <th> </th>
         </tr>
         </tfoot>
@@ -140,6 +146,7 @@
         <th>STT</th>
         <th>Tên đối tác</th>
         <th width="200px">Số lượng sản phẩm</th>
+        <th>Mô tả</th>
         <th>Trạng thái</th>
         <th width="150px"> <a
         href="{{route('admin.add_category')}}" class="btn btn-xs btn-success">
@@ -154,6 +161,7 @@
         <td>{{$i++}}</td>
         <td>{{$category->name}}</td>
         <td>{{$category->products_count}}</td>
+        <td>{{ $category->description }}</td>
         <td width="200px">
         @if($category->status == 1)
         hợp tác
@@ -175,6 +183,7 @@
         <th>STT</th>
         <th>Tên danh mục</th>
         <th>Số lượng sản phẩm</th>
+        <th>Mô tả</th>
         <th> </th>
         </tr>
         </tfoot>

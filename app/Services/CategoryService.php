@@ -26,7 +26,7 @@ class CategoryService
     public function addNewCategory(Request $request)
     {
         $category = new Category();
-        $data = ['name' => $request->name, 'status' => $request->status, ];
+        $data = ['name' => $request->name, 'status' => $request->status, 'description' => $request->description,];
         $category->fill($data);
         $category->save();
     }
@@ -38,7 +38,7 @@ class CategoryService
     public function editCategory(Request $request)
     {
         $category = Category::find($request->id);
-        $data = ['name' => $request->name, 'status' => $request->status];
+        $data = ['name' => $request->name, 'status' => $request->status, 'description' => $request->description, ];
         $category->fill($data);
 
         $category->save();

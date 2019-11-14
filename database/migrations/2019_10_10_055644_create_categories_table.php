@@ -16,6 +16,8 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('name');
+            $table->string('description');
+            $table->string('status');
             $table->timestamps();
         });
     }
