@@ -31,6 +31,17 @@ Route::group(
     Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
 
     Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
+    //delivery_brand
+
+        Route::get('delivery_brand', 'Admin\DeliveryBrandController@listDeliveryBrand')->name('list_deliverybrand');
+
+        Route::get('delivery_brand/add', 'Admin\DeliveryBrandController@newDeliveryBrand')->name('add_deliverybrand');
+
+        Route::post('delivery_brand/add', 'Admin\DeliveryBrandController@addNewDeliveryBrand');
+
+        Route::get('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editFormDeliveryBrand')->name('edit_deliverybrand');
+
+        Route::post('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editDeliveryBrand');
 
 });
 
