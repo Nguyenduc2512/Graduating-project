@@ -41,6 +41,28 @@
     $('#example').DataTable();
   } );
   </script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+
+<script type="text/javascript">
+  $('.btn-remove').on('click', function(){
+    var removeUrl = $(this).attr('linkurl');
+    swal({
+      title: "Cảnh báo",
+      text: "Bạn có chắc chắn muốn xoá danh mục này không?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location.href = removeUrl;
+      } 
+    });
+  });
+</script>
+
+
   <!-- jQuery UI 1.11.4 -->
   <script src="{{asset('/admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

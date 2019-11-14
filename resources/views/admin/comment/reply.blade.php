@@ -32,12 +32,12 @@
               </div>
               <div class="row">
                 <div class="col-sm-12">
-                  <table id="example" class="table table-striped table-bordered" style="width:100%">
+                  <table class="table table-striped table-bordered" style="width:100%">
                       <thead>
                           <tr>
                               <th>STT</th>
-                              <th>Tên khách hàng</th>
-                              <th>Tên sản phẩm</th>
+                              <th>Tên</th>
+                              <th>Chức vụ</th>
                               <th>Nội dung</th>
                               <th></th>
                           </tr>
@@ -45,15 +45,21 @@
                       <tbody>
                         <?php $i=1 ?>
                         {{Auth::guard('admins')->user()->id}}
-                        @foreach($comments as $comment)
+                        @foreach($replycomment as $comment)
                           <tr>
                               <td>{{$i++}}</td>
-                              <td width="200px">{{$comment->user->name}}</td>
-                              <td width="200px">{{$comment->product->name}}</td>
+                              <td width="200px">
+                                if($comment->user_id == 0)
+                                {{$comment->user->name}}
+                                else
+                                {{$comment->admin->name}}
+                                endif
+                              </td>
+                              <td width="200px">{{$comment->comment->name}}</td>
                               <td width="600px">{{$comment->content}}</td>
                               <td>
-                                <a href="{{route('admin.reply_comment', ['id' => $comment->id])}}" class="btn btn-xs btn-info">
-                                  <i class="fa fa-pencil"></i>Trả lời
+                                <a href="/admin1/slideshow/edit" class="btn btn-xs btn-info">
+                                  <i class="fa fa-pencil"></i> Cập nhật
                                 </a>
                                 <a href="javascript:;"linkurl="{{route('admin.remove_comment', ['id' => $comment->id])}}" class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i> XOA </a>
                               </td>
@@ -63,7 +69,7 @@
                       <tfoot>
                           <tr>
                               <th>STT</th>
-                              <th>Tên khách hàng</th>
+                              <th>Tên</th>
                               <th>Tên sản phẩm</th>
                               <th>Nội dung</th>
                               <th></th>

@@ -21,7 +21,7 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <form action="{{route('admin.add_product')}}" method="post" enctype="multipart/form-data">
+          <form action="{{route('admin.add_product')}}" method="post" enctype="multipart/form-data" name="myForm">
               @csrf
             <div class="row">
               <div class="col-md-6">
@@ -76,25 +76,34 @@
                           <span class="text-danger"> {{$errors->first('description')}} </span>
                       @endif
                   </div>
-                  <b>Màu sắc : </b>
                   <div class="row">
-                      <select name="color_id" multiple='multiple' id="select_color">
+                      <div class="col-sm-6">
                           @foreach($colors as $color)
-                              <option value="{{$color->id}}">{{$color->name}}</option>
+                              <div class="color_{{$color->id}} input_data">
+                                  <input id="dataProducts" type="hidden" >
+                                  <b>Màu sắc : </b><br>
+                                  <div class="row">
+                                      <input type="checkbox" multiple="multiple" name="color[]" value="{{$color->id}}" class ="color" >
+                                      <option>{{$color->name}}</option>
+                                  </div>
+                                  <b>Size : </b><br>
+                                  @foreach($sizes as $size)
+                                      <div class="row" style="border: 1px solid black">
+                                          <input type="checkbox" multiple="multiple" name="size[{{ $color->id }}][]" value='{{$size}}' class="size">
+                                          <option>{{$size}}</option>
+                                      </div>
+                                  @endforeach
+                              </div>
                           @endforeach
-                      </select>
+                      </div>
+                      <input type="hidden" name="status" value="1">
+
                   </div>
-                  <input type="hidden" value="1" name="status">
-{{--                  @foreach($colors as $color)--}}
-{{--                      <div class="checkbox">--}}
-{{--                          <label><input type="checkbox" value="">{{$color->name}}</label>--}}
-{{--                      </div>--}}
-{{--                  @endforeach--}}
               </div>
             </div>
             <div class="col-md-12 text-left">
               <a href="listproduct.html" class="btn  btn-danger">Huỷ</a>
-              <button type="submit" class="btn btn-primary">Thêm</button>
+              <button type="submit" class="btn btn-primary" onclick="addProduct()">Thêm<a/>
             </div>
           </form>
         </div>
@@ -104,6 +113,33 @@
 
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    $('#select_color').multiSelect();
-</script>
+{{--<script>--}}
+{{--        function addProduct() {--}}
+{{--            var datas = [];--}}
+{{--            var inputs = $(".input_data");--}}
+
+{{--            for(var i = 0; i < inputs.length; i++){--}}
+{{--                var color = inputs[i].getElementsByClassName('color')[0].value;--}}
+
+{{--                var sizes = inputs[i].getElementsByClassName('size');--}}
+{{--                var data_size = [];--}}
+{{--                for(var ii = 0; ii < sizes.length; ii++){--}}
+{{--                    if (sizes[ii].checked === true){--}}
+{{--                        data_size.push(sizes[ii].value);--}}
+{{--                    }--}}
+
+{{--                }--}}
+{{--                var data = {--}}
+{{--                  'color' : color,--}}
+{{--                  'sizes' : data_size--}}
+{{--                };--}}
+{{--                datas.push(data);--}}
+{{--                document.getElementById(dataProducts).value = datas--}}
+{{--            }--}}
+{{--        }--}}
+{{--        function submitform() {--}}
+{{--            document.myForm.submit();--}}
+{{--        }--}}
+
+{{--</script>--}}
+
