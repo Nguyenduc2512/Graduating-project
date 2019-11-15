@@ -22,7 +22,7 @@
         <div class="container-fluid">
           <form enctype="" method="post" action="{{route('admin.add_promo')}}" id="" novalidate="novalidate">
             @csrf
-            <input type="" name="admin_id" value="1">
+            <input type="hidden" name="admin_id" value="{{Auth::guard('admins')->user()->id}}">
             <div class="col-md-9">
               <div class="form-group">
                 <b>Mã giảm giá</b>

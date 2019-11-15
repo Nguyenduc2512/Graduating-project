@@ -50,6 +50,10 @@ Route::group(
     Route::get('comment/{id}', 'Admin\CommentController@removeComment')->name('remove_comment');
 
     Route::get('comment/reply/{id}', 'Admin\CommentController@replyComment')->name('reply_comment');
+
+    Route::post('comment/reply/{id}', 'Admin\CommentController@addReplyComment');
+
+    Route::get('comment/reply/remove/{id}', 'Admin\CommentController@removeReplyComment')->name('removereply_comment');
     //promo
     Route::get('promo', 'Admin\PromoController@listPromo')->name('list_promo');
 
@@ -66,7 +70,7 @@ Route::group(
     Route::get('profile', 'User\UserController@profile')->name('profile');
     Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
     Route::post('/comment', 'User\PageController@comment')->name('comment');
-
+    Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
     Route::post('list_cart', 'User\PageController@promo')->name('promo');    
 });
 

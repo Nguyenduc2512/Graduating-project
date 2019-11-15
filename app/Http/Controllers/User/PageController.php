@@ -16,7 +16,9 @@ use App\Models\About;
 use App\Models\Web_Setting;
 use App\Models\Contact;
 use App\Models\Promo;
+use App\Models\Reply_Comment;
 use App\Http\Requests\ContactRequest;
+use App\Http\Requests\DetailProductRequest;
 use Carbon\Carbon;
 use DB;
 
@@ -32,7 +34,7 @@ class PageController extends Controller
         $showModal = false;
         $productsNew = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
         $productsMost = Product::where('status', 1)->orderBy('id', 'desc')->limit(8)->get();
-        $brands = Brand::all();
+        $brands = Brand::where('status', 1)->get();
         $slides = Slide::all();
         return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slides'));
     }
@@ -51,7 +53,7 @@ class PageController extends Controller
             ->where('product_id', '=', "$id")->distinct()
             ->get();
         $productCategory = DB::table('products')->where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
-        $comment = Comment::where('product_id', $id)->get();
+        $comment = Comment::where('product_id', $id)->limit(5)->orderBy('created_at', 'ASC')->get();
         return view ('client/detail-product', compact('product', 'productCategory', 'size', 'comment','color'));
     }
 
@@ -146,5 +148,17 @@ class PageController extends Controller
         ]);
             return redirect()->back()->with('msg', 'Nhập mã giảm giá thành công');
         }
-}
+    }
+    public function replyComment(Request $request){
+        $comment = new Reply_Comment();
+        $data = [
+            'content' => $request->content,
+            'user_id' => $request->user_id,
+            'comment_id' => $request->comment_id,
+            'admin_id' => $request->admin_id,
+        ];
+        $comment->fill($data);
+        $comment->save();
+        return redirect()->back()->with('msg', 'Cảm ơn bạn đã liên hệ với chúng tôi!');
+    }
 }

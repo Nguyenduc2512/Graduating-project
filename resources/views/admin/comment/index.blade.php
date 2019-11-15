@@ -39,12 +39,12 @@
                               <th>Tên khách hàng</th>
                               <th>Tên sản phẩm</th>
                               <th>Nội dung</th>
-                              <th></th>
+                              <th width="250px"></th>
                           </tr>
                       </thead>
                       <tbody>
                         <?php $i=1 ?>
-                        {{Auth::guard('admins')->user()->id}}
+                        
                         @foreach($comments as $comment)
                           <tr>
                               <td>{{$i++}}</td>
@@ -53,9 +53,9 @@
                               <td width="600px">{{$comment->content}}</td>
                               <td>
                                 <a href="{{route('admin.reply_comment', ['id' => $comment->id])}}" class="btn btn-xs btn-info">
-                                  <i class="fa fa-pencil"></i>Trả lời
+                                  <i class="fa fa-pencil"></i>Danh sách trả lời
                                 </a>
-                                <a href="javascript:;"linkurl="{{route('admin.remove_comment', ['id' => $comment->id])}}" class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i> XOA </a>
+                                <a href="javascript:;"linkurl="{{route('admin.remove_comment', ['id' => $comment->id])}}" class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i> Xóa </a>
                               </td>
                           </tr>
                         @endforeach
