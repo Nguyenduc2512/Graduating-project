@@ -17,6 +17,7 @@ class CreateSlideShowTable extends Migration
             $table->bigIncrements('id');
             $table->string('picture');
             $table->string('url');
+            $table->string('status');
             $table->timestamps();
         });
     }

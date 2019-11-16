@@ -185,7 +185,6 @@
           </ul>
         </li>
 
-
         <li class="nav-item has-treeview">
           <a href="/admin1/customer" class="nav-link bg-info">
             <i class="far fa-user"></i>
@@ -204,7 +203,7 @@
           </ul>
         </li>
         <li class="nav-item has-treeview">
-          <a href="/admin1/slideshow" class="nav-link bg-info">
+          <a href="{{route('admin.list_slideshow')}}" class="nav-link bg-info">
             <i class="far fa-image"></i>
             <p>
               SlideShow
@@ -213,9 +212,15 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/admin1/slideshow" class="nav-link active">
+              <a href="{{route('admin.list_slideshow')}}" class="nav-link active">
                 <i class="far fa-images nav-icon"></i>
-                <p>Quản lý slider</p>
+                <p>Danh sách</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('admin.add_slideshow')}}" class="nav-link active">
+                <i class="far fa-images nav-icon"></i>
+                <p>Thêm slideshow</p>
               </a>
             </li>
           </ul>

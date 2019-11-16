@@ -43,6 +43,17 @@ Route::group(
 
         Route::post('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editDeliveryBrand');
 
+    //slideshow
+        Route::get('slideshow', 'Admin\SlideShowController@listSlideShow')->name('list_slideshow');
+
+        Route::get('slideshow/add', 'Admin\SlideShowController@newSlideShow')->name('add_slideshow');
+
+        Route::post('slideshow/add', 'Admin\SlideShowController@addNewSlideShow');
+
+        Route::get('slideshow/edit/{id}', 'Admin\SlideShowController@editFormSlideShow')->name('edit_slideshow');
+
+        Route::post('slideshow/edit/{id}', 'Admin\SlideShowController@editSlideShow');
+
 });
 
 Route::group(
@@ -167,18 +178,6 @@ Route::get('/admin1/customer', function () {
     return view('admin/customer/index');
 });
 
-// slideshow
-Route::get('/admin1/slideshow', function () {
-    return view('admin/slideshow/index');
-});
-
-Route::get('/admin1/slideshow/add', function () {
-    return view('admin/slideshow/add');
-});
-
-Route::get('/admin1/slideshow/edit', function () {
-    return view('admin/slideshow/edit');
-});
 
 // websetting
 Route::get('/admin1/websetting', function () {
