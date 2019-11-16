@@ -147,7 +147,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-11">
-                                                    <form action="{{route('member.replycomment')}}" method="post" class="formDemo{{$b++}}">
+                                                    <form action="{{route('member.replycomment')}}" method="post" class="formDemo">
                                                         @csrf
                                                         @if(!Auth::user())
                                                         <input type="hidden" name="user_id" value="">

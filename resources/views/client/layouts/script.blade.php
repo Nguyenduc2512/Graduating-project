@@ -15,7 +15,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             
-            $('s').validate({
+            $('formDemo').validate({
             rules: {
                 content: 
                 {
@@ -32,7 +32,6 @@
             }
             });
             
-        }
         $("#formDemo1").validate({
             rules: {
                 content: 
