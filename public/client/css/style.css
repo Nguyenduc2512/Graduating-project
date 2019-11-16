@@ -57,6 +57,7 @@ nav ul li a{
     color: #1e3650;
     font-size: 18px;
     font-weight: bold;
+    margin-right: 15px;
 }
 nav .navbar-toggler{
     background: #333;
@@ -116,7 +117,7 @@ nav .navbar-toggler .fa-bars{
     position: absolute;
     width: 100%;
     left:0;
-    top: 180px;
+    top: 10px;
     text-align: center;
     transition: opacity .35s ease;
 }
@@ -344,7 +345,11 @@ footer p{
 .p_nd{
     padding-bottom: 30px;
 }
-
+.p_nd img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
 .p_nd h3{
     text-align: center;
     margin-top: 20px;
@@ -356,6 +361,42 @@ footer p{
 }
 .p_nd a{
     color: #1e3650;
+}
+
+/* css edit_client ngày 16/11/2019 */
+.link_cart{
+    position: relative;
+    height: 88%;
+    width: 40px;
+}
+.link_cart span{
+    position: absolute;
+    background: red;
+    padding: 2px;
+    width: 22px;
+    height: 22px;
+    top: -3px;
+    right: -10px;
+    font-size: 12px;
+    border-radius: 50%;
+}
+.link_cart i{
+    margin-top: 3px;
+    margin-left: 2px;
+}
+.input-group-btn .btn{
+    height: 100%;
+}
+
+.dropdown a:hover{
+    text-decoration: none;
+}
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+  
+.dropdown > .dropdown-toggle:active {
+    pointer-events: none;
 }
 
 
@@ -384,18 +425,27 @@ footer p{
 
 /* __ */
 @media(max-width: 414px){
-   .nd_hover{
+   /* .nd_hover{
        position: static;
-   }
+   } xoas */
    header .mn0{
        float: left;
    }
 }
 @media(max-width: 768px){
     .nd_hover{
-        top: 100px;
+        top: 10px;
     }
     .nd_hover i{
         font-size: 9px;
+    }
+    .p_nd img{
+        height: 150px;
+    }
+    header .mn0 ul li a{
+        font-size: 11px;
+    }
+    header .top_bar p{
+        font-size: 11px;
     }
 }
