@@ -17,6 +17,17 @@ Route::group(
     Route::get('admin_home', 'Admin\AdminController@index')->name('adminHome');
     Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
     Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
+    
+    Route::get('category', 'Admin\CategoryController@listCategory')->name('list_category');
+
+    Route::get('category/add', 'Admin\CategoryController@newCategory')->name('add_category'); 
+
+    Route::post('category/add', 'Admin\CategoryController@addNewCategory');
+
+    Route::get('category/edit/{id}', 'Admin\CategoryController@editFormCategory')->name('edit_category');
+
+    Route::post('category/edit/{id}',  'Admin\CategoryController@editCategory');
+
     Route::get('contact', 'Admin\AdminController@contact')->name('contact');
     Route::get('remove_contact/{id}', 'Admin\AdminController@removeContact')->name('remove_contact');
 
@@ -32,6 +43,28 @@ Route::group(
     Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
 
     Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
+    //delivery_brand
+
+        Route::get('delivery_brand', 'Admin\DeliveryBrandController@listDeliveryBrand')->name('list_deliverybrand');
+
+        Route::get('delivery_brand/add', 'Admin\DeliveryBrandController@newDeliveryBrand')->name('add_deliverybrand');
+
+        Route::post('delivery_brand/add', 'Admin\DeliveryBrandController@addNewDeliveryBrand');
+
+        Route::get('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editFormDeliveryBrand')->name('edit_deliverybrand');
+
+        Route::post('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editDeliveryBrand');
+
+    //slideshow
+        Route::get('slideshow', 'Admin\SlideShowController@listSlideShow')->name('list_slideshow');
+
+        Route::get('slideshow/add', 'Admin\SlideShowController@newSlideShow')->name('add_slideshow');
+
+        Route::post('slideshow/add', 'Admin\SlideShowController@addNewSlideShow');
+
+        Route::get('slideshow/edit/{id}', 'Admin\SlideShowController@editFormSlideShow')->name('edit_slideshow');
+
+        Route::post('slideshow/edit/{id}', 'Admin\SlideShowController@editSlideShow');
 
     Route::get('admin', 'Admin\AdminController@listAdmin')->name('list_admin');
 
@@ -137,19 +170,6 @@ Route::get('/admin1/product/edit', function () {
     return view('admin/product/edit');
 });
 
-// category
-Route::get('/admin1/category', function () {
-    return view('admin/category/index');
-});
-
-Route::get('/admin1/category/add', function () {
-    return view('admin/category/add');
-});
-
-Route::get('/admin1/category/edit', function () {
-    return view('admin/category/edit');
-});
-
 // comment
 Route::get('/admin1/comment', function () {
     return view('admin/comment/index');
@@ -175,18 +195,6 @@ Route::get('/admin1/customer', function () {
     return view('admin/customer/index');
 });
 
-// slideshow
-Route::get('/admin1/slideshow', function () {
-    return view('admin/slideshow/index');
-});
-
-Route::get('/admin1/slideshow/add', function () {
-    return view('admin/slideshow/add');
-});
-
-Route::get('/admin1/slideshow/edit', function () {
-    return view('admin/slideshow/edit');
-});
 
 // websetting
 Route::get('/admin1/websetting', function () {

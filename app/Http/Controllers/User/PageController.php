@@ -7,7 +7,7 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Services\CartService;
 use App\Models\Product;
-use App\Models\Slide;
+use App\Models\SlideShow;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 use App\Models\Category;
@@ -35,8 +35,8 @@ class PageController extends Controller
         $productsNew = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
         $productsMost = Product::where('status', 1)->orderBy('id', 'desc')->limit(8)->get();
         $brands = Brand::where('status', 1)->get();
-        $slides = Slide::all();
-        return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slides'));
+        $slides = SlideShow::where("status", 1)->get();
+        return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshow'));
     }
 
     public function detail($id)
@@ -47,6 +47,7 @@ class PageController extends Controller
             return redirect(route('home'));
         }
         $cate_id = $product->category_id;
+        
         $size = DB::table('properties')->where('product_id', '=', "$id")->get();
         $color = DB::table('colors')
             ->join('properties', 'colors.id', '=', 'properties.color_id')
@@ -104,17 +105,17 @@ class PageController extends Controller
     public function showListCart() {
         if (Auth::user()) {
             $showModal = false;
-            $slides = Slide::all();
+            $slideshows = SlideShow::all();
             $carts = $this->cartService->getListCart();
             $count = count($carts);
-            return view('client/listcart', compact('slides', 'carts', 'count', 'showModal'));
+            return view('client/listcart', compact('slideshows', 'carts', 'count', 'showModal'));
         }
             $showModal = true;
             $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
             $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
             $brands = Brand::all();
-            $slides = Slide::all();
-            return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slides'));
+            $slideshows = SlideShow::all();
+            return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshows'));
     }
 
     public function about()

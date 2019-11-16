@@ -15,7 +15,10 @@ class DeliveryBrandTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         for ($i=0; $i < 10; $i++) { 
         	$item = [
-        		'name' => $faker->name,
+                'name' => $faker->name,
+                'email' => $faker->freeEmail,
+                'link' => $faker->url,
+                'status' => rand(0, 1),
         	];
         	$delivery_brand[] = $item;
         }

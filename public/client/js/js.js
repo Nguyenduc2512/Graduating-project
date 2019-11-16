@@ -9,6 +9,10 @@ $(window).scroll(function () {
     }
 });
 
+$(document).ready(function () {
+
+});
+
 // slide
 $('#sl1').owlCarousel({
     loop: true,

@@ -15,7 +15,9 @@ class CategoriesTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         for ($i=0; $i < 10; $i++) { 
         	$item = [
-        		'name' => $faker->name,
+                'name' => $faker->name,
+                'description' => $faker->realText($maxNbChars = 200, $indexSize = 2),
+                'status' => rand(0, 1),
         	];
         	$categories[] = $item;
         }

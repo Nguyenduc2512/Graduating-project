@@ -3,10 +3,10 @@
         <div class="top_bar">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <p><i class="fas fa-phone"></i> Hotline: <a href="tel:0123.456.789">{{$webs->hotline}}</a></p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-6">
                         <div class="mn0">
                             @if(!Auth::user())
                                 <ul>
@@ -195,11 +195,16 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('about')}}">Giới thiệu</a>
                         </li>
-                        @foreach($category as $cate)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('cate', ['id' => $cate->id])}}">{{$cate->name}}</a>
-                        </li>
-                        @endforeach
+                        <li class="dropdown" style="margin-top: 8px">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Danh mục sản phẩm <span class="caret"></span></a>
+                               <ul class="dropdown-menu">
+                                   @foreach($category as $cate)
+                                       <li class="nav-item">
+                                           <a class="nav-link" href="{{route('cate', ['id' => $cate->id])}}">{{$cate->name}}</a>
+                                       </li>
+                                   @endforeach
+                                </ul>
+                            </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('contact')}}">Liên hệ</a>
                         </li>
@@ -217,7 +222,8 @@
                         </form>
                         <li class="nav-item">
                             <div class="link_cart">
-                                <a href="{{route('member.list_cart')}}"><i class="fa fa-shopping-cart"></i></a> 1
+                                <a href="{{route('member.list_cart')}}"><i class="fa fa-shopping-cart"></i></a> 
+                                <span>1</span>
                             </div>
                         </li>
                     </ul>
