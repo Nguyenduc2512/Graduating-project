@@ -49,6 +49,7 @@ Route::group(
         'as' => 'member.',
         'middleware' => 'auth'], function (){
     Route::get('profile', 'User\UserController@profile')->name('profile');
+    Route::post('profile', 'User\UserController@editProfile');
     Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
     Route::post('/comment', 'User\PageController@comment')->name('comment');
 
