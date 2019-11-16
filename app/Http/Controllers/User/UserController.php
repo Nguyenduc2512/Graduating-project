@@ -5,7 +5,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Product;
-use App\Models\Slide;
+use App\Models\SlideShow;
 use App\Models\User;
 use App\Http\Requests\CustomerRequest;
 use Hash;
@@ -41,14 +41,14 @@ class UserController extends Controller
 
     public function login()
     {
-
         $showModal = true;
-        $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
-        $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
-        $brands = Brand::all();
-        $slides = Slide::all();
+        $productsNew = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
+        $productsMost = Product::where('status', 1)->orderBy('id', 'desc')->limit(8)->get();
+        $brands = Brand::where('status', 1)->get();
+        $slideshow = SlideShow::where("status", 1)->get();
         $webs = Web_Setting::first();
-        return view('client/index', compact('showModal','webs', 'productsNew', 'brands', 'productsMost', 'slides'));
+        return view('client/index', compact('showModal','webs','productsNew', 'brands', 'productsMost', 'slideshow'));
+
     }
 
 }
