@@ -17,6 +17,17 @@ Route::group(
     Route::get('admin_home', 'Admin\AdminController@index')->name('adminHome');
     Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
     Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
+    
+    Route::get('category', 'Admin\CategoryController@listCategory')->name('list_category');
+
+    Route::get('category/add', 'Admin\CategoryController@newCategory')->name('add_category'); 
+
+    Route::post('category/add', 'Admin\CategoryController@addNewCategory');
+
+    Route::get('category/edit/{id}', 'Admin\CategoryController@editFormCategory')->name('edit_category');
+
+    Route::post('category/edit/{id}',  'Admin\CategoryController@editCategory');
+
     Route::get('contact', 'Admin\AdminController@contact')->name('contact');
     Route::get('remove_contact/{id}', 'Admin\AdminController@removeContact')->name('remove_contact');
 
@@ -116,19 +127,6 @@ Route::get('/admin1/product/add', function () {
 
 Route::get('/admin1/product/edit', function () {
     return view('admin/product/edit');
-});
-
-// category
-Route::get('/admin1/category', function () {
-    return view('admin/category/index');
-});
-
-Route::get('/admin1/category/add', function () {
-    return view('admin/category/add');
-});
-
-Route::get('/admin1/category/edit', function () {
-    return view('admin/category/edit');
 });
 
 // comment

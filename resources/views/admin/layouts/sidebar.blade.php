@@ -45,7 +45,7 @@
               </ul>
             </li>
             <li class="nav-item has-treeview">
-              <a href="/admin1/category" class="nav-link bg-info">
+              <a  href="{{ route('admin.list_category') }}" class="nav-link bg-info">
                 <i class="far fa-calendar-alt"></i>
                 <p>
                   Danh mục sản phẩm
@@ -54,13 +54,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/category" class="nav-link active">
+                  <a href="{{ route('admin.list_category') }}" class="nav-link active">
                     <i class="fas fa-calendar-alt nav-icon"></i>
                     <p>Danh sách danh mục</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/admin1/category/add" class="nav-link active">
+                    <a href="{{route('admin.add_category')}}" class="nav-link active">
                     <i class="fas fa-plus-circle nav-icon"></i>
                     <p>Thêm danh mục sản phẩm</p>
                   </a>

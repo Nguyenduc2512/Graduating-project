@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('webs',$webs);
             });
         view()->composer('client.layouts.main',function($view){
-            $category = Category::all(); 
+            $category = Category::where('status',1)->get(); 
             $view->with('category',$category);
             });
     }
