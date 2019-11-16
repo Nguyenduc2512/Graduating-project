@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/index.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('client/css/compare.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/order.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/lightslider.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/detail-p.css')}}">
