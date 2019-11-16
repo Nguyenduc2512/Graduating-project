@@ -12,7 +12,6 @@ class User extends Model
         'email',
         'phone',
         'location',
-        'avatar',
         'status',
         'gender',
         'date_of_birth',
