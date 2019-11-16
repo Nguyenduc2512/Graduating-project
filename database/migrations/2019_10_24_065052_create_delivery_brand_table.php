@@ -16,6 +16,9 @@ class CreateDeliveryBrandTable extends Migration
         Schema::create('delivery_brand', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('name');
+            $table->string('email');
+            $table->string('link');
+            $table->string('status');
             $table->timestamps();
         });
     }

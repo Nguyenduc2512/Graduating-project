@@ -16,7 +16,8 @@ class SlideShowTableSeeder extends Seeder
         for ($i=0; $i < 3; $i++) { 
         	$item = [
         		'picture' => 'images/'. $faker->image($dir = 'public/images', $width = 640, $height = 480, 'cats', false),
-        		'url' => $faker->url,
+                'url' => $faker->url,
+                'status' => rand(0, 1),
         	];
         	$slideshows[] = $item;
         }

@@ -43,6 +43,28 @@ Route::group(
     Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
 
     Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
+    //delivery_brand
+
+        Route::get('delivery_brand', 'Admin\DeliveryBrandController@listDeliveryBrand')->name('list_deliverybrand');
+
+        Route::get('delivery_brand/add', 'Admin\DeliveryBrandController@newDeliveryBrand')->name('add_deliverybrand');
+
+        Route::post('delivery_brand/add', 'Admin\DeliveryBrandController@addNewDeliveryBrand');
+
+        Route::get('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editFormDeliveryBrand')->name('edit_deliverybrand');
+
+        Route::post('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editDeliveryBrand');
+
+    //slideshow
+        Route::get('slideshow', 'Admin\SlideShowController@listSlideShow')->name('list_slideshow');
+
+        Route::get('slideshow/add', 'Admin\SlideShowController@newSlideShow')->name('add_slideshow');
+
+        Route::post('slideshow/add', 'Admin\SlideShowController@addNewSlideShow');
+
+        Route::get('slideshow/edit/{id}', 'Admin\SlideShowController@editFormSlideShow')->name('edit_slideshow');
+
+        Route::post('slideshow/edit/{id}', 'Admin\SlideShowController@editSlideShow');
 
     //promo
     Route::get('promo', 'Admin\PromoController@listPromo')->name('list_promo');
@@ -154,18 +176,6 @@ Route::get('/admin1/customer', function () {
     return view('admin/customer/index');
 });
 
-// slideshow
-Route::get('/admin1/slideshow', function () {
-    return view('admin/slideshow/index');
-});
-
-Route::get('/admin1/slideshow/add', function () {
-    return view('admin/slideshow/add');
-});
-
-Route::get('/admin1/slideshow/edit', function () {
-    return view('admin/slideshow/edit');
-});
 
 // websetting
 Route::get('/admin1/websetting', function () {
