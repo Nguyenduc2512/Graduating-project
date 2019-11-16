@@ -6,6 +6,10 @@ $(document).ready(function () {
         thumbItem: 9,
         slideMargin: 0,
         enableDrag: false,
-        currentPagerPosition: 'left',
+        currentPagerPosition: 'le ft',
     });
 });
+
+        $('.reply').click(function() {
+            $('.showreply').toggle('slow');
+        });

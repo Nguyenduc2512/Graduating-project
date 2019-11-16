@@ -16,7 +16,9 @@ use App\Models\About;
 use App\Models\Web_Setting;
 use App\Models\Contact;
 use App\Models\Promo;
+use App\Models\Reply_Comment;
 use App\Http\Requests\ContactRequest;
+use App\Http\Requests\DetailProductRequest;
 use Carbon\Carbon;
 use DB;
 
@@ -30,17 +32,18 @@ class PageController extends Controller
 
     public function index() {
         $showModal = false;
-        $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
-        $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
-        $brands = Brand::all();
-        $slideshow = SlideShow::where("status", 1)->get();
+        $productsNew = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
+        $productsMost = Product::where('status', 1)->orderBy('id', 'desc')->limit(8)->get();
+        $brands = Brand::where('status', 1)->get();
+        $slides = SlideShow::where("status", 1)->get();
         return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshow'));
     }
 
     public function detail($id)
     {
         $product = Product::find($id);
-        if(!$product){
+        $productStatus = Product::where('id', $id)->where('status', 1)->get();
+        if(!$product || count($productStatus) == 0){
             return redirect(route('home'));
         }
         $cate_id = $product->category_id;
@@ -50,14 +53,14 @@ class PageController extends Controller
             ->join('properties', 'colors.id', '=', 'properties.color_id')
             ->where('product_id', '=', "$id")->distinct()
             ->get();
-        $productCategory = DB::table('products')->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
-        $comment = Comment::where('product_id', $id)->get();
+        $productCategory = DB::table('products')->where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
+        $comment = Comment::where('product_id', $id)->limit(5)->orderBy('created_at', 'ASC')->get();
         return view ('client/detail-product', compact('product', 'productCategory', 'size', 'comment','color'));
     }
 
     public function cate($id)
     {
-        $productcate = Product::where('category_id', $id)->paginate(3);
+        $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(3);
         $category = Category::withCount(['products'])->get(); 
         return view('client/cate', compact('productcate','category'));
     }
@@ -118,8 +121,8 @@ class PageController extends Controller
     public function about()
     {
         $about = About::first();
-        $productsNew = Product::orderBy('created_at', 'desc')->limit(2)->get();
-        return view('client/about', compact('about', 'productsNew'));
+        $productsNew = Product::orderBy('created_at', 'desc')->where('status', 1)->limit(2)->get();
+        return view('client/about', compact('about', 'productsNew')); 
     }
     public function promo(Request $request)
     {
@@ -146,5 +149,17 @@ class PageController extends Controller
         ]);
             return redirect()->back()->with('msg', 'Nhập mã giảm giá thành công');
         }
-}
+    }
+    public function replyComment(Request $request){
+        $comment = new Reply_Comment();
+        $data = [
+            'content' => $request->content,
+            'user_id' => $request->user_id,
+            'comment_id' => $request->comment_id,
+            'admin_id' => $request->admin_id,
+        ];
+        $comment->fill($data);
+        $comment->save();
+        return redirect()->back()->with('msg', 'Cảm ơn bạn đã liên hệ với chúng tôi!');
+    }
 }

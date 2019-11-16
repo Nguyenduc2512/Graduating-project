@@ -66,6 +66,27 @@ Route::group(
 
         Route::post('slideshow/edit/{id}', 'Admin\SlideShowController@editSlideShow');
 
+    Route::get('admin', 'Admin\AdminController@listAdmin')->name('list_admin');
+
+    Route::get('admin/edit/{id}', 'Admin\AdminController@editFormAdmin')->name('edit_admin');
+
+    Route::post('admin/edit/{id}', 'Admin\AdminController@editAdmin');
+
+    Route::get('web', 'Admin\AdminController@listWeb')->name('list_web');
+
+    Route::get('web/edit/{id}', 'Admin\AdminController@editFormWeb')->name('edit_web');
+
+    Route::post('web/edit/{id}', 'Admin\AdminController@editWeb');
+
+    Route::get('comment', 'Admin\CommentController@listComment')->name('list_comment');
+
+    Route::get('comment/{id}', 'Admin\CommentController@removeComment')->name('remove_comment');
+
+    Route::get('comment/reply/{id}', 'Admin\CommentController@replyComment')->name('reply_comment');
+
+    Route::post('comment/reply/{id}', 'Admin\CommentController@addReplyComment');
+
+    Route::get('comment/reply/remove/{id}', 'Admin\CommentController@removeReplyComment')->name('removereply_comment');
     //promo
     Route::get('promo', 'Admin\PromoController@listPromo')->name('list_promo');
 
@@ -73,8 +94,6 @@ Route::group(
 
     Route::post('promo/add', 'Admin\PromoController@addNewPromo'); 
 
-
-    
 });
 
 Route::group(
@@ -85,7 +104,7 @@ Route::group(
     Route::post('profile', 'User\UserController@editProfile');
     Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
     Route::post('/comment', 'User\PageController@comment')->name('comment');
-
+    Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
     Route::post('list_cart', 'User\PageController@promo')->name('promo');    
 });
 

@@ -21,6 +21,16 @@
       getBase64(file, '#imageTarget');
     }
   }
+
+  var img = document.querySelector('#image1');
+  img.onchange = function(){
+    var file = this.files[0];
+    if(file == undefined){
+      $('#imageTarget1').attr('src', "{{asset('/admin/dist/img/photo1.png')}}");
+    }else{
+      getBase64(file, '#imageTarget1');
+    }
+  }
   });
 </script>
 
@@ -31,6 +41,47 @@
     $('#example').DataTable();
   } );
   </script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+
+<script type="text/javascript">
+  $('.btn-remove').on('click', function(){
+    var removeUrl = $(this).attr('linkurl');
+    swal({
+      title: "Cảnh báo",
+      text: "Bạn có chắc chắn muốn xoá danh mục này không?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location.href = removeUrl;
+      } 
+    });
+  });
+</script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $("#formDemo1").validate({
+            rules: {
+                content: 
+                {
+                    required: true,
+                    maxlength: 200
+                },
+            },
+            messages: {
+                content: 
+                {
+                    required: "Bạn phải nhập bình luận!",
+                    minlength: "Bạn không được nhập quá 200 kí tự!"
+                },
+            }
+        });
+        </script>
+
+
   <!-- jQuery UI 1.11.4 -->
   <script src="{{asset('/admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
