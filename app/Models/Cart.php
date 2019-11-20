@@ -20,4 +20,9 @@ class Cart extends Model
     public function properties() {
        return $this->hasOne(Properties::class, 'id', 'properties_id');
     }
+
+//    public function product()
+//    {
+//        return $this->belongsTo( Product::class, 'properties_id', '')
+//    }
 }

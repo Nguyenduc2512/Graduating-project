@@ -78,3 +78,11 @@
     }
     });
   </script>
+    <script type="text/javascript">
+        function select_size()
+        {
+            var selectBox = document.getElementById("color_id");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].id;
+                document.getElementById("size").innerHTML = selectedValue;
+        }
+    </script>
