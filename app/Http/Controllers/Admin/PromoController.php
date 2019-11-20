@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\PromoService;
 use Illuminate\Http\Request;
+use App\Mail\SendMail;
+use App\Models\User;
+use App\Models\Promo;
 use Imagick;
+use Mail;
+
 
 class PromoController extends Controller
 {

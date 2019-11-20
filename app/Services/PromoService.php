@@ -3,7 +3,11 @@
 
 namespace App\Services;
 use App\Models\Promo;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Mail\SendMail;
+use DB;
+use Mail;
 
 class PromoService
 {
@@ -35,6 +39,13 @@ class PromoService
             'role' => $request->role,
             ];
         $promo->fill($data);
-        $promo->save();        
+        $promo->save();
+        $id=DB::getPdo()->lastInsertId();
+        $user = User::where("role", $request->role)->get();
+        $promo = Promo::find($id);
+        foreach ($user as $key => $u) {
+        Mail::to($u)->send(new SendMail($promo));   
+        }
+            
     }
 }
