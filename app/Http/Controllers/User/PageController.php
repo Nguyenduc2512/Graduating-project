@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Services\PropertiesService;
 use Illuminate\Http\Request;
 use App\Services\CartService;
 use App\Models\Product;
@@ -21,13 +22,17 @@ use App\Http\Requests\ContactRequest;
 use App\Http\Requests\DetailProductRequest;
 use Carbon\Carbon;
 use DB;
+use phpDocumentor\Reflection\Types\Object_;
 
 class PageController extends Controller
 {
     protected $cartService;
-    public function __construct(CartService $cartService)
+    protected $propertiesService;
+    public function __construct(CartService $cartService,
+                                PropertiesService $propertiesService)
     {
         $this->cartService = $cartService;
+        $this->propertiesService = $propertiesService;
     }
 
     public function index() {
@@ -41,27 +46,51 @@ class PageController extends Controller
 
     public function detail($id)
     {
+        $colors = array();
+        $sizes = array();
+        $color_size = array();
         $product = Product::find($id);
         $productStatus = Product::where('id', $id)->where('status', 1)->get();
         if(!$product || count($productStatus) == 0){
             return redirect(route('home'));
         }
         $cate_id = $product->category_id;
-        
-        $size = DB::table('properties')->where('product_id', '=', "$id")->get();
-        $color = DB::table('colors')
-            ->join('properties', 'colors.id', '=', 'properties.color_id')
-            ->where('product_id', '=', "$id")->distinct()
-            ->get();
+        $properties = $this->propertiesService->getPropertiesProduct($id);
+        foreach ($properties as $property) {
+            $proper_color = new Properties();
+            $color = $property->getAttribute("color_id");
+            $proper_color->color_id = $color;
+            if (!in_array($proper_color, $colors)) {
+                array_push($colors, $proper_color);
+            }
+        }
+        foreach ($properties as $property) {
+            $size = $property->getAttribute("size");
+                array_push($sizes, $size);
+        }
+        foreach ($properties as $property) {
+            $sizes = array();
+            $proper = new Properties();
+            $color = $property->getAttribute("color_id");
+                $proper->color_id = $color;
+            array_push($color_size, $proper);
+            foreach ($properties as $property) {
+                $size = $property->getAttribute("size");
+                if ($property -> color_id == $color) {
+                    array_push($sizes, $size);
+                }
+            }
+            $proper->size = $sizes;
+        }
         $productCategory = DB::table('products')->where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
         $comment = Comment::where('product_id', $id)->limit(5)->orderBy('created_at', 'ASC')->get();
-        return view ('client/detail-product', compact('product', 'productCategory', 'size', 'comment','color'));
+        return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size'));
     }
 
     public function cate($id)
     {
-        $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(3);
-        $category = Category::withCount(['products'])->get(); 
+        $productcate = Product::where('category_id', $id)->paginate(3);
+        $category = Category::withCount(['products'])->get();
         return view('client/cate', compact('productcate','category'));
     }
 
@@ -74,13 +103,13 @@ class PageController extends Controller
     }
 
     public function contact()
-    { 
+    {
         $webs = Web_Setting::first();
         return view('client/contact', compact('webs'));
     }
 
     public function addcontact(ContactRequest $request)
-    { 
+    {
         $model = new Contact();
         $model->fill($request->all());
         $model->save();
@@ -122,7 +151,7 @@ class PageController extends Controller
     {
         $about = About::first();
         $productsNew = Product::orderBy('created_at', 'desc')->where('status', 1)->limit(2)->get();
-        return view('client/about', compact('about', 'productsNew')); 
+        return view('client/about', compact('about', 'productsNew'));
     }
     public function promo(Request $request)
     {
@@ -140,9 +169,9 @@ class PageController extends Controller
         }
         elseif ($role < $promo->role) {
             $request->session()->forget('coupon');
-            return redirect()->back()->with('msg', 'Bạn không thể sử dụng mã giảm giá này!'); 
+            return redirect()->back()->with('msg', 'Bạn không thể sử dụng mã giảm giá này!');
         }
-        else{    
+        else{
         session()->put('coupon', [
             'code' => $promo->code,
             'down' => $promo->down,

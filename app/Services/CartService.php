@@ -1,6 +1,8 @@
 <?php
 namespace App\Services;
 use App\Models\Cart;
+use App\Models\Properties;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CartService {
@@ -10,4 +12,26 @@ class CartService {
          return $carts;
      }
 
+     public function findProperties(Request $request)
+     {
+         $cart = new Cart;
+         $properties = Properties::where('product_id', $request->product_id)->where('color_id', $request->color_id)->where('size', $request->size)->first();
+         $data = [
+             'user_id' => Auth::id(),
+             'admin_id',
+             'properties_id' => $properties->id,
+             'amount' => $request->amount,
+             'status' => 0,
+         ];
+         $cart->fill($data);
+         $cart->save();
+
+     }
+
+     public function removeItem($id)
+     {
+         $cart = Cart::find($id);
+         $cart->status = 3;
+         $cart->save();
+     }
  }

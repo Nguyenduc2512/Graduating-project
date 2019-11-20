@@ -10,6 +10,7 @@ class PropertiesService
 {
     public function addNewProperties(Request $request)
     {
+
         $product = Product::orderBy('id', 'desc')->first();
         $sizes = $request->size;
         foreach($request->color as $color) {
@@ -24,6 +25,12 @@ class PropertiesService
                 $properties->save();
             }
         }
+    }
+
+    public function getPropertiesProduct($id)
+    {
+        $properties = Properties::where('product_id', $id)->get();
+        return $properties;
     }
 
 }

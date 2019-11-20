@@ -6,6 +6,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <div class="detail_product">
             <div class="container">
                 <div class="row">
@@ -25,32 +26,60 @@
                             </li>
                         </ul>
                     </div>
+=======
+    <div class="detail_product">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <ul id="imageGallery">
+                        <li data-thumb="{{url('/')}}/{{$product->picture}}" data-src="{{url('/')}}/{{$product->picture}}">
+                            <img src="{{url('/')}}/{{$product->picture}}" width="100%" />
+                        </li>
+                        <li data-thumb="{{url('/')}}/client/images/2.png" data-src="{{url('/')}}/client/images/2.png">
+                            <img src="{{url('/')}}/client/images/2.png" width="100%" />
+                        </li>
+                        <li data-thumb="{{url('/')}}/client/images/3.png" data-src="{{url('/')}}/client/images/3.png">
+                            <img src="{{url('/')}}/client/images/3.png" width="100%" />
+                        </li>
+                        <li data-thumb="{{url('/')}}/client/images/4.png" data-src="{{url('/')}}/client/images/4.png">
+                            <img src="{{url('/')}}/client/images/4.png" width="100%" />
+                        </li>
+                    </ul>
+                </div>
+>>>>>>> add item to cart and remove
                     <div class="col-md-8">
                         <h3>{{$product->name}}</h3>
                         <p>Giá bán: <span class="price">{{$product->price}}</span></p>
                         <p>Tình trạng: Còn hàng</p>
                         <hr>
-                        <p>Danh mục <span class="cate"><a href="{{route('cate', ['id' => $product->category_id])}}">{{$product->category->name}}</a></span></p>
+                        <p>Danh mục <span class="cate"><a href="cate.html">{{$product->category->name}}</a></span></p>
                         <hr>
                         <div class="col-lg-6">
-                            <form action="">
+                            <form action="{{route('member.add_item')}}" method="post">
+                                @csrf
+                                <input type="hidden" value="{{$product->id}}" name="product_id">
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="">Size*</label>
-                                            <select name="" id="" class="form-control">
-                                                @foreach($size as $i)
-                                                <option value="{{$i->id}}">{{$i->size}}</option>
+                                            <label>Color*</label>
+                                            <select name="color_id" onchange="select_size()" id="color_id" class="form-control">
+                                                <option selected>--</option>
+                                                @foreach($colors as $color)
+                                                    <option id="{{$color->color_id}}" value="{{$color->color_id}}">
+                                                        {{$color->color->name}}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="">Color*</label>
-                                            <select name="" id="" class="form-control">
-                                                @foreach($color as $i)
-                                                <option value="">{{$i->name}}</option>
+                                            <label for="">Size*</label>
+                                            <select name="size" id="" class="form-control">
+                                                @foreach($sizes as $size)
+                                                    <option value="{{$size}}">
+                                                        {{$size}}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -58,29 +87,30 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="">Số lượng*</label>
-                                            <input type="number" name="amount" class="form-control">
+
+                                            <input type="number" name="amount" class="form-control" value="1">
                                         </div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                        <hr>
+                                </div><hr>
+                                @if(Auth::check())
+                                    <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+                                 @else
+                                    return {{route('login')}}
+                                @endif
                         <div class="col-lg-6">
-                            <form action="">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <a href="order.html" class="btn btn-block btn-danger">Đặt hàng</a>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="linkcart">
-                                            <a href="listcart.html"> Thêm vào giỏ hàng</a>
-                                        </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <a href="order.html" class="btn btn-block btn-danger">Đặt hàng</a>
+                                </div>
+                                <div class="col-6">
+                                    <div class="linkcart">
+                                        <button type="submit"> Thêm vào giỏ hàng</button>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="container" style="margin-top: 30px;">
                 <ul class="nav nav-tabs" role="tablist">
@@ -109,7 +139,7 @@
                                                 <p><span class="comment-author">{{$c->user->name}}</span>
                                                 <p class="comment-content">{{$c->content}}</p>
                                             <div class="comment-like-unlike">
-                                                <?php 
+                                                <?php
                                                 $replycomment = App\Models\Reply_Comment::where('comment_id', $c->id)->orderBy('id', 'DESC')->limit(4)->get(); ?>
                                                 <span data-toggle="collapse" data-target="#reply{{$i++}}">({{count($replycomment)}})<i class="fa fa-reply" aria-hidden="true"></i></span>
                                             </div>
@@ -130,7 +160,7 @@
                                                     <p><span class="comment-author">{{$rc->admin->name}}</span><span class="comment-time" style="color: red">Quản trị viên</span></p>
                                                     @else
                                                     <p><span class="comment-author">{{$rc->user->name}}</span><span class="comment-time" >Thành viên</span></p>
-                                                    @endif 
+                                                    @endif
                                                     <p class="comment-content">{{$rc->content}} </p>
                                                     <div class="comment-like-unlike">
                                                     </div>
@@ -157,7 +187,7 @@
                                                         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                                         @endif
                                                         <textarea rows="3" cols="50" name="content" placeholder="Nhập trả lời"></textarea>
-                                                        
+
                                                         <div class="link_rep1">
                                                             <button  type="submit">Trả lời</button>
                                                         </div>

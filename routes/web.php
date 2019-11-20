@@ -17,10 +17,10 @@ Route::group(
     Route::get('admin_home', 'Admin\AdminController@index')->name('adminHome');
     Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
     Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
-    
+
     Route::get('category', 'Admin\CategoryController@listCategory')->name('list_category');
 
-    Route::get('category/add', 'Admin\CategoryController@newCategory')->name('add_category'); 
+    Route::get('category/add', 'Admin\CategoryController@newCategory')->name('add_category');
 
     Route::post('category/add', 'Admin\CategoryController@addNewCategory');
 
@@ -90,9 +90,9 @@ Route::group(
     //promo
     Route::get('promo', 'Admin\PromoController@listPromo')->name('list_promo');
 
-    Route::get('promo/add', 'Admin\PromoController@newPromo')->name('add_promo'); 
+    Route::get('promo/add', 'Admin\PromoController@newPromo')->name('add_promo');
 
-    Route::post('promo/add', 'Admin\PromoController@addNewPromo'); 
+    Route::post('promo/add', 'Admin\PromoController@addNewPromo');
 
 });
 
@@ -105,7 +105,10 @@ Route::group(
     Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
     Route::post('/comment', 'User\PageController@comment')->name('comment');
     Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
-    Route::post('list_cart', 'User\PageController@promo')->name('promo');    
+    Route::post('list_cart', 'User\PageController@promo')->name('promo');
+    Route::post('add_item_to_cart', 'User\CartController@addItem')->name('add_item');
+    Route::get('remove_item_to_cart/{id}', 'User\CartController@removeItem')->name('remove_item');
+    Route::post('list_cart', 'User\PageController@promo')->name('promo');
 });
 
 Auth::routes();
