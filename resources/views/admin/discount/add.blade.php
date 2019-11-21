@@ -26,25 +26,37 @@
             <div class="col-md-9">
               <div class="form-group">
                 <b>Mã giảm giá</b>
-                <input type="text" name="code" class="form-control">
+                <input type="text" name="code" class="form-control" placeholder="Mã giảm giá tự động" disabled>
               </div>
             </div>
             <div class="col-md-9" center="">
               <div class="form-group">
                 <b>Chiếu khấu(%)</b>
-                <input type="number" name="down" class="form-control" required="" aria-required="true">
+                <input type="number" name="down" value="{{old('down')}}" class="form-control" required="" aria-required="true">
+                @if($errors->first('down'))
+                <span class="text-danger">{{$errors->first('down')}}</span>
+                @endif
               </div>
               <div class="form-group">
                 <b>Ngày bắt đầu</b>
-                <input type="date" name="start_time" class="form-control" required="" aria-required="true">
+                <input type="date" name="start_time" value="{{old('start_time')}}" class="form-control" required="" aria-required="true">
+                @if($errors->first('start_time'))
+                <span class="text-danger">{{$errors->first('start_time')}}</span>
+                @endif
               </div>
               <div class="form-group">
                 <b>Ngày kết thúc</b>
-                <input type="date" name="end_time" class="form-control" required="" aria-required="true">
+                <input type="date" name="end_time" value="{{old('end_time')}}" class="form-control" required="" aria-required="true">
+                @if($errors->first('end_time'))
+                <span class="text-danger">{{$errors->first('end_time')}}</span>
+                @endif
               </div>
               <div class="form-group">
                 <b>Số lượng</b>
-                <input type="number" name="amount" class="form-control" required="" aria-required="true">
+                <input type="number" name="amount" value="{{old('amount')}}" class="form-control" required="" aria-required="true">
+                @if($errors->first('amount'))
+                <span class="text-danger">{{$errors->first('amount')}}</span>
+                @endif
               </div>
               <div class="form-group">
                 <b>Đôi tượng</b>

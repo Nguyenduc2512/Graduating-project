@@ -37,7 +37,6 @@ class DeliveryBrandRequest extends FormRequest
             'name.unique' => 'Tên đã tồn tại',
             'email.required' => 'Vui lòng nhập email',
             'email.email' => 'Vui lòng nhập đúng định dạng email',
-
             'link.required' => 'Vui lòng điền link liên kết',
             'link.max' => 'Link liên kết không quá 1000 ký tự',
             'link.min' => 'Link liên kết không được ít hơn 5 ký tự',

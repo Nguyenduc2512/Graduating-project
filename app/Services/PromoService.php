@@ -29,6 +29,8 @@ class PromoService
     public function addNewPromo(Request $request)
     {             
         $promo = new Promo();
+          $permitted_chars ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $request->code= substr(str_shuffle($permitted_chars), 0, 6);
         $data = [
             'code' => $request->code,
             'amount' => $request->amount,

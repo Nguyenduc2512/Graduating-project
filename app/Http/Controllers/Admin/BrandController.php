@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\BrandService;
 use Illuminate\Http\Request;
+use App\Http\Requests\BrandRequest;
 use Imagick;
 
 class BrandController extends Controller
@@ -29,7 +30,7 @@ class BrandController extends Controller
         return view('admin/brand/add');
     }
 
-    public function  addNewBrand(Request $request)
+    public function  addNewBrand(BrandRequest $request)
     {
         $this->brandService->addNewBrand($request);
         return redirect()->route('admin.list_brand');
@@ -40,7 +41,7 @@ class BrandController extends Controller
         $brand = $this->brandService->editFormBrand($id);
         return view('admin/brand/edit', compact('brand'));
     }
-    public function  editBrand(Request $request)
+    public function  editBrand(BrandRequest $request)
     {
         $brand = $this->brandService->editBrand($request);
         return redirect()->route('admin.list_brand');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\PromoService;
 use Illuminate\Http\Request;
+use App\Http\Requests\PromoRequest;
 use App\Mail\SendMail;
 use App\Models\User;
 use App\Models\Promo;
@@ -34,7 +35,7 @@ class PromoController extends Controller
         return view('admin/discount/add');
     }
 
-    public function  addNewPromo(Request $request)
+    public function  addNewPromo(PromoRequest $request)
     {
         $this->promoService->addNewPromo($request);
         return redirect()->route('admin.list_promo');

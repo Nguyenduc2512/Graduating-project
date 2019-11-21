@@ -122,25 +122,19 @@
       <div class="right-body">
         <div class="message">
           <div class="title">
-            Old Fashioned Recipe For Preventing Allergies And Chemical
+            AUTHSHOES xin gửi tới bạn chương trình mã giảm giá rất hấp dẫn diễn ra vào {{$nameStart}} - {{$nameEnd}}  trên AUTHSHOES
             <div class="title-icons">
-
             </div>
           </div>
           <div class="message-from">
-            Hello Malikan!
-            <h5>Mã giảm giá:{{$namePromo}}</h5>
-            <h5>Giá trị:{{$nameDown}}%</h5>
+            Chào bạn!
+            <h3>Mã giảm giá:{{$namePromo}}</h3>
+            <h3>Giá trị:{{$nameDown}}%</h3>
             <h5>Giá trị mã giảm giá:{{$nameStart}} - {{$nameEnd}}</h5>
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, voluptas pariatur repellat
-              veritatis atque, tempora quasi quas facere impedit aliquam libero qui iure cumque incidunt
-              facilis soluta necessitatibus laboriosam nemo. Delectus architecto
-              sed, excepturi natus iste vel quidem officia corrupti repudiandae!</p>
-            
-            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, deleniti eaque eligendi
-              minus maxime tempora eiusi.</p>
-            <p>Have a nice day</p>
-            <p>Ashraf</p>
+            <p>- Nhân Ngày nhà giáo Việt Nam, với tất cả tấm chân tình mà con muốn gởi đến thầy cô, chúc cho tất cả thầy cô luôn vui vẻ tràn ngập niềm tin trong cuộc sống, ngày nào cũng luôn gặp may mắn, và thành công trên con đường dạy học của mình.</p>
+            <p>Tưng bừng chào mùng ngày nhà giáo việt nam 20 - 11 chúng tôi gửi bạn mã giảm giá.</p>
+            <p>Chúc quý khách một ngày tốt đẹp.</p>
+            <p>AUTHSHOES</p>
           </div>
           <div class="attachment-last">
             <img src="https://media.mysport.lv/wysiwyg/Brendu_kategoriju_content_LV/adidas_apavi-baneris.jpg" width="1200px">
