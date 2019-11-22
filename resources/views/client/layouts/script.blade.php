@@ -82,7 +82,7 @@
   </script>
   <script type="text/javascript">
     $(document).ready(function(){
-      $("#findBtn").click(function(){
+      $(".findBtn").change(function(){
         var brand = $("#brandID").val();
         var cate = $("#cateID").val();
         var price = $("#priceID").val();

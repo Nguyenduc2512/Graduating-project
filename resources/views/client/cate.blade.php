@@ -51,21 +51,21 @@
                             <option value="">Giá: Thấp - Cao</option>
                             <option value="">Giá: Cao - Thấp</option>
                         </select>
-                        <select id="priceID">
+                        <select id="priceID" class="findBtn">
                             <option value="">Select Price Range</option>
                             <option value="0-100">0-100</option>
                             <option value="100-300">100-300</option>
                             <option value="300-500">300-500</option>
                             <option value="500-1000">500-1000</option>
                         </select>
-                        <select id="brandID">
+                        <select id="brandID" class="findBtn">
                         <option value="">Select a Brand</option>
                         @foreach(App\Models\Brand::all() as $cList)
                         <option class="option" value="{{$cList->id}}">{{$cList->name}}</option>
                         @endforeach
-                    </select>
+                        </select>
                     <input type="hidden" value="{{$id}}" name="" id="cateID">
-                        <button id="findBtn" class="btn btn-success">Find</button>
+                        
                     </div>
                     <div class="pcate">
                         <div class="row" id="productData">
