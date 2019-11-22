@@ -2,6 +2,7 @@
     <script src="{{asset('client/plugins/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{asset('client/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('client/plugins/OwlCarousel2/js/owl.carousel.min.js')}}"></script>
+    
 
     <script src="{{asset('client/js/js.js')}}"></script>
     <script src="{{asset('client/js/cart.js')}}"></script>
@@ -10,9 +11,9 @@
     <script src="{{asset('client/js/lightslider.js')}}"></script>    
     <script src="{{asset('client/js/compare.js')}}"></script>
 
-
-
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+   
     <script>
         new WOW().init();
     </script>
@@ -53,9 +54,10 @@
                 },
             }
         });
+        });
         </script>
 
-<script type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(function(){
     function getBase64(file, selector) {
        var reader = new FileReader();
@@ -78,6 +80,25 @@
     }
     });
   </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#findBtn").click(function(){
+        var brand = $("#brandID").val();
+        var cate = $("#cateID").val();
+        var price = $("#priceID").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/proCate')}}',
+          data: 'id=' + cate + '&brand_id=' + brand +'&price=' + price,
+          success:function(response){
+            console.log(response);
+            $("#productData").html(response);
+          }
+        });
+      });
+    });
+  </script>
     <script type="text/javascript">
         function select_size()
         {
@@ -86,3 +107,4 @@
                 document.getElementById("size").innerHTML = selectedValue;
         }
     </script>
+    

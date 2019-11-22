@@ -91,8 +91,43 @@ class PageController extends Controller
     {
         $productcate = Product::where('category_id', $id)->paginate(3);
         $category = Category::withCount(['products'])->get();
-        return view('client/cate', compact('productcate','category'));
+        return view('client/cate', compact('productcate','category','id'));
     }
+    public function proCate(Request $request){
+        $id = $request->id;
+        $brand_id = $request->brand_id;
+        $priceCount = $request->price;
+
+        if($brand_id!="" && $priceCount!=""){
+            $price = explode("-",$request->price);
+            $start = $price[0];
+            $end = $price[1];
+            $productcate = Product::where('category_id', $id)
+            ->where('brand_id',$brand_id)
+            ->where('price', ">=", $start)
+            ->where('price', "<=", $end)
+            ->paginate(3);
+        
+        }
+        else if($priceCount!=""){
+            $price = explode("-",$request->price);
+            $start = $price[0];
+            $end = $price[1];
+            $productcate = Product::where('category_id', $id)
+            ->where('price', ">=", $start)
+            ->where('price', "<=", $end)
+            ->paginate(3);
+        }
+        else if($brand_id!=""){
+            $productcate = Product::where('category_id', $id)
+            ->where('brand_id',$brand_id)
+            ->paginate(3);
+        }
+        else{
+            $productcate = Product::where('category_id', $id)->paginate(3);
+        }
+        return view('client/fillter',['productcate' => $productcate, ]);
+        }
 
     public function comment(Request $request)
     {
