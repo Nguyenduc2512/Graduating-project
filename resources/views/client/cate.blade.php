@@ -43,9 +43,9 @@
                         <select id="priceID" class="findBtn">
                             <option value="">Chọn giá</option>
                             <option value="0-500000">0-500.000</option>
-                            <option value="500000-1000000">500.000-1000.000</option>
-                            <option value="1000000-5000000">1.000.000-5.000.000</option>
-                            <option value="5000000-1000000000">5.000.000-lớn hơn</option>
+                            <option value="500000-1000000">500.000 - 1000.000</option>
+                            <option value="1000000-5000000">1.000.000 - 5.000.000</option>
+                            <option value="5000000-1000000000">5.000.000 - lớn hơn</option>
                         </select>
                         
                     <input type="hidden" value="{{$id}}" name="" id="cateID">
