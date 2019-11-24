@@ -1,7 +1,8 @@
-<div class="row" id="productData">
-                            @if(count($productcate) == 0)
+                                            @if(count($productcate) == 0)
+
                             Không có sản phẩm thuộc danh mục này!
                             @else
+                             <b style="width: 100%;margin-bottom: 20px;font-size: 17px">Tổng số kết quả : {{$productcate->total()}}</b>
                             @foreach($productcate as $pc)
                             <div class="col-md-4 col-6">
                                 <div class="p_nd">
@@ -17,11 +18,10 @@
                                     <p>{{$pc->price}} đ</p>
                                 </div>
                             </div>
-                            @endforeach
+                            @endforeach 
                             @endif
                             <div class="col-12">
                                 <ul class="pagination" style="float: right;">
-                                
+                                {{ $productcate->links() }}
                                 </ul>
                             </div>
-                        </div>

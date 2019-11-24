@@ -82,21 +82,31 @@
   </script>
   <script type="text/javascript">
     $(document).ready(function(){
-      $(".findBtn").change(function(){
-        var brand = $("#brandID").val();
+      $(".findBtn").click(function(){
+        var se = $("#seID").val();
         var cate = $("#cateID").val();
         var price = $("#priceID").val();
+
+        var brand = [];
+        $(".brand").each(function(){
+           if($(this).is(":checked")){
+            brand.push($(this).val());
+
+           }
+        });
+        Finalbrand = brand.toString();
         $.ajax({
           type: 'get',
           dataType: 'html',
           url: '{{url('/proCate')}}',
-          data: 'id=' + cate + '&brand_id=' + brand +'&price=' + price,
+          data: 'brand_id=' + Finalbrand + '&id=' + cate +'&price=' + price +'&se=' + se ,
           success:function(response){
             console.log(response);
             $("#productData").html(response);
           }
         });
       });
+
     });
   </script>
     <script type="text/javascript">
