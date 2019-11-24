@@ -21,39 +21,39 @@
                                 @endforeach
                             </div>
                             <div class="col-lg-12 col-6">
-                                <h3 style="margin-top: 20px;">Size</h3>
-                                <form action="">
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 39
+                                <h3 style="margin-top: 20px;">Thương hiệu</h3>
+                                    @foreach(App\Models\Brand::all() as $brand)
+                                    <div class="col-lg-12 mt-2"> 
+                                        <input type="checkbox" value="{{$brand->id}}" id="brand"  class="findBtn brand"><span>{{$brand->name}}</span>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 40
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 41
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 42
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 43
-                                    </div>
-                                </form>
+                                    @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9">
+                    
                     <div class="sortby">
-                        <select name="" id="">
+                        <select name="" id="seID" class="findBtn">
                             <option value="">Sắp xếp theo</option>
-                            <option value="">Mới nhất</option>
-                            <option value="">Giá: Thấp - Cao</option>
-                            <option value="">Giá: Cao - Thấp</option>
+                            <option value="new">Mới nhất</option>
+                            <option value="asc">Giá: Thấp - Cao</option>
+                            <option value="desc">Giá: Cao - Thấp</option>
                         </select>
+                        <select id="priceID" class="findBtn">
+                            <option value="">Chọn giá</option>
+                            <option value="0-500000">0 - 500.000</option>
+                            <option value="500000-1000000">500.000 - 1000.000</option>
+                            <option value="1000000-5000000">1.000.000 - 5.000.000</option>
+                            <option value="5000000-1000000000">5.000.000 - lớn hơn</option>
+                        </select>
+                        
+                    <input type="hidden" value="{{$id}}" name="" id="cateID">
+                        
                     </div>
                     <div class="pcate">
-                        <div class="row">
+                        <div class="row" id="productData">
+                            <b style="width: 100%;margin-bottom: 20px;font-size: 17px">Tổng số kết quả : {{$productcate->total()}}</b>
                             @if(count($productcate) == 0)
                             Không có sản phẩm thuộc danh mục này!
                             @else
@@ -72,7 +72,7 @@
                                     <p>{{$pc->price}} đ</p>
                                 </div>
                             </div>
-                            @endforeach
+                            @endforeach 
                             @endif
                             <div class="col-12">
                                 <ul class="pagination" style="float: right;">

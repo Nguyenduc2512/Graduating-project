@@ -89,10 +89,86 @@ class PageController extends Controller
 
     public function cate($id)
     {
-        $productcate = Product::where('category_id', $id)->paginate(3);
+        $productcate = Product::where('category_id', $id)->paginate(6);
         $category = Category::withCount(['products'])->get();
-        return view('client/cate', compact('productcate','category'));
+        return view('client/cate', compact('productcate','category','id'));
     }
+    public function proCate(Request $request){
+        $id = $request->id;
+        $brand_id = $request->brand_id;
+        $priceCount = $request->price;
+        $se = $request->se;
+
+        if($brand_id!="" && $priceCount!="" && $se!=""){
+            $price = explode("-",$request->price);
+            $start = $price[0];
+            $end = $price[1];
+            switch ($se) {
+            case 'new':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->where('price', ">=", $start)
+                ->where('price', "<=", $end)
+                ->orderBy('created_at', 'desc')
+                ->paginate(6);
+                break;
+            case 'asc':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->where('price', ">=", $start)
+                ->where('price', "<=", $end)
+                ->orderBy('price', 'asc')
+                ->paginate(6);
+                break;
+            case 'desc':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->where('price', ">=", $start)
+                ->where('price', "<=", $end)
+                ->orderBy('price', 'desc')
+                ->paginate(6);
+                break;
+            }
+        
+        }
+        else if($priceCount!=""){
+            $price = explode("-",$request->price);
+            $start = $price[0];
+            $end = $price[1];
+            $productcate = Product::where('category_id', $id)
+            ->where('price', ">=", $start)
+            ->where('price', "<=", $end)
+            ->paginate(6);
+        }
+        else if($brand_id!=""){
+            $productcate = Product::where('category_id', $id)
+                        ->whereIn('brand_id', explode(",", $brand_id))
+                        ->paginate(6);
+        }
+        else if($se!=""){
+            switch ($se) {
+            case 'new':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('created_at', 'desc')
+                ->paginate(6);
+                break;
+            case 'asc':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('price', 'asc')
+                ->paginate(6);
+                break;
+            case 'desc':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('price', 'desc')
+                ->paginate(6);
+                break;
+            }
+        }
+        else{
+            $productcate = Product::where('category_id', $id)->paginate(6);
+        }
+        return view('client/fillter',['productcate' => $productcate, ]);
+        }
 
     public function comment(Request $request)
     {

@@ -113,6 +113,7 @@ Route::group(
 
 Auth::routes();
 // brand
+Route::get('/proCate', 'User\PageController@proCate')->name('fillter');
 
 Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
 
