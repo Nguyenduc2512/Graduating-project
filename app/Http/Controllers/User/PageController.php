@@ -37,11 +37,12 @@ class PageController extends Controller
 
     public function index() {
         $showModal = false;
+        $showModalSignup = false;
         $productsNew = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
         $productsMost = Product::where('status', 1)->orderBy('id', 'desc')->limit(8)->get();
         $brands = Brand::where('status', 1)->get();
         $slideshow = SlideShow::where("status", 1)->get();
-        return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshow'));
+        return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshow', 'showModalSignup'));
     }
 
     public function detail($id)
