@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->integer('role');
             $table->tinyInteger('status');
             $table->tinyInteger('gender');
-            $table->dateTime('date_of_birth');
+            $table->date('date_of_birth');
             $table->rememberToken();
             $table->timestamps();
         });

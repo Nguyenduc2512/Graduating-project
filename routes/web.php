@@ -113,6 +113,9 @@ Route::group(
 
 Auth::routes();
 // brand
+Route::post('new_account', 'User\UserController@newAccount')->name('new_account');
+
+Route::get('sign_up_false', 'User\UserController@signUpFalse')->name('sign_up_false');
 
 Route::get('admin_home', 'Admin\AdminController@home')->name('admin_home');
 

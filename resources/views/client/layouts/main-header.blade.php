@@ -23,61 +23,87 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="">
+                                                        <form action="{{route('new_account')}}" enctype="multipart/form-data" method="post">
+                                                            @csrf
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="">Tên</label>
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="Nhập tên của bạn">
+                                                                        <input type="text" class="form-control" name="name"
+                                                                               placeholder="Nhập tên của bạn" value="{{old('name')}}">
+                                                                        @if($errors->first('name'))
+                                                                            <span class="text-danger"> {{$errors->first('name')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="">Email</label>
-                                                                        <input type="email" class="form-control"
-                                                                               placeholder="Nhập email của bạn">
+                                                                        <input type="email" class="form-control" name="email"
+                                                                               placeholder="Nhập email của bạn" value="{{old('email')}}">
+                                                                        @if($errors->first('email'))
+                                                                            <span class="text-danger"> {{$errors->first('email')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="">Ngày sinh</label>
-                                                                        <input type="date" class="form-control"
-                                                                               placeholder="Nhập ngày sinh của bạn">
+                                                                        <input type="date" class="form-control" name="date_of_birth"
+                                                                               placeholder="Nhập ngày sinh của bạn" value="{{old('date_of_birth')}}">
+                                                                        @if($errors->first('date_of_birth'))
+                                                                            <span class="text-danger"> {{$errors->first('date_of_birth')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="">Mật khẩu</label>
-                                                                        <input type="password" class="form-control"
+                                                                        <input type="password" class="form-control" name="password"
                                                                                placeholder="Nhập mật khẩu của bạn">
+                                                                        @if($errors->first('password'))
+                                                                            <span class="text-danger"> {{$errors->first('password')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="">Chọn ảnh đại điện</label>
-                                                                        <input type="file" class="form-control"
-                                                                               placeholder="Nhập mật khẩu của bạn">
+                                                                        <input type="file" class="form-control" name="avatar" value="{{old('avatar')}}">
+                                                                        @if($errors->first('avatar'))
+                                                                            <span class="text-danger"> {{$errors->first('avatar')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="">Giới tính</label>
-                                                                        <select name="" id="" class="form-control">
-                                                                            <option value="">Nam</option>
-                                                                            <option value="">Nữ</option>
-                                                                            <option value="">Khác</option>
+                                                                        <select name="gender" id="" class="form-control">
+                                                                            <option value="1">Nam</option>
+                                                                            <option value="2">Nữ</option>
+                                                                            <option value="3">Khác</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="">Số điện thoại</label>
-                                                                        <input type="number" class="form-control"
-                                                                               placeholder="Nhập sđt của bạn">
+                                                                        <input type="number" class="form-control" name="phone"
+                                                                               placeholder="Nhập sđt của bạn" value="{{old('phone')}}">
+                                                                        @if($errors->first('phone'))
+                                                                            <span class="text-danger"> {{$errors->first('phone')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="">Địa chỉ</label>
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="Nhập địa chỉ của bạn">
+                                                                        <input type="text" class="form-control" name="location"
+                                                                               placeholder="Nhập địa chỉ của bạn" value="{{old('location')}}">
+                                                                        @if($errors->first('location'))
+                                                                            <span class="text-danger"> {{$errors->first('location')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="">Xác nhận mật khẩu</label>
-                                                                        <input type="password" class="form-control"
+                                                                        <input type="password" class="form-control" name="confirm_pass"
                                                                                placeholder="Nhập mật khẩu của bạn">
+                                                                        @if($errors->first('confirm_pass'))
+                                                                            <span class="text-danger"> {{$errors->first('confirm_pass')}} </span>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <input type="hidden" name="role" value="0">
+                                                            <input type="hidden" name="status" value="1">
                                                             <div class="modal-footer">
                                                                 <button type="submit" class="btn btn-info">
                                                                     Đăng ký
@@ -94,6 +120,9 @@
                                     <li>
                                         <a href="#" data-toggle="modal" data-target="#dangnhap" role="dialog"><i
                                                 class="fas fa-sign-in-alt"></i> Đăng nhập
+                                            @if (session('success'))
+                                                <p class="text-danger"> {{session('success')}} </p>
+                                            @endif
                                         </a>
                                         <div class="modal fade" id="dangnhap">
                                             <div class="modal-dialog">
@@ -125,11 +154,11 @@
                                                                                    placeholder="Nhập mật khẩu của bạn">
                                                                         </div>
                                                                     </div>
-                                                                    <a href="{{ route('password.request') }}" data-target="#reset" role="dialog" style="color: red;">Quên mật khẩu?</a>
-
                                                                     @if (session('false'))
                                                                         <p class="text-danger"> {{session('false')}} </p>
                                                                     @endif
+                                                                    <a href="{{ route('password.request') }}" data-target="#reset" role="dialog" style="color: red;">Quên mật khẩu?</a>
+
                                                                     <div class="modal-footer">
                                                                         <button type="submit" class="btn btn-info">
                                                                             Đăng nhập
@@ -222,7 +251,7 @@
                         </form>
                         <li class="nav-item">
                             <div class="link_cart">
-                                <a href="{{route('member.list_cart')}}"><i class="fa fa-shopping-cart"></i></a> 
+                                <a href="{{route('member.list_cart')}}"><i class="fa fa-shopping-cart"></i></a>
                                 <span>1</span>
                             </div>
                         </li>

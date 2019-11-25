@@ -15,6 +15,7 @@ class User extends Model
         'status',
         'gender',
         'date_of_birth',
+        'role'
     ];
     protected $hidden = [
         'password',

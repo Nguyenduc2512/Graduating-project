@@ -7,52 +7,53 @@
     <script src="{{asset('client/js/cart.js')}}"></script>
     <script src="{{asset('client/js/wow.min.js')}}"></script>
     <script src="{{asset('client/js/detailp.js')}}"></script>
-    <script src="{{asset('client/js/lightslider.js')}}"></script>    
+    <script src="{{asset('client/js/lightslider.js')}}"></script>
     <script src="{{asset('client/js/compare.js')}}"></script>
 
 
 
-    
+
     <script>
         new WOW().init();
     </script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            
+
             $('formDemo').validate({
-            rules: {
-                content: 
-                {
-                    required: true,
-                    maxlength: 200
+                rules: {
+                    content:
+                        {
+                            required: true,
+                            maxlength: 200
+                        },
                 },
-            },
-            messages: {
-                content: 
-                {
-                    required: "Bạn phải nhập bình luận!",
-                    minlength: "Bạn không được nhập quá 200 kí tự!"
-                },
-            }
+                messages: {
+                    content:
+                        {
+                            required: "Bạn phải nhập bình luận!",
+                            minlength: "Bạn không được nhập quá 200 kí tự!"
+                        },
+                }
             });
-            
-        $("#formDemo1").validate({
-            rules: {
-                content: 
-                {
-                    required: true,
-                    maxlength: 200
+
+            $("#formDemo1").validate({
+                rules: {
+                    content:
+                        {
+                            required: true,
+                            maxlength: 200
+                        },
                 },
-            },
-            messages: {
-                content: 
-                {
-                    required: "Bạn phải nhập bình luận!",
-                    minlength: "Bạn không được nhập quá 200 kí tự!"
-                },
-            }
-        });
+                messages: {
+                    content:
+                        {
+                            required: "Bạn phải nhập bình luận!",
+                            minlength: "Bạn không được nhập quá 200 kí tự!"
+                        },
+                }
+            });
+        })
         </script>
 
 <script type="text/javascript">

@@ -10,7 +10,7 @@
                 @foreach($productsNew as $productNew)
                     <div class="col-md-3 col-6">
                         <div class="p_nd wow fadeInUp selectProduct"  data-title="{{$productNew->id}}" data-id="{{ $productNew->name}}" data-size="{{$productNew->price}}" data-weight="{{ $productNew->price }}"  data-processor="{{ $productNew->description }}">
-                            <a href="{{route('detail', ['id' => $productNew->id])}}"> 
+                            <a href="{{route('detail', ['id' => $productNew->id])}}">
                                 <img src="{{$productNew->picture}}" width="100%" alt="" class="imgFill productImg">
                             </a>
                             <div class="nd_hover">
@@ -154,6 +154,13 @@
     $( document ).ready(function() {
         var showModal = {!! json_encode($showModal) !!};
         if (showModal)
-            $('#dangnhap').modal('show');  
+            $('#dangnhap').modal('show');
+    });
+</script>
+<script>
+    $( document ).ready(function() {
+        var showModalSignup = {!! json_encode($showModalSignup) !!};
+        if (showModalSignup)
+            $('#dangky').modal('show');
     });
 </script>
