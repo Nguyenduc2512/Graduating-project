@@ -29,65 +29,65 @@
               </div>
               <div class="row">
                 <div class="col-sm-12">
-                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
-                    aria-describedby="example2_info">
-                    <thead>
-                      <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-sort="ascending" aria-label="ID: activate to sort column descending">
-                          ID</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên đối tác
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Email
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">SĐT
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Số lượt mua
-                        </th>
-                        <th>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Nguyễn văn A</td>
-                        <td>A@gmail.com</td>
-                        <td>032654654</td>
-                        <td>12</td>
-                        <td>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  @if (session('success'))
+                        <p class="text-danger"> {{session('success')}} </p>
+                    @endif
+                  <table id="example" class="table table-striped table-bordered" style="width:100%">
+                      <thead>
+                          <tr>
+                              <th width="20px">STT</th>
+                              <th width="300px">Tên khách hàng</th>
+                              <th width="300px">Email</th>
+                              <th width="140px">Phone</th>
+                              <th width="400px">Địa chỉ</th>
+                              <th width="300px">Ngày sinh</th>
+                              <th width="400px">Giới thính</th>
+                              <th width="110px">Ảnh đại diện</th>
+                              <th width="70px"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php $i=1 ?>
+                        @foreach($users as $user)
+                          <tr>
+                              <td>{{$i++}}</td>
+                              <td>{{$user->name}}</td>
+                              <td>{{$user->email}}</td>
+                              <td>{{$user->phone}}</td>
+                              <td>{{$user->location}}</td>
+                              <td>{{$user->date_of_birth}}</td>
+                              <td>
+                              @if($user->gender == 0)
+                              nam
+                              @else
+                              nữ
+                              @endif
+                            </td>
+                              <td><img src="{{url('/')}}/{{$user->avatar}}" width="100px"></td>
+                              <td><a href="#" class="btn btn-xs btn-danger btn-remove">
+                              <i class="fa fa-trash"></i> Xoá
+                            </a></td>
+                          </tr>
+                        @endforeach
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên khách hàng</th>
+                              <th>Email</th>
+                              <th>Phone</th>
+                              <th>Địa chỉ</th>
+                              <th>Ngày sinh</th>
+                              <th>Giới thính</th>
+                              <th width="200px">Ảnh đại diện</th>
+                              <th width="150px"> </th>
+                          </tr>
+                      </tfoot>
+                    </table>
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-12">
-                  <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
-                          aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1"
-                          tabindex="0" class="page-link">1</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2"
-                          tabindex="0" class="page-link">2</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3"
-                          tabindex="0" class="page-link">3</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4"
-                          tabindex="0" class="page-link">4</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5"
-                          tabindex="0" class="page-link">5</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6"
-                          tabindex="0" class="page-link">6</a></li>
-                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2"
-                          data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                    </ul>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
