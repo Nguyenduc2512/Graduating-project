@@ -5,6 +5,7 @@ use App\Services\ContactService;
 use App\Services\AccountAdminService;
 use App\Http\Requests\AccountAdminRequest;
 use App\Services\WebSettingService;
+use App\Services\UserService;
 use App\Http\Requests\WebSettingRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,13 +14,16 @@ class AdminController extends Controller
     protected $contactService;
     protected $accountAdminService;
     protected $webSettingService;
+    protected $userService;
     public function __construct(contactService $contactService,
                                 AccountAdminService $accountAdminService,
-                                WebSettingService $webSettingService)
+                                WebSettingService $webSettingService,
+                                UserService $userService)
     {
         $this->contactService = $contactService;
         $this->accountAdminService = $accountAdminService;
         $this->webSettingService = $webSettingService;
+        $this->userService = $userService;
     }
 
     public function index() {
@@ -67,5 +71,10 @@ class AdminController extends Controller
     {
         $web = $this->webSettingService->editWeb($request);
         return redirect()->route('admin.list_web')->with(['success'=> 'Sửa tài khoản thành công']);
+    }
+    public function listUser()
+    {
+       $users = $this->userService->getUser();
+        return view('admin/customer/index', compact('users'));
     }
 }
