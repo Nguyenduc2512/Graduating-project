@@ -120,9 +120,6 @@
                                     <li>
                                         <a href="#" data-toggle="modal" data-target="#dangnhap" role="dialog"><i
                                                 class="fas fa-sign-in-alt"></i> Đăng nhập
-                                            @if (session('success'))
-                                                <p class="text-danger"> {{session('success')}} </p>
-                                            @endif
                                         </a>
                                         <div class="modal fade" id="dangnhap">
                                             <div class="modal-dialog">
@@ -154,6 +151,9 @@
                                                                                    placeholder="Nhập mật khẩu của bạn">
                                                                         </div>
                                                                     </div>
+                                                                    @if (session('success'))
+                                                                        <p class="text-danger"> {{session('success')}} </p>
+                                                                    @endif
                                                                     @if (session('false'))
                                                                         <p class="text-danger"> {{session('false')}} </p>
                                                                     @endif
@@ -252,7 +252,13 @@
                         <li class="nav-item">
                             <div class="link_cart">
                                 <a href="{{route('member.list_cart')}}"><i class="fa fa-shopping-cart"></i></a>
-                                <span>1</span>
+                                <span>
+                                    @if(Auth::user())
+                                        {{$count}}
+                                    @else
+                                        0
+                                    @endif
+                                </span>
                             </div>
                         </li>
                     </ul>

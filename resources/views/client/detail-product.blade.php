@@ -5,28 +5,6 @@
                 <a href="{{route('home')}}">Trang chủ</a> > <span>{{$product->name}}</span>
             </div>
         </div>
-
-<<<<<<< HEAD
-        <div class="detail_product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <ul id="imageGallery">
-                            <li data-thumb="{{url('/')}}/{{$product->picture}}" data-src="{{url('/')}}/{{$product->picture}}">
-                                <img src="{{url('/')}}/{{$product->picture}}" width="100%" />
-                            </li>
-                            <li data-thumb="{{url('/')}}/client/images/2.png" data-src="{{url('/')}}/client/images/2.png">
-                                <img src="{{url('/')}}/client/images/2.png" width="100%" />
-                            </li>
-                            <li data-thumb="{{url('/')}}/client/images/3.png" data-src="{{url('/')}}/client/images/3.png">
-                                <img src="{{url('/')}}/client/images/3.png" width="100%" />
-                            </li>
-                            <li data-thumb="{{url('/')}}/client/images/4.png" data-src="{{url('/')}}/client/images/4.png">
-                                <img src="{{url('/')}}/client/images/4.png" width="100%" />
-                            </li>
-                        </ul>
-                    </div>
-=======
     <div class="detail_product">
         <div class="container">
             <div class="row">
@@ -46,7 +24,6 @@
                         </li>
                     </ul>
                 </div>
->>>>>>> add item to cart and remove
                     <div class="col-md-8">
                         <h3>{{$product->name}}</h3>
                         <p>Giá bán: <span class="price">{{$product->price}}</span></p>

@@ -15,9 +15,9 @@ class CreateAboutTable extends Migration
     {
         Schema::create('about', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('gioi_thieu');
-            $table->text('su_menh');
-            $table->text('tam_nhin');
+            $table->text('info');
+            $table->text('mission');
+            $table->text('vision');
             $table->text('slogan');
             $table->timestamps();
         });

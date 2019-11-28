@@ -111,6 +111,7 @@ Route::group(
     Route::post('add_item_to_cart', 'User\CartController@addItem')->name('add_item');
     Route::get('remove_item_to_cart/{id}', 'User\CartController@removeItem')->name('remove_item');
     Route::post('list_cart', 'User\PageController@promo')->name('promo');
+    Route::post('order', 'User\CartController@order')->name('order');
 });
 
 Auth::routes();

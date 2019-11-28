@@ -66,9 +66,9 @@
                 <div class="col-md-3 col-6">
                     <div class="p_nd wow fadeInUp selectProduct"  data-title="{{$productMost->id}}" data-id="{{$productMost->name}}" data-size="{{$productMost->price}}" data-weight="{{ $productMost->price }}"  data-processor="{{ $productMost->description }}">
                         <a href="{{route('detail', ['id' => $productMost->id])}}">
-                        <a href="detail-product"> <img src="{{$productMost->picture}}" width="100%" alt="" class="imgFill productImg"></a>
+                        <img src="{{$productMost->picture}}" width="100%" alt="" class="imgFill productImg">
                         <div class="nd_hover">
-                            <a href="listcart"><i class="fas fa-cart-plus"></i></a>
+                            <a href="{{route('member.add_item')}}"><i class="fas fa-cart-plus"></i></a>
                             <a href="{{route('detail', ['id' => $productMost->id])}}"><i class="far fa-eye"></i></a>
                             <a class=" addButtonCircular addToCompare"> <i class="fas fa-less-than-equal"></i></a>
                         </div>

@@ -15,6 +15,7 @@ class Cart extends Model
         'price',
         'status',
         'amount',
+        'promo'
     ];
 
     public function properties() {
