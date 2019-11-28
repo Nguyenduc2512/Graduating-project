@@ -93,7 +93,7 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/admin1/cart" class="nav-link active">
+                  <a href="{{route('admin.list_cart')}}" class="nav-link active">
                     <i class="fas fa-clipboard-list nav-icon"></i>
                     <p>Danh sách đơn hàng</p>
                   </a>
@@ -162,7 +162,7 @@
               <a href="" class="nav-link bg-info">
                 <i class="far fa-user"></i>
                 <p>
-                  Quản lí tài khoản 
+                  Quản lí tài khoản
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>

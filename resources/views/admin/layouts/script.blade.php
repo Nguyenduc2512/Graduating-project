@@ -1,5 +1,5 @@
 <script src="{{asset('/admin/plugins/jquery/jquery.min.js')}}"></script>
-  
+
   <script type="text/javascript">
   $(document).ready(function(){
   function getBase64(file, selector) {
@@ -35,21 +35,21 @@
 </script>
 
   <script src="{{asset('/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-  <script src="{{asset('/admin/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>    
+  <script src="{{asset('/admin/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <script type="text/javascript">
   $(document).ready(function() {
     $('#example').DataTable();
   } );
   </script>
 
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript">
   $('.btn-remove').on('click', function(){
     var removeUrl = $(this).attr('linkurl');
     swal({
       title: "Cảnh báo",
-      text: "Bạn có chắc chắn muốn xoá danh mục này không?",
+      text: "Bạn có chắc chắn muốn xoá không?",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -57,7 +57,7 @@
     .then((willDelete) => {
       if (willDelete) {
         window.location.href = removeUrl;
-      } 
+      }
     });
   });
 </script>
@@ -65,14 +65,14 @@
     <script type="text/javascript">
         $("#formDemo1").validate({
             rules: {
-                content: 
+                content:
                 {
                     required: true,
                     maxlength: 200
                 },
             },
             messages: {
-                content: 
+                content:
                 {
                     required: "Bạn phải nhập bình luận!",
                     minlength: "Bạn không được nhập quá 200 kí tự!"
@@ -110,7 +110,7 @@
   <script src="{{asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
   <!-- AdminLTE App -->
   <script src="{{asset('admin/dist/js/adminlte.js')}}"></script>
- 
+
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <!-- <script src="./admin/dist/js/pages/dashboard.js"></script> -->
   <!-- AdminLTE for demo purposes -->

@@ -70,7 +70,7 @@
                                                   Ngừng kinh doanh
                                               @endif
                                           </td>
-                                          <td><a href="{{route('admin.edit_brand', ['id' => $product->id])}}" class="btn btn-xs btn-info">
+                                          <td><a href="{{route('admin.edit_product')}}" class="btn btn-xs btn-info">
                                                   <i class="fa fa-pencil"></i> Cập nhật
                                               </a>
                                               <a href="#" class="btn btn-xs btn-danger btn-remove">
