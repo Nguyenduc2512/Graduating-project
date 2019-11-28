@@ -20,7 +20,8 @@ class CartTableSeeder extends Seeder
                 'user_id'      => $faker->randomElement($UserIDs),
         		'properties_id' =>  $faker->randomElement($PropertiesIDs),
         		'admin_id' => null,
-        		'amount' => rand(10, 20),
+        		'amount' => rand(1,5),
+                'promo' => null,
         		'status' => rand(0,3)
         	];
         	$carts[] = $item;

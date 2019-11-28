@@ -12,6 +12,12 @@ class CartService {
          return $carts;
      }
 
+     public function countCartUser()
+     {
+         $carts = Cart::where('user_id', Auth::id())->where('status', 0)->get();
+         return $carts;
+     }
+
      public function findProperties(Request $request)
      {
          $cart = new Cart;
@@ -33,5 +39,21 @@ class CartService {
          $cart = Cart::find($id);
          $cart->status = 3;
          $cart->save();
+     }
+
+     public function order(Request $request)
+     {
+         $amount = $request->amount;
+         foreach ($request->cart_id as $id)
+         {
+             $cart = Cart::find($id);
+             if($amount[$id] == null) {
+
+             } else{
+             $cart->amount = $amount[$id];
+             }
+             $cart->status = 1;
+             $cart->save();
+         }
      }
  }

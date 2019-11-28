@@ -9,9 +9,9 @@ class About extends Model
 {
     protected $table = 'about';
     protected $fillable = [
-    	'gioi_thieu',
-        'tam_nhin',
-        'su_menh',
+    	'info',
+        'mission',
+        'vision',
         'slogan',
     ];
 

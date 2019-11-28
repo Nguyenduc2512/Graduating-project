@@ -41,8 +41,9 @@ class PageController extends Controller
         $productsNew = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get();
         $productsMost = Product::where('status', 1)->orderBy('id', 'desc')->limit(8)->get();
         $brands = Brand::where('status', 1)->get();
+        $count = count($this->cartService->countCartUser());
         $slideshow = SlideShow::where("status", 1)->get();
-        return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshow', 'showModalSignup'));
+        return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshow', 'showModalSignup', 'count'));
     }
 
     public function detail($id)
@@ -51,6 +52,7 @@ class PageController extends Controller
         $sizes = array();
         $color_size = array();
         $product = Product::find($id);
+        $count = count($this->cartService->countCartUser());
         $productStatus = Product::where('id', $id)->where('status', 1)->get();
         if(!$product || count($productStatus) == 0){
             return redirect(route('home'));
@@ -85,14 +87,15 @@ class PageController extends Controller
         }
         $productCategory = DB::table('products')->where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
         $comment = Comment::where('product_id', $id)->limit(5)->orderBy('created_at', 'ASC')->get();
-        return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size'));
+        return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size', 'count'));
     }
 
     public function cate($id)
     {
         $productcate = Product::where('category_id', $id)->paginate(3);
         $category = Category::withCount(['products'])->get();
-        return view('client/cate', compact('productcate','category'));
+        $count = count($this->cartService->countCartUser());
+        return view('client/cate', compact('productcate','category', 'count'));
     }
 
     public function comment(Request $request)
@@ -106,7 +109,8 @@ class PageController extends Controller
     public function contact()
     {
         $webs = Web_Setting::first();
-        return view('client/contact', compact('webs'));
+        $count = count($this->cartService->countCartUser());
+        return view('client/contact', compact('webs', 'count'));
     }
 
     public function addcontact(ContactRequest $request)
@@ -120,16 +124,23 @@ class PageController extends Controller
     public function search(Request $request)
     {
         $kw = $request->keyWord;
-        $brandSearch = Brand::where('name', 'like', "%$kw%")->first();
-        $id = $brandSearch->id;
-        $productSearch = $brandSearch->product->where('brand_id', $id);
+        $count = count($this->cartService->countCartUser());
+        $brandSearch = Brand::where('name', 'like', "%$kw%");
+        dd($brandSearch);
+        if ($brandSearch) {
+            $id = $brandSearch->id;
+            $productSearch = $brandSearch->product->where('brand_id', $id);
+        } else {
+            $id = null;
+            $productSearch = $brandSearch->product->where('brand_id', $id);
+        }
         if(count($productSearch) == 0){
             $msg="Không tìm thấy Kết quả cho: ".$kw;
         }
         else{
             $msg="Kết quả tìm kiếm cho: ".$kw;
         }
-        return view ('client.search', compact('productSearch', 'msg'));
+        return view ('client.search', compact('productSearch', 'msg', 'count'));
     }
 
     public function showListCart() {
@@ -138,7 +149,14 @@ class PageController extends Controller
             $slideshows = SlideShow::all();
             $carts = $this->cartService->getListCart();
             $count = count($carts);
-            return view('client/listcart', compact('slideshows', 'carts', 'count', 'showModal'));
+            $total_price = 0;
+            foreach ($carts as $cart){
+                if ($cart->status == 0) {
+                    $price = $cart->properties->product->price * $cart->amount;
+                    $total_price = $total_price + $price;
+                }
+            }
+            return view('client/listcart', compact('slideshows', 'carts', 'count', 'showModal', 'total_price'));
         }
             $showModal = true;
             $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
@@ -151,8 +169,9 @@ class PageController extends Controller
     public function about()
     {
         $about = About::first();
+        $count = count($this->cartService->countCartUser());
         $productsNew = Product::orderBy('created_at', 'desc')->where('status', 1)->limit(2)->get();
-        return view('client/about', compact('about', 'productsNew'));
+        return view('client/about', compact('about', 'productsNew', 'count'));
     }
     public function promo(Request $request)
     {
