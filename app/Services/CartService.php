@@ -56,4 +56,28 @@ class CartService {
              $cart->save();
          }
      }
+
+     public function getAllCart()
+     {
+         $cart = Cart::all();
+         return $cart;
+     }
+
+     public function decline($id)
+     {
+         $cart = Cart::find($id);
+         //$cart->status = 4 ~ decline cart
+         $cart->status = 4;
+         $cart->save();
+
+     }
+
+     public function accept($id)
+     {
+         $cart = Cart::find($id);
+         //$cart->status = 2 ~ decline cart
+         $cart->status = 2;
+         $cart->save();
+
+     }
  }

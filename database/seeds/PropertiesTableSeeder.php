@@ -18,8 +18,9 @@ class PropertiesTableSeeder extends Seeder
         for ($i=0; $i < 10; $i++) {
             $item = [
                 'product_id'      => $faker->randomElement($ProductIDs),
-                'color_id'      => $faker->randomElement($ColorIDs),
-                'size' =>rand(36,43),
+                'color_id'        => $faker->randomElement($ColorIDs),
+                'size'            => rand(36,43),
+                'amount'          => rand(1,8),
             ];
             $properties[] = $item;
         }

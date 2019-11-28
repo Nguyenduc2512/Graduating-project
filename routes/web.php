@@ -96,6 +96,15 @@ Route::group(
 
     Route::post('promo/add', 'Admin\PromoController@addNewPromo');
 
+    //cart
+    Route::get('list_cart', 'Admin\CartController@index')->name('list_cart');
+
+    Route::get('decline/{id}', 'Admin\CartController@decline')->name('decline');
+
+    Route::get('accept/{id}', 'Admin\CartController@accept')->name('accept');
+
+    //product
+    Route::get('edit_product', 'Admin\CartController@editProduct')->name('edit_product');
 });
 
 Route::group(

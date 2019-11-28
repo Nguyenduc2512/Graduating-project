@@ -27,86 +27,198 @@
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>
               </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
-                    aria-describedby="example2_info">
-                    <thead>
-                      <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                          aria-sort="ascending" aria-label="ID: activate to sort column descending">
-                          ID</th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên khách
-                          hàng
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Email
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">SĐT
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Địa chỉ
-                          mãi
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tổng tiền
-                          phẩm
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ghi chú
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ngày đặt
-                        </th>
-                        <th>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Trịnh Quốc Hưng</td>
-                        <td>hung@gmail.com</td>
-                        <td>0356594489</td>
-                        <td>15 Đông Quan Hà Nội</td>
-                        <td>320.111</td>
-                        <td>Ship hàng nhanh</td>
-                        <td>30/3/2019</td>
-                        <td>
-                          <a href="/admin1/cart/detail" class="btn btn-xs btn-info">
-                            <i class="fa fa-pencil"></i> Chi tiết
-                          </a>
-                          <a href="#" class="btn btn-xs btn-danger btn-remove">
-                            <i class="fa fa-trash"></i> Xoá
-                          </a>
-                          <a href="#" class="btn btn-xs btn-success ">
-                            <i class="fas fa-truck"></i> Giao hàng
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
-                          aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1"
-                          tabindex="0" class="page-link">1</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2"
-                          tabindex="0" class="page-link">2</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3"
-                          tabindex="0" class="page-link">3</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4"
-                          tabindex="0" class="page-link">4</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5"
-                          tabindex="0" class="page-link">5</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6"
-                          tabindex="0" class="page-link">6</a></li>
-                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2"
-                          data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                <div>
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Chờ xác nhận</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Đã xác nhận</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Đã từ chối</a>
+                        </li>
                     </ul>
-                  </div>
                 </div>
-              </div>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                                       aria-describedby="example2_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-sort="ascending" aria-label="ID: activate to sort column descending">
+                                            ID</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên khách
+                                            hàng
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Email
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">SĐT
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Địa chỉ
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tổng tiền
+                                            phẩm
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ghi chú
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ngày đặt
+                                        </th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($carts as $cart)
+                                        @if($cart->status == 1)
+                                            <tr role="row" class="odd">
+                                                <td>{{$cart->id}}</td>
+                                                <td>{{$cart->user->name}}</td>
+                                                <td>{{$cart->user->email}}</td>
+                                                <td>{{$cart->user->phone}}</td>
+                                                <td>{{$cart->user->location}}</td>
+                                                <td>{{$cart->properties->product->price * $cart->amount}}</td>
+                                                <td>Ship hàng nhanh</td>
+                                                <td>{{$cart->created_at}}</td>
+                                                <td>
+                                                    <a href="/admin1/cart/detail" class="btn btn-xs btn-info">
+                                                        <i class="fa fa-pencil"></i> Chi tiết
+                                                    </a>
+                                                    <a href="{{route('admin.decline', ['id'=> $cart->id])}}" class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash"></i> Từ chối
+                                                    </a>
+                                                    <a href="{{route('admin.accept', ['id'=>$cart->id])}}" class="btn btn-xs btn-success ">
+                                                        <i class="fas fa-truck"></i> Xác nhận
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                                       aria-describedby="example2_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-sort="ascending" aria-label="ID: activate to sort column descending">
+                                            ID</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên khách
+                                            hàng
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Email
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">SĐT
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Địa chỉ
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tổng tiền
+                                            phẩm
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ghi chú
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ngày đặt
+                                        </th>
+                                        <th>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($carts as $cart)
+                                        @if($cart->status == 2)
+                                            <tr role="row" class="odd">
+                                                <td>{{$cart->id}}</td>
+                                                <td>{{$cart->user->name}}</td>
+                                                <td>{{$cart->user->email}}</td>
+                                                <td>{{$cart->user->phone}}</td>
+                                                <td>{{$cart->user->location}}</td>
+                                                <td>{{$cart->properties->product->price * $cart->amount}}</td>
+                                                <td>Ship hàng nhanh</td>
+                                                <td>{{$cart->created_at}}</td>
+                                                <td>
+                                                    <a href="/admin1/cart/detail" class="btn btn-xs btn-info">
+                                                        <i class="fa fa-pencil"></i> Chi tiết
+                                                    </a>
+                                                    <a href="{{route('admin.decline', ['id'=> $cart->id])}}" class="btn btn-xs btn-danger">
+                                                        <i class="fa fa-trash"></i> Hủy
+                                                    </a>
+                                                    <a href="#" class="btn btn-xs btn-success ">
+                                                        <i class="fas fa-truck"></i> Giao hàng
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                                   aria-describedby="example2_info">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                        aria-sort="ascending" aria-label="ID: activate to sort column descending">
+                                        ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tên khách
+                                        hàng
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Email
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">SĐT
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Địa chỉ
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tổng tiền
+                                        phẩm
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ghi chú
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ngày đặt
+                                    </th>
+                                    <th>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($carts as $cart)
+                                    @if($cart->status == 4)
+                                        <tr role="row" class="odd">
+                                            <td>{{$cart->id}}</td>
+                                            <td>{{$cart->user->name}}</td>
+                                            <td>{{$cart->user->email}}</td>
+                                            <td>{{$cart->user->phone}}</td>
+                                            <td>{{$cart->user->location}}</td>
+                                            <td>{{$cart->properties->product->price * $cart->amount}}</td>
+                                            <td>Ship hàng nhanh</td>
+                                            <td>{{$cart->created_at}}</td>
+                                            <td>
+                                                <a href="/admin1/cart/detail" class="btn btn-xs btn-info">
+                                                    <i class="fa fa-pencil"></i> Chi tiết
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
           </div>
         </div>
@@ -114,6 +226,6 @@
       <!-- /.content -->
     </div>
 
-    
+
 @endsection
 

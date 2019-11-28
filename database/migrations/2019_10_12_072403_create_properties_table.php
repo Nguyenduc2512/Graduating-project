@@ -20,6 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->tinyInteger('size');
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('color_id')->references('id')->on('colors');
+            $table->integer('amount');
             $table->timestamps();
         });
     }
