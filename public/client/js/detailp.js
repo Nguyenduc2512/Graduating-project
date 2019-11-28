@@ -8,8 +8,42 @@ $(document).ready(function () {
         enableDrag: false,
         currentPagerPosition: 'le ft',
     });
+    $('formDemo').validate({
+        rules: {
+            content:
+            {
+                required: true,
+                maxlength: 200
+            },
+        },
+        messages: {
+            content:
+            {
+                required: "Bạn phải nhập bình luận!",
+                minlength: "Bạn không được nhập quá 200 kí tự!"
+            },
+        }
+    });
+
+    $("#formDemo1").validate({
+        rules: {
+            content:
+            {
+                required: true,
+                maxlength: 200
+            },
+        },
+        messages: {
+            content:
+            {
+                required: "Bạn phải nhập bình luận!",
+                minlength: "Bạn không được nhập quá 200 kí tự!"
+            },
+        }
+    });
+    
 });
 
-        $('.reply').click(function() {
-            $('.showreply').toggle('slow');
-        });
+$('.reply').click(function() {
+    $('.showreply').toggle('slow');
+});

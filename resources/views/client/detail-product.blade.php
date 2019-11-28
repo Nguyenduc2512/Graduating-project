@@ -5,28 +5,6 @@
                 <a href="{{route('home')}}">Trang chủ</a> > <span>{{$product->name}}</span>
             </div>
         </div>
-
-<<<<<<< HEAD
-        <div class="detail_product">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <ul id="imageGallery">
-                            <li data-thumb="{{url('/')}}/{{$product->picture}}" data-src="{{url('/')}}/{{$product->picture}}">
-                                <img src="{{url('/')}}/{{$product->picture}}" width="100%" />
-                            </li>
-                            <li data-thumb="{{url('/')}}/client/images/2.png" data-src="{{url('/')}}/client/images/2.png">
-                                <img src="{{url('/')}}/client/images/2.png" width="100%" />
-                            </li>
-                            <li data-thumb="{{url('/')}}/client/images/3.png" data-src="{{url('/')}}/client/images/3.png">
-                                <img src="{{url('/')}}/client/images/3.png" width="100%" />
-                            </li>
-                            <li data-thumb="{{url('/')}}/client/images/4.png" data-src="{{url('/')}}/client/images/4.png">
-                                <img src="{{url('/')}}/client/images/4.png" width="100%" />
-                            </li>
-                        </ul>
-                    </div>
-=======
     <div class="detail_product">
         <div class="container">
             <div class="row">
@@ -46,7 +24,6 @@
                         </li>
                     </ul>
                 </div>
->>>>>>> add item to cart and remove
                     <div class="col-md-8">
                         <h3>{{$product->name}}</h3>
                         <p>Giá bán: <span class="price">{{$product->price}}</span></p>
@@ -57,15 +34,15 @@
                         <div class="col-lg-6">
                             <form action="{{route('member.add_item')}}" method="post">
                                 @csrf
-                                <input type="hidden" value="{{$product->id}}" name="product_id">
+                                <input type="hidden" id="proID" value="{{$product->id}}" name="product_id">
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label>Color*</label>
-                                            <select name="color_id" onchange="select_size()" id="color_id" class="form-control">
-                                                <option selected>--</option>
+                                            <select name="color_id" id="colorID" class="form-control findBtn">
+                                                <option selected value="">--</option>
                                                 @foreach($colors as $color)
-                                                    <option id="{{$color->color_id}}" value="{{$color->color_id}}">
+                                                    <option  value="{{$color->color_id}}">
                                                         {{$color->color->name}}
                                                     </option>
                                                 @endforeach
@@ -73,9 +50,10 @@
                                         </div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="form-group">
+                                        <div class="form-group" id="size">
                                             <label for="">Size*</label>
-                                            <select name="size" id="" class="form-control">
+                                            <select name="size" class="form-control">
+                                                <option selected value="">--</option>
                                                 @foreach($sizes as $size)
                                                     <option value="{{$size}}">
                                                         {{$size}}

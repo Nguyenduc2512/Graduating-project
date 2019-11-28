@@ -115,6 +115,8 @@ Route::group(
 
 Auth::routes();
 // brand
+Route::get('/proDetail', 'User\PageController@proDetail');
+
 Route::post('new_account', 'User\UserController@newAccount')->name('new_account');
 
 Route::get('sign_up_false', 'User\UserController@signUpFalse')->name('sign_up_false');

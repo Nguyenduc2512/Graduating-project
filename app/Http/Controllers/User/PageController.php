@@ -88,6 +88,28 @@ class PageController extends Controller
         return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size'));
     }
 
+    public function proDetail(Request $request)
+    {
+        $id = $request->id;
+        $color = $request->color;
+        if($color!=""){
+            $sizes = DB::table('properties')
+            ->where('product_id', '=', "$id")
+            ->where('color_id', '=', "$color")
+            ->get();
+      
+        }
+        else{
+            $sizes = DB::table('properties')
+            ->where('product_id', '=', "$id")
+            ->get();
+        }
+        
+        return view('client/prosize', ['sizes' => $sizes,]);
+ 
+    }
+
+
     public function cate($id)
     {
         $productcate = Product::where('category_id', $id)->paginate(3);
