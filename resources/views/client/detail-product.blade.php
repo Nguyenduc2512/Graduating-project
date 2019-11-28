@@ -34,15 +34,15 @@
                         <div class="col-lg-6">
                             <form action="{{route('member.add_item')}}" method="post">
                                 @csrf
-                                <input type="hidden" value="{{$product->id}}" name="product_id">
+                                <input type="hidden" id="proID" value="{{$product->id}}" name="product_id">
                                 <div class="row">
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label>Color*</label>
-                                            <select name="color_id" onchange="select_size()" id="color_id" class="form-control">
-                                                <option selected>--</option>
+                                            <select name="color_id" id="colorID" class="form-control findBtn">
+                                                <option selected value="">--</option>
                                                 @foreach($colors as $color)
-                                                    <option id="{{$color->color_id}}" value="{{$color->color_id}}">
+                                                    <option  value="{{$color->color_id}}">
                                                         {{$color->color->name}}
                                                     </option>
                                                 @endforeach
@@ -50,9 +50,10 @@
                                         </div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="form-group">
+                                        <div class="form-group" id="size">
                                             <label for="">Size*</label>
-                                            <select name="size" id="" class="form-control">
+                                            <select name="size" class="form-control">
+                                                <option selected value="">--</option>
                                                 @foreach($sizes as $size)
                                                     <option value="{{$size}}">
                                                         {{$size}}
