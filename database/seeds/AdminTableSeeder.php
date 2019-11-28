@@ -11,18 +11,14 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        $admins = [];
-        $faker = Faker\Factory::create();
-        for ($i=0; $i < 10; $i++) {
-        	$item = [
-        		'name' => $faker->name,
-        		'email' => $faker->freeEmail,
-        		'password' => bcrypt('12312'),
-                'gender' => rand(1,3),
-          		'avatar' => 'images/'. $faker->image($dir = 'public/images', $width = 640, $height = 480, 'cats', false),
-        	];
-        	$admins[] = $item;
-        }
-        DB::table('admins')->insert($admins);
+        DB::table('admins')->insert(
+            [
+                'name' => 'Ducruoi',
+                'email' => 'nguyenduc2512@gmail.com',
+                'password' => bcrypt('123123'),
+                'gender' => '1',
+                'avatar'=> 'default.jpg'
+            ]
+        );
     }
 }
