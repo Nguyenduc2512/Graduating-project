@@ -1,0 +1,16 @@
+.link_rep{
+	width: 20%;
+	margin: auto;
+	margin-top: 20px
+}
+.link_rep a{
+	padding: 10px 50px;
+	background: #777;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	color: white;
+}
+.nd_form_rep{
+	padding: 50px
+}

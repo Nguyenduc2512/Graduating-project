@@ -1,0 +1,50 @@
+
+  .clock {
+    position: relative;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Horlo%C4%9Do_001.svg/1200px-Horlo%C4%9Do_001.svg.png');
+    background-size: 100%;
+    border: 20px solid #FFF;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #EFEFEF, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 10px auto;
+    height: 20rem;
+    width: 20rem;
+  }
+  .clock__face {
+    position: relative;
+    transform: translateX(-3px);
+    /* account for the width of the clock hands */
+    height: 100%;
+    width: 100%;
+  }
+  .clock__center {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #EFEFEF, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+    transform: translateX(3px);
+    /* for the width of the clock hands to center it in the clock */
+    height: 10%;
+    width: 10%;
+  }
+  .clock__hand {
+    position: absolute;
+    left: 50%;
+    background: black;
+    border-radius: 6px;
+    transform-origin: 50% 100%;
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    height: 50%;
+    width: 6px;
+  }
+  .clock__hand--second {
+    background: red;
+  }
+  .clock__hand--hour {
+    top: 25%;
+    height: 25%;
+  }
+  

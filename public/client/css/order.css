@@ -1,0 +1,20 @@
+label{
+    font-size: 14px;
+    min-width: 150px;
+}
+.order .form-group {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+.order .title{
+    margin-bottom: 30px;
+}
+.del{
+    padding: 5px;
+    color: black;
+    background: #eee;
+}
+.order .table{
+    font-size: 13px;
+}
