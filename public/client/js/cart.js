@@ -60,3 +60,16 @@ $(document).ready(function () {
 
     window.setTimeout(function () { $(".is-open").removeClass("is-open") }, 1200);
 });
+
+
+function order() {
+    $("#order").find(".sp").each(function (key, value) {
+        var new_amount = $(value).find("#new_amount");
+        var amount = $(value).find("p[id = 'amount']").text();
+        new_amount.val(amount);
+    });
+
+    $("#code_promo").val($("#code").val());
+    $("#order").submit();
+
+}

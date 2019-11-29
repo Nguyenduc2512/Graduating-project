@@ -30,12 +30,12 @@
                             <div class="col-md-8">
                                 <form id="order" action="{{'order'}}" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden" name="code_promo" id="code_promo">
                                     @foreach($carts as $cart)
                                         @if($cart->status == 0)
-                                            <input type="hidden" name="cart_id[]" multiple="multiple" value="{{$cart->id}}">
-                                            <input type="hidden" name="amount[{{$cart->id}}]" multiple="multiple" id="new_amount">
-                                            <input type="hidden" name="code_promo" id="code_promo">
                                             <div class="sp" style=" padding-top: 10px;">
+                                                <input type="hidden" name="cart_id[]" multiple="multiple" value="{{$cart->id}}">
+                                                <input type="hidden" name="amount[{{$cart->id}}]" multiple="multiple" id="new_amount">
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <img src="{{asset($cart->properties->product->picture)}}" width="100%" alt="">
@@ -190,12 +190,4 @@
         </div>
     </div>
 @endsection
-<script>
-    function order() {
-        var code = document.getElementById('code').value;
-        document.getElementById('code_promo').value = code;
-        var b = document.getElementById('amount').textContent;
-        document.getElementById('new_amount').value = b;
-        document.getElementById('order').submit();
-    }
-</script>
+
