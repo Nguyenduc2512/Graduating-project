@@ -87,6 +87,10 @@ nav .navbar-toggler .fa-bars{
     font-size: 30px;
     z-index: 10000;
 }
+.slider .carousel-inner img{
+    height: 580px;
+    object-fit: cover;
+}
 .link_cart{
     font-size: 15px;
     background: #1e3650;
