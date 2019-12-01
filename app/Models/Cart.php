@@ -11,11 +11,10 @@ class Cart extends Model
     protected $fillable = [
         'user_id',
         'admin_id',
+        'order_id',
         'properties_id',
-        'price',
         'status',
         'amount',
-        'promo'
     ];
 
     public function properties() {

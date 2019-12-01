@@ -33,7 +33,7 @@
                     <p>Danh mục <span class="cate"><a href="cate.html">{{$product->category->name}}</a></span></p>
                     <hr>
                     <div class="col-lg-12 ">
-                        <form action="{{route('member.add_item')}}" method="post">
+                        <form action="{{route('member.add_item')}}" method="post" id="new_order">
                             @csrf
                             <input type="hidden" id="proID" value="{{$product->id}}" name="product_id">
                             <div class="row">
@@ -48,12 +48,18 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        @if($errors->first('color_id'))
+                                            <span class="text-danger"> {{$errors->first('color_id')}} </span>
+                                        @endif
+                                        @if($errors->first('color_id_order'))
+                                            <span class="text-danger"> {{$errors->first('color_id_order')}} </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group" id="size">
                                         <label for="">Size*</label>
-                                        <select name="size" class="form-control">
+                                        <select name="size" class="form-control" id="size">
                                             <option selected value="">--</option>
                                             @foreach($sizes as $size)
                                             <option value="{{$size}}">
@@ -61,13 +67,19 @@
                                             </option>
                                             @endforeach
                                         </select>
+                                        @if($errors->first('size'))
+                                            <span class="text-danger"> {{$errors->first('size')}} </span>
+                                        @endif
+                                        @if($errors->first('size_order'))
+                                            <span class="text-danger"> {{$errors->first('size_order')}} </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="">Số lượng*</label>
 
-                                        <input type="number" name="amount" class="form-control" value="1">
+                                        <input type="number" name="amount" class="form-control" value="1" id="amount">
                                     </div>
                                 </div>
                             </div>
@@ -80,14 +92,21 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-6">
-                                        <a href="order.html" class="btn btn-block btn-danger">Đặt hàng</a>
+                                        <a class="btn btn-block btn-danger" onclick="showOrder()">Đặt hàng</a>
                                     </div>
                                     <div class="col-6">
                                         <button type="submit" class="btn btn-block btn-info"> Thêm vào giỏ hàng</button>
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                    </form>
+                    <form action="{{route('member.show_form_order')}}" id="show_form_order" method="post">
+                        @csrf
+                        <input type="hidden" id="product_id_order" name="product_id_order">
+                        <input type="hidden" id="color_id_order" name="color_id_order">
+                        <input type="hidden" id="size_order" name="size_order">
+                        <input type="hidden" id="amount_order" name="amount_order">
+
                     </form>
                 </div>
                 <div class=" container" style="margin-top: 30px;">
@@ -121,7 +140,7 @@
                                                     </p>
                                                     <div class="comment-like-unlike">
                                                         <?php
-                                                $replycomment = App\Models\Reply_Comment::where('comment_id', $c->id)->orderBy('id', 'DESC')->limit(4)->get(); ?>
+                                                        $replycomment = App\Models\Reply_Comment::where('comment_id', $c->id)->orderBy('id', 'DESC')->limit(4)->get(); ?>
                                                         <span data-toggle="collapse"
                                                             data-target="#reply{{$i++}}">({{count($replycomment)}})<i
                                                                 class="fa fa-reply" aria-hidden="true"></i></span>
@@ -261,4 +280,4 @@
                     </div>
                 </div>
             </div>
-            @endsection
+    @endsection

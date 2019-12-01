@@ -43,4 +43,5 @@ class ProductService
         $products = Product::where('status', 1);
         return $products;
     }
+
 }
