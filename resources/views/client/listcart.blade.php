@@ -31,6 +31,7 @@
                                 <form id="order" action="{{'order'}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="code_promo" id="code_promo">
+                                    <input type="hidden" name="total_price" id="total_price">
                                     @foreach($carts as $cart)
                                         @if($cart->status == 0)
                                             <div class="sp" style=" padding-top: 10px;">
@@ -56,8 +57,7 @@
                                                             <p href="#" class="qt-plus">+</p>
                                                             <br><br>
                                                             Giá: <span class="price">
-                                                            {{$cart->properties->product->price}} đ
-                                                    </span>
+                                                            {{$cart->properties->product->price}} đ </span>
                                                             <br>
                                                             Tổng tiền: <span class="full-price">
                                                         {{$cart->properties->product->price * $cart->amount}} đ
@@ -82,7 +82,6 @@
                                             <div class="row">
                                                 <div class="col-8">
                                                     <input type="text" name="code" value="{{session()->get('coupon')['code']}}" placeholder="Nhập mã giảm giá" id="code">
-
                                                 </div>
                                                 <div class="col-4">
                                                     <button type="submit">Đồng ý</button>
@@ -106,33 +105,26 @@
                         <h2>Đã đặt hàng<span></span></h2>
                         <div class="row">
                             <div class="col-md-8">
-                                @foreach($carts as $cart)
-                                    @if($cart->status == 1)
+                                @foreach($orders as $order)
+                                    @if($order->status == 1)
                                         <div class="sp" style=" padding-top: 10px;">
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <img src="{{asset($cart->properties->product->picture)}}" width="100%" alt="">
-                                                </div>
+                                                <div class="col-md-3"></div>
                                                 <div class="col-md-5">
-                                                    <h3><a href="detail-product.html">{{$cart->properties->product->name}}</a></h3>
-                                                    <p><i class="fas fa-angle-double-right"></i> Giao hàng nhanh</p>
-                                                    <p>Màu : <a>{{$cart->properties->color->name}}</a></p>
-                                                    <p>size :<a href="index.html">{{$cart->properties->size}}</a></p>
+                                                    <h3>Đơn : <a href="detail-product.html">{{$order->code_order}}</a></h3>
+                                                    <p><i class="fas fa-angle-double-right"></i> Giao hàng tại nhà</p>
                                                     <div class="linkdel">
-                                                        <a href="{{route('member.remove_item', ['id' => $cart->id])}}">Xóa</a>
+                                                        <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xóa</a>
+                                                    </div>
+                                                    <div class="linkdel">
+                                                        <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xem Chi Tiết</a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="allprice">
-                                                        Số lượng : <span>{{$cart->amount}}</span>
+                                                        Số lượng : <span>{{count($orders)}}</span>
                                                         <br><br>
-                                                        Giá: <span class="price">
-                                        {{$cart->properties->product->price}} đ
-                                    </span>
-                                                        <br>
-                                                        Tổng tiền: <span class="full-price">
-                                        {{$cart->properties->product->price * $cart->amount}} đ
-                                    </span>
+                                                        Tổng tiền: <span class="full-price">{{$order->total_price}} đ</span>
 
                                                     </div>
                                                 </div>
@@ -151,30 +143,26 @@
                         <h2>Đang vận chuyển<span></span></h2>
                         <div class="row">
                             <div class="col-md-8">
-                                @foreach($carts as $cart)
-                                    @if($cart->status == 2)
+                                @foreach($orders as $order)
+                                    @if($order->status == 2)
                                         <div class="sp" style=" padding-top: 10px;">
                                             <div class="row">
-                                                <div class="col-md-3">
-                                                    <img src="{{asset($cart->properties->product->picture)}}" width="100%" alt="">
-                                                </div>
+                                                <div class="col-md-3"></div>
                                                 <div class="col-md-5">
-                                                    <h3><a href="detail-product.html">{{$cart->properties->product->name}}</a></h3>
-                                                    <p><i class="fas fa-angle-double-right"></i> Giao hàng nhanh</p>
-                                                    <p>Màu : <a>{{$cart->properties->color->name}}</a></p>
-                                                    <p>size :<a href="index.html">{{$cart->properties->size}}</a></p>
+                                                    <h3>Đơn : <a href="">{{$order->code_order}}</a></h3>
+                                                    <p><i class="fas fa-angle-double-right"></i> Giao hàng tại nhà</p>
+                                                    <div class="linkdel">
+                                                        <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xóa</a>
+                                                    </div>
+                                                    <div class="linkdel">
+                                                        <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xem Chi Tiết</a>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="allprice">
-                                                        Số lượng : <span>{{$cart->amount}}</span>
+                                                        Số lượng : <span>{{count($orders)}}</span>
                                                         <br><br>
-                                                        Giá: <span class="price">
-                                        {{$cart->properties->product->price}} đ
-                                    </span>
-                                                        <br>
-                                                        Tổng tiền: <span class="full-price">
-                                        {{$cart->properties->product->price * $cart->amount}} đ
-                                    </span>
+                                                        Tổng tiền: <span class="full-price">{{$order->total_price}} đ</span>
 
                                                     </div>
                                                 </div>

@@ -116,11 +116,14 @@ Route::group(
     Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
     Route::post('/comment', 'User\PageController@comment')->name('comment');
     Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
-    Route::post('list_cart', 'User\PageController@promo')->name('promo');
+    Route::post('promo', 'User\PageController@promo')->name('promo');
     Route::post('add_item_to_cart', 'User\CartController@addItem')->name('add_item');
     Route::get('remove_item_to_cart/{id}', 'User\CartController@removeItem')->name('remove_item');
+    Route::get('remove_order/{id}', 'User\CartController@removeOrder')->name('remove_order');
     Route::post('list_cart', 'User\PageController@promo')->name('promo');
     Route::post('order', 'User\CartController@order')->name('order');
+    Route::post('show_form_order', 'User\CartController@showFormOrder')->name('show_form_order');
+    Route::post('new_order', 'User\CartController@newOrder')->name('new_order');
 });
 
 Auth::routes();
