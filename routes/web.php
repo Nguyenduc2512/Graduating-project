@@ -102,27 +102,34 @@ Route::group(
 
         Route::get('accept/{id}', 'Admin\CartController@accept')->name('accept');
 
-        Route::get('delivery_cart', 'Admin\CartController@delivery')->name('delivery');
+        Route::get('delivery_cart/{id}', 'Admin\CartController@delivery')->name('delivery');
 
+        Route::post('delivery_cart/{id}', 'Admin\CartController@addDelivery');
     //product
         Route::get('edit_product', 'Admin\CartController@editProduct')->name('edit_product');
     });
 
 Route::group(
     ['prefix' => 'member',
-    'as' => 'member.',
-    'middleware' => 'auth'], function (){
-        Route::get('profile', 'User\UserController@profile')->name('profile');
-        Route::post('profile', 'User\UserController@editProfile');
-        Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
-        Route::post('/comment', 'User\PageController@comment')->name('comment');
-        Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
-        Route::post('list_cart', 'User\PageController@promo')->name('promo');
-        Route::post('add_item_to_cart', 'User\CartController@addItem')->name('add_item');
-        Route::get('remove_item_to_cart/{id}', 'User\CartController@removeItem')->name('remove_item');
-        Route::post('list_cart', 'User\PageController@promo')->name('promo');
-        Route::post('order', 'User\CartController@order')->name('order');
-    });
+        'as' => 'member.',
+        'middleware' => 'auth'], function (){
+    Route::get('profile', 'User\UserController@profile')->name('profile');
+    Route::post('profile', 'User\UserController@editProfile');
+    Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
+    Route::post('/comment', 'User\PageController@comment')->name('comment');
+    Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
+    Route::post('promo', 'User\PageController@promo')->name('promo');
+    Route::post('add_item_to_cart', 'User\CartController@addItem')->name('add_item');
+    Route::get('remove_item_to_cart/{id}', 'User\CartController@removeItem')->name('remove_item');
+    Route::get('remove_order/{id}', 'User\CartController@removeOrder')->name('remove_order');
+    Route::post('list_cart', 'User\PageController@promo')->name('promo');
+    Route::post('order', 'User\CartController@order')->name('order');
+    Route::post('show_form_order', 'User\CartController@showFormOrder')->name('show_form_order');
+    Route::post('new_order', 'User\CartController@newOrder')->name('new_order');
+    Route::get('history', 'User\UserController@history')->name('history');
+    Route::get('favorite', 'User\UserController@favorite')->name('favorite');
+    Route::get('add_to_favorite/{id}', 'User\UserController@addToFavorite')->name('add_to_favorite');
+});
 
 Auth::routes();
 // brand

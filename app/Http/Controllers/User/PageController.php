@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Services\OrderService;
 use App\Services\PropertiesService;
 use Illuminate\Http\Request;
 use App\Services\CartService;
@@ -28,11 +29,14 @@ class PageController extends Controller
 {
     protected $cartService;
     protected $propertiesService;
+    protected $orderService;
     public function __construct(CartService $cartService,
-                                PropertiesService $propertiesService)
+                                PropertiesService $propertiesService,
+                                OrderService $orderService)
     {
         $this->cartService = $cartService;
         $this->propertiesService = $propertiesService;
+        $this->orderService = $orderService;
     }
 
     public function index() {
@@ -99,14 +103,14 @@ class PageController extends Controller
             ->where('product_id', '=', "$id")
             ->where('color_id', '=', "$color")
             ->get();
-      
+
         }
         else{
             $sizes=[];
         }
 
         return view('client/prosize', ['sizes' => $sizes,]);
- 
+
     }
 
 
@@ -166,8 +170,9 @@ class PageController extends Controller
     public function showListCart() {
         if (Auth::user()) {
             $showModal = false;
-            $slideshows = SlideShow::all();
+            $show_order = false;
             $carts = $this->cartService->getListCart();
+            $orders = $this->orderService->getOrder();
             $count = count($carts);
             $total_price = 0;
             foreach ($carts as $cart){
@@ -176,14 +181,8 @@ class PageController extends Controller
                     $total_price = $total_price + $price;
                 }
             }
-            return view('client/listcart', compact('slideshows', 'carts', 'count', 'showModal', 'total_price'));
+            return view('client/listcart', compact( 'carts', 'count', 'showModal', 'total_price', 'orders', 'show_order'));
         }
-            $showModal = true;
-            $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
-            $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
-            $brands = Brand::all();
-            $slideshows = SlideShow::all();
-            return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshows'));
     }
 
     public function about()

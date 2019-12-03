@@ -33,7 +33,7 @@ class CommentController extends Controller
         $replycomment = $this->commentService->replyFormComment($id);
         return view('admin/comment/reply', compact('replycomment', 'comment1'));
     }
-    public function addReplyComment($id,CommentRequest $request)
+    public function addReplyComment($id,Request $request)
     {
         $this->commentService->addReplyComment($request, $id);
         return redirect()->route('admin.reply_comment', ['id' => $id]);

@@ -2,6 +2,8 @@
 namespace App\Services;
 use App\Models\Cart;
 use App\Models\Properties;
+use App\Models\DeliveryBrand;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,13 +23,12 @@ class CartService {
      public function findProperties(Request $request)
      {
          $cart = new Cart;
-         $properties = Properties::where('product_id', $request->product_id)->where('color_id', $request->color_id)->where('size', $request->size)->first();
+             $properties = Properties::where('product_id', $request->product_id)->where('color_id', $request->color_id)->where('size', $request->size)->first();
          $data = [
              'user_id' => Auth::id(),
              'admin_id',
              'properties_id' => $properties->id,
              'amount' => $request->amount,
-             'status' => 0,
          ];
          $cart->fill($data);
          $cart->save();
@@ -52,6 +53,7 @@ class CartService {
              } else{
              $cart->amount = $amount[$id];
              }
+             $cart->order_id = $request->order_id;
              $cart->status = 1;
              $cart->save();
          }
@@ -69,7 +71,6 @@ class CartService {
          //$cart->status = 4 ~ decline cart
          $cart->status = 4;
          $cart->save();
-
      }
 
      public function accept($id)
@@ -80,12 +81,25 @@ class CartService {
          $cart->save();
 
      }
-     public function delivery(Request $request)
+     public function newOrder(Request $request)
      {
-         $cart = Cart::find($id);
-         //$cart->status = 2 ~ decline cart
-         $cart->status = 2;
+         $cart = new Cart();
+         $data = [
+             'user_id' => $request->user_id,
+             'properties_id' => $request->properties_id,
+             'amount' => $request->amount,
+             'status' => $request->status,
+         ];
+         $cart->fill($data);
          $cart->save();
+     }
+     public function addDelivery(Request $request,$id)
+     {
+         $order = Order::find($id);
+         //$cart->status = 2 ~ decline cart
+         $order->status = 5;
+         $order->delivery = $request->delivery_id;
+         $order->save();
 
      }
  }

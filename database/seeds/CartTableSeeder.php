@@ -17,11 +17,11 @@ class CartTableSeeder extends Seeder
         $faker = Faker\Factory::create();
         for ($i=0; $i < 10; $i++) {
         	$item = [
+                'order_id'      => null,
                 'user_id'      => $faker->randomElement($UserIDs),
         		'properties_id' =>  $faker->randomElement($PropertiesIDs),
         		'admin_id' => null,
         		'amount' => rand(1,5),
-                'promo' => null,
         		'status' => rand(0,3)
         	];
         	$carts[] = $item;

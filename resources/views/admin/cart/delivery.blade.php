@@ -27,69 +27,61 @@
             @endif
             <div class="row">
                <div class="col-sm-12">
-                  <table class="table table-striped table-bordered" style="width:100%">
-                     <thead>
-                        <tr >
-                           <th>Sản phẩm</th>
-                           <th>Tên</th>
-                           <th>Nội dung</th>
-                           <th></th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <?php $i=1 ?>
-                        <tr style="background-color: #777;color: white">
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                        </tr>
-                        @foreach($replycomment as $comment)
-                        <tr>
-                           <td></td>
-                           <td width="200px">
-                              @if($comment->user_id == 0)
-                              <b>{{$comment->admin->name}}</b><br>
-                              (Quản trị viện)
-                              @else
-                              <b>{{$comment->user->name}}</b><br>
-                              (Thành viên)
-                              @endif    
-                           </td>
-                           <td width="600px">{{$comment->content}}</td>
-                           <td>
-                              <a href="javascript:;"linkurl="{{route('admin.removereply_comment', ['id' => $comment->id])}}" class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i> Xóa </a>
-                           </td>
-                        </tr>
+                  <table class="table table-striped" style="width:100%">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting_asc" tabindex="0" aria-controls="example2"rowspan="1" colspan="1" aria-sort="ascending"
+                        aria-label="ID: activate to sort column descending">ID</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"colspan="1">Tên kháchhàng</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"colspan="1">Email</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"colspan="1">SĐT</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"colspan="1">Địa chỉ</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"colspan="1">Tổng tiền phẩm</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"colspan="1">Ghi chú</th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"colspan="1">Ngày đặt</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+
+                   @if($cart->status == 2)
+                   <tr role="row" class="odd">
+                     <td>{{$cart->id}}</td>
+                     <td>{{$cart->user->name}}</td>
+                     <td>{{$cart->user->email}}</td>
+                     <td>{{$cart->user->phone}}</td>
+                     <td>{{$cart->user->location}}</td>
+                     <td>{{$cart->total}}</td>
+                     <td>Ship hàng nhanh</td>
+                     <td>{{$cart->created_at}}</td>
+                </tr>
+                @endif
+
+             </tbody>
+          </table>
+          <div class="col-lg-12">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Chọn đơn vị giao hàng</button>
+            <div id="demo" class="collapse">
+               <div class="nd_form_rep">
+                  <form action="{{route('admin.delivery', ['id'=>$cart->id])}}" method="post" id="formDemo1">
+                     @csrf
+                     <label>Đơn vị giao hàng</label>
+                     <select class="form-control" name="delivery_id">
+                        <option>--</option>
+                        @foreach($delivery as $d)
+                        <option value="{{$d->id}}">{{$d->name}}</option>
                         @endforeach
-                     </tbody>
-                  </table>
-                  <div class="col-lg-12">
-                     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Trả lời</button>
-                       <div id="demo" class="collapse">
-                           <div class="nd_form_rep">
-                                 <form action="{{route('admin.reply_comment', ['id' => $comment1->id])}}" method="post" id="formDemo1">
-                                    @csrf
-                                    <label>Nội dung trả lời</label>
-                                    <input type="hidden" name="admin_id" value="{{Auth::guard('admins')->user()->id}}">
-                                    <input type="hidden" name="comment_id" value="{{$comment1->id}}">
-                                    <input type="hidden" name="user_id" value="0">
-                                    <textarea class="form-control" name="content" rows="3">{{old('content')}}</textarea>
-                                    @if($errors->first('content'))
-                                    <span class="text-danger">{{$errors->first('content')}}</span>
-                                    @endif 
-                                    <br>
-                                    <button class="btn btn-sm btn-info" type="submit" style="margin-top: 10px">Phản hồi</button>
-                                 </form>
-                              </div>
-                       </div>
-                     </div>
-                  </div>
+                     </select>
+                     <button class="btn btn-sm btn-info" type="submit" style="margin-top: 10px">Xác nhận</button>
+                  </form>
                </div>
             </div>
          </div>
       </div>
-   </section>
-   <!-- /.content -->
+   </div>
+</div>
+</div>
+</div>
+</section>
+<!-- /.content -->
 </div>
 @endsection 
