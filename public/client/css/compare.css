@@ -1853,7 +1853,7 @@ input[type=radio].w3-radio:disabled+.w3-validate {
 .w3-grey,
 .w3-hover-grey:hover {
 	color: #000!important;
-	background-color: #9e9e9e!important
+	background-color: #1e3650 !important
 }
 
 .w3-light-grey,
@@ -2481,10 +2481,12 @@ a {
 	padding: 0;
 	-webkit-transition: 0.3s;
 	transition: 0.3s;
+	background: #eee;
 }
 
 .product:hover {
-	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2)
+	box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+	background: #fff;
 }
 
 .product .header {

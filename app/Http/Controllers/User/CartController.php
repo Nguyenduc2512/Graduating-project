@@ -57,6 +57,7 @@ class CartController extends Controller
         $carts = $this->cartService->getListCart();
         $orders = $this->orderService->getOrder();
         $count = count($carts);
+        $showModal = false;
         $total_price = 0;
         foreach ($carts as $cart){
             if ($cart->status == 0) {

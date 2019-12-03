@@ -16,7 +16,8 @@
                         <img src="{{$productNew->picture}}" width="100%" alt="" class="imgFill productImg">
                     </a>
                     <div class="nd_hover">
-                        <a href="{{route('member.add_to_favorite', ['id' => $productNew->id])}}"><i class="fas fa-heart"></i></a>
+                        <a href="{{route('member.add_to_favorite', ['id' => $productNew->id])}}"><i
+                                class="fas fa-heart"></i></a>
                         <a href="{{route('detail', ['id' => $productNew->id])}}"><i class="far fa-eye"></i></a>
                         <a class=" addButtonCircular addToCompare"> <i class="fas fa-less-than-equal"></i></a>
                     </div>
@@ -72,7 +73,8 @@
                     <a href="{{route('detail', ['id' => $productMost->id])}}">
                         <img src="{{$productMost->picture}}" width="100%" alt="" class="imgFill productImg">
                         <div class="nd_hover">
-                            <a href="{{route('member.add_to_favorite', ['id' => $productMost->id])}}"><i class="fas fa-heart"></i></a>
+                            <a href="{{route('member.add_to_favorite', ['id' => $productMost->id])}}"><i
+                                    class="fas fa-heart"></i></a>
                             <a href="{{route('detail', ['id' => $productMost->id])}}"><i class="far fa-eye"></i></a>
                             <a class=" addButtonCircular addToCompare"> <i class="fas fa-less-than-equal"></i></a>
                         </div>
@@ -112,7 +114,7 @@
     <div class="w3-row w3-card-4 w3-grey w3-round-large w3-border comparePanle w3-margin-top">
         <div class="w3-row">
             <div class="w3-col l9 m8 s6 w3-margin-top">
-                <h4>Đã thêm sản phẩm so sánh</h4>
+                <h4 style="color: white">Đã thêm sản phẩm so sánh</h4>
             </div>
             <div class="w3-col l3 m4 s6 w3-margin-top">
                  
@@ -128,7 +130,7 @@
 <!-- comparision popup-->
 <div id="id01" class="w3-animate-zoom w3-white w3-modal modPos">
     <div class="w3-container">
-        <a onclick="document.getElementById('id01').style.display='none'"
+        <a style="font-size: 50px" onclick="document.getElementById('id01').style.display='none'"
             class="whiteFont w3-padding w3-closebtn closeBtn">×</a>
     </div>
     <div class="w3-row contentPop w3-margin-top">
@@ -156,17 +158,20 @@
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    $( document ).ready(function() {
-        var showModal = {!! json_encode($showModal) !!};
-        if (showModal)
-            $('#dangnhap').modal('show');
-    });
+$(document).ready(function() {
+    var showModal = {
+        !!json_encode($showModal) !!
+    };
+    if (showModal)
+        $('#dangnhap').modal('show');
+});
 </script>
 <script>
-    $( document ).ready(function() {
-        var showModal = {!! json_encode($showModalSignup) !!};
-        if (showModal)
-            $('#dangky').modal('show');
-    });
+$(document).ready(function() {
+    var showModal = {
+        !!json_encode($showModalSignup) !!
+    };
+    if (showModal)
+        $('#dangky').modal('show');
+});
 </script>
-
