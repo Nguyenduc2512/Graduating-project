@@ -80,4 +80,12 @@ class CartService {
          $cart->save();
 
      }
+     public function delivery(Request $request)
+     {
+         $cart = Cart::find($id);
+         //$cart->status = 2 ~ decline cart
+         $cart->status = 2;
+         $cart->save();
+
+     }
  }

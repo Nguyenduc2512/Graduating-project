@@ -12,37 +12,37 @@
 
 Route::group(
     ['prefix' => 'admin',
-        'as'     => 'admin.',
-        'middleware' => 'admin'] , function () {
-    Route::get('admin_home', 'Admin\AdminController@index')->name('adminHome');
-    Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
-    Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
+    'as'     => 'admin.',
+    'middleware' => 'admin'] , function () {
+        Route::get('admin_home', 'Admin\AdminController@index')->name('adminHome');
+        Route::get('add_new_product', 'Admin\ProductController@newProduct')->name('add_product');
+        Route::post('add_new_product', 'Admin\ProductController@addNewProduct');
 
-    Route::get('category', 'Admin\CategoryController@listCategory')->name('list_category');
+        Route::get('category', 'Admin\CategoryController@listCategory')->name('list_category');
 
-    Route::get('category/add', 'Admin\CategoryController@newCategory')->name('add_category');
+        Route::get('category/add', 'Admin\CategoryController@newCategory')->name('add_category');
 
-    Route::post('category/add', 'Admin\CategoryController@addNewCategory');
+        Route::post('category/add', 'Admin\CategoryController@addNewCategory');
 
-    Route::get('category/edit/{id}', 'Admin\CategoryController@editFormCategory')->name('edit_category');
+        Route::get('category/edit/{id}', 'Admin\CategoryController@editFormCategory')->name('edit_category');
 
-    Route::post('category/edit/{id}',  'Admin\CategoryController@editCategory');
+        Route::post('category/edit/{id}',  'Admin\CategoryController@editCategory');
 
-    Route::get('contact', 'Admin\AdminController@contact')->name('contact');
-    Route::get('remove_contact/{id}', 'Admin\AdminController@removeContact')->name('remove_contact');
+        Route::get('contact', 'Admin\AdminController@contact')->name('contact');
+        Route::get('remove_contact/{id}', 'Admin\AdminController@removeContact')->name('remove_contact');
 
-    Route::get('show_list_product', 'Admin\ProductController@showListProduct')->name('show_product');
+        Route::get('show_list_product', 'Admin\ProductController@showListProduct')->name('show_product');
 
     //brand
-    Route::get('brand', 'Admin\BrandController@listBrand')->name('list_brand');
+        Route::get('brand', 'Admin\BrandController@listBrand')->name('list_brand');
 
-    Route::get('brand/add', 'Admin\BrandController@newBrand')->name('add_brand');
+        Route::get('brand/add', 'Admin\BrandController@newBrand')->name('add_brand');
 
-    Route::post('brand/add', 'Admin\BrandController@addNewBrand');
+        Route::post('brand/add', 'Admin\BrandController@addNewBrand');
 
-    Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
+        Route::get('brand/edit/{id}', 'Admin\BrandController@editFormBrand')->name('edit_brand');
 
-    Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
+        Route::post('brand/edit/{id}', 'Admin\BrandController@editBrand');
     //delivery_brand
 
         Route::get('delivery_brand', 'Admin\DeliveryBrandController@listDeliveryBrand')->name('list_deliverybrand');
@@ -54,7 +54,6 @@ Route::group(
         Route::get('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editFormDeliveryBrand')->name('edit_deliverybrand');
 
         Route::post('delivery_brand/edit/{id}', 'Admin\DeliveryBrandController@editDeliveryBrand');
-
     //slideshow
         Route::get('slideshow', 'Admin\SlideShowController@listSlideShow')->name('list_slideshow');
 
@@ -66,62 +65,64 @@ Route::group(
 
         Route::post('slideshow/edit/{id}', 'Admin\SlideShowController@editSlideShow');
 
-    Route::get('admin', 'Admin\AdminController@listAdmin')->name('list_admin');
+        Route::get('admin', 'Admin\AdminController@listAdmin')->name('list_admin');
 
-    Route::get('admin/edit/{id}', 'Admin\AdminController@editFormAdmin')->name('edit_admin');
+        Route::get('admin/edit/{id}', 'Admin\AdminController@editFormAdmin')->name('edit_admin');
 
-    Route::post('admin/edit/{id}', 'Admin\AdminController@editAdmin');
+        Route::post('admin/edit/{id}', 'Admin\AdminController@editAdmin');
 
-    Route::get('web', 'Admin\AdminController@listWeb')->name('list_web');
+        Route::get('web', 'Admin\AdminController@listWeb')->name('list_web');
 
-    Route::get('web/edit/{id}', 'Admin\AdminController@editFormWeb')->name('edit_web');
+        Route::get('web/edit/{id}', 'Admin\AdminController@editFormWeb')->name('edit_web');
 
-    Route::post('web/edit/{id}', 'Admin\AdminController@editWeb');
+        Route::post('web/edit/{id}', 'Admin\AdminController@editWeb');
 
-    Route::get('user', 'Admin\AdminController@listUser')->name('list_member');
+        Route::get('user', 'Admin\AdminController@listUser')->name('list_member');
 
-    Route::get('comment', 'Admin\CommentController@listComment')->name('list_comment');
+        Route::get('comment', 'Admin\CommentController@listComment')->name('list_comment');
 
-    Route::get('comment/{id}', 'Admin\CommentController@removeComment')->name('remove_comment');
+        Route::get('comment/{id}', 'Admin\CommentController@removeComment')->name('remove_comment');
 
-    Route::get('comment/reply/{id}', 'Admin\CommentController@replyComment')->name('reply_comment');
+        Route::get('comment/reply/{id}', 'Admin\CommentController@replyComment')->name('reply_comment');
 
-    Route::post('comment/reply/{id}', 'Admin\CommentController@addReplyComment');
+        Route::post('comment/reply/{id}', 'Admin\CommentController@addReplyComment');
 
-    Route::get('comment/reply/remove/{id}', 'Admin\CommentController@removeReplyComment')->name('removereply_comment');
+        Route::get('comment/reply/remove/{id}', 'Admin\CommentController@removeReplyComment')->name('removereply_comment');
     //promo
-    Route::get('promo', 'Admin\PromoController@listPromo')->name('list_promo');
+        Route::get('promo', 'Admin\PromoController@listPromo')->name('list_promo');
 
-    Route::get('promo/add', 'Admin\PromoController@newPromo')->name('add_promo');
+        Route::get('promo/add', 'Admin\PromoController@newPromo')->name('add_promo');
 
-    Route::post('promo/add', 'Admin\PromoController@addNewPromo');
+        Route::post('promo/add', 'Admin\PromoController@addNewPromo');
 
     //cart
-    Route::get('list_cart', 'Admin\CartController@index')->name('list_cart');
+        Route::get('list_cart', 'Admin\CartController@index')->name('list_cart');
 
-    Route::get('decline/{id}', 'Admin\CartController@decline')->name('decline');
+        Route::get('decline/{id}', 'Admin\CartController@decline')->name('decline');
 
-    Route::get('accept/{id}', 'Admin\CartController@accept')->name('accept');
+        Route::get('accept/{id}', 'Admin\CartController@accept')->name('accept');
+
+        Route::get('delivery_cart', 'Admin\CartController@delivery')->name('delivery');
 
     //product
-    Route::get('edit_product', 'Admin\CartController@editProduct')->name('edit_product');
-});
+        Route::get('edit_product', 'Admin\CartController@editProduct')->name('edit_product');
+    });
 
 Route::group(
     ['prefix' => 'member',
-        'as' => 'member.',
-        'middleware' => 'auth'], function (){
-    Route::get('profile', 'User\UserController@profile')->name('profile');
-    Route::post('profile', 'User\UserController@editProfile');
-    Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
-    Route::post('/comment', 'User\PageController@comment')->name('comment');
-    Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
-    Route::post('list_cart', 'User\PageController@promo')->name('promo');
-    Route::post('add_item_to_cart', 'User\CartController@addItem')->name('add_item');
-    Route::get('remove_item_to_cart/{id}', 'User\CartController@removeItem')->name('remove_item');
-    Route::post('list_cart', 'User\PageController@promo')->name('promo');
-    Route::post('order', 'User\CartController@order')->name('order');
-});
+    'as' => 'member.',
+    'middleware' => 'auth'], function (){
+        Route::get('profile', 'User\UserController@profile')->name('profile');
+        Route::post('profile', 'User\UserController@editProfile');
+        Route::get('list_cart', 'User\PageController@showListCart')->name('list_cart');
+        Route::post('/comment', 'User\PageController@comment')->name('comment');
+        Route::post('comment/reply', 'User\PageController@replyComment')->name('replycomment');
+        Route::post('list_cart', 'User\PageController@promo')->name('promo');
+        Route::post('add_item_to_cart', 'User\CartController@addItem')->name('add_item');
+        Route::get('remove_item_to_cart/{id}', 'User\CartController@removeItem')->name('remove_item');
+        Route::post('list_cart', 'User\PageController@promo')->name('promo');
+        Route::post('order', 'User\CartController@order')->name('order');
+    });
 
 Auth::routes();
 // brand

@@ -151,7 +151,7 @@
                                                     <a href="{{route('admin.decline', ['id'=> $cart->id])}}" class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash"></i> Hủy
                                                     </a>
-                                                    <a href="#" class="btn btn-xs btn-success ">
+                                                    <a href="{{route('admin.delivery', ['id'=> $cart->user_id]&['created'=> $cart->created_at])}}" class="btn btn-xs btn-success ">
                                                         <i class="fas fa-truck"></i> Giao hàng
                                                     </a>
                                                 </td>

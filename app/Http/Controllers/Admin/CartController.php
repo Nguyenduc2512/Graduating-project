@@ -38,4 +38,9 @@ class CartController extends Controller
     {
         return view('admin/product/edit');
     }
+    public function delivery(Request $request)
+    {
+        $carts = $this->cartService->delivery();
+        return view('admin/cart/delivery', compact('carts'));
+    }
 }
