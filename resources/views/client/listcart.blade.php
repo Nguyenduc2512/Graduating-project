@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="row">
-        <div style="margin-top: 50px">
+        <div style="margin-top: 50px" id="tabs">
             <ul class="nav flex-column mb-3" id="pills-tab" role="tablist" style="margin-left: 200px">
                 <li class="nav-item" style="border: #0000ff 1px solid; width: 150px; border-radius: 3px; text-align: center">
                     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Giỏ hàng</a>
@@ -19,6 +19,10 @@
                 <li class="nav-item" style="border: #0000ff 1px solid; width: 150px; border-radius: 3px; text-align: center">
                     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Đang vận chuyển</a>
                 </li>
+                <br>
+                <li class="nav-item" style="border: #0000ff 1px solid; width: 150px; border-radius: 3px; text-align: center">
+                    <a class="nav-link" id="pills_history_tab" data-toggle="pill" href="#pills-history" role="tab" aria-controls="pills-history" aria-selected="false">Lịch sử</a>
+                </li>
             </ul>
         </div>
         <div class="tab-content" id="pills-tabContent">
@@ -30,6 +34,7 @@
                             <div class="col-md-8">
                                 <form id="order" action="{{'order'}}" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden" name="location" id="location">
                                     <input type="hidden" name="code_promo" id="code_promo">
                                     <input type="hidden" name="total_price" id="total_price">
                                     @foreach($carts as $cart)
@@ -112,7 +117,7 @@
                                                 <div class="col-md-3"></div>
                                                 <div class="col-md-5">
                                                     <h3>Đơn : <a href="detail-product.html">{{$order->code_order}}</a></h3>
-                                                    <p><i class="fas fa-angle-double-right"></i> Giao hàng tại nhà</p>
+                                                    <p><i class="fas fa-angle-double-right"></i> Giao hàng tại : {{$order->location}}</p>
                                                     <div class="linkdel">
                                                         <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xóa</a>
                                                     </div>
@@ -122,7 +127,6 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="allprice">
-                                                        Số lượng : <span>{{count($orders)}}</span>
                                                         <br><br>
                                                         Tổng tiền: <span class="full-price">{{$order->total_price}} đ</span>
 
@@ -175,7 +179,44 @@
                     </div>
                 </div>
             </div>
+            <div class="tab-pane fade" id="pills-history" role="tabpanel" aria-labelledby="pills_history_tab">
+                <div class="listcart">
+                    <div class="container">
+                        <h2>Lịch sử <span></span></h2>
+                        <div class="row">
+                            <div class="col-md-8">
+                                @foreach($orders as $order)
+                                    @if($order->status > 4)
+                                        <div class="sp" style=" padding-top: 10px;">
+                                            <div class="row">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-5">
+                                                    <h3>Đơn : <a href="">{{$order->code_order}}</a></h3>
+                                                    <p><i class="fas fa-angle-double-right"></i> Giao hàng tại nhà</p>
+                                                    <div class="linkdel">
+                                                        <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xóa</a>
+                                                    </div>
+                                                    <div class="linkdel">
+                                                        <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xem Chi Tiết</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="allprice">
+                                                        Số lượng : <span>{{count($orders)}}</span>
+                                                        <br><br>
+                                                        Tổng tiền: <span class="full-price">{{$order->total_price}} đ</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
-

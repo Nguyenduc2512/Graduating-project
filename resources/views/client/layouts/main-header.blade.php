@@ -188,16 +188,63 @@
                                             <a class="dropdown-item" href="{{route('member.profile')}}"><i
                                                     class="fas fa-user-edit"></i> Chỉnh sửa
                                                 tài khoản</a>
-                                            <a class="dropdown-item" href="listcart"><i
+                                            <a class="dropdown-item" href="{{route('member.list_cart')}}"><i
                                                     class="fas fa-shopping-cart"></i> Giỏ hàng của bạn</a>
-                                            <a class="dropdown-item" href="hiscart"><i class="fas fa-history"></i>
-                                                Lịch sửa
-                                                mua hàng</a>
+                                            <a class="dropdown-item" href="{{route('member.history')}}"><i class="fas fa-history"></i>
+                                                Lịch sử mua hàng</a>
                                             <a class="dropdown-item" href="{{route('logout')}}"><i class="fas fa-sign-out-alt"></i> Đăng
                                                 xuất</a>
                                         </div>
                                     </div>
                                 </li>
+                                    <li>
+                                        <a href="#" data-toggle="modal" data-target="#order_cart" role="dialog">
+                                        </a>
+                                        <div class="modal fade" id="order_cart">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="{{route('member.new_order')}}" method="post" id="form_order" >
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-md-10 align-content-center">
+                                                                <div class="title">
+                                                                    <h2 class="text_title"><span>Thông tin liên hệ giao hàng</span></h2>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Họ và tên *</label>
+                                                                    <input type="text" class="form-control" value="{{Auth::user()->name}}" disabled>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Email</label>
+                                                                    <input type="email" class="form-control" value="{{Auth::user()->email}}" disabled>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Số điện thoại *</label>
+                                                                    <input type="number" class="form-control" value="{{Auth::user()->phone}}" disabled>
+                                                                </div>
+                                                                <div class="title">
+                                                                    <h2 class="text_title"><span>Địa chỉ giao hàng</span></h2>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Địa chỉ  *</label>
+                                                                    <input type="text" class="form-control" value="{{Auth::user()->location}}" name="location" id="location">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="">Ghi chú *</label>
+                                                                    <textarea name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="col-lg-12" style="text-align: center;
+                         padding-bottom: 50px; margin-top: 20px;">
+                                                                <a class="btn btn-danger" onclick="submit_order()">Đặt hàng</a>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                             @endif
                         </div>

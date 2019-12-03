@@ -86,8 +86,6 @@
                             <hr>
                             @if(Auth::check())
                             <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
-                            @else
-                            return {{route('login')}}
                             @endif
                             <div class="col-lg-12">
                                 <div class="row">
@@ -108,6 +106,7 @@
                         <input type="hidden" id="amount_order" name="amount_order">
 
                     </form>
+                    </div>
                 </div>
                 <div class=" container" style="margin-top: 30px;">
                     <ul class="nav nav-tabs" role="tablist">
@@ -280,4 +279,6 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
     @endsection

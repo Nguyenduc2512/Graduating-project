@@ -172,7 +172,7 @@ class PageController extends Controller
     public function showListCart() {
         if (Auth::user()) {
             $showModal = false;
-            $slideshows = SlideShow::all();
+            $show_order = false;
             $carts = $this->cartService->getListCart();
             $orders = $this->orderService->getOrder();
             $count = count($carts);
@@ -183,14 +183,8 @@ class PageController extends Controller
                     $total_price = $total_price + $price;
                 }
             }
-            return view('client/listcart', compact('slideshows', 'carts', 'count', 'showModal', 'total_price', 'orders'));
+            return view('client/listcart', compact( 'carts', 'count', 'showModal', 'total_price', 'orders', 'show_order'));
         }
-            $showModal = true;
-            $productsNew = Product::orderBy('created_at', 'desc')->limit(8)->get();
-            $productsMost = Product::orderBy('id', 'desc')->limit(8)->get();
-            $brands = Brand::all();
-            $slideshows = SlideShow::all();
-            return view('client/index', compact('showModal', 'productsNew', 'brands', 'productsMost', 'slideshows'));
     }
 
     public function about()
