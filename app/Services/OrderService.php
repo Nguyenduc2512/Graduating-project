@@ -21,6 +21,7 @@ class OrderService
             'promo'   => $request->code_promo,
             'total_price' => $request->total_price,
             'code_order' => $code_order,
+            'location' => $request->location,
         ];
         $order->fill($data);
         $order->save();

@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Địa chỉ  *</label>
-                            <input type="text" class="form-control" value="{{Auth::user()->location}}">
+                            <input type="text" class="form-control" value="{{Auth::user()->location}}" name="location">
                         </div>
                         <div class="form-group">
                             <label for="">Ghi chú *</label>

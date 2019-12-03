@@ -12,15 +12,15 @@
             <div class="col-md-9">
                 <h1>Giới thiệu Auth Shoes</h1>
                 <p>
-                    {{$about->gioi_thieu}}
+                    {{$about->info}}
                 </p>
                 <h2>Sứ mệnh</h2>
                 <p>
-                    {{$about->su_menh}}
+                    {{$about->mission}}
                 </p>
                 <h2>TẦM NHÌN</h2>
                 <p>
-                    {{$about->tam_nhin}}
+                    {{$about->vision}}
                     website: AuthShoes.com
                 </p>
                 <h5>{{$about->slogan}}</h5>

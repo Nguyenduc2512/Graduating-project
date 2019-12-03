@@ -42,6 +42,13 @@ class CartController extends Controller
         return redirect()->route('member.list_cart');
     }
 
+    public function removeItem($id)
+    {
+        $cart = $this->cartService->removeItem($id);
+        return redirect()->route('member.list_cart');
+
+    }
+
     public function order(Request $request)
     {
         $order = $this->orderService->order($request);

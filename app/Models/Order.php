@@ -12,6 +12,7 @@ class Order extends Model
         'total_price',
         'status',
         'promo',
-        'code_order'
+        'code_order',
+        'location'
     ];
 }

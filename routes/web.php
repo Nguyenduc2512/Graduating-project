@@ -124,6 +124,9 @@ Route::group(
     Route::post('order', 'User\CartController@order')->name('order');
     Route::post('show_form_order', 'User\CartController@showFormOrder')->name('show_form_order');
     Route::post('new_order', 'User\CartController@newOrder')->name('new_order');
+    Route::get('history', 'User\UserController@history')->name('history');
+    Route::get('favorite', 'User\UserController@favorite')->name('favorite');
+    Route::get('add_to_favorite/{id}', 'User\UserController@addToFavorite')->name('add_to_favorite');
 });
 
 Auth::routes();

@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('user_id');
             $table->integer('total_price');
             $table->string('promo')->nullable();
+            $table->string('location');
             $table->integer('status')->default(1);
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

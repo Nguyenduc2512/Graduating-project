@@ -63,17 +63,24 @@ $(document).ready(function () {
 
 
 function order() {
+    $("#order_cart").modal('show');
+    e.preventDefault();
+}
+
+function submit_order() {
     $("#order").find(".sp").each(function (key, value) {
         var new_amount = $(value).find("#new_amount");
         var amount = $(value).find("p[id = 'amount']").text();
         new_amount.val(amount);
     });
+    var locat = $("#form_order").find("#location").val();
+    var location = $("#order").find("#location")
     var total_price = $("#site-footer").find("h2[class = 'total']").find("span").text();
     var price = $("#order").find("#total_price");
     price.val(total_price);
+    location.val(locat);
     $("#code_promo").val($("#code").val());
     $("#order").submit();
-
 }
 
 function showOrder() {

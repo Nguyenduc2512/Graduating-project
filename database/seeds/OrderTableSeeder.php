@@ -20,6 +20,7 @@ class OrderTableSeeder extends Seeder
                 'user_id'      => $faker->randomElement($UserIDs),
                 'total_price' => rand(1000000,4000000),
                 'promo' => null,
+                'location' => $faker->address,
                 'status' => rand(0,3)
             ];
             $carts[] = $item;
