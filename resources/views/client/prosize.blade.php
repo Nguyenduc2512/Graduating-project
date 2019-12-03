@@ -1,6 +1,9 @@
 @if(count($sizes) == 0)
 
-Không có sản phẩm thuộc danh mục này!
+<label for="">Size*</label>
+<select name="size" class="form-control">
+	<option selected value="">--</option>
+</select>
 @else
 <label for="">Size*</label>
 <select name="size" class="form-control">

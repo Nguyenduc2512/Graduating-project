@@ -106,9 +106,7 @@ class PageController extends Controller
 
         }
         else{
-            $sizes = DB::table('properties')
-            ->where('product_id', '=', "$id")
-            ->get();
+            $sizes = [];
         }
 
         return view('client/prosize', ['sizes' => $sizes,]);
