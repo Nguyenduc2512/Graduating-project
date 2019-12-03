@@ -18,3 +18,59 @@ label{
 .order .table{
     font-size: 13px;
 }
+
+.listfavorite{
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+.sp{
+    margin-bottom: 30px;
+}
+.tab_cart li{
+    margin-right: 30px;
+}
+.tab_cart .nav-item .active{
+    background: #1e3650;
+    color: #fff;
+}
+.allprice span{
+    display: inline-block;
+}
+.allprice .qt-minus{
+    width: 35px !important;
+    height: 35px !important;
+    background: #1e3650;
+    color: #fff;
+    text-align: center;
+    margin-right: 5px;
+    cursor: pointer;
+    padding-top: 5px;
+}
+.allprice .qt-plus{
+    width: 35px !important;
+    height: 35px !important;
+    background: #1e3650;
+    color: #fff;
+    text-align: center;
+    margin-left: 5px;
+    cursor: pointer;
+    padding-top: 5px;
+}
+.allprice .qt{
+    width: 35px !important;
+    height: 35px !important;
+    background: #95c2f1;
+    text-align: center;
+    color: #000;
+    padding-top: 5px;
+}
+.allprice .qt-minus:hover{
+    background: #95c2f1;
+    transition: 0.3s;
+     color: #000;
+}
+.allprice .qt-plus:hover{
+    background: #95c2f1;
+    transition: 0.3s;
+     color: #000;
+}
