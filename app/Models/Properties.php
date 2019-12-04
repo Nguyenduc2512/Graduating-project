@@ -11,6 +11,7 @@ class Properties extends Model
         'product_id',
         'color_id',
         'size',
+        'amount',
     ];
 
     public function product() {

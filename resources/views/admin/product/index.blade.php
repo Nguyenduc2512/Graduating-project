@@ -53,7 +53,7 @@
                                             <th width="200px">Số lượng</th>
                                             <th>Đường dẫn</th>
                                             <th>Trạng thái</th>
-                                            <th width="150px"> <a href="{{route('admin.add_brand')}}"
+                                            <th width="150px"> <a href="{{route('admin.add_product')}}"
                                                     class="btn btn-xs btn-success">
                                                     <i class="fa fa-plus"></i> Thêm mới
                                                 </a></th>
@@ -73,7 +73,7 @@
                                                 Ngừng kinh doanh
                                                 @endif
                                             </td>
-                                            <td><a href="{{route('admin.edit_product')}}" class="btn btn-xs btn-info">
+                                            <td><a href="{{route('admin.edit_product', ['id' => $product->id])}}" class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
                                                 <a href="#" class="btn btn-xs btn-danger btn-remove">

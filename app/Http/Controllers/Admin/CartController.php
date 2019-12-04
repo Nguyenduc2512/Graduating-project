@@ -18,8 +18,8 @@ class CartController extends Controller
 
     public function index()
     {
-        $carts = $this->cartService->getAllCart();
-        return view('admin/cart/index', compact('carts'));
+        $orders = $this->cartService->getListOrder();
+        return view('admin/cart/index', compact('orders'));
     }
 
     public function decline($id)
@@ -36,10 +36,6 @@ class CartController extends Controller
         return redirect()->route('admin.list_cart');
     }
 
-    public function editProduct()
-    {
-        return view('admin/product/edit');
-    }
     public function delivery($id)
     {
         $cart = Order::find($id);
@@ -51,5 +47,11 @@ class CartController extends Controller
     {
         $cart = $this->cartService->addDelivery($request, $id);
         return redirect()->route('admin.list_cart');
+    }
+
+    public function detail($id)
+    {
+        $order = $this->cartService->getDetailOrder($id);
+        return view('admin/cart/detailcart', compact('order'));
     }
 }

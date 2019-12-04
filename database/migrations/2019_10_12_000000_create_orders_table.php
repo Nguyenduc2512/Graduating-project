@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->Increments('id');
             $table->string('code_order');
             $table->unsignedInteger('user_id');
-            $table->integer('delivery');
+            $table->integer('delivery')->nullable();
             $table->integer('total_price');
             $table->string('promo')->nullable();
             $table->string('location');

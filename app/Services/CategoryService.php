@@ -43,5 +43,11 @@ class CategoryService
 
         $category->save();
     }
+
+    public function getAllCategories()
+    {
+        $categories = Category::all();
+        return $categories;
+    }
 }
 
