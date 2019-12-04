@@ -13,6 +13,10 @@ class Order extends Model
         'status',
         'promo',
         'code_order',
-        'location'
+        'location',
+        'delivery_id'
     ];
+    public function user() {
+        return $this->hasOne(User::class, 'id', 'user_id');
+}
 }

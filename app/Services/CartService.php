@@ -4,6 +4,7 @@ use App\Models\Cart;
 use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 
 class CartService {
      public function getListCart()
@@ -91,5 +92,14 @@ class CartService {
          ];
          $cart->fill($data);
          $cart->save();
+     }
+     public function addDelivery(Request $request,$id)
+     {
+         $order = Order::find($id);
+         //$cart->status = 2 ~ decline cart
+         $order->status = 5;
+         $order->delivery = $request->delivery_id;
+         $order->save();
+
      }
  }
