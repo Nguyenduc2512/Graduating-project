@@ -58,4 +58,19 @@ class ProductController extends Controller
         $activeProducts = $this->productService->getProductActive();
         return view('admin/product/index', compact('products', 'activeProducts'));
     }
+
+    public function editProduct($id)
+    {
+        $product = $this->productService->getOneProduct($id);
+        $categories = $this->categoryService->getAllCategories();
+        return view('admin/product/edit', compact('product', 'categories'));
+    }
+
+    public function saveEditProduct(Request $request, $id)
+    {
+        $product = $this->productService->editProduct($request, $id);
+        $products = $this->productService->getProduct();
+        $activeProducts = $this->productService->getProductActive();
+        return view('admin/product/index', compact('products', 'activeProducts'));
+    }
 }

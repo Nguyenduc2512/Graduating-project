@@ -107,8 +107,11 @@ Route::group(
 
     Route::post('delivery_cart/{id}', 'Admin\CartController@addDelivery');
 
+    Route::get('details_cart/{id}', 'Admin\CartController@detail')->name('detail_cart');
+
     //product
-    Route::get('edit_product', 'Admin\CartController@editProduct')->name('edit_product');
+    Route::get('edit_product/{id}', 'Admin\ProductController@editProduct')->name('edit_product');
+    Route::post('edit_product/{id}', 'Admin\ProductController@saveEditProduct');
 });
 
 Route::group(

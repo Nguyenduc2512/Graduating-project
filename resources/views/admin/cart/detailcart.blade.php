@@ -34,7 +34,7 @@
                     aria-describedby="example2_info">
                     <thead>
                       <tr role="row">
-                        <th> Mã sản phẩm</th>
+                          <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ảnh</th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Sản phẩm
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Số lượng
@@ -43,50 +43,27 @@
                           phẩm
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Thành tiền
-                          mãi
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"> <a
-                            href="listorder.html" class="btn btn-xs btn-success">
+                            href="{{route('admin.list_cart')}}" class="btn btn-xs btn-success">
                             <i class="fas fa-long-arrow-alt-left"></i> Quay lại
                           </a>
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr role="row" class="odd">
-                        <td>1</td>
-                        <td>Giày số 1</td>
-                        <td>2</td>
-                        <td>160000</td>
-                        <td>320000</td>
+                    @foreach($order as $cart)
+                        <tr role="row" class="odd">
+                            <td><img src="/{{$cart->properties->product->picture}}" style="width: 100px"></td>
+                              <td>{{$cart->properties->product->name}}</td>
+                              <td>{{$cart->amount}}</td>
+                              <td>{{$cart->properties->product->price}}</td>
+                              <td>{{$cart->properties->product->price * $cart->amount}}</td>
                         <td></td>
-                      </tr>
+                        </tr>
+                    @endforeach
                     </tbody>
                   </table>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#"
-                          aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1"
-                          tabindex="0" class="page-link">1</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2"
-                          tabindex="0" class="page-link">2</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3"
-                          tabindex="0" class="page-link">3</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="4"
-                          tabindex="0" class="page-link">4</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="5"
-                          tabindex="0" class="page-link">5</a></li>
-                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="6"
-                          tabindex="0" class="page-link">6</a></li>
-                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2"
-                          data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>
@@ -96,6 +73,6 @@
       <!-- /.content -->
     </div>
 
-    
+
 @endsection
 

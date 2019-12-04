@@ -71,10 +71,9 @@
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1">Tổng tiền
-                                                    phẩm
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                                    colspan="1">Ghi chú
+                                                    colspan="1">Mã Giảm Giá
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1">Ngày đặt
@@ -84,28 +83,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($carts as $cart)
-                                            @if($cart->status == 1)
+                                            @foreach($orders as $order)
+                                            @if($order->status == 1)
                                             <tr role="row" class="odd">
-                                                <td>{{$cart->id}}</td>
-                                                <td>{{$cart->user->name}}</td>
-                                                <td>{{$cart->user->email}}</td>
-                                                <td>{{$cart->user->phone}}</td>
-                                                <td>{{$cart->user->location}}</td>
-                                                <td>{{$cart->properties->product->price * $cart->amount}}</td>
-                                                <td>Ship hàng nhanh</td>
-                                                <td>{{$cart->created_at}}</td>
+                                                <td>{{$order->id}}</td>
+                                                <td>{{$order->user->name}}</td>
+                                                <td>{{$order->user->email}}</td>
+                                                <td>{{$order->user->phone}}</td>
+                                                <td>{{$order->location}}</td>
+                                                <td>{{$order->total_price}}</td>
                                                 <td>
-                                                    <a href="/admin1/cart/detail" class="btn btn-xs btn-info">
+                                                    @if( $order->promo != null)
+                                                        {{$order->promo}}
+                                                    @else
+                                                        #Không có
+                                                    @endif
+                                                </td>
+                                                <td>{{$order->created_at}}</td>
+                                                <td>
+                                                <td>
+                                                    <a href="{{route('admin.detail_cart', ['id' => $order->id])}}" class="btn btn-xs btn-info">
                                                         <i class="fa fa-pencil"></i> Chi tiết
                                                     </a>
-                                                    <a href="{{route('admin.decline', ['id'=> $cart->id])}}"
+                                                    <a href="{{route('admin.decline', ['id'=> $order->id])}}"
                                                         class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash"></i> Từ chối
                                                     </a>
-                                                    <a href="{{route('admin.accept', ['id'=>$cart->id])}}"
+                                                    <a href="{{route('admin.accept', ['id'=>$order->id])}}"
                                                         class="btn btn-xs btn-success ">
-                                                        <i class="fas fa-truck"></i> Xác nhận
+                                                        <i class="fas pace-flash-success"></i> Xác nhận
                                                     </a>
                                                 </td>
                                             </tr>
@@ -143,10 +149,9 @@
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1">Tổng tiền
-                                                    phẩm
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                                    colspan="1">Ghi chú
+                                                    colspan="1">Mã giảm giá
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1">Ngày đặt
@@ -156,26 +161,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($carts as $cart)
-                                            @if($cart->status == 2)
+                                            @foreach($orders as $order)
+                                            @if($order->status == 2)
                                             <tr role="row" class="odd">
-                                                <td>{{$cart->id}}</td>
-                                                <td>{{$cart->user->name}}</td>
-                                                <td>{{$cart->user->email}}</td>
-                                                <td>{{$cart->user->phone}}</td>
-                                                <td>{{$cart->user->location}}</td>
-                                                <td>{{$cart->properties->product->price * $cart->amount}}</td>
-                                                <td>Ship hàng nhanh</td>
-                                                <td>{{$cart->created_at}}</td>
+                                                <td>{{$order->id}}</td>
+                                                <td>{{$order->user->name}}</td>
+                                                <td>{{$order->user->email}}</td>
+                                                <td>{{$order->user->phone}}</td>
+                                                <td>{{$order->location}}</td>
+                                                <td>{{$order->total_price}}</td>
                                                 <td>
-                                                    <a href="/admin1/cart/detail" class="btn btn-xs btn-info">
+                                                    @if( $order->promo != null)
+                                                        {{$order->promo}}
+                                                    @else
+                                                        #Không có
+                                                    @endif
+                                                </td>
+                                                <td>{{$order->created_at}}</td>
+                                                <td>
+                                                <td>
+                                                    <a href="{{route('admin.detail_cart', ['id' => $order->id])}}" class="btn btn-xs btn-info">
                                                         <i class="fa fa-pencil"></i> Chi tiết
                                                     </a>
-                                                    <a href="{{route('admin.decline', ['id'=> $cart->id])}}"
+                                                    <a href="{{route('admin.decline', ['id'=> $order->id])}}"
                                                         class="btn btn-xs btn-danger">
                                                         <i class="fa fa-trash"></i> Hủy
                                                     </a>
-                                                    <a href="{{route('admin.delivery', ['id'=>$cart->id])}}" class="btn btn-xs btn-success ">
+                                                    <a href="{{route('admin.delivery', ['id'=>$order->id])}}" class="btn btn-xs btn-success ">
                                                         <i class="fas fa-truck"></i> Giao hàng
                                                     </a>
                                                 </td>
@@ -214,10 +226,9 @@
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1">Tổng tiền
-                                                    phẩm
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                                    colspan="1">Ghi chú
+                                                    colspan="1">Mã giảm giá
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1">Ngày đặt
@@ -227,19 +238,25 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($carts as $cart)
-                                            @if($cart->status == 4)
+                                            @foreach($orders as $order)
+                                            @if($order->status == 4)
                                             <tr role="row" class="odd">
-                                                <td>{{$cart->id}}</td>
-                                                <td>{{$cart->user->name}}</td>
-                                                <td>{{$cart->user->email}}</td>
-                                                <td>{{$cart->user->phone}}</td>
-                                                <td>{{$cart->user->location}}</td>
-                                                <td>{{$cart->properties->product->price * $cart->amount}}</td>
-                                                <td>Ship hàng nhanh</td>
-                                                <td>{{$cart->created_at}}</td>
+                                                <td>{{$order->id}}</td>
+                                                <td>{{$order->user->name}}</td>
+                                                <td>{{$order->user->email}}</td>
+                                                <td>{{$order->user->phone}}</td>
+                                                <td>{{$order->location}}</td>
+                                                <td>{{$order->total_price}}</td>
                                                 <td>
-                                                    <a href="/admin1/cart/detail" class="btn btn-xs btn-info">
+                                                    @if( $order->promo != null)
+                                                        {{$order->promo}}
+                                                    @else
+                                                        #Không có
+                                                    @endif
+                                                </td>
+                                                <td>{{$order->created_at}}</td>
+                                                <td>
+                                                    <a href="{{route('admin.detail_cart', ['id' => $order->id])}}" class="btn btn-xs btn-info">
                                                         <i class="fa fa-pencil"></i> Chi tiết
                                                     </a>
                                                 </td>

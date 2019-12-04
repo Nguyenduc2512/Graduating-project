@@ -166,7 +166,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             @foreach($orders as $order)
-                            @if($order->status == 2)
+                            @if($order->status == 4)
                             <div class="sp" style=" padding-top: 10px;">
                                 <div class="row">
                                     <div class="col-md-3"></div>

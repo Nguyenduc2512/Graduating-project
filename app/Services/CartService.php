@@ -66,18 +66,18 @@ class CartService {
 
      public function decline($id)
      {
-         $cart = Cart::find($id);
-         //$cart->status = 4 ~ decline cart
-         $cart->status = 4;
-         $cart->save();
+         $order = Order::find($id);
+         //$order->status = 4 ~ decline cart
+         $order->status = 4;
+         $order->save();
      }
 
      public function accept($id)
      {
-         $cart = Cart::find($id);
-         //$cart->status = 2 ~ decline cart
-         $cart->status = 2;
-         $cart->save();
+         $order = Order::find($id);
+         //$order->status = 2 ~ decline cart
+         $order->status = 2;
+         $order->save();
 
      }
 
@@ -97,9 +97,28 @@ class CartService {
      {
          $order = Order::find($id);
          //$cart->status = 2 ~ decline cart
-         $order->status = 5;
+         $order->status = 4;
          $order->delivery = $request->delivery_id;
          $order->save();
 
      }
+
+     public function getListOrder()
+     {
+         $order = Order::all();
+         return $order;
+     }
+
+     public function getDetailOrder($id)
+     {
+         $order = Cart::where('order_id', $id)->get();
+         return $order;
+     }
  }
+ //Đọc comment
+// status = 1 : Đã đặt
+// status = 2 : xác nhận
+// status = 3 : Từ chối
+// status = 4 : Đang giao
+// status = 5 : Thành công
+// status = 6 : Giao không thành công

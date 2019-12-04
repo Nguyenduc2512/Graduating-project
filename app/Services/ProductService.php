@@ -44,4 +44,39 @@ class ProductService
         return $products;
     }
 
+    public function getOneProduct($id)
+    {
+        $product = Product::find($id);
+        return $product;
+    }
+
+    public function editProduct(Request $request, $id)
+    {
+        $product = Product::find($id);
+        if ($request->hasFile('picture')) {
+            $filename = $request->picture->getClientOriginalName();
+            $filename = str_replace(' ', '-', $filename);
+            $filename = uniqid() . '-' . $filename;
+            $data = [
+                'name' => $request->name,
+                'price' => $request->price,
+                'category_id' => $request->cate_id,
+                'description' => $request->description,
+
+            ];
+                $path = $filename;
+                $product->picture = request()->picture->move('images/product', $path);
+            $product->fill($data);
+            $product->save();
+        }else {
+            $data = [
+                'name' => $request->name,
+                'price' => $request->price,
+                'category_id' => $request->cate_id,
+                'description' => $request->description,
+                ];
+            $product->fill($data);
+            $product->save();
+        }
+    }
 }

@@ -20,6 +20,7 @@ class PropertiesService
                     'product_id' => $product->id,
                     'color_id' => $color,
                     'size' => $size,
+                    'amount' => 0
                 ];
                 $properties->fill($data);
                 $properties->save();
