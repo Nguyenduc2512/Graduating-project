@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\DeliveryBrand;
 
 class CartController extends Controller
 {
@@ -37,5 +39,17 @@ class CartController extends Controller
     public function editProduct()
     {
         return view('admin/product/edit');
+    }
+    public function delivery($id)
+    {
+        $cart = Order::find($id);
+        $delivery = DeliveryBrand::all();
+        return view('admin/cart/delivery', compact('delivery','cart'));
+    }
+
+    public function addDelivery($id,Request $request)
+    {
+        $cart = $this->cartService->addDelivery($request, $id);
+        return redirect()->route('admin.list_cart');
     }
 }

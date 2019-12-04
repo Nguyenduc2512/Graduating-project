@@ -103,6 +103,10 @@ Route::group(
 
     Route::get('accept/{id}', 'Admin\CartController@accept')->name('accept');
 
+    Route::get('delivery_cart/{id}', 'Admin\CartController@delivery')->name('delivery');
+
+    Route::post('delivery_cart/{id}', 'Admin\CartController@addDelivery');
+
     //product
     Route::get('edit_product', 'Admin\CartController@editProduct')->name('edit_product');
 });
