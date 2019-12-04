@@ -1,6 +1,6 @@
-<script src="{{asset('client/js/jquery.min.js')}}"></script>
 <script src="{{asset('client/plugins/bootstrap/js/jquery.slim.min.js')}}"></script>
 <script src="{{asset('client/plugins/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{asset('client/js/jquery.min.js')}}"></script>
 <script src="{{asset('client/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('client/plugins/OwlCarousel2/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('client/js/compare.js')}}"></script>
@@ -23,7 +23,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'get',
             dataType: 'html',
-            url: '{{url(' / proDetail ')}}',
+            url: '{{url('/proDetail')}}',
             data: 'id=' + id + '&color=' + color,
             success: function(response) {
                 console.log(response);
