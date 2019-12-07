@@ -65,7 +65,7 @@ class CartController extends Controller
                 $total_price = $total_price + $price;
             }
         }
-        return view('client/listcart', compact('slideshows', 'carts', 'count', 'showModal', 'total_price', 'orders'));
+        return redirect()->back()->with('msg', 'Cảm ơn bạn đã liên hệ với chúng tôi!');
     }
 
     public function showFormOrder(OrderRequest $request)

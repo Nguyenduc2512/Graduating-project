@@ -114,13 +114,148 @@ class PageController extends Controller
     }
 
 
-    public function cate($id)
+    public function cate(Request $request,$id)
     {
-        $productcate = Product::where('category_id', $id)->paginate(3);
+        $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(6);
         $category = Category::withCount(['products'])->get();
         $count = count($this->cartService->countCartUser());
-        return view('client/cate', compact('productcate','category', 'count'));
+        return view('client/cate', compact('productcate','category', 'count','id'));
     }
+    public function fetch_data(Request $request)
+    {
+        if($request->ajax()){
+        $id = $request->id;
+        $brand_id = $request->brand_id;
+        $se = $request->se;
+
+        if($brand_id!="" && $se!=""){
+            switch ($se) {
+            case 'new':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'asc':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->orderBy('price', 'asc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'desc':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->orderBy('price', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            }
+        
+        }
+        else if($brand_id!=""){
+            $productcate = Product::where('category_id', $id)
+                        ->whereIn('brand_id', explode(",", $brand_id))
+                        ->where('status', 1)
+                        ->paginate(6);
+        }
+        else if($se!=""){
+            switch ($se) {
+            case 'new':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'asc':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('price', 'asc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'desc':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('price', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            }
+        }
+        else{
+            $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(6);
+        }
+            }
+            
+        return view('client/procate', compact('productcate'));
+     }
+
+
+    public function proCate(Request $request){
+        $id = $request->id;
+        $brand_id = $request->brand_id;
+        $se = $request->se;
+
+        if($brand_id!="" && $se!=""){
+            switch ($se) {
+            case 'new':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'asc':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->orderBy('price', 'asc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'desc':
+                $productcate = Product::where('category_id', $id)
+                ->whereIn('brand_id', explode(",", $brand_id))
+                ->orderBy('price', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            }
+        
+        }
+        else if($brand_id!=""){
+            $productcate = Product::where('category_id', $id)
+                        ->whereIn('brand_id', explode(",", $brand_id))
+                        ->where('status', 1)
+                        ->paginate(6);
+        }
+        else if($se!=""){
+            switch ($se) {
+            case 'new':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'asc':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('price', 'asc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            case 'desc':
+                $productcate = Product::where('category_id', $id)
+                ->orderBy('price', 'desc')
+                ->where('status', 1)
+                ->paginate(6);
+                break;
+            }
+        }
+        else{
+            $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(6);
+        }
+
+        return view('client/procate', compact('productcate'));
+        }
 
     public function comment(Request $request)
     {
