@@ -30,7 +30,7 @@ class AccountRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:6',
             'confirm_pass' => 'required|same:password',
-            'avatar'=>'required|file|mimes:jpeg,png,jpg',
+            'avatar'=>'file|mimes:jpeg,png,jpg',
             'location' => 'required',
             'phone' => 'required|unique:users,phone',
             'date_of_birth' => 'required|date'

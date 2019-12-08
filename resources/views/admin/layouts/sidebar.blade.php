@@ -36,9 +36,9 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('admin.add_product')}}" class="nav-link active">
-                    <i class="fas fa-plus-circle nav-icon"></i>
-                    <p>Thêm sản phẩm</p>
+                  <a href="{{route('admin.show_color')}}" class="nav-link active">
+                      <i class="fas fa-palette"></i>
+                    <p>Màu sắc</p>
                   </a>
                 </li>
               </ul>

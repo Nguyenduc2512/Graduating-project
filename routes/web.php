@@ -112,6 +112,22 @@ Route::group(
     //product
     Route::get('edit_product/{id}', 'Admin\ProductController@editProduct')->name('edit_product');
     Route::post('edit_product/{id}', 'Admin\ProductController@saveEditProduct');
+
+    Route::get('color', 'Admin\ProductController@showColor')->name('show_color');
+
+    Route::get('add_color', 'Admin\ProductController@addColor')->name('add_color');
+
+    Route::post('add_color', 'Admin\ProductController@newColor');
+
+    Route::get('edit_color/{id}', 'Admin\ProductController@editColor')->name('edit_color');
+
+    Route::post('edit_color/{id}', 'Admin\ProductController@updateColor');
+
+    Route::get('show_album/{id}', 'Admin\ProductController@showAlbum')->name('show_album');
+
+    Route::post('new_picture/{id}', 'Admin\ProductController@newPicture')->name('new_picture');
+
+    Route::get('remove_picture/{id}', 'Admin\ProductController@removePicture')->name('remove_picture');
 });
 
 Route::group(
@@ -171,69 +187,3 @@ Route::get('login_admin', 'Auth\LoginController@loginAdminForm')->name('login_ad
 Route::post('login_admin', 'Auth\LoginController@loginAdmin');
 
 Route::get('logout_admin', 'Auth\LoginController@logoutAdmin')->name('logout_admin');
-
-Route::get('editcustomer', function () {
-    return view('client/editcustomer');
-});
-Route::get('/listcart', function () {
-    return view('client/listcart');
-});
-Route::get('/hiscart', function () {
-    return view('client/hiscart');
-});
-
-Route::get('/detail-product', function () {
-    return view('client/detail-product');
-});
-
-// admin home
-Route::get('/admin1', function () {
-    return view('admin/index');
-});
-// product
-Route::get('/admin1/product', function () {
-    return view('admin/product/index');
-});
-
-Route::get('/admin1/product/add', function () {
-    return view('admin/product/add');
-});
-
-Route::get('/admin1/product/edit', function () {
-    return view('admin/product/edit');
-});
-
-// comment
-Route::get('/admin1/comment', function () {
-    return view('admin/comment/index');
-});
-
-// cart
-Route::get('/admin1/cart', function () {
-    return view('admin/cart/index');
-});
-
-Route::get('/admin1/cart/detail', function () {
-    return view('admin/cart/detailcart');
-});
-
-
-// contact
-Route::get('/admin1/contact', function () {
-    return view('admin/contact/index');
-});
-
-// customer
-Route::get('/admin1/customer', function () {
-    return view('admin/customer/index');
-});
-
-
-// websetting
-Route::get('/admin1/websetting', function () {
-    return view('admin/websetting/index');
-});
-
-Route::get('/admin1/websetting/edit', function () {
-    return view('admin/websetting/edit');
-});

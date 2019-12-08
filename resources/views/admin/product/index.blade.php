@@ -31,15 +31,16 @@
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
-                                    role="tab" aria-controls="pills-home" aria-selected="true">Tất cả</a>
+                                role="tab" aria-controls="pills-home" aria-selected="true">Tất cả</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-enable-tab" data-toggle="pill" href="#pills-enable"
-                                    role="tab" aria-controls="pills-enable" aria-selected="false">Đang bán</a>
+                                role="tab" aria-controls="pills-enable" aria-selected="false">Đang bán</a>
                             </li>
-                            {{--                          <li class="nav-item">--}}
-                            {{--                              <a class="nav-link" id="pills-diactive-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Ngừng kinh doanh</a>--}}
-                            {{--                          </li>--}}
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-diactive-tab" data-toggle="pill" href="#pills-contact"
+                                role="tab" aria-controls="pills-contact" aria-selected="false">Ngừng kinh doanh</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -50,8 +51,8 @@
                                             {{--                                      <th>STT</th>--}}
                                             <th>Tên sản phẩm</th>
                                             <th>Ảnh</th>
-                                            <th width="200px">Số lượng</th>
                                             <th>Đường dẫn</th>
+                                            <th>Album</th>
                                             <th>Trạng thái</th>
                                             <th width="150px"> <a href="{{route('admin.add_product')}}"
                                                     class="btn btn-xs btn-success">
@@ -64,8 +65,8 @@
                                         <tr>
                                             <td>{{$product->name}}</td>
                                             <td><img src="{{url('/')}}/{{$product->picture}}" height="50px"></td>
-                                            <td>{{$product->products_count}}</td>
                                             <td>{{$product->link}}</td>
+                                            <td><a href="{{route('admin.show_album', ['id' => $product->id])}}"><i class="fas fa-photo-video"></i></a></td>
                                             <td width="200px">
                                                 @if($product->status == 1)
                                                 Đan bán

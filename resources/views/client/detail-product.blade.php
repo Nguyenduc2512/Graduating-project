@@ -14,15 +14,11 @@
                             data-src="{{url('/')}}/{{$product->picture}}">
                             <img src="{{url('/')}}/{{$product->picture}}" width="100%" />
                         </li>
-                        <li data-thumb="{{url('/')}}/client/images/2.png" data-src="{{url('/')}}/client/images/2.png">
-                            <img src="{{url('/')}}/client/images/2.png" width="100%" />
-                        </li>
-                        <li data-thumb="{{url('/')}}/client/images/3.png" data-src="{{url('/')}}/client/images/3.png">
-                            <img src="{{url('/')}}/client/images/3.png" width="100%" />
-                        </li>
-                        <li data-thumb="{{url('/')}}/client/images/4.png" data-src="{{url('/')}}/client/images/4.png">
-                            <img src="{{url('/')}}/client/images/4.png" width="100%" />
-                        </li>
+                        @foreach($album as $picture)
+                            <li data-thumb="{{url('/')}}/{{$picture->picture}}" data-src="{{url('/')}}/{{$picture->picture}}">
+                                <img src="/{{$picture->picture}}" width="100%" />
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-md-5">
@@ -281,5 +277,5 @@
             </div>
         </div>
     </div>
-    
+
     @endsection
