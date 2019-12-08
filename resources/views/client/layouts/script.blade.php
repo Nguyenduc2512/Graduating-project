@@ -33,9 +33,57 @@ $(document).ready(function() {
             }
         });
     });
-});
-</script>
+    $(".find").click(function(){
+        var se = $("#seID").val();
+        var cate = $("#cateID").val();
 
+        var brand = [];
+        $(".brand").each(function(){
+           if($(this).is(":checked")){
+            brand.push($(this).val());
+
+           }
+        });
+        Finalbrand = brand.toString();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: "/proCate?brand_id=" + Finalbrand + "&id=" + cate +"&se=" + se,
+          success:function(response){
+            console.log(response);
+            $("#productCate").html(response);
+          }
+        });
+      });
+    $(document).on('click', '.pagination a', function(event){
+        event.preventDefault(); 
+        var page = $(this).attr('href').split('page=')[1];
+        fetch_data(page);
+    });
+
+        function fetch_data(page){
+        var se = $("#seID").val();
+        var cate = $("#cateID").val();
+
+        var brand = [];
+        $(".brand").each(function(){
+           if($(this).is(":checked")){
+            brand.push($(this).val());
+
+           }
+        });
+        Finalbrand = brand.toString();
+        $.ajax({
+        url:"/cate/huy?page="+page+"&brand_id=" + Finalbrand + "&id=" + cate +"&se=" + se,
+        success:function(data)
+        {
+        $('#productCate').html(data);
+       }
+        });
+        }
+
+        });
+    </script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js">
 </script>
 

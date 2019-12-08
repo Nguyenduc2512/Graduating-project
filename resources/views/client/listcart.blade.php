@@ -239,4 +239,17 @@
         </div>
     </div>
 </div>
+@if (session('msg'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script type="text/javascript">
+    Swal.fire(
+  'Đặt hàng thành công!',
+  'Cảm ơn bạn đã thanh toán sản phẩm',
+  'success'
+)
+
+</script>
+@endif
+
 @endsection
+

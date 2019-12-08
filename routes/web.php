@@ -151,9 +151,14 @@ Route::group(
     Route::get('favorite', 'User\UserController@favorite')->name('favorite');
     Route::get('add_to_favorite/{id}', 'User\UserController@addToFavorite')->name('add_to_favorite');
 });
-
+ 
 Auth::routes();
 // brand
+
+Route::get('/cate/huy', 'User\PageController@fetch_data');
+
+Route::get('/proCate', 'User\PageController@proCate')->name('fillter');
+
 Route::get('/proDetail', 'User\PageController@proDetail');
 
 Route::post('new_account', 'User\UserController@newAccount')->name('new_account');

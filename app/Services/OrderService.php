@@ -8,6 +8,10 @@ use App\Models\Order;
 use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
+use App\Models\User;
+use App\Mail\OrderMail;
+use Mail;
 
 class OrderService
 {
@@ -26,6 +30,10 @@ class OrderService
         $order->fill($data);
         $order->save();
         $request->request->add(['order_id' => $order->id]);
+        $id=DB::getPdo()->lastInsertId();
+        $user = User::find(Auth::user()->id);
+        $orderMail = Order::find($id);
+        Mail::to($user)->send(new OrderMail($orderMail));   
 
     }
 

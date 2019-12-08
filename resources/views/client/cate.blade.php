@@ -21,64 +21,29 @@
                                 @endforeach
                             </div>
                             <div class="col-lg-12 col-6">
-                                <h3 style="margin-top: 20px;">Size</h3>
-                                <form action="">
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 39
+                                <h3 style="margin-top: 20px;">Thương hiệu</h3>
+                                    @foreach(App\Models\Brand::all() as $brand)
+                                    <div class="col-lg-12 mt-2"> 
+                                        <input type="checkbox" value="{{$brand->id}}" id="brand"  class="find brand"><span>{{$brand->name}}</span>
                                     </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 40
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 41
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 42
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <input type="checkbox" name="1"> 43
-                                    </div>
-                                </form>
+                                    @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9">
                     <div class="sortby">
-                        <select name="" id="">
+                        <select name="" id="seID" class="find">
                             <option value="">Sắp xếp theo</option>
-                            <option value="">Mới nhất</option>
-                            <option value="">Giá: Thấp - Cao</option>
-                            <option value="">Giá: Cao - Thấp</option>
+                            <option value="new">Mới nhất</option>
+                            <option value="asc">Giá: Thấp - Cao</option>
+                            <option value="desc">Giá: Cao - Thấp</option>
                         </select>
+                        <input type="hidden" value="{{$id}}" name="" id="cateID">
                     </div>
                     <div class="pcate">
-                        <div class="row">
-                            @if(count($productcate) == 0)
-                            Không có sản phẩm thuộc danh mục này!
-                            @else
-                            @foreach($productcate as $pc)
-                            <div class="col-md-4 col-6">
-                                <div class="p_nd">
-                                    <a href="{{route('detail', ['id' => $pc->id])}}"> <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt=""></a>
-                                    <div class="nd_hover">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="{{route('detail', ['id' => $pc->id])}}"><i class="far fa-eye"></i></a>
-                                        <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                    </div>
-                                    <a href="{{route('detail', ['id' => $pc->id])}}">
-                                        <h3>{{$pc->name}}</h3>
-                                    </a>
-                                    <p>{{$pc->price}} đ</p>
-                                </div>
-                            </div>
-                            @endforeach
-                            @endif
-                            <div class="col-12">
-                                <ul class="pagination" style="float: right;">
-                                {{ $productcate->links() }}
-                                </ul>
-                            </div>
+                        <div class="row" id="productCate">
+                            @include('client/procate')
                         </div>
                     </div>
                 </div>

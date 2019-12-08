@@ -31,7 +31,7 @@ class CartService {
          ];
          $cart->fill($data);
          $cart->save();
-
+ 
      }
 
      public function removeItem($id)
