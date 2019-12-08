@@ -146,32 +146,3 @@
 
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-{{--<script>--}}
-{{--        function addProduct() {--}}
-{{--            var datas = [];--}}
-{{--            var inputs = $(".input_data");--}}
-
-{{--            for(var i = 0; i < inputs.length; i++){--}}
-{{--                var color = inputs[i].getElementsByClassName('color')[0].value;--}}
-
-{{--                var sizes = inputs[i].getElementsByClassName('size');--}}
-{{--                var data_size = [];--}}
-{{--                for(var ii = 0; ii < sizes.length; ii++){--}}
-{{--                    if (sizes[ii].checked === true){--}}
-{{--                        data_size.push(sizes[ii].value);--}}
-{{--                    }--}}
-
-{{--                }--}}
-{{--                var data = {--}}
-{{--                  'color' : color,--}}
-{{--                  'sizes' : data_size--}}
-{{--                };--}}
-{{--                datas.push(data);--}}
-{{--                document.getElementById(dataProducts).value = datas--}}
-{{--            }--}}
-{{--        }--}}
-{{--        function submitform() {--}}
-{{--            document.myForm.submit();--}}
-{{--        }--}}
-
-{{--</script>--}}

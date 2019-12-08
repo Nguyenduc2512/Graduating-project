@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Services\OrderService;
+use App\Services\ProductService;
 use App\Services\PropertiesService;
 use Illuminate\Http\Request;
 use App\Services\CartService;
@@ -29,12 +30,15 @@ class PageController extends Controller
 {
     protected $cartService;
     protected $propertiesService;
+    protected $productService;
     protected $orderService;
     public function __construct(CartService $cartService,
                                 PropertiesService $propertiesService,
+                                ProductService $productService,
                                 OrderService $orderService)
     {
         $this->cartService = $cartService;
+        $this->productService = $productService;
         $this->propertiesService = $propertiesService;
         $this->orderService = $orderService;
     }
@@ -56,6 +60,7 @@ class PageController extends Controller
         $sizes = array();
         $color_size = array();
         $product = Product::find($id);
+        $album = $this->productService->getAlbumProduct($id);
         $count = count($this->cartService->countCartUser());
         $productStatus = Product::where('id', $id)->where('status', 1)->get();
         if(!$product || count($productStatus) == 0){
@@ -91,7 +96,7 @@ class PageController extends Controller
         }
         $productCategory = DB::table('products')->where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
         $comment = Comment::where('product_id', $id)->limit(5)->orderBy('created_at', 'ASC')->get();
-        return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size', 'count'));
+        return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size', 'count', 'album'));
     }
 
     public function proDetail(Request $request)
@@ -109,7 +114,7 @@ class PageController extends Controller
             $sizes = [];
         }
 
-        return view('client/prosize', ['sizes' => $sizes,]);
+        return view('client/prosize', ['sizes' => $sizes,], compact('album'));
 
     }
 

@@ -4,6 +4,8 @@
 namespace App\Services;
 
 use App\Http\Requests\ProductRequests;
+use App\Models\Album;
+use App\Models\Color;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -78,5 +80,73 @@ class ProductService
             $product->fill($data);
             $product->save();
         }
+    }
+
+    public function getAlbumProduct($id)
+    {
+        $album = Album::where('product_id', $id)->get();
+
+        return $album;
+    }
+
+    public function getAllColor()
+    {
+        $colors = Color::all();
+        return $colors;
+    }
+
+    public function newColor(Request $request)
+    {
+        $color = new Color();
+        $data = [
+            'name' => $request->name,
+        ];
+        $color->fill($data);
+        $color->save();
+    }
+
+    public function findColor($id)
+    {
+        $color = Color::find($id);
+
+        return $color;
+        dd($color);
+    }
+
+    public function editColor(Request $request, $id)
+    {
+        $color = Color::find($id);
+        $data = [
+            'name' => $request->name,
+        ];
+        $color->fill($data);
+        $color->save();
+    }
+
+    public function newPicture(Request $request, $id)
+    {
+        foreach ($request->picture as $picture)
+        {
+            $product = new Album();
+            $filename = $picture->getClientOriginalName();
+            $filename = str_replace(' ', '-', $filename);
+            $filename = uniqid() . '-' . $filename;
+            $data = [
+                'product_id' => $id
+            ];
+            $path = $filename;
+            $product->picture = $picture->move('images/product', $path);
+            $product->fill($data);
+            $product->save();
+        }
+    }
+
+    public function removePicture($id)
+    {
+        $product = Album::find($id)->product_id;
+        $picture = Album::find($id);
+        $picture->delete();
+
+        return $product;
     }
 }

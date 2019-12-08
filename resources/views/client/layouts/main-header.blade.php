@@ -206,7 +206,7 @@
                                                     <form action="{{route('member.new_order')}}" method="post" id="form_order" >
                                                         @csrf
                                                         <div class="row">
-                                                            <div class="col-md-10 align-content-center">
+                                                            <div class="col-md-10" style="margin: auto">
                                                                 <div class="title">
                                                                     <h2 class="text_title"><span>Thông tin liên hệ giao hàng</span></h2>
                                                                 </div>
