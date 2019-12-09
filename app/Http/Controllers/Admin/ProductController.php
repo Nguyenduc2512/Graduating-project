@@ -57,7 +57,8 @@ class ProductController extends Controller
     {
         $products = $this->productService->getProduct();
         $activeProducts = $this->productService->getProductActive();
-        return view('admin/product/index', compact('products', 'activeProducts'));
+        $deactivateProducts = $this->productService->getProductDeactivate();
+        return view('admin/product/index', compact('products', 'activeProducts', 'deactivateProducts'));
     }
 
     public function editProduct($id)
@@ -132,5 +133,12 @@ class ProductController extends Controller
         $color = $this->productService->disableColor($id);
 
         return redirect()->route('admin.show_color');
+    }
+
+    public function disableProduct($id)
+    {
+        $product = $this->productService->disableProduct($id);
+
+        return redirect()->route('admin.show_product');
     }
 }

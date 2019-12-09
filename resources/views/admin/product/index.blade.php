@@ -28,24 +28,30 @@
                         <div class="col-sm-12 col-md-6"></div>
                     </div>
                     <div>
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
-                                role="tab" aria-controls="pills-home" aria-selected="true">Tất cả</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="pills-enable-tab" data-toggle="pill" href="#pills-enable"
-                                role="tab" aria-controls="pills-enable" aria-selected="false">Đang bán</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="pills-diactive-tab" data-toggle="pill" href="#pills-contact"
-                                role="tab" aria-controls="pills-contact" aria-selected="false">Ngừng kinh doanh</a>
-                            </li>
-                        </ul>
+                        <div class="container" style="margin-top: 50px;" id="tabs">
+                            <ul class="nav" id="pills-tab" role="tablist">
+                                <li class="nav-item"
+                                    style="border: #0000ff 1px solid; width: 150px; border-radius: 3px; text-align: center">
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                                       aria-controls="pills-home" aria-selected="true">Tất cả sản phẩm</a>
+                                </li>
+                                <br>
+                                <li class="nav-item"
+                                    style="border: #0000ff 1px solid; width: 150px; border-radius: 3px; text-align: center">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                                       aria-controls="pills-profile" aria-selected="false">Đang kinh doanh</a>
+                                </li>
+                                <br>
+                                <li class="nav-item"
+                                    style="border: #0000ff 1px solid; width: 150px; border-radius: 3px; text-align: center">
+                                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                                       aria-controls="pills-contact" aria-selected="false">Ngừng kinh doanh</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                                aria-labelledby="pills-home-tab">
-                                <table id="example" class="table table-striped" style="width:100%">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <table id="example" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
                                             {{--                                      <th>STT</th>--}}
@@ -77,7 +83,7 @@
                                             <td><a href="{{route('admin.edit_product', ['id' => $product->id])}}" class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
-                                                <a href="#" class="btn btn-xs btn-danger btn-remove">
+                                                <a href="{{route('admin.disable_product', ['id' => $product->id])}}" class="btn btn-xs btn-danger btn-remove">
                                                     <i class="fa fa-trash"></i> Xoá
                                                 </a></td>
                                         </tr>
@@ -85,18 +91,14 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade" id="pills-enable" role="tabpanel"
-                                aria-labelledby="pills-enable-tab">
-                                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>STT</th>
                                             <th>Tên sản phẩm</th>
                                             <th>Ảnh</th>
-                                            <th width="200px">Số lượng</th>
                                             <th>Đường dẫn</th>
+                                            <th>Album</th>
                                             <th>Trạng thái</th>
                                             <th width="150px"> <a href="{{route('admin.add_brand')}}"
                                                     class="btn btn-xs btn-success">
@@ -109,8 +111,8 @@
                                         <tr>
                                             <td>{{$activeProduct->name}}</td>
                                             <td><img src="{{url('/')}}/{{$activeProduct->picture}}" height="50px"></td>
-                                            <td>{{$activeProduct->products_count}}</td>
                                             <td>{{$activeProduct->link}}</td>
+                                            <td><a href="{{route('admin.show_album', ['id' => $activeProduct->id])}}"><i class="fas fa-photo-video"></i></a></td>
                                             <td width="200px">
                                                 @if($activeProduct->status == 1)
                                                 Đan bán
@@ -118,13 +120,51 @@
                                                 Ngừng kinh doanh
                                                 @endif
                                             </td>
-                                            <td><a href="{{route('admin.edit_brand', ['id' => $activeProduct->id])}}"
+                                            <td><a href="{{route('admin.edit_product', ['id' => $activeProduct->id])}}"
                                                     class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
-                                                <a href="#" class="btn btn-xs btn-danger btn-remove">
+                                                <a href="{{route('admin.disable_product', ['id' => $activeProduct->id])}}" class="btn btn-xs btn-danger btn-remove">
                                                     <i class="fa fa-trash"></i> Xoá
                                                 </a></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Ảnh</th>
+                                            <th>Đường dẫn</th>
+                                            <th>Album</th>
+                                            <th>Trạng thái</th>
+                                            <th width="150px"> <a href="{{route('admin.add_brand')}}"
+                                                    class="btn btn-xs btn-success">
+                                                    <i class="fa fa-plus"></i> Thêm mới
+                                                </a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($deactivateProducts as $deactivateProduct)
+                                        <tr>
+                                            <td>{{$deactivateProduct->name}}</td>
+                                            <td><img src="{{url('/')}}/{{$deactivateProduct->picture}}" height="50px"></td>
+                                            <td>{{$deactivateProduct->link}}</td>
+                                            <td><a href="{{route('admin.show_album', ['id' => $deactivateProduct->id])}}"><i class="fas fa-photo-video"></i></a></td>
+                                            <td width="200px">
+                                                @if($deactivateProduct->status == 1)
+                                                Đan bán
+                                                @else
+                                                Ngừng kinh doanh
+                                                @endif
+                                            </td>
+                                            <td><a href="{{route('admin.edit_product', ['id' => $deactivateProduct->id])}}"
+                                                    class="btn btn-xs btn-info">
+                                                    <i class="fa fa-pencil"></i> Cập nhật
+                                                </a>
                                         </tr>
                                         @endforeach
                                     </tbody>

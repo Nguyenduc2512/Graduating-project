@@ -42,7 +42,7 @@ class ProductService
 
     public function getProductActive()
     {
-        $products = Product::where('status', 1);
+        $products = Product::where('status', 1)->get();
         return $products;
     }
 
@@ -155,5 +155,18 @@ class ProductService
         $color = Color::find($id);
         $color->status = 1;
         $color->save();
+    }
+
+    public function disableProduct($id)
+    {
+        $product = Product::find($id);
+        $product->status = 2;
+        $product->save();
+    }
+
+    public function getProductDeactivate()
+    {
+        $product = Product::where('status', 2)->get();
+        return $product;
     }
 }
