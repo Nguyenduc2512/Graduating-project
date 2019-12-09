@@ -12,40 +12,56 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="sortby">
-                        <select name="" id="">
+                        <select name="" id="seID" class="findSearch">
                             <option value="">Sắp xếp theo</option>
-                            <option value="">Mới nhất</option>
-                            <option value="">Giá: Thấp - Cao</option>
-                            <option value="">Giá: Cao - Thấp</option>
+                            <option value="new">Mới nhất</option>
+                            <option value="asc">Giá: Thấp - Cao</option>
+                            <option value="desc">Giá: Cao - Thấp</option>
                         </select>
                     </div>
+                    <input type="hidden" id="kw" value="{{$kw}}">
                     <div class="pcate">
-                        <div class="row">
-                            @foreach($productSearch as $ps)
-                            <div class="col-md-3 col-6">
-                                <div class="p_nd">
-                                    <a href="#"> <img src="{{$ps->picture}}" width="100%" alt=""></a>
-                                    <div class="nd_hover">
-                                        <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                        <a href="#"><i class="far fa-eye"></i></a>
-                                        <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                    </div>
-                                    <a href="#">
-                                        <h3>{{$ps->name}}</h3>
-                                    </a>
-                                    <p>{{$ps->price}} đ</p>
-                                </div>
-                            </div>
-                            @endforeach
-                            <div class="col-12">
-                                <ul class="pagination" style="float: right;">
-
-                                </ul>
-                            </div>
+                        <div class="row" id="productSearch">
+                            @include('client/proSearch')
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{asset('client/js/jquery.min.js')}}"></script>
+    <script type="text/javascript">
+    $(".findSearch").click(function(){
+        var se = $("#seID").val();
+        var kw = $("#kw").val();
+    
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: "/proSearch?&kw=" + kw +"&se=" + se,
+          success:function(response){
+            console.log(response);
+            $("#productSearch").html(response);
+          }
+        });
+      });
+    $(document).on('click', '.pagination a', function(event){
+        event.preventDefault(); 
+        var page = $(this).attr('href').split('page=')[1];
+        fetch_data(page);
+    });
+
+        function fetch_data(page){
+        var se = $("#seID").val();
+        var kw = $("#kw").val();
+
+        $.ajax({
+        url:"/search/paginate?page="+page+"&kw=" + kw +"&se=" + se,
+        success:function(data)
+        {
+        $('#productSearch').html(data);
+       }
+        });
+        }
+</script>
 @endsection

@@ -10,8 +10,8 @@
             @foreach($productsNew as $productNew)
             <div class="col-md-3 col-6">
                 <div class="p_nd wow fadeInUp selectProduct" data-title="{{$productNew->id}}"
-                    data-id="{{ $productNew->name}}" data-size="{{$productNew->price}}"
-                    data-weight="{{ $productNew->price }}" data-processor="{{ $productNew->description }}">
+                    data-id="{{ $productNew->name}}" data-size="{{$productNew->category->name}}"
+                    data-weight="{{ $productNew->price }}" data-processor="{{ $productNew->description }}" data-brand ="{{ $productNew->brand->name }}"> 
                     <a href="{{route('detail', ['id' => $productNew->id])}}">
                         <img src="{{$productNew->picture}}" width="100%" alt="" class="imgFill productImg">
                     </a>
