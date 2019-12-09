@@ -130,6 +130,8 @@ Route::group(
     Route::get('remove_picture/{id}', 'Admin\ProductController@removePicture')->name('remove_picture');
 
     Route::get('disable_color/{id}', 'Admin\ProductController@disableColor')->name('disable_color');
+
+    Route::get('disable_product/{id}', 'Admin\ProductController@disableProduct')->name('disable_product');
 });
 
 Route::group(
@@ -153,7 +155,7 @@ Route::group(
     Route::get('favorite', 'User\UserController@favorite')->name('favorite');
     Route::get('add_to_favorite/{id}', 'User\UserController@addToFavorite')->name('add_to_favorite');
 });
- 
+
 Auth::routes();
 // brand
 
