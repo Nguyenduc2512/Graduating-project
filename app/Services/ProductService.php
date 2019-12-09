@@ -91,7 +91,7 @@ class ProductService
 
     public function getAllColor()
     {
-        $colors = Color::all();
+        $colors = Color::where('status', '0')->get();
         return $colors;
     }
 
@@ -148,5 +148,12 @@ class ProductService
         $picture->delete();
 
         return $product;
+    }
+
+    public function disableColor($id)
+    {
+        $color = Color::find($id);
+        $color->status = 1;
+        $color->save();
     }
 }

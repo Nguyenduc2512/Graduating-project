@@ -128,6 +128,8 @@ Route::group(
     Route::post('new_picture/{id}', 'Admin\ProductController@newPicture')->name('new_picture');
 
     Route::get('remove_picture/{id}', 'Admin\ProductController@removePicture')->name('remove_picture');
+
+    Route::get('disable_color/{id}', 'Admin\ProductController@disableColor')->name('disable_color');
 });
 
 Route::group(
