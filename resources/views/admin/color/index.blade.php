@@ -49,7 +49,7 @@
                                                     <a href="{{route('admin.edit_color', ['id' => $color->id])}}" class="btn btn-xs btn-info">
                                                         <i class="fa fa-pencil"></i> Cập nhật
                                                     </a>
-                                                    <a href="#" class="btn btn-xs btn-danger btn-remove">
+                                                    <a href="{{route('admin.disable_color', ['id' => $color->id])}}" class="btn btn-xs btn-danger btn-remove">
                                                         <i class="fa fa-trash"></i> Xoá
                                                     </a>
                                                 </td>

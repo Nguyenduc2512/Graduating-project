@@ -8,7 +8,7 @@ class ColorService
 {
     public function getColor()
     {
-        $colors = Color::all();
+        $colors = Color::where('status', '0')->get();
         return $colors;
     }
 }

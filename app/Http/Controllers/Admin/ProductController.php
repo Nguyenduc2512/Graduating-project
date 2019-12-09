@@ -126,4 +126,11 @@ class ProductController extends Controller
         return redirect()->route('admin.show_album', ['id' => $picture]);
 
     }
+
+    public function disableColor($id)
+    {
+        $color = $this->productService->disableColor($id);
+
+        return redirect()->route('admin.show_color');
+    }
 }
