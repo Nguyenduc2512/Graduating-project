@@ -237,6 +237,16 @@ footer p{
 /* cate */
 .cate{
     padding-top: 50px;
+    padding-bottom: 50px;
+}
+.cate .container{
+    -webkit-box-shadow: 0 0 4px #999;
+    box-shadow: 0 0 4px #999;
+    padding: 20px;
+}
+.cate .fitter{
+    background: #eee;
+    padding: 20px;
 }
 .cate .fitter a{
     color: #333;
@@ -249,7 +259,7 @@ footer p{
     margin-bottom: 20px;
 }
 .sortby select{
-    border: 1px solid #0a1929;
+    border: 1px solid #ddd;
     border-radius: 5px;
     float: right;
 }
