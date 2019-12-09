@@ -155,9 +155,13 @@ Route::group(
 Auth::routes();
 // brand
 
-Route::get('/cate/huy', 'User\PageController@fetch_data');
+Route::get('/cate/paginate', 'User\PageController@fetch_data');
 
 Route::get('/proCate', 'User\PageController@proCate')->name('fillter');
+
+Route::get('/search/paginate', 'User\PageController@fetch_data1');
+
+Route::get('/proSearch', 'User\PageController@proSearch')->name('fillterSearch');
 
 Route::get('/proDetail', 'User\PageController@proDetail');
 

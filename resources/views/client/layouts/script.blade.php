@@ -74,13 +74,15 @@ $(document).ready(function() {
         });
         Finalbrand = brand.toString();
         $.ajax({
-        url:"/cate/huy?page="+page+"&brand_id=" + Finalbrand + "&id=" + cate +"&se=" + se,
+        url:"/cate/paginate?page="+page+"&brand_id=" + Finalbrand + "&id=" + cate +"&se=" + se,
         success:function(data)
         {
         $('#productCate').html(data);
        }
         });
         }
+
+        
 
         });
     </script>

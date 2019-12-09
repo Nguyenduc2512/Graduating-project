@@ -289,23 +289,89 @@ class PageController extends Controller
     {
         $kw = $request->keyWord;
         $count = count($this->cartService->countCartUser());
-        $brandSearch = Brand::where('name', 'like', "%$kw%");
-        dd($brandSearch);
-        if ($brandSearch) {
-            $id = $brandSearch->id;
-            $productSearch = $brandSearch->product->where('brand_id', $id);
-        } else {
-            $id = null;
-            $productSearch = $brandSearch->product->where('brand_id', $id);
+        if(!$request->has('keyWord') || empty($request->keyWord)) {
+            $productSearch = Product::paginate(4);
         }
+        // 2. thực hiện câu lệnh select*from posts where title like %keyword%.
+        else{
+                $productSearch = Product::where('name', 'like', "%$kw%")->paginate(5);  
+                $productSearch->withPath("?keyword=$kw");
+        };  
         if(count($productSearch) == 0){
             $msg="Không tìm thấy Kết quả cho: ".$kw;
         }
         else{
             $msg="Kết quả tìm kiếm cho: ".$kw;
         }
-        return view ('client.search', compact('productSearch', 'msg', 'count'));
+
+        return view ('client.search', compact('productSearch', 'msg', 'count','kw'));
     }
+    public function proSearch(Request $request){
+        $se = $request->se;
+        $kw =$request->kw;
+        if($se!=""){
+            switch ($se) {
+            case 'new':
+                $productSearch = Product::where('name', 'like', "%$kw%")
+                ->orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->paginate(3);
+                break;
+            case 'asc':
+                $productSearch = Product::where('name', 'like', "%$kw%")
+                ->orderBy('price', 'asc')
+                ->where('status', 1)
+                ->paginate(3);
+                break;
+            case 'desc':
+                $productSearch = Product::where('name', 'like', "%$kw%")
+                ->orderBy('price', 'desc')
+                ->where('status', 1)
+                ->paginate(3);
+                break;
+            }
+        }
+        else{
+            $productSearch = Product::where('name', 'like', "%$kw%")->paginate(5);  
+        }
+
+        return view('client/proSearch', compact('productSearch'));
+    }
+    public function fetch_data1(Request $request)
+    {
+        if($request->ajax()){
+        $kw = $request->kw;
+        $se = $request->se;
+        if($se!=""){
+            switch ($se) {
+            case 'new':
+                $productSearch = Product::where('name', 'like', "%$kw%")
+                ->orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->paginate(3);
+                break;
+            case 'asc':
+                $productSearch = Product::where('name', 'like', "%$kw%")
+                ->orderBy('price', 'asc')
+                ->where('status', 1)
+                ->paginate(3);
+                break;
+            case 'desc':
+                $productSearch = Product::where('name', 'like', "%$kw%")
+                ->orderBy('price', 'desc')
+                ->where('status', 1)
+                ->paginate(3);
+                break;
+            }
+        }
+        else{
+            $productSearch = Product::where('name', 'like', "%$kw%")->paginate(5);  
+        }
+        }
+            
+        return view('client/proSearch', compact('productSearch'));
+     }
+
 
     public function showListCart() {
         if (Auth::user()) {
