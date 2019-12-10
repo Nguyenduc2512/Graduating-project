@@ -41,7 +41,7 @@ class CartController extends Controller
         $cart = $this->orderService->removeOrder($id);
         return redirect()->route('member.list_cart');
     }
-
+ 
     public function removeItem($id)
     {
         $cart = $this->cartService->removeItem($id);
@@ -65,7 +65,7 @@ class CartController extends Controller
                 $total_price = $total_price + $price;
             }
         }
-        return redirect()->back()->with('msg', 'Cảm ơn bạn đã liên hệ với chúng tôi!');
+        return redirect()->back()->with('msg', 'h');
     }
 
     public function showFormOrder(OrderRequest $request)
@@ -81,6 +81,7 @@ class CartController extends Controller
 
     public function newOrder(Request $request)
     {
+        $showModal = false;
         $order = $this->orderService->order($request);
         $cart = $this->cartService->newOrder($request);
         $slideshows = SlideShow::all();
@@ -94,6 +95,8 @@ class CartController extends Controller
                 $total_price = $total_price + $price;
             }
         }
-        return view('client/listcart', compact('slideshows', 'carts', 'count', 'showModal', 'total_price', 'orders'));
+        $msg="0";
+        return redirect()->route('member.list_cart')->with('msg','h');
+
     }
 }

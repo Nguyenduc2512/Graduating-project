@@ -53,7 +53,7 @@ return [
     | the same address. Here, you may specify a name and address that is
     | used globally for all e-mails that are sent by your application.
     |
-    */
+    */ 
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'authshoes12@gmail.com'),
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('AUTHSHOES'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('authshoes123'),
 
     /*
     |--------------------------------------------------------------------------
