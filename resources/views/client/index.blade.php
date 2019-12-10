@@ -69,7 +69,7 @@
             <div class="col-md-3 col-6">
                 <div class="p_nd wow fadeInUp selectProduct" data-title="{{$productMost->id}}"
                     data-id="{{$productMost->name}}" data-size="{{$productMost->price}}"
-                    data-weight="{{ $productMost->price }}" data-processor="{{ $productMost->description }}">
+                    data-weight="{{ $productMost->price }}" data-processor="{{ $productMost->description }}" data-brand ="{{ $productMost->brand->name }}">
                     <a href="{{route('detail', ['id' => $productMost->id])}}">
                         <img src="{{$productMost->picture}}" width="100%" alt="" class="imgFill productImg">
                         <div class="nd_hover">
