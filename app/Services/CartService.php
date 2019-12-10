@@ -31,7 +31,7 @@ class CartService {
          ];
          $cart->fill($data);
          $cart->save();
- 
+
      }
 
      public function removeItem($id)
@@ -89,6 +89,7 @@ class CartService {
              'properties_id' => $request->properties_id,
              'amount' => $request->amount,
              'status' => $request->status,
+             'order_id' => $request->order_id,
          ];
          $cart->fill($data);
          $cart->save();

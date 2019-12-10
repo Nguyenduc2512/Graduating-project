@@ -81,8 +81,8 @@ class CartController extends Controller
 
     public function newOrder(Request $request)
     {
-        $cart = $this->cartService->newOrder($request);
         $order = $this->orderService->order($request);
+        $cart = $this->cartService->newOrder($request);
         $slideshows = SlideShow::all();
         $carts = $this->cartService->getListCart();
         $orders = $this->orderService->getOrder();
