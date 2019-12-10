@@ -122,7 +122,7 @@ class PageController extends Controller
     public function cate(Request $request,$id)
     {
         $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(6);
-        $category = Category::withCount(['products'])->get();
+        $category = Category::where('status', 1)->withCount(['products'])->get();
         $count = count($this->cartService->countCartUser());
         return view('client/cate', compact('productcate','category', 'count','id'));
     }

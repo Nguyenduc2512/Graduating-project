@@ -52,7 +52,7 @@
     $(document).on('click', '.cmprBtn', function () {
         if ($(".cmprBtn").hasClass("active")) {
             /* this is to print the  features list statically*/
-            $(".contentPop").append('<div class="w3-col s3 m3 l3 compareItemParent relPos">' + '<ul class="product">' + '<li class=" relPos compHeader"><p class="w3-display-middle">Ảnh sản phẩm</p></li>' + '<li>Tên sản phẩm</li>' + '<li>Size</li>' + '<li>Giá</li>' + '<li class="cpu">Mô tả</li>' + '<li>Nhà cung cấp</li></ul>' + '</div>');
+            $(".contentPop").append('<div class="w3-col s3 m3 l3 compareItemParent relPos">' + '<ul class="product">' + '<li class=" relPos compHeader"><p class="w3-display-middle">Ảnh sản phẩm</p></li>' + '<li>Tên sản phẩm</li>' + '<li>Danh Mục</li>' + '<li>Giá</li>' + '<li class="cpu">Mô tả</li>' + '<li>Nhà cung cấp</li></ul>' + '</div>');
 
             for (var i = 0; i < list.length; i++) {
                 /* this is to add the items to popup which are selected for comparision */
