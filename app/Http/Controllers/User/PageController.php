@@ -114,7 +114,7 @@ class PageController extends Controller
             $sizes = [];
         }
 
-        return view('client/prosize', ['sizes' => $sizes,], compact('album'));
+        return view('client/prosize', ['sizes' => $sizes,]);
 
     }
 
