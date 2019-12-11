@@ -29,10 +29,16 @@
                         <label>Ảnh slideshow</label> <br>
                         <img id="imageTarget" src="{{url('/')}}/{{$listslideshow->picture}}" height="100px" class="img-responsive">
                         <input type="file" id="image" name="picture" value="" class="form-control">
+                        @if($errors->first('picture'))
+                        <span class="text-danger"> {{$errors->first('picture')}} </span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Đường dẫn liên kết</label>
                         <input type="text" name="url" class="form-control" value="{{$listslideshow->url}}">
+                        @if($errors->first('url'))
+                        <span class="text-danger"> {{$errors->first('url')}} </span>
+                        @endif
                     </div>
                     <label>
                         @if($listslideshow->status == 1)

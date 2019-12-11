@@ -56,9 +56,7 @@
                                         class="btn btn-xs btn-info">
                                         <i class="fa fa-pencil"></i> Cập nhật
                                     </a>
-                                    <a href="#" class="btn btn-xs btn-danger btn-remove">
-                                        <i class="fa fa-trash"></i> Xoá
-                                    </a></td>
+                                    </td>
                             </tr>
                             @endforeach
                         </tbody>

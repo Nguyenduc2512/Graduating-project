@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SlideShowRequest extends FormRequest
 {
@@ -22,12 +23,20 @@ class SlideShowRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        return [
-            'picture' => 'required|file|mimes:jpg,jpeg,png',
-            'url' => 'required|max:1000',
-            'url' => 'required|min:5',
+    {   
+        $validate = [
+            'url' => [
+                'required',
+                'max:1000',
+                'min:5',
+                Rule::unique('slideshows')->ignore($this->id),
+            ],
+        
         ];
+        if(!$this->id){
+            $validate['picture'] = 'required|file|mimes:jpeg,png';
+        }
+        return $validate;
     }
     public function messages()
     {

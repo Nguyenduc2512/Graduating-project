@@ -14,7 +14,7 @@ class DeliveryBrandService
         return $deliverybrands;
     }
     public function addNewDeliveryBrand(Request $request)
-    {
+    { 
         $deliverybrands = new DeliveryBrand();
         $data = [
             'name' => $request->name,
@@ -39,11 +39,6 @@ class DeliveryBrandService
             'email' => $request->email,
             'status' => $request->status,
         ];
-        if ($request->status == 0) {
-            $request->status = 1;
-        } else {
-            $request->status = 0;
-        }
         $deliverybrands->fill($data);
 
         $deliverybrands->save();

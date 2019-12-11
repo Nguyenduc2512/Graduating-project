@@ -39,6 +39,12 @@ class CategoryService
     {
         $category = Category::find($request->id);
         $data = ['name' => $request->name, 'status' => $request->status, 'description' => $request->description, ];
+        if($request->status == 0){
+            $product = Product::where('category_id', $request->id)->update(['status' => 0]);    
+        }
+        else{
+            $product = Product::where('category_id', $request->id)->update(['status' => 1]);
+        }
         $category->fill($data);
 
         $category->save();

@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\SlideShowService;
 use Illuminate\Http\Request;
 use Imagick;
-
+ 
 class SlideShowController extends Controller
 {
     protected $slideshowService;
@@ -30,7 +30,7 @@ class SlideShowController extends Controller
     public function  addNewSlideShow(SlideShowRequest $request)
     {
         $this->slideshowService->addNewSlideShow($request);
-        return redirect()->route('admin.list_slideshow');
+        return redirect()->route('admin.list_slideshow')->with('msg', 'Bạn đã thêm thành công!');;
     }
 
     public function  editFormSlideShow($id)
@@ -41,6 +41,12 @@ class SlideShowController extends Controller
     public function  editSlideShow(SlideShowRequest $request)
     {
         $listslideshow = $this->slideshowService->editSlideShow($request);
-        return redirect()->route('admin.list_slideshow');
+        return redirect()->route('admin.list_slideshow')->with('msg', 'Bạn đã sửa thành công!');;
+    }
+
+    public function removeSlideshow($id)
+    {
+        $slideshow = $this->slideshowService->removeSlideshow($id);
+        return back()->with('msg', 'Bạn đã xóa thành công!');
     }
 }
