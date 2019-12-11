@@ -80,7 +80,7 @@ class CartService {
          $order->save();
 
      }
-
+ 
      public function newOrder(Request $request)
      {
          $cart = new Cart();
@@ -98,7 +98,7 @@ class CartService {
      {
          $order = Order::find($id);
          //$cart->status = 2 ~ decline cart
-         $order->status = 4;
+         $order->status = 6;
          $order->delivery = $request->delivery_id;
          $order->save();
 

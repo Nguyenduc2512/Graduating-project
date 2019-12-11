@@ -13,7 +13,7 @@
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
                   <li class="breadcrumb-item active">Danh sách phản hồi</li>
                </ol>
-            </div>
+            </div> 
          </div>
       </div>
       <!-- /.container-fluid -->
@@ -60,17 +60,21 @@
           </table>
           <div class="col-lg-12">
             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Chọn đơn vị giao hàng</button>
+            @if($errors->first('delivery_id'))
+            <p style="width: 100%;height: 60px; background:#c1b999;margin-top: 10px;padding-top: 15px;padding-left: 20px;border-radius: 4px"><span class="text-white">{{$errors->first('delivery_id')}}</span></p>
+                      @endif
             <div id="demo" class="collapse">
                <div class="nd_form_rep">
                   <form action="{{route('admin.delivery', ['id'=>$cart->id])}}" method="post" id="formDemo1">
                      @csrf
                      <label>Đơn vị giao hàng</label>
                      <select class="form-control" name="delivery_id">
-                        <option>--</option>
+                        <option value="">--</option>
                         @foreach($delivery as $d)
                         <option value="{{$d->id}}">{{$d->name}}</option>
                         @endforeach
                      </select>
+                      
                      <button class="btn btn-sm btn-info" type="submit" style="margin-top: 10px">Xác nhận</button>
                   </form>
                </div>

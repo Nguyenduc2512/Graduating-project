@@ -17,7 +17,7 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
+ 
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
@@ -27,15 +27,24 @@
           <input type="hidden" name="id" value="{{$listdeliverybrand->id}}" value="1">
           <div class="form-group">
             <label>Tên đối tác</label>
-            <input type="text" name="name" class="form-control" value="{{$listdeliverybrand->name}}">
+            <input type="text" name="name" class="form-control" value="{!! old('name', $listdeliverybrand->name)!!}">
+            @if($errors->first('name'))
+            <span class="text-danger"> {{$errors->first('name')}} </span>
+            @endif
           </div>
           <div class="form-group">
             <label>Đường dẫn</label>
-            <input type="text" name="link" class="form-control" value="{{$listdeliverybrand->link}}">
+            <input type="text" name="link" class="form-control" value="{!! old('link', $listdeliverybrand->link)!!}">
+            @if($errors->first('link'))
+            <span class="text-danger"> {{$errors->first('link')}} </span>
+            @endif
           </div>
           <div class="form-group">
-            <label>Đường dẫn</label>
-            <input type="text" name="email" class="form-control" value="{{$listdeliverybrand->email}}">
+            <label>Email</label>
+            <input type="text" name="email" class="form-control" value="{!! old('email', $listdeliverybrand->email)!!}">
+            @if($errors->first('email'))
+            <span class="text-danger"> {{$errors->first('email')}} </span>
+            @endif
           </div>
           <label>
             @if($listdeliverybrand->status == 1)

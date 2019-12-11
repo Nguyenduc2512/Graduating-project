@@ -66,6 +66,8 @@ Route::group(
 
         Route::post('slideshow/edit/{id}', 'Admin\SlideShowController@editSlideShow');
 
+        Route::get('slideshow/remove/{id}', 'Admin\SlideShowController@removeSlideshow')->name('remove_slideshow');
+
     Route::get('admin', 'Admin\AdminController@listAdmin')->name('list_admin');
 
     Route::get('admin/edit/{id}', 'Admin\AdminController@editFormAdmin')->name('edit_admin');

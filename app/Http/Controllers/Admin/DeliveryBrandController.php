@@ -17,7 +17,7 @@ class DeliveryBrandController extends Controller
         $this->deliveryBrandService = $deliveryBrandService;
     }
 
-
+ 
     public function listDeliveryBrand(){
         $listdeliverybrand = $this->deliveryBrandService->getDeliveryBrand();
         return view('admin/delivery_brand/index', compact('listdeliverybrand'));

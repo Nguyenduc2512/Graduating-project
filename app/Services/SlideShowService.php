@@ -12,7 +12,7 @@ class SlideShowService
     {
         $slideshows = SlideShow::all();
         return $slideshows;
-    }
+    } 
     ///code copy
     public function addNewSlideShow(Request $request)
     {
@@ -55,14 +55,15 @@ class SlideShowService
             'url' => $request->url,
             'status' => $request->status,
         ];
-        if ($request->status == 0) {
-            $request->status = 1;
-        } else {
-            $request->status = 0;
-        }
         $slideshow->fill($data);
 
         $slideshow->save();
+    }
+    public function removeSlideshow($id)
+    {
+        $slideshow = SlideShow::find($id);
+        $slideshow->delete(); 
+        return $slideshow;
     }
 
 
