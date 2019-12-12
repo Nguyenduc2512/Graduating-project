@@ -13,7 +13,7 @@
         <img src="{{url('/')}}/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Nguyễn Minh Đức</a>
+        <a href="#" class="d-block">Admin</a>
       </div>
     </div>
         <!-- Sidebar Menu -->
@@ -96,6 +96,23 @@
                   <a href="{{route('admin.list_cart')}}" class="nav-link active">
                     <i class="fas fa-clipboard-list nav-icon"></i>
                     <p>Danh sách đơn hàng</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="/admin1/cart" class="nav-link bg-info">
+                  <i class="fas fa-truck"></i>
+                <p>
+                  Đang vận chuyển
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('admin.list_ship')}}" class="nav-link active">
+                    <i class="fas fa-clipboard-list nav-icon"></i>
+                    <p>Danh sách vận chuyển</p>
                   </a>
                 </li>
               </ul>

@@ -132,6 +132,8 @@ Route::group(
     Route::get('disable_color/{id}', 'Admin\ProductController@disableColor')->name('disable_color');
 
     Route::get('disable_product/{id}', 'Admin\ProductController@disableProduct')->name('disable_product');
+
+    Route::get('list_ship', 'Admin\CartController@listShip')->name('list_ship');
 });
 
 Route::group(
@@ -154,6 +156,7 @@ Route::group(
     Route::get('history', 'User\UserController@history')->name('history');
     Route::get('favorite', 'User\UserController@favorite')->name('favorite');
     Route::get('add_to_favorite/{id}', 'User\UserController@addToFavorite')->name('add_to_favorite');
+    Route::get('order_detail/{id}', 'User\CartController@orderDetail')->name('order_detail');
 });
 
 Auth::routes();

@@ -2,6 +2,7 @@
 
 
 namespace App\Services;
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Properties;
 use Illuminate\Http\Request;
@@ -32,6 +33,16 @@ class PropertiesService
     {
         $properties = Properties::where('product_id', $id)->get();
         return $properties;
+    }
+
+    public function reduction($id)
+    {
+        $carts = Cart::where('order_id', $id)->get();
+        foreach ($carts as $cart) {
+            $property = Properties::find($cart->properties_id);
+            $property->amount = $property->amount - $cart->amount;
+            $property->save();
+        }
     }
 
 }

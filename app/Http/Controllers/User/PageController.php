@@ -172,7 +172,7 @@ class PageController extends Controller
                 ->paginate(6);
                 break;
             }
-        
+
         }
         else if($brand_id!=""){
             $productcate = Product::where('category_id', $id)
@@ -206,7 +206,7 @@ class PageController extends Controller
             $productcate = Product::where('category_id', $id)->where('status', 1)->paginate(6);
         }
             }
-            
+
         return view('client/procate', compact('productcate'));
      }
 
@@ -240,7 +240,7 @@ class PageController extends Controller
                 ->paginate(6);
                 break;
             }
-        
+
         }
         else if($brand_id!=""){
             $productcate = Product::where('category_id', $id)
@@ -309,9 +309,9 @@ class PageController extends Controller
         }
         // 2. thực hiện câu lệnh select*from posts where title like %keyword%.
         else{
-                $productSearch = Product::where('name', 'like', "%$kw%")->where('status','1')->paginate(5);  
+                $productSearch = Product::where('name', 'like', "%$kw%")->where('status','1')->paginate(5);
                 $productSearch->withPath("?keyword=$kw");
-        };  
+        };
         if(count($productSearch) == 0){
             $msg="Không tìm thấy Kết quả cho: ".$kw;
         }
@@ -347,7 +347,7 @@ class PageController extends Controller
             }
         }
         else{
-            $productSearch = Product::where('name', 'like', "%$kw%")->where('status', '1')->paginate(5);  
+            $productSearch = Product::where('name', 'like', "%$kw%")->where('status', '1')->paginate(5);
         }
 
         return view('client/proSearch', compact('productSearch'));
@@ -380,10 +380,10 @@ class PageController extends Controller
             }
         }
         else{
-            $productSearch = Product::where('name', 'like', "%$kw%")->paginate(5);  
+            $productSearch = Product::where('name', 'like', "%$kw%")->paginate(5);
         }
         }
-            
+
         return view('client/proSearch', compact('productSearch'));
      }
 
@@ -395,14 +395,14 @@ class PageController extends Controller
             $carts = $this->cartService->getListCart();
             $orders = $this->orderService->getOrder();
             $count = count($carts);
-            $total_price = 0;
+            $all_price = 0;
             foreach ($carts as $cart){
                 if ($cart->status == 0) {
                     $price = $cart->properties->product->price * $cart->amount;
-                    $total_price = $total_price + $price;
+                    $all_price = $all_price + $price;
                 }
             }
-            return view('client/listcart', compact( 'carts', 'count', 'showModal', 'total_price', 'orders', 'show_order'));
+            return view('client/listcart', compact( 'carts', 'count', 'showModal', 'all_price', 'orders', 'show_order'));
         }
     }
 
@@ -430,6 +430,9 @@ class PageController extends Controller
         elseif ($role < $promo->role) {
             $request->session()->forget('coupon');
             return redirect()->back()->with('msg', 'Bạn không thể sử dụng mã giảm giá này!');
+        }elseif ($promo->amount == 0) {
+            $request->session()->forget('coupon');
+            return redirect()->back()->with('msg', 'Mã giảm giá này đã hết lượt sử dụng');
         }
         else{
         session()->put('coupon', [
