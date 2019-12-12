@@ -98,7 +98,7 @@
                                             <div class="col-12"
                                                 style="border: 1px solid #ddd; display: flex; padding-top: 10px">
                                                 @foreach($sizes as $size)
-                                                <div style="margin-right: 20px">
+                                                <div style="margin-right: 20px" id="1">
                                                     <input type="checkbox" multiple="multiple"
                                                         name="size[{{ $color->id }}][]" value='{{$size}}' class="size">
                                                     <span style="margin-top: -5px">{{$size}}</span>
@@ -107,24 +107,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- <input id="dataProducts" type="hidden">
-                                    <b>Màu sắc : </b><br>
-                                    <div class="row">
-                                        <input type="checkbox" multiple="multiple" name="color[]" value="{{$color->id}}"
-                                            class="color">
-                                        <option>{{$color->name}}</option>
-                                    </div>
-                                    <b>Size : </b><br>
-
-                                    <div class="col-12"
-                                        style="border: 1px solid #ddd; display: flex; padding-top: 10px">
-                                        @foreach($sizes as $size)
-                                        <input type="checkbox" multiple="multiple" name="size[{{ $color->id }}][]"
-                                            value='{{$size}}' class="size">
-                                        <option style="margin-top: -5px">{{$size}}</option>
-                                        @endforeach
-                                    </div> -->
 
                                 </div>
                                 @endforeach

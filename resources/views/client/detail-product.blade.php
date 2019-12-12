@@ -15,9 +15,10 @@
                             <img src="{{url('/')}}/{{$product->picture}}" width="100%" />
                         </li>
                         @foreach($album as $picture)
-                            <li data-thumb="{{url('/')}}/{{$picture->picture}}" data-src="{{url('/')}}/{{$picture->picture}}">
-                                <img src="/{{$picture->picture}}" width="100%" />
-                            </li>
+                        <li data-thumb="{{url('/')}}/{{$picture->picture}}"
+                            data-src="{{url('/')}}/{{$picture->picture}}">
+                            <img src="/{{$picture->picture}}" width="100%" />
+                        </li>
                         @endforeach
                     </ul>
                 </div>
@@ -44,10 +45,10 @@
                                             @endforeach
                                         </select>
                                         @if($errors->first('color_id'))
-                                            <span class="text-danger"> {{$errors->first('color_id')}} </span>
+                                        <span class="text-danger"> {{$errors->first('color_id')}} </span>
                                         @endif
                                         @if($errors->first('color_id_order'))
-                                            <span class="text-danger"> {{$errors->first('color_id_order')}} </span>
+                                        <span class="text-danger"> {{$errors->first('color_id_order')}} </span>
                                         @endif
                                     </div>
                                 </div>
@@ -58,10 +59,10 @@
                                             <option selected value="">--</option>
                                         </select>
                                         @if($errors->first('size'))
-                                            <span class="text-danger"> {{$errors->first('size')}} </span>
+                                        <span class="text-danger"> {{$errors->first('size')}} </span>
                                         @endif
                                         @if($errors->first('size_order'))
-                                            <span class="text-danger"> {{$errors->first('size_order')}} </span>
+                                        <span class="text-danger"> {{$errors->first('size_order')}} </span>
                                         @endif
                                     </div>
                                 </div>
@@ -86,15 +87,15 @@
                                     </div>
                                 </div>
                             </div>
-                    </form>
-                    <form action="{{route('member.show_form_order')}}" id="show_form_order" method="post">
-                        @csrf
-                        <input type="hidden" id="product_id_order" name="product_id_order">
-                        <input type="hidden" id="color_id_order" name="color_id_order">
-                        <input type="hidden" id="size_order" name="size_order">
-                        <input type="hidden" id="amount_order" name="amount_order">
+                        </form>
+                        <form action="{{route('member.show_form_order')}}" id="show_form_order" method="post">
+                            @csrf
+                            <input type="hidden" id="product_id_order" name="product_id_order">
+                            <input type="hidden" id="color_id_order" name="color_id_order">
+                            <input type="hidden" id="size_order" name="size_order">
+                            <input type="hidden" id="amount_order" name="amount_order">
 
-                    </form>
+                        </form>
                     </div>
                 </div>
                 <div class=" container" style="margin-top: 30px;">
