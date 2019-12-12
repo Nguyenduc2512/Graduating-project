@@ -16,14 +16,15 @@
                             <h3>Tên dang mục</h3>
                             @foreach($category as $cate)
                             <div class="col-lg-12">
-                                <a href="{{route('cate', ['id' => $cate->id])}}"> {{$cate->name}}
+                                
+                                <a href="{{route('cate', ['id' => $cate->id])}}" @if($cate->id == $id) style="color:red;text-decoration: underline" @endif> {{$cate->name}}
                                     <span>({{$cate->products_count}})</span></a>
                             </div>
                             @endforeach
                         </div>
                         <div class="col-lg-12 col-6">
                             <h3 style="margin-top: 20px;">Thương hiệu</h3>
-                            @foreach(App\Models\Brand::all() as $brand)
+                            @foreach(App\Models\Brand::where('status','1')->get() as $brand)
                             <div class="col-lg-12 mt-2">
                                 <input type="checkbox" value="{{$brand->id}}" id="brand"
                                     class="find brand"><span>{{$brand->name}}</span>

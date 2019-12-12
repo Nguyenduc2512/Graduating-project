@@ -6,76 +6,42 @@
 <link rel="stylesheet" href="{{asset('client/css/detail-p.css')}}">
 <link rel="icon" href="{{asset('client/images/icon.png')}}">
 <header>
-    <!-- top_bar -->
-    <div class="top_bar">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p><i class="fas fa-phone"></i> Hotline: <a href="tel:0123.456.789">0123.456.789</a></p>
-                </div>
-                <div class="col-md-6">
-                    <div class="mn0">
-                        <ul>
-                            <li>
-                                <a href="#" data-toggle="modal" data-target="#dangnhap" role="dialog"><i
-                                        class="fas fa-sign-in-alt"></i> Đăng nhập
-                                </a>
-                                <div class="modal fade" id="dangnhap">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Đăng Nhập</h4>
-                                                <button type="button" class="close"
-                                                        data-dismiss="modal">&times;</button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <img src="client/images/logoblue.png" width="100%" alt="">
-                                                    </div>
-                                                    <div class="col-md-6" style="margin: auto;">
-                                                        <form action="{{route('login_admin')}}" method="post" enctype="multipart/form-data">
-                                                            @csrf
-                                                            <div class="form-group">
-                                                                <label for="">Email</label>
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control" name="email"
-                                                    n                       placeholder="Nhập email của bạn">
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="">Mật khẩu</label>
-                                                                <div class="input-group">
-                                                                    <input type="password" class="form-control" name="password"
-                                                                           placeholder="Nhập mật khẩu của bạn">
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-info">
-                                                                    Đăng nhập
-                                                                </button>
-                                                                <button type="button" class="btn btn-danger"
-                                                                        data-dismiss="modal">
-                                                                    Thoát
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+    <div class="container" style="padding-top: 50px; -webkit-box-shadow: 0 0 4px #999; margin-top: 50px; 
+    box-shadow: 0 0 4px #999; padding-bottom: 50px;">
+        <h1 style="text-align: center; margin-bottom: 30px">Đăng nhập quản trị</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="client/images/logoblue.png" width="100%" alt="">
+            </div>
+            <div class="col-md-6" style="margin: auto;">
+                <form action="{{route('login_admin')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Email</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="email" n placeholder="Nhập email của bạn">
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="">Mật khẩu</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password"
+                                placeholder="Nhập mật khẩu của bạn">
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="float: left; margin-left: -15px;">
+                        <button type="submit" class="btn btn-info">
+                            Đăng nhập
+                        </button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            Thoát
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- menu -->
 </header>
-@include('client/layouts/slider')
 <script src="client/plugins/bootstrap/js/jquery.slim.min.js"></script>
 <script src="client/plugins/bootstrap/js/popper.min.js"></script>
 <script src="client/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -86,5 +52,5 @@
 <script src="client/js/detailp.js"></script>
 <script src="client/js/lightslider.js"></script>
 <script>
-    new WOW().init();
+new WOW().init();
 </script>

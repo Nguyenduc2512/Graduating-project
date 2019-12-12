@@ -9,29 +9,7 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="li-member" style="margin-top: 30px;">
-                        <div class="row">
-                            <div class="col-3">
-                                <img src="{{ url('/') }}/{{ $profile->avatar }}" width="100%" alt="">
-                            </div>
-                            <div class="col-9">
-                                <span>Tài khoản của</span>
-                                <p style="font-weight: bold;">{{ $profile->name }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="li-member">
-                        <a href="{{route('member.profile')}}">Thông tin tài khoản</a>
-                    </div>
-                    <div class="li-member">
-                        <a href="#">Lịch sử mua hàng</a>
-                    </div>
-                    <div class="li-member">
-                        <a href="#">Đổi mật khẩu</a>
-                    </div>
-                </div>
-                <div class="col-md-9">
+                <div class="col-md-9" style="margin: auto;">
                     <div class="title">
                         <h2 class="text_title"><span>Thông tin tài khoản</span></h2>
                     </div>
@@ -83,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <img src="{{ url('/') }}/{{ $profile->avatar }}" height="150px" id="imageTarget" class="img-responsive">
-                                    <p for="">Ảnh đại diện mới</p>
+                                    <p style="margin-top: 20px" for="">Ảnh đại diện mới</p>
                                     <input type="file" class="form-control" id="image" name="avatar">
                                 </div>
                             </div>

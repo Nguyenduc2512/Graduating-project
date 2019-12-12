@@ -63,7 +63,10 @@
                                             <p>Màu : <a>{{$cart->properties->color->name}}</a></p>
                                             <p>size :<a href="index.html">{{$cart->properties->size}}</a></p>
                                             <div class="linkdel">
-                                                <a href="{{route('member.remove_item', ['id' => $cart->id])}}">Xóa</a>
+                                                <a href="javascript:;"
+                                                linkurl="{{route('member.remove_item', ['id' => $cart->id])}}"
+                                                class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i>
+                                                Xóa </a>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -136,7 +139,10 @@
                                         <p><i class="fas fa-angle-double-right"></i> Giao hàng tại :
                                             {{$order->location}}</p>
                                         <div class="linkdel">
-                                            <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xóa</a>
+                                            <a href="javascript:;"
+                                                linkurl="{{route('member.remove_order', ['id' => $order->id])}}"
+                                                class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i>
+                                                Xóa </a>
                                         </div>
                                         <div class="linkdel">
                                             <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xem Chi
@@ -239,17 +245,28 @@
         </div>
     </div>
 </div>
-@if (session('msg'))
+@if (session('cart'))
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
     Swal.fire(
   'Đặt hàng thành công!',
   'Cảm ơn bạn đã thanh toán sản phẩm',
-  'success'
+  'Ok'
 )
 
 </script>
 @endif
+@if (session('decline'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script type="text/javascript">
+    Swal.fire(
+  'Bạn đã hủy đơn hàng thành công!',
+  'OK'
+)
+
+</script>
+@endif
+
 
 @endsection
 
