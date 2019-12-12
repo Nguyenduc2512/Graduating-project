@@ -65,7 +65,7 @@ class BrandService
             'status' => $request->status,
         ];
         if($request->status == 0){
-            $product = Product::where('brand_id', $request->id)->update(['status' => 0]);    
+            $product = Product::where('brand_id', $request->id)->update(['status' => 2]);    
         }
         else{
         	$product = Product::where('brand_id', $request->id)->update(['status' => 1]);

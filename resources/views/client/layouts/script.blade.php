@@ -13,6 +13,25 @@
 <script>
 new WOW().init();
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+  $('.btn-remove').on('click', function(){
+    var removeUrl = $(this).attr('linkurl');
+    swal({
+      title: "Cảnh báo",
+      text: "Bạn có chắc chắn muốn xoá không?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location.href = removeUrl;
+      }
+    });
+  });
+</script>
 
 
 <script type="text/javascript">
@@ -24,12 +43,29 @@ $(document).ready(function() {
             type: 'get',
             dataType: 'html',
             url: '{{url('/proDetail')}}',
-            data: 'id=' + id + '&color=' + color,
+            data: 'id=' + id + '&color=' + color,   
             success: function(response) {
                 console.log(response);
                 if ($('#colorID').length) {
                     $("#size3").html(response);
                 }
+            }
+        });
+    });
+    $(".findAmount").click(function() {
+        var id = $("#proID").val();
+        var color = $("#colorID").val();
+        var size = $("#size").val();
+        $.ajax({
+            type: 'get',
+            dataType: 'html',
+            url: '{{url('/proDetailAmount')}}',
+            data: 'id=' + id + '&color=' + color +'&size=' + size,
+            success: function(response) {
+                console.log(response);
+            
+                    $("#amount1").html(response);
+    
             }
         });
     });

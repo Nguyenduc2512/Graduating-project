@@ -100,58 +100,13 @@
                 <div class="owl-stage">
                     @foreach($brands as $brand)
                     <div class="owl-item">
-                        <a href="#">
+                        <a href="{{$brand->link}}">
                             <img src="{{$brand->logo}}" width="100%">
                         </a>
                     </div>
                     @endforeach
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="w3-container  w3-center">
-    <div class="w3-row w3-card-4 w3-grey w3-round-large w3-border comparePanle w3-margin-top">
-        <div class="w3-row">
-            <div class="w3-col l9 m8 s6 w3-margin-top">
-                <h4 style="color: white">Đã thêm sản phẩm so sánh</h4>
-            </div>
-            <div class="w3-col l3 m4 s6 w3-margin-top">
-                 
-                <button class="w3-btn w3-round-small w3-white w3-border notActive cmprBtn" disabled>So sánh</button>
-            </div>
-        </div>
-        <div class=" titleMargin w3-container comparePan">
-        </div>
-    </div>
-</div>
-<!--end of preview panel-->
-
-<!-- comparision popup-->
-<div id="id01" class="w3-animate-zoom w3-white w3-modal modPos">
-    <div class="w3-container">
-        <a style="font-size: 50px" onclick="document.getElementById('id01').style.display='none'"
-            class="whiteFont w3-padding w3-closebtn closeBtn">×</a>
-    </div>
-    <div class="w3-row contentPop w3-margin-top">
-
-    </div>
-
-</div>
-<!--end of comparision popup-->
-
-<!--  warning model  -->
-<div id="WarningModal" class="w3-modal">
-    <div class="w3-modal-content warningModal">
-        <header class="w3-container w3-teal">
-            <h3><span>⚠</span> Ôi không!</h3>
-        </header>
-        <div class="w3-container">
-            <h4 style="color: white">Tối đa ba sản phẩm được phép so sánh</h4>
-        </div>
-        <div class="w3-container w3-right-align">
-            <button id="warningModalClose" onclick="document.getElementById('id01').style.display='none'"
-                class="w3-btn w3-hexagonBlue w3-margin-bottom  ">Ok</button>
         </div>
     </div>
 </div>

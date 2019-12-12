@@ -17,25 +17,18 @@
                         <div class="mn-ft">
                             <ul>
                                 <li><a href="{{route('about')}}">Về chúng tôi</a></li>
-                                <li><a href="contact.html">Liên Hệ</a></li>
-                                <li><a href="contact.html#map">Bản đồ</a></li>
+                                <li><a href="{{route('contact')}}">Liên Hệ</a></li>
+                                <li><a href="{{route('contact')}}#map">Bản đồ</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <ul>
+                            @foreach($category as $cate)
                             <li>
-                                <a href="cate.html">Nike</a>
+                                <a href="{{route('cate', ['id' => $cate->id])}}">{{$cate->name}}</a>
                             </li>
-                            <li>
-                                <a href="cate.html">Adidas</a>
-                            </li>
-                            <li>
-                                <a href="cate.html">Converse</a>
-                            </li>
-                            <li>
-                                <a href="cate.html">Gucci</a>
-                            </li>
+                            @endforeach
                         </ul>
                         </ul>
                     </div>
@@ -44,7 +37,7 @@
         </div>
         <div class="end-ft">
             <div class="container">
-                <p>Copyright 2019 · Thiết kế và phát triển bởi <a href="index.html">Auth Shoes</a> All rights
+                <p>Copyright 2019 · Thiết kế và phát triển bởi <a href="{{route('home')}}">Auth Shoes</a> All rights
                     reserved
                 </p>
             </div>

@@ -5,8 +5,9 @@
 </select>
 @else
 <label for="">Size*</label>
-<select name="size" class="form-control" id="size">
-	@foreach($sizes as $size)
+<select name="size" class="form-control" id="size" class="findAmount">
+	<option selected value="">--</option>
+    @foreach($sizes as $size)
 	<option value="{{$size->size}}">
 		{{$size->size}}
 	</option>
@@ -18,4 +19,4 @@
 @if($errors->first('size_order'))
 <span class="text-danger"> {{$errors->first('size_order')}} </span>
 @endif
-@endif
+@endif 

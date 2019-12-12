@@ -94,7 +94,7 @@ class PageController extends Controller
             }
             $proper->size = $sizes;
         }
-        $productCategory = DB::table('products')->where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
+        $productCategory = Product::where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
         $comment = Comment::where('product_id', $id)->limit(5)->orderBy('created_at', 'ASC')->get();
         return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size', 'count', 'album'));
     }
@@ -113,8 +113,23 @@ class PageController extends Controller
         else{
             $sizes = [];
         }
+        return view('client/prosize', ['sizes' => $sizes,]);
 
-        return view('client/prosize', ['sizes' => $sizes,], compact('album'));
+    }
+    public function proDetailAmount(Request $request)
+    {
+        $id = $request->id;
+        $color = $request->color;
+        $size = $request->size;
+        if($color!="" && $size!=""){
+            $sizes = DB::table('properties')
+            ->where('product_id', '=', "$id")
+            ->where('color_id', '=', "$color")
+            ->where('size', '=', "$size")
+            ->first();
+
+        }
+        return view('client/proDetailAmount', ['sizes' => $sizes,]);
 
     }
 
@@ -290,11 +305,11 @@ class PageController extends Controller
         $kw = $request->keyWord;
         $count = count($this->cartService->countCartUser());
         if(!$request->has('keyWord') || empty($request->keyWord)) {
-            $productSearch = Product::paginate(4);
+            $productSearch = Product::where('status','1')->paginate(4);
         }
         // 2. thực hiện câu lệnh select*from posts where title like %keyword%.
         else{
-                $productSearch = Product::where('name', 'like', "%$kw%")->paginate(5);  
+                $productSearch = Product::where('name', 'like', "%$kw%")->where('status','1')->paginate(5);  
                 $productSearch->withPath("?keyword=$kw");
         };  
         if(count($productSearch) == 0){
@@ -332,7 +347,7 @@ class PageController extends Controller
             }
         }
         else{
-            $productSearch = Product::where('name', 'like', "%$kw%")->paginate(5);  
+            $productSearch = Product::where('name', 'like', "%$kw%")->where('status', '1')->paginate(5);  
         }
 
         return view('client/proSearch', compact('productSearch'));

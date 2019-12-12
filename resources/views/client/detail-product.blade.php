@@ -24,9 +24,8 @@
                 <div class="col-md-5">
                     <h3>{{$product->name}}</h3>
                     <p>Giá bán: <span class="price">{{$product->price}}</span></p>
-                    <p>Tình trạng: Còn hàng</p>
                     <hr>
-                    <p>Danh mục <span class="cate"><a href="cate.html">{{$product->category->name}}</a></span></p>
+                    <p>Thương hiệu <span class="cate"><a href="cate.html">{{$product->brand->name}}</a></span></p>
                     <hr>
                     <div class="col-lg-12 ">
                         <form action="{{route('member.add_item')}}" method="post" id="new_order">
@@ -53,15 +52,10 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="form-group" id="size3">
+                                    <div class="form-group findAmount" id="size3">
                                         <label for="">Size*</label>
                                         <select name="size" class="form-control" id="size">
                                             <option selected value="">--</option>
-                                            @foreach($sizes as $size)
-                                            <option value="{{$size}}">
-                                                {{$size}}
-                                            </option>
-                                            @endforeach
                                         </select>
                                         @if($errors->first('size'))
                                             <span class="text-danger"> {{$errors->first('size')}} </span>
@@ -72,10 +66,9 @@
                                     </div>
                                 </div>
                                 <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="">Số lượng*</label>
-
-                                        <input type="number" name="amount" class="form-control" value="1" id="amount">
+                                    <div class="form-group" id="amount1">
+                                        <label for="">Số lượng</label>
+                                        <input type="number" name="amount" class="form-control" placeholder="--" max="99" min="1" id="amount">
                                     </div>
                                 </div>
                             </div>
@@ -257,21 +250,26 @@
                 <div class="container">
                     <div class="row">
                         @foreach($productCategory as $pc)
-                        <div class="col-md-3 col-6">
-                            <div class="p_nd">
-                                <a href="#"> <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt=""></a>
-                                <div class="nd_hover">
-                                    <a href="#"><i class="fas fa-cart-plus"></i></a>
-                                    <a href="{{route('detail', ['id' => $pc->id])}}"><i class="far fa-eye"></i></a>
-                                    <a href="#"> <i class="fas fa-less-than-equal"></i></a>
-                                </div>
-                                <a href="{{route('detail', ['id' => $pc->id])}}">
-                                    <h3>{{$pc->name}}</h3>
-                                </a>
-                                <p>{{$pc->price}} đ</p>
-                            </div>
+            <div class="col-md-3 col-6">
+                <div class="p_nd wow fadeInUp selectProduct" data-title="{{$pc->id}}"
+                    data-id="{{$pc->name}}" data-size="{{$pc->price}}"
+                    data-weight="{{ $pc->price }}" data-processor="{{ $pc->description }}" data-brand ="{{ $pc->brand->name }}">
+                    <a href="{{route('detail', ['id' => $pc->id])}}">
+                        <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt="" class="imgFill productImg">
+                        <div class="nd_hover">
+                            <a href="{{route('member.add_to_favorite', ['id' => $pc->id])}}"><i
+                                    class="fas fa-heart"></i></a>
+                            <a href="{{route('detail', ['id' => $pc->id])}}"><i class="far fa-eye"></i></a>
+                            <a class=" addButtonCircular addToCompare"> <i class="fas fa-less-than-equal"></i></a>
                         </div>
-                        @endforeach
+                        <a href="{{route('detail', ['id' => $pc->id])}}">
+                            <h3>{{$pc->name}}</h3>
+                        </a>
+                        <p>{{$pc->price}}đ </p>
+                    </a>
+                </div>
+            </div>
+            @endforeach
                     </div>
                 </div>
             </div>

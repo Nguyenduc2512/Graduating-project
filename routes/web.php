@@ -169,6 +169,8 @@ Route::get('/proSearch', 'User\PageController@proSearch')->name('fillterSearch')
 
 Route::get('/proDetail', 'User\PageController@proDetail');
 
+Route::get('/proDetailAmount', 'User\PageController@proDetailAmount');
+
 Route::post('new_account', 'User\UserController@newAccount')->name('new_account');
 
 Route::get('sign_up_false', 'User\UserController@signUpFalse')->name('sign_up_false');
