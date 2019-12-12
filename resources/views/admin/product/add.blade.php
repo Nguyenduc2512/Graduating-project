@@ -24,7 +24,7 @@
             <form action="{{route('admin.add_product')}}" method="post" enctype="multipart/form-data" name="myForm">
                 @csrf
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="form-group">
                             <b>Tên sản phẩm</b>
                             <input type="text" name="name" class="form-control" value="{{old('name')}}">
@@ -70,8 +70,6 @@
                             <span class="text-danger"> {{$errors->first('picture')}} </span>
                             @endif
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="form-group">
                             <b>Mô tả</b>
                             <textarea class="form-control" rows="5" name="description"></textarea>
@@ -79,10 +77,13 @@
                             <span class="text-danger"> {{$errors->first('description')}} </span>
                             @endif
                         </div>
+                    </div>
+                    <div class="col-md-7">
                         <div class="row">
                             <div class="col-lg-12">
                                 @foreach($colors as $color)
-                                <div class="color_{{$color->id}} input_data">
+                                <div class="color_{{$color->id}} input_data"
+                                    style="margin-bottom: 30px; border-bottom: 2px solid #ddd;">
                                     <div class="row">
                                         <div class="col-md-3">
                                             <input id="dataProducts" type="hidden">
@@ -95,10 +96,9 @@
                                         </div>
                                         <div class="col-md-9">
                                             <b>Size : </b><br>
-                                            <div class="col-12"
-                                                style="border: 1px solid #ddd; display: flex; padding-top: 10px">
+                                            <div class="col-12" style=" display: flex; padding-top: 10px">
                                                 @foreach($sizes as $size)
-                                                <div style="margin-right: 20px" id="1">
+                                                <div style="margin-right: 20px;" id="1">
                                                     <input type="checkbox" multiple="multiple"
                                                         name="size[{{ $color->id }}][]" value='{{$size}}' class="size">
                                                     <span style="margin-top: -5px">{{$size}}</span>
