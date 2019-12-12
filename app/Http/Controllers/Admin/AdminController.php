@@ -5,8 +5,10 @@ use App\Services\ContactService;
 use App\Services\AccountAdminService;
 use App\Http\Requests\AccountAdminRequest;
 use App\Services\WebSettingService;
+use App\Services\AboutService;
 use App\Services\UserService;
 use App\Http\Requests\WebSettingRequest;
+use App\Http\Requests\AboutRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 class AdminController extends Controller
@@ -18,11 +20,13 @@ class AdminController extends Controller
     public function __construct(contactService $contactService,
                                 AccountAdminService $accountAdminService,
                                 WebSettingService $webSettingService,
+                                AboutService $aboutService,
                                 UserService $userService)
     {
         $this->contactService = $contactService;
         $this->accountAdminService = $accountAdminService;
         $this->webSettingService = $webSettingService;
+        $this->aboutService = $aboutService;
         $this->userService = $userService;
     }
 
@@ -47,7 +51,7 @@ class AdminController extends Controller
        $admins = $this->accountAdminService->getAdmin();
         return view('admin/admin/index', compact('admins'));
     }
-    public function  editFormAdmin($id)
+    public function  editFormAdmin($id) 
     {
         $admin = $this->accountAdminService->editFormAdmin($id);
         return view('admin/admin/edit', compact('admin'));
@@ -76,5 +80,20 @@ class AdminController extends Controller
     {
        $users = $this->userService->getUser();
         return view('admin/customer/index', compact('users'));
+    }
+    public function listAbout()
+    {
+       $about = $this->aboutService->getAbout();
+        return view('admin/about/index', compact('about'));
+    }
+    public function  editFormAbout($id)
+    {
+        $about = $this->aboutService->editFormAbout($id);
+        return view('admin/about/edit', compact('about'));
+    }
+    public function  editAbout(AboutRequest $request)
+    {
+        $web = $this->aboutService->editAbout($request);
+        return redirect()->route('admin.list_about')->with(['success'=> 'Sửa giới thiệu thành công']);
     }
 }

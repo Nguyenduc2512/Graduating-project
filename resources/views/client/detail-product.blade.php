@@ -198,7 +198,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach
+                                        @endforeach 
                                         <div class="comment-add">
                                             <div class="field-comment">
                                                 <div class="row">
@@ -206,8 +206,12 @@
                                                         @if(!Auth::user())
                                                         <img src="{{url('/')}}/images/default.png" width="100%" alt="">
                                                         @else
-                                                        <img src="{{url('/')}}/{{Auth::user()->avatar}}" width="100%"
+                                                            @if(Auth::user()->avatar == "")
+                                                            <img src="{{url('/')}}/images/default.png" width="100%" alt="">
+                                                            @else
+                                                            <img src="{{url('/')}}/{{Auth::user()->avatar}}" width="100%"
                                                             alt="">
+                                                            @endif
                                                         @endif
                                                     </div>
                                                     <div class="col-11">

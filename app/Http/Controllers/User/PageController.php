@@ -305,11 +305,11 @@ class PageController extends Controller
         $kw = $request->keyWord;
         $count = count($this->cartService->countCartUser());
         if(!$request->has('keyWord') || empty($request->keyWord)) {
-            $productSearch = Product::where('status','1')->paginate(4);
+            $productSearch = Product::where('status','1')->paginate(8);
         }
         // 2. thực hiện câu lệnh select*from posts where title like %keyword%.
         else{
-                $productSearch = Product::where('name', 'like', "%$kw%")->where('status','1')->paginate(5);
+                $productSearch = Product::where('name', 'like', "%$kw%")->where('status','1')->paginate(8);
                 $productSearch->withPath("?keyword=$kw");
         };
         if(count($productSearch) == 0){
@@ -330,24 +330,24 @@ class PageController extends Controller
                 $productSearch = Product::where('name', 'like', "%$kw%")
                 ->orderBy('created_at', 'desc')
                 ->where('status', 1)
-                ->paginate(3);
+                ->paginate(8);
                 break;
             case 'asc':
                 $productSearch = Product::where('name', 'like', "%$kw%")
                 ->orderBy('price', 'asc')
                 ->where('status', 1)
-                ->paginate(3);
+                ->paginate(8);
                 break;
             case 'desc':
                 $productSearch = Product::where('name', 'like', "%$kw%")
                 ->orderBy('price', 'desc')
                 ->where('status', 1)
-                ->paginate(3);
+                ->paginate(8);
                 break;
             }
         }
         else{
-            $productSearch = Product::where('name', 'like', "%$kw%")->where('status', '1')->paginate(5);
+            $productSearch = Product::where('name', 'like', "%$kw%")->where('status', '1')->paginate(8);
         }
 
         return view('client/proSearch', compact('productSearch'));
