@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
+use App\Services\PropertiesService;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\DeliveryBrand;
@@ -11,9 +12,12 @@ use App\Models\DeliveryBrand;
 class CartController extends Controller
 {
     protected $cartService;
-    public function __construct( CartService $cartService)
+    protected $propertiesService;
+    public function __construct( CartService $cartService,
+                                PropertiesService $propertiesService)
     {
         $this->cartService = $cartService;
+        $this->propertiesService = $propertiesService;
     }
 
     public function index()
@@ -32,6 +36,7 @@ class CartController extends Controller
     public function accept($id)
     {
         $cart = $this->cartService->accept($id);
+        $properties = $this->propertiesService->reduction($id);
 
         return redirect()->route('admin.list_cart');
     }
@@ -53,5 +58,13 @@ class CartController extends Controller
     {
         $order = $this->cartService->getDetailOrder($id);
         return view('admin/cart/detailcart', compact('order'));
+    }
+
+    public function listShip()
+    {
+        $orders = $this->cartService->getListShip();
+
+        return view('admin/cart/list_ship', compact('orders'));
+
     }
 }

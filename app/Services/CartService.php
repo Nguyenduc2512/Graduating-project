@@ -115,6 +115,13 @@ class CartService {
          $order = Cart::where('order_id', $id)->get();
          return $order;
      }
+
+     public function getListShip()
+     {
+         $orders = Order::where('status', 4)->get();
+
+         return $orders;
+     }
  }
  //Đọc comment
 // status = 1 : Đã đặt
@@ -123,3 +130,4 @@ class CartService {
 // status = 4 : Đang giao
 // status = 5 : Thành công
 // status = 6 : Giao không thành công
+// status = 7 : Hủy đơn hàng

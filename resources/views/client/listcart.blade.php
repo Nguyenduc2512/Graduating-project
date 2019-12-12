@@ -90,7 +90,7 @@
                                 @endforeach
                             </form>
                         </div>
-                        @if($total_price != 0)
+                        @if($all_price != 0)
                         <div class="col-md-4">
                             <div id="site-footer">
                                 @if (session('msg'))
@@ -109,12 +109,12 @@
                                         </div>
                                     </div>
                                 </form>
-                                <h2 class="subtotal">Tổng phụ: <span>{{$total_price}} đ</span> đ</h2>
+                                <h2 class="subtotal">Tổng phụ: <span>{{$all_price}}</span> đ</h2>
                                 <h3 class="km5">Giảm(<span class="km6">{{session()->get('coupon')['down']}}</span>%):
-                                    -<span class="km7">{{session()->get('coupon')['down'] * $total_price * 0.01}}</span>
+                                    -<span class="km7">{{session()->get('coupon')['down'] * $all_price * 0.01}}</span>
                                     đ</h3>
                                 <h2 class="total">Thành tiền:
-                                    <span>{{$total_price - session()->get('coupon')['down'] * $total_price * 0.01}}</span>
+                                    <span>{{$all_price - session()->get('coupon')['down'] * $all_price * 0.01}}</span>
                                     đ</h2>
                                 <button class="btn btn-block" onclick="order()">Tiến hành đặt hàng</button>
                             </div>
@@ -135,14 +135,11 @@
                             <div class="sp" style=" padding-top: 10px;">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <h3>Đơn : <a href="detail-product.html">{{$order->code_order}}</a></h3>
+                                        <h3>Đơn : <a href="{{route('member.order_detail', ['id'=> $order->id])}}">{{$order->code_order}}</a></h3>
                                         <p><i class="fas fa-angle-double-right"></i> Giao hàng tại :
                                             {{$order->location}}</p>
                                         <div class="linkdel">
-                                            <a href="javascript:;"
-                                                linkurl="{{route('member.remove_order', ['id' => $order->id])}}"
-                                                class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i>
-                                                Xóa </a>
+                                            <a href="{{route('member.remove_order', ['id' => $order->id])}}">Hủy đơn hàng</a>
                                         </div>
                                         <div class="linkdel">
                                             <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xem Chi
@@ -180,9 +177,6 @@
                                         <h3>Đơn : <a href="">{{$order->code_order}}</a></h3>
                                         <p><i class="fas fa-angle-double-right"></i> Giao hàng tại nhà</p>
                                         <div class="linkdel">
-                                            <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xóa</a>
-                                        </div>
-                                        <div class="linkdel">
                                             <a href="{{route('member.remove_order', ['id' => $order->id])}}">Xem Chi
                                                 Tiết</a>
                                         </div>
@@ -211,7 +205,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             @foreach($orders as $order)
-                            @if($order->status > 4)
+                            @if($order->status > 4 && $order->status < 7)
                             <div class="sp" style=" padding-top: 10px;">
                                 <div class="row">
                                     <div class="col-md-3"></div>

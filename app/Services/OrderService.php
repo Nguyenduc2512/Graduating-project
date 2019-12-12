@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Properties;
 use Illuminate\Http\Request;
@@ -33,7 +34,7 @@ class OrderService
         $id=DB::getPdo()->lastInsertId();
         $user = User::find(Auth::user()->id);
         $orderMail = Order::find($id);
-        Mail::to($user)->send(new OrderMail($orderMail));   
+        Mail::to($user)->send(new OrderMail($orderMail));
 
     }
 
@@ -46,7 +47,7 @@ class OrderService
     public function removeOrder($id)
     {
         $order = Order::find($id);
-        $order->status = 4;
+        $order->status = 7;
         $order->save();
     }
 
@@ -54,6 +55,18 @@ class OrderService
     {
         $properties = Properties::where('product_id', $request->product_id_order)->where('color_id', $request->color_id_order)->where('size', $request->size_order)->first();
         return $properties;
+    }
+
+    public function orderDetail($id)
+    {
+        $order = Cart::where('order_id', $id)->get();
+        return $order;
+    }
+
+    public function getOrderDetail($id)
+    {
+        $order = Order::find($id);
+        return $order;
     }
 
 }

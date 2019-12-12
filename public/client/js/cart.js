@@ -13,24 +13,11 @@ function changeVal(el) {
 function changeTotal() {
 
     var price = 0;
-    var promo = $('.km6').html();
 
+    $(".allprice").find(".full-price").each(function () {
 
-    $(".full-price").each(function (index) {
-        price += parseFloat($(".full-price").eq(index).html());
-    });
+    })
 
-    price = Math.round(price * 100) / 100;
-    var km5 = Math.round(price * promo) / 100;
-    var fullPrice = Math.round((price - km5) * 100) / 100;
-
-    if (price == 0) {
-        fullPrice = 0;
-    }
-
-    $(".subtotal span").html(price);
-    $(".km7").html(km5);
-    $(".total span").html(fullPrice);
 }
 
 $(document).ready(function () {

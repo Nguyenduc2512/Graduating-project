@@ -28,11 +28,12 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <b>Tên sản phẩm</b>
-                    <input type="text" name="name" class="form-control" value="{{$product->name}}a">
+                    <input type="text" name="name" class="form-control" value="{{$product->name}}">
                   </div>
                   <div class="form-group">
                     <b>Danh mục</b>
                     <select name="cate_id" class="form-control">
+                        <option>{{$product->category->name}}</option>
                       @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                       @endforeach

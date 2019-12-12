@@ -27,7 +27,7 @@ class PromoService
         return $promos3;
     }
     public function addNewPromo(Request $request)
-    {             
+    {
         $promo = new Promo();
           $permitted_chars ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $request->code= substr(str_shuffle($permitted_chars), 0, 6);
@@ -46,8 +46,17 @@ class PromoService
         $user = User::where("role", $request->role)->get();
         $promo = Promo::find($id);
         foreach ($user as $key => $u) {
-        Mail::to($u)->send(new SendMail($promo));   
+        Mail::to($u)->send(new SendMail($promo));
         }
-            
+
+    }
+
+    public function usePromo(Request $request)
+    {
+        $promo = Promo::where('code', $request->code_promo)->first();
+        if ($promo){
+        $promo->amount = $promo->amount - 1;
+        $promo->save();
+        }
     }
 }

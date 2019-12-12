@@ -9,7 +9,23 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-9" style="margin: auto;">
+                <div class="col-md-3">
+                    <div class="li-member" style="margin-top: 30px;">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="{{ url('/') }}/{{ $profile->avatar }}" width="100%" alt="">
+                            </div>
+                            <div class="col-9">
+                                <span>Tài khoản của</span>
+                                <p style="font-weight: bold;">{{ $profile->name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li-member">
+                        <a href="#">Đổi mật khẩu</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
                     <div class="title">
                         <h2 class="text_title"><span>Thông tin tài khoản</span></h2>
                     </div>
