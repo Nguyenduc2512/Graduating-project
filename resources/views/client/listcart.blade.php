@@ -71,17 +71,17 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="allprice">
-                                                <span href="#" class="qt-minus">-</span>
+                                                <span onclick="changeTotal()" href="#" class="qt-minus">-</span>
                                                 <span class="qt" multiple="multiple"
                                                     id="amount">{{$cart->amount}}</span>
-                                                <span href="#" class="qt-plus">+</span>
+                                                <span onclick="changeTotal()" href="#" class="qt-plus">+</span>
                                                 <br><br>
                                                 Giá: <span class="price">
                                                     {{$cart->properties->product->price}} đ </span>
                                                 <br>
                                                 Tổng tiền: <span class="full-price">
-                                                    {{$cart->properties->product->price * $cart->amount}} đ
-                                                </span>
+                                                                {{$cart->properties->product->price * $cart->amount}} đ
+                                                           </span>
                                             </div>
                                         </div>
                                     </div>

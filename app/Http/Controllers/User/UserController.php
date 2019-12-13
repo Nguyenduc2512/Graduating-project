@@ -99,14 +99,14 @@ class UserController extends Controller
         $carts = $this->cartService->getListCart();
         $orders = $this->orderService->getOrder();
         $count = count($carts);
-        $total_price = 0;
+        $all_price = 0;
         foreach ($carts as $cart){
             if ($cart->status == 0) {
                 $price = $cart->properties->product->price * $cart->amount;
-                $total_price = $total_price + $price;
+                $all_price = $all_price + $price;
             }
         }
-        return view('client/listcart', compact('carts', 'count', 'total_price', 'orders'));
+        return view('client/listcart', compact('carts', 'count', 'all_price', 'orders'));
     }
 
     public function favorite()

@@ -119,7 +119,7 @@
 
                                                         </div>
                                                     </div>
-                                                    <input type="hidden" name="role" value="0">
+                                                    <input type="hidden" name="role" value="100">
                                                     <input type="hidden" name="status" value="1">
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-info">

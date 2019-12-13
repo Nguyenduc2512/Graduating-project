@@ -61,9 +61,10 @@
               <div class="form-group">
                 <b>Đôi tượng</b>
                 <select name="role" class="form-control" aria-required="true">
-                  <option value="1">Tất cả</option>
-                  <option value="2">Bạc</option>
-                  <option value="3">Vàng</option>
+                  <option value="100">Tất cả</option>
+                  <option value="200">Bạc</option>
+                  <option value="300">Vàng</option>
+                  <option value="400">Bạch kim</option>
                 </select>
               </div>
               <div class="text-center">
@@ -78,6 +79,6 @@
       <!-- /.content -->
     </div>
 
-    
+
 @endsection
 

@@ -141,4 +141,11 @@ class ProductController extends Controller
 
         return redirect()->route('admin.show_product');
     }
+
+    public function activeProduct($id)
+    {
+        $product = $this->productService->activeProduct($id);
+
+        return redirect()->route('admin.show_product');
+    }
 }
