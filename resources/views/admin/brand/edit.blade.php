@@ -22,7 +22,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="col-md-8">
-        <form action="{{route('admin.edit_deliverybrand', ['id' => $brand->id])}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.edit_brand', ['id' => $brand->id])}}" method="post" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="id" value="{{$brand->id}}" value="1">
           <div class="form-group">

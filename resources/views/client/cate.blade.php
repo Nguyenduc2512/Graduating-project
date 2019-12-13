@@ -16,7 +16,6 @@
                             <h3>Tên dang mục</h3>
                             @foreach($category as $cate)
                             <div class="col-lg-12">
-
                                 <a href="{{route('cate', ['id' => $cate->id])}}" @if($cate->id == $id)
                                     style="color:red;text-decoration: underline" @endif> {{$cate->name}}
                                 </a>

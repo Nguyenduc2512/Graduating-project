@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-md-3 wow fadeInLeft" data-wow-duration="3s">
                 <div class="img_cate">
-                    <a href="cate.html"> <img src="client/images/cate1.jpg" width="100%" alt=""></a>
+                    <a href="{{route('cate', 1)}}"> <img src="client/images/cate1.jpg" width="100%" alt=""></a>
                 </div>
             </div>
             <div class="col-md-6 wow fadeInUp" data-wow-duration="3s">
