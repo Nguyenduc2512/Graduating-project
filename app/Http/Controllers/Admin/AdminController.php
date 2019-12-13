@@ -9,6 +9,17 @@ use App\Services\UserService;
 use App\Http\Requests\WebSettingRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
+use App\Models\Product;
+use App\Models\Web_Setting;
+use App\Models\Category;
+use App\Models\Promo;
+use App\Models\Brand;
+use App\Models\Order;
+use App\Models\User;
+use App\Models\Comment;
+use App\Models\Contact;
+use App\Models\Cart;
 class AdminController extends Controller
 {
     protected $contactService;
@@ -27,7 +38,56 @@ class AdminController extends Controller
     }
 
     public function index() {
-        return view('admin/layouts/main');
+    $range = \Carbon\Carbon::now(0)->subYears(0)->subMonths(0);
+        $date_range1 = date_format($range,"m");
+        
+        $Promo= Promo::all();
+        $orders= Order::where('status','2')->get();
+        $brands= Brand::all();
+        $comments= Comment::all();
+        $contacts= Contact::all();
+        $products = Product::all();
+        $cates = Category::all();
+        $web_settings = Web_Setting::all();
+        foreach ($web_settings as $w) {
+            $map = $w->map;
+        }
+        $ordersAmount = DB::table('carts')->whereIn('status',[1,2,3])->SUM('amount');
+        $users = DB::table('users')
+                    ->select(DB::raw('month(created_at) as getMonth'), DB::raw('COUNT(*) as value'))
+                    ->where('updated_at', '>=', $date_range1)
+                    ->groupBy('getMonth')
+                    ->orderBy('getMonth', 'ASC')
+                    ->get();
+        foreach ($users as $u) {
+            $us = $u->value;
+        }
+        
+        $date_range = date_format($range,"Y");
+        $orderMonth = DB::table('orders')
+                    ->select(DB::raw('month(updated_at) as getMonth'), DB::raw('COUNT(*) as value'))
+                    ->where('updated_at', '>=', $date_range)
+                    ->groupBy('getMonth')
+                    ->orderBy('getMonth', 'ASC')
+                    ->get();
+        foreach ($orderMonth as $d) {
+        $hh[] = $d->getMonth;
+        $dh[] = $d->value;
+    }
+        
+     $data = Product::
+       select(
+        DB::raw('brand_id'),
+        DB::raw('count(*) as number'))
+       ->groupBy('brand_id')
+       ->get();
+    foreach ($data as $d) {
+        $brandCount[] = $d->brand->name;
+        $brandNumber[] = $d->number;
+    }
+
+
+        return view('admin/index',compact('brandCount','brandNumber','hh','dh','products','cates','us','comments','orders','contacts','map','ordersAmount','brands'));
     }
 
     public function contact()

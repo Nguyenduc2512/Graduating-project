@@ -36,6 +36,7 @@
 
   <script src="{{asset('/admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('/admin/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+
   <script type="text/javascript">
   $(document).ready(function() {
     $('#example').DataTable();
@@ -115,3 +116,5 @@
   <!-- <script src="./admin/dist/js/pages/dashboard.js"></script> -->
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('admin/dist/js/demo.js')}}"></script>
+
+

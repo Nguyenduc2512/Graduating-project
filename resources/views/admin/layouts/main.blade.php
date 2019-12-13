@@ -41,7 +41,7 @@
   <!-- ./wrapper script -->
 @include('admin.layouts.script')
   <!-- jQuery -->
- 
+  
 </body>
 
 </html>
