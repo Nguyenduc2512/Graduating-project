@@ -126,7 +126,8 @@ nav .navbar-toggler .fa-bars{
     transition: opacity .35s ease;
 }
 .nd_hover i{
-    padding: 10px;
+    padding: 12px;
+    border-radius: 50%;
     background: #1e3650;
     color: white;
     text-align: center;

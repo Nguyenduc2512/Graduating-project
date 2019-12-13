@@ -29,7 +29,7 @@
 
                 var image = $(this).siblings(".productImg").attr('src');
 
-                $(".comparePan").append('<div id="' + productID + '" class="relPos titleMargin w3-margin-bottom   w3-col l3 m4 s4"><div class="w3-white titleMargin"><a class="selectedItemCloseBtn w3-closebtn cursor">&times</a><p id="' + productID + '" class="titleMargin1">' + displayTitle + '</p></div></div>');
+                $(".comparePan").append('<div id="' + productID + '" class="relPos titleMargin w3-margin-bottom   w3-col l3 m4 s4"><div class="w3-white titleMargin"><p id="' + productID + '" class="titleMargin1">' + displayTitle + '</p></div></div>');
             }
         } else {
             list.splice($.inArray(productID, list), 1);
