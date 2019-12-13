@@ -25,7 +25,8 @@ class OrderRequest extends FormRequest
     {
         return [
             'color_id_order'=>'required',
-            'size_order'=>'required'
+            'size_order'=>'required',
+            'amount_order'=>'required'
         ];
     }
 
@@ -33,7 +34,8 @@ class OrderRequest extends FormRequest
     {
         return [
             'color_id_order.required' => 'Bạn chưa chọn màu',
-            'size_order.required' => 'Bạn chưa chọn size'
+            'size_order.required' => 'Bạn chưa chọn size',
+            'amount_order.required' => 'Bạn chưa chọn size'
         ];
     }
 }
