@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlbumRequest;
 use App\Http\Requests\ColorRequest;
+use App\Http\Requests\EditProductRequest;
 use App\Http\Requests\ProductRequests;
 use App\Services\CategoryService;
 use App\Services\BrandService;
@@ -37,7 +38,7 @@ class ProductController extends Controller
     public function newProduct()
     {
         $categories = $this->categoryService->getCategory();
-        $brands = $this->brandService->getBrand();
+        $brands = $this->brandService->listBrandStatus1();
         $colors = $this->colorService->getColor();
         $sizes = [
             36,37,38,39,40,41,42,43
@@ -51,7 +52,7 @@ class ProductController extends Controller
         $this->productService->addNewProduct($request);
         $this->propertiesService->addNewProperties($request);
 
-        return redirect()->route('admin.adminHome');
+        return redirect()->route('admin.show_product');
     }
 
     public function showListProduct()
@@ -69,7 +70,7 @@ class ProductController extends Controller
         return view('admin/product/edit', compact('product', 'categories'));
     }
 
-    public function saveEditProduct(Request $request, $id)
+    public function saveEditProduct(EditProductRequest $request, $id)
     {
         $product = $this->productService->editProduct($request, $id);
 

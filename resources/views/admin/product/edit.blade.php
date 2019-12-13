@@ -29,11 +29,14 @@
                   <div class="form-group">
                     <b>Tên sản phẩm</b>
                     <input type="text" name="name" class="form-control" value="{{$product->name}}">
+                      @if($errors->first('name'))
+                          <span class="text-danger"> {{$errors->first('name')}} </span>
+                      @endif
                   </div>
                   <div class="form-group">
                     <b>Danh mục</b>
                     <select name="cate_id" class="form-control">
-                        <option>{{$product->category->name}}</option>
+                        <option value="{{$product->category->id}}">{{$product->category->name}}</option>
                       @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                       @endforeach
@@ -43,6 +46,9 @@
                     <b>Giá bán</b>
                     <input type="text" name="price" class="form-control" required="" aria-required="true"
                       value="{{$product->price}}">
+                      @if($errors->first('price'))
+                          <span class="text-danger"> {{$errors->first('price')}} </span>
+                      @endif
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -60,6 +66,9 @@
               <div class="form-group">
                 <b>Mô tả</b>
                 <textarea class="form-control" rows="3" name="description">{{$product->description}}</textarea>
+                  @if($errors->first('description'))
+                      <span class="text-danger"> {{$errors->first('description')}} </span>
+                  @endif
               </div>
               <div class="col-md-12 text-left">
                 <a href="{{route('admin.show_product')}}" class="btn  btn-danger">Huỷ</a>
