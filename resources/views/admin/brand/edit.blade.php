@@ -17,37 +17,37 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
- 
+
   <!-- Main content -->
   <section class="content">
     <div class="container-fluid">
       <div class="col-md-8">
-        <form action="{{route('admin.edit_deliverybrand', ['id' => $listdeliverybrand->id])}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.edit_deliverybrand', ['id' => $brand->id])}}" method="post" enctype="multipart/form-data">
           @csrf
-          <input type="hidden" name="id" value="{{$listdeliverybrand->id}}" value="1">
+          <input type="hidden" name="id" value="{{$brand->id}}" value="1">
           <div class="form-group">
             <label>Tên đối tác</label>
-            <input type="text" name="name" class="form-control" value="{!! old('name', $listdeliverybrand->name)!!}">
+            <input type="text" name="name" class="form-control" value="{!! old('name', $brand->name)!!}">
             @if($errors->first('name'))
             <span class="text-danger"> {{$errors->first('name')}} </span>
             @endif
           </div>
           <div class="form-group">
             <label>Đường dẫn</label>
-            <input type="text" name="link" class="form-control" value="{!! old('link', $listdeliverybrand->link)!!}">
+            <input type="text" name="link" class="form-control" value="{!! old('link', $brand->link)!!}">
             @if($errors->first('link'))
             <span class="text-danger"> {{$errors->first('link')}} </span>
             @endif
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="text" name="email" class="form-control" value="{!! old('email', $listdeliverybrand->email)!!}">
+            <input type="text" name="email" class="form-control" value="{!! old('email', $brand->email)!!}">
             @if($errors->first('email'))
             <span class="text-danger"> {{$errors->first('email')}} </span>
             @endif
           </div>
           <label>
-            @if($listdeliverybrand->status == 1)
+            @if($brand->status == 1)
             <input type="radio" checked name="status" value="1"> Hoạt động&nbsp;&nbsp;&nbsp;&nbsp;
             <input type="radio" name="status" value="0"> Ngưng hoạt động
             @else
