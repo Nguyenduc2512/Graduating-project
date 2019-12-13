@@ -59,6 +59,9 @@
                             <input type="file" name="picture[]" multiple>
                             <button type="submit">Thêm ảnh</button>
                         </form>
+                        @if($errors->first('picture'))
+                            <span class="text-danger"> {{$errors->first('picture')}} </span>
+                        @endif
                     </div>
                 </section>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AlbumRequest;
 use App\Http\Requests\ColorRequest;
 use App\Http\Requests\ProductRequests;
 use App\Services\CategoryService;
@@ -113,7 +114,7 @@ class ProductController extends Controller
         return view('admin/album/index', compact('album', 'product'));
     }
 
-    public function newPicture(Request $request, $id)
+    public function newPicture(AlbumRequest $request, $id)
     {
         $product = $this->productService->newPicture($request, $id);
 
@@ -145,6 +146,19 @@ class ProductController extends Controller
     public function activeProduct($id)
     {
         $product = $this->productService->activeProduct($id);
+
+        return redirect()->route('admin.show_product');
+    }
+
+    public function addPropertiesAmount($id)
+    {
+        $properties = $this->propertiesService->getPropertiesProduct($id);
+        return view('admin/product/add_amount', compact('properties'));
+    }
+
+    public function saveAddPropertiesAmount(Request $request)
+    {
+        $amount = $this->propertiesService->addAmountProperties($request);
 
         return redirect()->route('admin.show_product');
     }
