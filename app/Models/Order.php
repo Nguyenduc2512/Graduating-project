@@ -14,7 +14,7 @@ class Order extends Model
         'promo',
         'code_order',
         'location',
-        'delivery_id'
+        'delivery'
     ];
     public function user() {
         return $this->hasOne(User::class, 'id', 'user_id');

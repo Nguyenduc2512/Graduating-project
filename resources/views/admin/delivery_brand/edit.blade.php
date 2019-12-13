@@ -10,8 +10,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Sửa đối tác</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.adminHome')}}">Home</a></li>
+            <li class="breadcrumb-item active">Sửa đối tác giao hàng</li>
           </ol>
         </div>
       </div>
@@ -27,15 +27,24 @@
           <input type="hidden" name="id" value="{{$listdeliverybrand->id}}" value="1">
           <div class="form-group">
             <label>Tên đối tác</label>
-            <input type="text" name="name" class="form-control" value="{{$listdeliverybrand->name}}">
+            <input type="text" name="name" class="form-control" value="{{old('name', $listdeliverybrand->name)}}" >
+            @if($errors->first('name'))
+            <span class="text-danger"> {{$errors->first('name')}} </span>
+            @endif
           </div>
           <div class="form-group">
-            <label>Đường dẫn</label>
-            <input type="text" name="link" class="form-control" value="{{$listdeliverybrand->link}}">
+            <label>Email</label>
+            <input type="text" name="email" class="form-control" value="{{old('email', $listdeliverybrand->email)}}">
+            @if($errors->first('email'))
+            <span class="text-danger"> {{$errors->first('email')}} </span>
+            @endif
           </div>
           <div class="form-group">
-            <label>Đường dẫn</label>
-            <input type="text" name="email" class="form-control" value="{{$listdeliverybrand->email}}">
+            <label>Đường liên kết</label>
+            <input type="text" name="link" class="form-control" value="{{old('link', $listdeliverybrand->link)}}">
+            @if($errors->first('link'))
+            <span class="text-danger"> {{$errors->first('link')}} </span>
+            @endif
           </div>
           <label>
             @if($listdeliverybrand->status == 1)

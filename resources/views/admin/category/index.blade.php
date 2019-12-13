@@ -35,11 +35,11 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-                                    role="tab" aria-controls="pills-profile" aria-selected="false">Ngưng hợp tác</a>
+                                    role="tab" aria-controls="pills-profile" aria-selected="false">Ngưng hoạt động</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"
-                                    role="tab" aria-controls="pills-contact" aria-selected="false">Đang hợp tác</a>
+                                    role="tab" aria-controls="pills-contact" aria-selected="false">Hoạt động</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
@@ -69,18 +69,16 @@
                                             <td>{{ $category->description }}</td>
                                             <td width="200px">
                                                 @if($category->status == 1)
-                                                hợp tác
+                                                Hoạt động
                                                 @else
-                                                Ngưng hợp tác
+                                                Ngưng hoạt động
                                                 @endif
                                             </td>
                                             <td><a href="{{route('admin.edit_category', ['id' => $category->id])}}"
                                                     class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
-                                                <a href="#" class="btn btn-xs btn-danger btn-remove">
-                                                    <i class="fa fa-trash"></i> Xoá
-                                                </a></td>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -121,18 +119,16 @@
                                             <td>{{ $category->description }}</td>
                                             <td width="200px">
                                                 @if($category->status == 1)
-                                                hợp tác
+                                                Hoạt động
                                                 @else
-                                                Ngưng hợp tác
+                                                Ngưng hoạt động
                                                 @endif
                                             </td>
                                             <td><a href="{{route('admin.edit_category', ['id' => $category->id])}}"
                                                     class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
-                                                <a href="#" class="btn btn-xs btn-danger btn-remove">
-                                                    <i class="fa fa-trash"></i> Xoá
-                                                </a></td>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -173,18 +169,16 @@
                                             <td>{{ $category->description }}</td>
                                             <td width="200px">
                                                 @if($category->status == 1)
-                                                hợp tác
+                                                Hoạt động
                                                 @else
-                                                Ngưng hợp tác
+                                                Ngưng hoạt động
                                                 @endif
                                             </td>
                                             <td><a href="{{route('admin.edit_category', ['id' => $category->id])}}"
                                                     class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
-                                                <a href="#" class="btn btn-xs btn-danger btn-remove">
-                                                    <i class="fa fa-trash"></i> Xoá
-                                                </a></td>
+                                                </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

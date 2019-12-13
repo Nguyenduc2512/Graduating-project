@@ -78,6 +78,12 @@ Route::group(
 
     Route::post('web/edit/{id}', 'Admin\AdminController@editWeb');
 
+    Route::get('about', 'Admin\AdminController@listAbout')->name('list_about');
+
+    Route::get('about/edit/{id}', 'Admin\AdminController@editFormAbout')->name('edit_about');
+
+    Route::post('about/edit/{id}', 'Admin\AdminController@editAbout');
+
     Route::get('user', 'Admin\AdminController@listUser')->name('list_member');
 
     Route::get('comment', 'Admin\CommentController@listComment')->name('list_comment');

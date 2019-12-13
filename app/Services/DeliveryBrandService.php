@@ -39,11 +39,6 @@ class DeliveryBrandService
             'email' => $request->email,
             'status' => $request->status,
         ];
-        if ($request->status == 0) {
-            $request->status = 1;
-        } else {
-            $request->status = 0;
-        }
         $deliverybrands->fill($data);
 
         $deliverybrands->save();

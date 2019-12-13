@@ -55,11 +55,6 @@ class SlideShowService
             'url' => $request->url,
             'status' => $request->status,
         ];
-        if ($request->status == 0) {
-            $request->status = 1;
-        } else {
-            $request->status = 0;
-        }
         $slideshow->fill($data);
 
         $slideshow->save();

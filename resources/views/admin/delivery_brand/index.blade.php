@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Danh sách đối tác</h1>
+                    <h1>Danh sách đối tác giao hàng</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Danh sách đối tác</li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.adminHome')}}">Home</a></li>
+                        <li class="breadcrumb-item active">Danh sách đối tác giao hàng</li>
                     </ol>
                 </div>
             </div>
@@ -20,6 +20,9 @@
 
     <!-- Main content -->
     <section class="content">
+        @if (session('success')) 
+            <p style="width: 100%;height: 60px; background:#c1b999;margin-top: 10px;padding-top: 15px;padding-left: 20px;border-radius: 4px"><span class="text-white">{{ session('success') }}</span></p>
+                      @endif
         <div class="container-fluid">
             <div class="card-body">
                 <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -28,8 +31,8 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Tên đối tác</th>
-                                <th>Đường dẫn</th>
                                 <th>Email</th>
+                                <th>Đường dẫn</th>
                                 <th>Trạng thái</th>
                                 <th width="150px"> <a href="{{route('admin.add_deliverybrand')}}"
                                         class="btn btn-xs btn-success">
@@ -56,9 +59,7 @@
                                         class="btn btn-xs btn-info">
                                         <i class="fa fa-pencil"></i> Cập nhật
                                     </a>
-                                    <a href="#" class="btn btn-xs btn-danger btn-remove">
-                                        <i class="fa fa-trash"></i> Xoá
-                                    </a></td>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

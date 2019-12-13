@@ -56,10 +56,13 @@
                 </tr>
                 @endif
 
-             </tbody>
+             </tbody> 
           </table>
           <div class="col-lg-12">
             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Chọn đơn vị giao hàng</button>
+            @if($errors->first('delivery_id'))
+            <p style="width: 100%;height: 60px; background:#c1b999;margin-top: 10px;padding-top: 15px;padding-left: 20px;border-radius: 4px"><span class="text-white">{{$errors->first('delivery_id')}}</span></p>
+                      @endif
             <div id="demo" class="collapse">
                <div class="nd_form_rep">
                   <form action="{{route('admin.delivery', ['id'=>$cart->id])}}" method="post" id="formDemo1">

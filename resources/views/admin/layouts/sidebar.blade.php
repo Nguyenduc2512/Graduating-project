@@ -260,6 +260,10 @@
                     <i class="fas fa-newspaper nav-icon"></i>
                     <p>Thông tin chung</p>
                   </a>
+                  <a href="{{route('admin.list_about')}}" class="nav-link active">
+                    <i class="fas fa-newspaper nav-icon"></i>
+                    <p>Giới thiệu</p>
+                  </a>
                     <a href="{{route('logout_admin')}}" class="nav-link active">
                     <i class="fas fa-newspaper nav-icon"></i>
                     <p>Đăng xuất</p>
