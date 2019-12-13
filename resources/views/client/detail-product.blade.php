@@ -70,12 +70,6 @@
                                     <div class="form-group" id="amount1">
                                         <label for="">Số lượng</label>
                                         <input type="number" name="amount"  class="form-control" placeholder="--" max="99" min="1" id="amount">
-                                        @if($errors->first('amount'))
-                                        <span class="text-danger"> {{$errors->first('amount')}} </span>
-                                        @endif
-                                        @if($errors->first('amount_order'))
-                                        <span class="text-danger"> {{$errors->first('amount_order')}} </span>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
