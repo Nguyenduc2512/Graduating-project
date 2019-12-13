@@ -24,7 +24,7 @@ class AlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            'picture' => 'required|file|mimes:jpg,jpeg,png'
+            'picture' => 'required'
         ];
     }
 
