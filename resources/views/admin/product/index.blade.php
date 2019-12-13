@@ -24,8 +24,8 @@
             <div class="card-body">
                 <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                     <div class="row">
-                        <div class="col-sm-12 col-md-6"></div>
-                        <div class="col-sm-12 col-md-6"></div>
+                        <div class="col-sm-12 col-md-10"></div>
+                        <div class="col-sm-12 col-md-2"></div>
                     </div>
                     <div>
                         <div class="container" style="margin-top: 50px;" id="tabs">
@@ -88,10 +88,21 @@
                                                     class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
-                                                <a href="{{route('admin.disable_product', ['id' => $product->id])}}"
-                                                    class="btn btn-xs btn-danger btn-remove">
-                                                    <i class="fa fa-trash"></i> Xoá
-                                                </a></td>
+                                                @if($product->status == 1)
+                                                <a href="javascript:;"
+                                                    linkurl="{{route('admin.disable_product', ['id' => $product->id])}}"
+                                                    class="btn btn-xs btn-danger  hkd">
+                                                    <i class="fa fa-trash"></i> Hủy kinh doanh
+                                                </a>
+
+                                                @else
+                                                <a href="javascript:;"
+                                                    linkurl="{{route('admin.active_product', ['id' => $product->id])}}"
+                                                    class="btn btn-xs btn-primary btn-remove kd">
+                                                    <i class="fas fa-check"></i> Kích hoạt
+                                                </a>
+                                                @endif
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -134,8 +145,9 @@
                                                 </a>
                                                 <a href="{{route('admin.disable_product', ['id' => $activeProduct->id])}}"
                                                     class="btn btn-xs btn-danger btn-remove">
-                                                    <i class="fa fa-trash"></i> Xoá
-                                                </a></td>
+                                                    <i class="fa fa-trash"></i> Ngừng hoạt động
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -178,6 +190,11 @@
                                                     class="btn btn-xs btn-info">
                                                     <i class="fa fa-pencil"></i> Cập nhật
                                                 </a>
+                                                <a href="{{route('admin.active_product', ['id' => $deactivateProduct->id])}}"
+                                                    class="btn btn-xs btn-primary btn-remove">
+                                                    <i class="fas fa-check"></i> Kích hoạt
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

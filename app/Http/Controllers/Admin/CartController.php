@@ -1,10 +1,11 @@
 <?php
- 
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
 use App\Services\PropertiesService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\DeliveryBrand;
@@ -13,11 +14,14 @@ use App\Http\Requests\DeliveryCartRequest;
 class CartController extends Controller
 {
     protected $cartService;
+    protected $userService;
     protected $propertiesService;
     public function __construct( CartService $cartService,
-                                PropertiesService $propertiesService)
+                                PropertiesService $propertiesService,
+                                UserService $userService)
     {
         $this->cartService = $cartService;
+        $this->userService = $userService;
         $this->propertiesService = $propertiesService;
     }
 
@@ -30,6 +34,7 @@ class CartController extends Controller
     public function decline($id)
     {
         $cart = $this->cartService->decline($id);
+        $user = $this->userService->updateRole($id);
 
         return redirect()->route('admin.list_cart');
     }
@@ -37,11 +42,11 @@ class CartController extends Controller
     public function accept($id)
     {
         $cart = $this->cartService->accept($id);
-        $properties = $this->propertiesService->reduction($id);
+        $user = $this->userService->updateRole($id);
 
         return redirect()->route('admin.list_cart');
     }
- 
+
     public function delivery($id)
     {
         $cart = Order::find($id);

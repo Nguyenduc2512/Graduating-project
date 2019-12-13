@@ -11,7 +11,8 @@
             <div class="col-md-3 col-6">
                 <div class="p_nd wow fadeInUp selectProduct" data-title="{{$productNew->id}}"
                     data-id="{{ $productNew->name}}" data-size="{{$productNew->category->name}}"
-                    data-weight="{{ $productNew->price }}" data-processor="{{ $productNew->description }}" data-brand ="{{ $productNew->brand->name }}"> 
+                    data-weight="{{ $productNew->price }}" data-processor="{{ $productNew->description }}"
+                    data-brand="{{ $productNew->brand->name }}">
                     <a href="{{route('detail', ['id' => $productNew->id])}}">
                         <img src="{{$productNew->picture}}" width="100%" alt="" class="imgFill productImg">
                     </a>
@@ -19,7 +20,7 @@
                         <a href="{{route('member.add_to_favorite', ['id' => $productNew->id])}}"><i
                                 class="fas fa-heart"></i></a>
                         <a href="{{route('detail', ['id' => $productNew->id])}}"><i class="far fa-eye"></i></a>
-                        <a class=" addButtonCircular addToCompare"> <i class="fas fa-less-than-equal"></i></a>
+                        <a class="w3-btn-floating w3-light-grey addButtonCircular addToCompare">+</a>
                     </div>
                     <a>
                         <h3>{{$productNew->name}}</h3>
@@ -69,14 +70,15 @@
             <div class="col-md-3 col-6">
                 <div class="p_nd wow fadeInUp selectProduct" data-title="{{$productMost->id}}"
                     data-id="{{$productMost->name}}" data-size="{{$productMost->price}}"
-                    data-weight="{{ $productMost->price }}" data-processor="{{ $productMost->description }}" data-brand ="{{ $productMost->brand->name }}">
+                    data-weight="{{ $productMost->price }}" data-processor="{{ $productMost->description }}"
+                    data-brand="{{ $productMost->brand->name }}">
                     <a href="{{route('detail', ['id' => $productMost->id])}}">
                         <img src="{{$productMost->picture}}" width="100%" alt="" class="imgFill productImg">
                         <div class="nd_hover">
                             <a href="{{route('member.add_to_favorite', ['id' => $productMost->id])}}"><i
                                     class="fas fa-heart"></i></a>
                             <a href="{{route('detail', ['id' => $productMost->id])}}"><i class="far fa-eye"></i></a>
-                            <a class=" addButtonCircular addToCompare"> <i class="fas fa-less-than-equal"></i></a>
+                            <a class="w3-btn-floating w3-light-grey addButtonCircular addToCompare">+</a>
                         </div>
                         <a href="{{route('detail', ['id' => $productMost->id])}}">
                             <h3>{{$productMost->name}}</h3>
@@ -123,14 +125,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-    var showModal = {!!json_encode($showModal) !!};
+    var showModal = {!!json_encode($showModal)!!};
     if (showModal)
         $('#dangnhap').modal('show');
 });
 </script>
 <script>
 $(document).ready(function() {
-    var showModal = {!!json_encode($showModalSignup) !!};
+    var showModal = {!!json_encode($showModalSignup)!!};
     if (showModal)
         $('#dangky').modal('show');
 });

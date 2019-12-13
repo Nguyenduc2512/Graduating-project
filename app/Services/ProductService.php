@@ -164,6 +164,13 @@ class ProductService
         $product->save();
     }
 
+    public function activeProduct($id)
+    {
+        $product = Product::find($id);
+        $product->status = 1;
+        $product->save();
+    }
+
     public function getProductDeactivate()
     {
         $product = Product::where('status', 2)->get();

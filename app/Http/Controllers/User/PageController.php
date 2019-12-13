@@ -394,7 +394,7 @@ class PageController extends Controller
             $show_order = false;
             $carts = $this->cartService->getListCart();
             $orders = $this->orderService->getOrder();
-            $count = count($carts);
+            $count = count($this->cartService->countCartUser());
             $all_price = 0;
             foreach ($carts as $cart){
                 if ($cart->status == 0) {

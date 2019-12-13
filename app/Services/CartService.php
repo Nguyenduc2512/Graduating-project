@@ -68,7 +68,7 @@ class CartService {
      {
          $order = Order::find($id);
          //$order->status = 4 ~ decline cart
-         $order->status = 4;
+         $order->status = 3;
          $order->save();
      }
 

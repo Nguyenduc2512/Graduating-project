@@ -140,6 +140,13 @@ Route::group(
     Route::get('disable_product/{id}', 'Admin\ProductController@disableProduct')->name('disable_product');
 
     Route::get('list_ship', 'Admin\CartController@listShip')->name('list_ship');
+
+    Route::get('active_product/{id}', 'Admin\ProductController@activeProduct')->name('active_product');
+
+    Route::get('add_properties_amount/{id}', 'Admin\ProductController@addPropertiesAmount')->name('add_properties_amount');
+
+    Route::post('save_add_properties_amount', 'Admin\ProductController@saveAddPropertiesAmount')->name('save_add_properties_amount');;
+
 });
 
 Route::group(
