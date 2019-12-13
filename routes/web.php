@@ -163,6 +163,11 @@ Route::group(
     Route::get('favorite', 'User\UserController@favorite')->name('favorite');
     Route::get('add_to_favorite/{id}', 'User\UserController@addToFavorite')->name('add_to_favorite');
     Route::get('order_detail/{id}', 'User\CartController@orderDetail')->name('order_detail');
+
+    Route::get('/changePassword','User\UserController@showChangePasswordForm')->name('a');
+
+    Route::post('change-password', 'User\UserController@store')->name('password');
+
 });
 
 Auth::routes();

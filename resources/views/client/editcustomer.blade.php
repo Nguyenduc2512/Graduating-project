@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="li-member">
-                        <a href="#">Đổi mật khẩu</a>
+                        <a href="{{route('member.a')}}">Đổi mật khẩu</a>
                     </div>
                 </div>
                 <div class="col-md-9">

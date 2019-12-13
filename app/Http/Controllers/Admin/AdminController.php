@@ -134,7 +134,7 @@ class AdminController extends Controller
     public function  editWeb(WebSettingRequest $request)
     {
         $web = $this->webSettingService->editWeb($request);
-        return redirect()->route('admin.list_web')->with(['success'=> 'Sửa tài khoản thành công']);
+        return redirect()->route('admin.list_web')->with(['success'=> 'Sửa thông tin trang web thành công']);
     }
     public function listUser()
     {

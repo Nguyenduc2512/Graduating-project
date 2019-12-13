@@ -14,9 +14,11 @@ use App\Models\Product;
 use App\Models\SlideShow;
 use App\Models\User;
 use App\Http\Requests\CustomerRequest;
+use App\Http\Requests\ChangePassWordRequest;
 use Hash;
 use App\Models\Web_Setting;
 use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -124,5 +126,23 @@ class UserController extends Controller
         $favorite = $this->userService->addToFavorite($id);
 
         return redirect()->route('member.favorite');
+    }
+
+    public function showChangePasswordForm(){
+       if (Auth::user()) {
+            $carts = $this->cartService->getListCart();
+            $count = count($carts);
+            $favorites = Favorite::where('user_id', Auth::id())->get();
+            return view('auth.changepassword',compact('count'));
+        }
+        
+    }
+    public function store(ChangePassWordRequest $request)
+    {
+        $id=Auth::user()->id;
+        $user = User::find($id);
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+        return redirect()->route('home')->with('change','Thay đổi mật khẩu thành công');
     }
 }

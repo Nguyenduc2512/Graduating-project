@@ -32,7 +32,13 @@ class WebSettingRequest extends FormRequest
             ],
             'map' =>[
                 'required',
-            ]
+            ],
+            'hotline' =>[
+                'required',
+                'min:10',
+                'max:10',
+                'regex:/^([0-9\s\-\+\(\)]*)$/',
+            ],
         ];
         if(!$this->id){
             $validate['logo'] = 'required|file|mimes:jpeg,png';
@@ -43,8 +49,10 @@ class WebSettingRequest extends FormRequest
     public function messages()
     {
         return [
-            'hotline.required' => 'Bạn phải nhập họ và tên',
+            'hotline.required' => 'Bạn phải nhập số điện thoại',
             'hotline.regex' => 'Bạn phải nhập đúng định dạng số điện thoại',
+            'hotline.min' => 'Số điện thoại không được ít hơn 10 số',
+            'hotline.max' => 'Số điện thoại không được quá 10 số',
             'address.required' => 'Địa chỉ không được để trống',
             'email.required' => 'Email không được để trống',
             'email.email' => 'Vui lòng điền đúng định dạng',

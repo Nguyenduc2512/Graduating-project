@@ -25,7 +25,8 @@ class CartRequest extends FormRequest
     {
         return [
             'size' => 'required',
-            'color_id' => 'required'
+            'color_id' => 'required',
+            'amount' => 'required'
         ];
     }
 
@@ -33,7 +34,8 @@ class CartRequest extends FormRequest
     {
         return[
         'size.required' => 'Bạn chưa chọn size',
-        'color_id.required' => 'Bạn chưa chọn màu'
+        'color_id.required' => 'Bạn chưa chọn màu',
+        'amount.required' => 'Bạn chưa chọn màu'
         ];
     }
 }

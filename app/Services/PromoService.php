@@ -43,13 +43,13 @@ class PromoService
         $promo->fill($data);
         $promo->save();
         $id=DB::getPdo()->lastInsertId();
-        $user = User::where("role", $request->role)->get();
+        $user = User::where("role",'>=', $request->role)->get();
         $promo = Promo::find($id);
         foreach ($user as $key => $u) {
         Mail::to($u)->send(new SendMail($promo));
         }
 
-    }
+    } 
 
     public function usePromo(Request $request)
     {
