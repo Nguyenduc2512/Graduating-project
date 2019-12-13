@@ -69,7 +69,8 @@
                                 <div class="col-4">
                                     <div class="form-group" id="amount1">
                                         <label for="">Số lượng</label>
-                                        <input type="number" name="amount" class="form-control" placeholder="--" max="99" min="1" id="amount">
+                                        <input type="number" name="amount" class="form-control" placeholder="--"
+                                            max="99" min="1" id="amount">
                                     </div>
                                 </div>
                             </div>
@@ -198,7 +199,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @endforeach 
+                                        @endforeach
                                         <div class="comment-add">
                                             <div class="field-comment">
                                                 <div class="row">
@@ -206,12 +207,12 @@
                                                         @if(!Auth::user())
                                                         <img src="{{url('/')}}/images/default.png" width="100%" alt="">
                                                         @else
-                                                            @if(Auth::user()->avatar == "")
-                                                            <img src="{{url('/')}}/images/default.png" width="100%" alt="">
-                                                            @else
-                                                            <img src="{{url('/')}}/{{Auth::user()->avatar}}" width="100%"
+                                                        @if(Auth::user()->avatar == "")
+                                                        <img src="{{url('/')}}/images/default.png" width="100%" alt="">
+                                                        @else
+                                                        <img src="{{url('/')}}/{{Auth::user()->avatar}}" width="100%"
                                                             alt="">
-                                                            @endif
+                                                        @endif
                                                         @endif
                                                     </div>
                                                     <div class="col-11">
@@ -255,26 +256,27 @@
                 <div class="container">
                     <div class="row">
                         @foreach($productCategory as $pc)
-            <div class="col-md-3 col-6">
-                <div class="p_nd wow fadeInUp selectProduct" data-title="{{$pc->id}}"
-                    data-id="{{$pc->name}}" data-size="{{$pc->price}}"
-                    data-weight="{{ $pc->price }}" data-processor="{{ $pc->description }}" data-brand ="{{ $pc->brand->name }}">
-                    <a href="{{route('detail', ['id' => $pc->id])}}">
-                        <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt="" class="imgFill productImg">
-                        <div class="nd_hover">
-                            <a href="{{route('member.add_to_favorite', ['id' => $pc->id])}}"><i
-                                    class="fas fa-heart"></i></a>
-                            <a href="{{route('detail', ['id' => $pc->id])}}"><i class="far fa-eye"></i></a>
-                            <a class=" addButtonCircular addToCompare"> <i class="fas fa-less-than-equal"></i></a>
+                        <div class="col-md-3 col-6">
+                            <div class="p_nd wow fadeInUp selectProduct" data-title="{{$pc->id}}"
+                                data-id="{{$pc->name}}" data-size="{{$pc->price}}" data-weight="{{ $pc->price }}"
+                                data-processor="{{ $pc->description }}" data-brand="{{ $pc->brand->name }}">
+                                <a href="{{route('detail', ['id' => $pc->id])}}">
+                                    <img src="{{url('/')}}/{{$pc->picture}}" width="100%" alt=""
+                                        class="imgFill productImg">
+                                    <div class="nd_hover">
+                                        <a href="{{route('member.add_to_favorite', ['id' => $pc->id])}}"><i
+                                                class="fas fa-heart"></i></a>
+                                        <a href="{{route('detail', ['id' => $pc->id])}}"><i class="far fa-eye"></i></a>
+                                        <a class="w3-btn-floating w3-light-grey addButtonCircular addToCompare">+</a>
+                                    </div>
+                                    <a href="{{route('detail', ['id' => $pc->id])}}">
+                                        <h3>{{$pc->name}}</h3>
+                                    </a>
+                                    <p>{{$pc->price}}đ </p>
+                                </a>
+                            </div>
                         </div>
-                        <a href="{{route('detail', ['id' => $pc->id])}}">
-                            <h3>{{$pc->name}}</h3>
-                        </a>
-                        <p>{{$pc->price}}đ </p>
-                    </a>
-                </div>
-            </div>
-            @endforeach
+                        @endforeach
                     </div>
                 </div>
             </div>
