@@ -10,13 +10,13 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Thêm đối tác</li>
+            <li class="breadcrumb-item"><a href="{{route('admin.adminHome')}}">Home</a></li>
+            <li class="breadcrumb-item active">Thêm đối tác giao hàng</li>
           </ol>
         </div>
       </div>
     </div><!-- /.container-fluid -->
-  </section>
+  </section> 
 
   <!-- Main content -->
   <section class="content">

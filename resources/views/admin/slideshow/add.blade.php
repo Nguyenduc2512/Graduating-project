@@ -10,8 +10,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="listimg.html">Quản lý slider</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.adminHome')}}">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.list_slideshow')}}">Quản lý slider</a></li>
                         <li class="breadcrumb-item active">Thêm slider</li>
                     </ol>
                 </div>

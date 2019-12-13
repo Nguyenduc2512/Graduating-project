@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.adminHome')}}">Home</a></li>
                             <li class="breadcrumb-item active">Danh sách đơn hàng</li>
                         </ol>
                     </div>
@@ -67,6 +67,9 @@
                                                 </th>
                                             </tr>
                                             </thead>
+                                            @if(count($orders) == 0)
+                                                <p>sada</p>
+                                            @else
                                             <tbody>
                                             @foreach($orders as $order)
                                                     <tr role="row" class="odd">
@@ -93,6 +96,7 @@
                                                     </tr>
                                             @endforeach
                                             </tbody>
+                                            @endif
                                         </table>
                                     </div>
                                 </div>

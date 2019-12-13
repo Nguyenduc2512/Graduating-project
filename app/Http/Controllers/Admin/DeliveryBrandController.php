@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Services\DeliveryBrandService;
 use App\Http\Requests\DeliveryBrandRequest;
 use Illuminate\Http\Request;
-use Imagick;
+use Imagick; 
 
 class DeliveryBrandController extends Controller
 {
@@ -30,7 +30,7 @@ class DeliveryBrandController extends Controller
     public function  addNewDeliveryBrand(DeliveryBrandRequest $request)
     {
         $this->deliveryBrandService->addNewDeliveryBrand($request);
-        return redirect()->route('admin.list_deliverybrand');
+        return redirect()->route('admin.list_deliverybrand')->with(['success'=> 'Thêm đối tác giao hàng thành công']);;
     }
 
     public function  editFormDeliveryBrand($id)
@@ -41,6 +41,6 @@ class DeliveryBrandController extends Controller
     public function  editDeliveryBrand(DeliveryBrandRequest $request)
     {
         $listdeliverybrand = $this->deliveryBrandService->editDeliveryBrand($request);
-        return redirect()->route('admin.list_deliverybrand');
+        return redirect()->route('admin.list_deliverybrand')->with(['success'=> 'Sửa đối tác giao hàng thành công']);;
     }
 }
