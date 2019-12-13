@@ -46,4 +46,15 @@ class PropertiesService
         }
     }
 
+    public function addAmountProperties(Request $request)
+    {
+        foreach ($request->properties_id as $properties) {
+            $property = Properties::find($properties);
+            $property->amount = $request->amount[$properties] + $property->amount;
+            $property->save();
+        }
+    }
+
+
+
 }

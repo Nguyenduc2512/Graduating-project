@@ -118,7 +118,8 @@
                 </div>
                 <div class="col-md-12 text-left">
                     <a href="listproduct.html" class="btn  btn-danger">Huỷ</a>
-                    <button type="submit" class="btn btn-primary" onclick="addProduct()">Thêm<a />
+                    <button type="submit" class="btn btn-primary" onclick="addProduct()">Thêm</button>
+                    <a/>
                 </div>
             </form>
         </div>

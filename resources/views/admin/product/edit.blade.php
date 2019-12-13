@@ -64,6 +64,7 @@
               <div class="col-md-12 text-left">
                 <a href="{{route('admin.show_product')}}" class="btn  btn-danger">Huỷ</a>
                 <button type="submit" class="btn btn-primary">Thay đổi</button>
+                <a href="{{route('admin.add_properties_amount', ['id' => $product->id])}}" class="btn btn-success">Nhập hàng</a>
               </div>
             </form>
           </div>
