@@ -96,7 +96,7 @@ class PageController extends Controller
         }
         $productCategory = Product::where('status', 1)->whereNotIn('id', [$id])->where('category_id', '=', "$cate_id")->get();
         $comment = Comment::where('product_id', $id)->limit(5)->orderBy('created_at', 'ASC')->get();
-        return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size', 'count', 'album'));
+        return view ('client/detail-product', compact('product', 'productCategory', 'comment','properties','colors', 'sizes', 'color_size', 'count', 'album',));
     }
 
     public function proDetail(Request $request)
@@ -129,7 +129,7 @@ class PageController extends Controller
             ->first();
 
         }
-        return view('client/proDetailAmount', ['sizes' => $sizes,]);
+        return view('client/proDetailAmount', compact('sizes'));
 
     }
 

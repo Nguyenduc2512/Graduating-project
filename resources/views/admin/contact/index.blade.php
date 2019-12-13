@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.adminHome')}}">Home</a></li>
                         <li class="breadcrumb-item active">Danh sách liên hệ</li>
                     </ol>
                 </div>
@@ -26,12 +26,12 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-6"></div>
                         <div class="col-sm-12 col-md-6"></div>
+                        @if (session('success'))
+            <p style="width: 100%;height: 60px; background:#c1b999;margin-top: 10px;padding-top: 15px;padding-left: 20px;border-radius: 4px"><span class="text-white">{{ session('success') }}</span></p>
+                      @endif
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            @if (session('success'))
-                            <p class="text-danger"> {{session('success')}} </p>
-                            @endif
                             <table id="example2" class="table table-hover dataTable" role="grid"
                                 aria-describedby="example2_info">
                                 <thead>
@@ -50,7 +50,7 @@
                                             colspan="1">Tên
                                         </th>
                                         </th>
-                                    </tr>
+                                    </tr> 
                                 </thead>
                                 <tbody>
                                     @foreach($contacts as $contact)
@@ -63,10 +63,10 @@
                                             <a href="http://gmail.com" class="btn btn-xs btn-primary">
                                                 <i class="fa"></i> Trả lời
                                             </a>
-                                            <a href="{{route('admin.remove_contact', ['id' => $contact->id])}}"
-                                                class="btn btn-xs btn-danger btn-remove">
-                                                <i class="fa fa-trash"></i> Xoá
-                                            </a>
+                                            <a href="javascript:;"
+                                                linkurl="{{route('admin.remove_contact', ['id' => $contact->id])}}"
+                                                class="btn btn-xs btn-danger btn-remove"> <i class="fa fa-trash"></i>
+                                                Xóa </a>
                                         </td>
                                     </tr>
                                     @endforeach

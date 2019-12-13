@@ -26,7 +26,7 @@
                     <h3>{{$product->name}}</h3>
                     <p>Giá bán: <span class="price">{{$product->price}}</span></p>
                     <hr>
-                    <p>Thương hiệu <span class="cate"><a href="cate.html">{{$product->brand->name}}</a></span></p>
+                    <p>Thương hiệu <span class="cate" style="color: red;font-size: 20px">{{$product->brand->name}}</span></p>
                     <hr>
                     <div class="col-lg-12 ">
                         <form action="{{route('member.add_item')}}" method="post" id="new_order">
@@ -69,8 +69,13 @@
                                 <div class="col-4">
                                     <div class="form-group" id="amount1">
                                         <label for="">Số lượng</label>
-                                        <input type="number" name="amount" class="form-control" placeholder="--"
-                                            max="99" min="1" id="amount">
+                                        <input type="number" name="amount"  class="form-control" placeholder="--" max="99" min="1" id="amount">
+                                        @if($errors->first('amount'))
+                                        <span class="text-danger"> {{$errors->first('amount')}} </span>
+                                        @endif
+                                        @if($errors->first('amount_order'))
+                                        <span class="text-danger"> {{$errors->first('amount_order')}} </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -81,10 +86,10 @@
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-6">
-                                        <a class="btn btn-block btn-danger" onclick="showOrder()">Đặt hàng</a>
+                                        <a class="btn btn-block btn-danger"  onclick="showOrder()">Đặt hàng</a>
                                     </div>
                                     <div class="col-6">
-                                        <button type="submit" class="btn btn-block btn-info"> Thêm vào giỏ hàng</button>
+                                        <button type="submit" class="btn btn-block btn-info" > Thêm vào giỏ hàng</button>
                                     </div>
                                 </div>
                             </div>
