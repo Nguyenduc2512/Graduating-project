@@ -35,8 +35,9 @@ class PropertiesService
         return $properties;
     }
 
-    public function reduction($id)
+    public function reduction(Request $request)
     {
+        $id = $request->order_id;
         $carts = Cart::where('order_id', $id)->get();
         foreach ($carts as $cart) {
             $property = Properties::find($cart->properties_id);

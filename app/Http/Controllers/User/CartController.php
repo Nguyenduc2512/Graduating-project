@@ -13,6 +13,7 @@ use App\Services\CartService;
 use App\Services\OrderService;
 use App\Services\ProductService;
 use App\Services\PromoService;
+use App\Services\PropertiesService;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -21,8 +22,10 @@ class CartController extends Controller
     protected $orderService;
     protected $promoService;
     protected $productService;
+    protected $propertiesService;
     public function __construct(CartService $cartService,
                                 ProductService $productService,
+                                PropertiesService $propertiesService,
                                 PromoService $promoService,
                                 OrderService $orderService)
     {
@@ -30,6 +33,7 @@ class CartController extends Controller
         $this->orderService = $orderService;
         $this->promoService = $promoService;
         $this->productService = $productService;
+        $this->propertiesService = $propertiesService;
     }
 
     public function addItem(CartRequest $request)
@@ -58,6 +62,7 @@ class CartController extends Controller
         $order = $this->orderService->order($request);
         $cart = $this->cartService->order($request);
         $promo = $this->promoService->usePromo($request);
+        $properties = $this->propertiesService->reduction($request);
         $slideshows = SlideShow::all();
         $carts = $this->cartService->getListCart();
         $orders = $this->orderService->getOrder();

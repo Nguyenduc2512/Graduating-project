@@ -12,10 +12,11 @@ function changeVal(el) {
 
 function changeTotal() {
 
-    var price = 0;
 
-    $(".allprice").find(".full-price").each(function () {
-
+    $("#order").find(".allprice").each(function (key, value) {
+        var total_price = $("#site-footer").find("h2[class = 'total']").find("span").text();
+        var price = $(value).find(".full-price").text();
+        total_price.val(total_price + price);
     })
 
 }
