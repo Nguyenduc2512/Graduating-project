@@ -17,10 +17,6 @@ class AccountUserService
         $filename = str_replace(' ', '-', $filename);
         $filename = uniqid() . '-' . $filename;
         $filename = 'images/user/'.$filename;
-    }
-    else {
-        $filename = "";
-    }
         $user = new User();
         $data = [
             'name' => $request->name,
