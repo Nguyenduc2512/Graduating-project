@@ -16,7 +16,7 @@ function changeTotal() {
     var total_price = $("#site-footer").find("h2[class = 'total']").find("span");
     $("#order").find(".allprice").each(function (key, value) {
         var price = $(value).find(".full-price").text();
-        total_price.text(total_price + price);
+        total_price.text(price);
     })
 
 }
@@ -58,7 +58,7 @@ function order() {
 function submit_order() {
     $("#order").find(".sp").each(function (key, value) {
         var new_amount = $(value).find("#new_amount");
-        var amount = $(value).find("p[id = 'amount']").text();
+        var amount = $(value).find("span[id = 'amount']").text();
         new_amount.val(amount);
     });
     var locat = $("#form_order").find("#location").val();
