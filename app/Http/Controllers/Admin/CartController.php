@@ -73,4 +73,18 @@ class CartController extends Controller
         return view('admin/cart/list_ship', compact('orders'));
 
     }
+
+    public function listCartInsert()
+    {
+        $bills = $this->cartService->getListBill();
+
+        return view('admin/cart_insert/index', compact('bills'));
+    }
+
+    public function detailCartInsert($id)
+    {
+        $bills = $this->propertiesService->getPropertiesBill($id);
+
+        return view('admin/cart_insert/detail', compact('bills'));
+    }
 }

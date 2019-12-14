@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Properties;
+use App\Models\Properties_Bill;
 use Illuminate\Http\Request;
 
 class PropertiesService
@@ -55,6 +56,31 @@ class PropertiesService
         }
     }
 
+    public function newBill(Request $request)
+    {
+        foreach ($request->properties_id as $property) {
 
+            $properties = new Properties_Bill();
+                $data = [
+                    'bill_id' => $request->bill_id,
+                    'properties_id' => $property,
+                    'amount' => $request->amount[$property],
+                ];
+                $properties->fill($data);
+                $properties->save();
+        }
+    }
+
+    public function getPropertiesBill($id)
+    {
+        $properties = Properties_Bill::where('bill_id', $id)->get();
+        return $properties;
+    }
+
+    public function getFirstBill($id)
+    {
+        $properties = Properties_Bill::where('bill_id', $id)->first();
+        return $properties;
+    }
 
 }

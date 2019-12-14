@@ -1,5 +1,6 @@
 <?php
 namespace App\Services;
+use App\Models\Bills;
 use App\Models\Cart;
 use App\Models\Properties;
 use Illuminate\Http\Request;
@@ -121,6 +122,12 @@ class CartService {
          $orders = Order::where('status', 4)->get();
 
          return $orders;
+     }
+
+     public function getListBill()
+     {
+         $bill = Bills::all();
+         return $bill;
      }
  }
  //Đọc comment

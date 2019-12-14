@@ -5,6 +5,7 @@ namespace App\Services;
 
 use App\Http\Requests\ProductRequests;
 use App\Models\Album;
+use App\Models\Bills;
 use App\Models\Color;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -175,5 +176,16 @@ class ProductService
     {
         $product = Product::where('status', 2)->get();
         return $product;
+    }
+
+    public function newBill(Request $request)
+    {
+        $bill = new Bills();
+        $data = [
+            'title' => 'Nhập hàng'
+        ];
+        $bill->fill($data);
+        $bill->save();
+        $request->request->add(['bill_id' => $bill->id]);
     }
 }

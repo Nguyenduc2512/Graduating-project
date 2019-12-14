@@ -58,6 +58,15 @@
                                     <span class="text-danger">{{$errors->first('location')}}</span>
                                     @endif
                                 </div>
+                                <div class="form-group">
+                                    @if($profile->role == 200)
+                                        <label>Hạng : Bạc</label>
+                                    @elseif($profile->role == 300)
+                                        <label>Hạng : Vàng</label>
+                                    @elseif($profile->role == 400)
+                                        <label>Hạng : Bạch kim</label>
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
