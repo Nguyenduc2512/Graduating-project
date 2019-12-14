@@ -160,6 +160,9 @@ class ProductController extends Controller
     public function saveAddPropertiesAmount(Request $request)
     {
         $amount = $this->propertiesService->addAmountProperties($request);
+        $bill = $this->productService->newBill($request);
+        $properties_bill = $this->propertiesService->newBill($request);
+
 
         return redirect()->route('admin.show_product');
     }

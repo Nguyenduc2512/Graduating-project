@@ -82,6 +82,12 @@
                                 <p>Danh sách đơn hàng</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.cart_insert')}}" class="nav-link active">
+                                <i class="fas fa-clipboard-list nav-icon"></i>
+                                <p>Hóa đơn nhập hàng</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">

@@ -146,7 +146,11 @@ Route::group(
 
     Route::get('add_properties_amount/{id}', 'Admin\ProductController@addPropertiesAmount')->name('add_properties_amount');
 
-    Route::post('save_add_properties_amount', 'Admin\ProductController@saveAddPropertiesAmount')->name('save_add_properties_amount');;
+    Route::post('save_add_properties_amount', 'Admin\ProductController@saveAddPropertiesAmount')->name('save_add_properties_amount');
+
+    Route::get('cart_insert', 'Admin\CartController@listCartInsert')->name('cart_insert');
+
+    Route::get('detail_insert/{id}', 'Admin\CartController@detailCartInsert')->name('detail_insert');
 
 });
 
