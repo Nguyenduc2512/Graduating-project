@@ -61,7 +61,7 @@
                                             </h3>
                                             <p><i class="fas fa-angle-double-right"></i> Giao hàng nhanh</p>
                                             <p>Màu : <a>{{$cart->properties->color->name}}</a></p>
-                                            <p>size :<a href="index.html">{{$cart->properties->size}}</a></p>
+                                            <p>size :{{$cart->properties->size}}</p>
                                             <div class="linkdel">
                                                 <a href="javascript:;"
                                                 linkurl="{{route('member.remove_item', ['id' => $cart->id])}}"

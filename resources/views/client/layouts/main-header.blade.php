@@ -211,9 +211,6 @@
                                             tài khoản</a>
                                         <a class="dropdown-item" href="{{route('member.list_cart')}}"><i
                                                 class="fas fa-shopping-cart"></i> Giỏ hàng của bạn</a>
-                                        <a class="dropdown-item" href="{{route('member.history')}}"><i
-                                                class="fas fa-history"></i>
-                                            Lịch sử mua hàng</a>
                                         <a class="dropdown-item" href="{{route('logout')}}"><i
                                                 class="fas fa-sign-out-alt"></i> Đăng
                                             xuất</a>
