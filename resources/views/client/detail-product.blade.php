@@ -70,6 +70,12 @@
                                     <div class="form-group" id="amount1">
                                         <label for="">Số lượng</label>
                                         <input type="number" name="amount"  class="form-control" placeholder="--" max="99" min="1" id="amount">
+                                        @if($errors->first('amount'))
+                                        <span class="text-danger"> {{$errors->first('amount')}} </span>
+                                        @endif
+                                        @if($errors->first('amount_order'))
+                                        <span class="text-danger"> {{$errors->first('amount_order')}} </span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +104,7 @@
                         </form>
                     </div>
                 </div>
-                <div class=" container" style="margin-top: 30px;">
+                <div class="container" style="margin-top: 30px;">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Mô tả</a>
@@ -121,7 +127,15 @@
                                         <?php $i=1;$a=1;$b=1 ?>
                                         @foreach($comment as $c)
                                         <div class="comment-post">
-                                            <div class="comment-img"><img src="{{url('/')}}/{{$c->user->avatar}}" />
+                                            @if(!Auth::user())
+                                                <img src="{{url('/')}}/images/default.png" width="100%" alt="">
+                                                @else
+                                                @if(Auth::user()->avatar == "")
+                                                <div class="comment-img"><img src="{{url('/')}}/images/default.png" />
+                                                @else
+                                                <div class="comment-img"><img src="{{url('/')}}/{{$c->user->avatar}}" />
+                                                @endif
+                                                @endif
                                             </div>
                                             <div class="comment-details">
                                                 <p><span class="comment-author">{{$c->user->name}}</span>
@@ -140,11 +154,16 @@
                                             @foreach($replycomment as $rc)
                                             <div class="comment-post-reply">
                                                 <div class="comment-img">
-                                                    @if($rc->user_id == 0)
-                                                    <img src="{{url('/')}}/{{$rc->admin->avatar}}" width="100%" alt="">
-                                                    @else
-                                                    <img src="{{url('/')}}/{{$rc->user->avatar}}" width="100%" alt="">
-                                                    @endif
+                                                    @if(!Auth::user())
+                                                        <img src="{{url('/')}}/images/default.png" width="100%" alt="">
+                                                        @else
+                                                        @if(Auth::user()->avatar == "")
+                                                        <img src="{{url('/')}}/images/default.png" width="100%" alt="">
+                                                        @else
+                                                        <img src="{{url('/')}}/{{Auth::user()->avatar}}" width="100%"
+                                                            alt="">
+                                                        @endif
+                                                        @endif
                                                 </div>
                                                 <div class="comment-details">
                                                     @if($rc->user_id == 0)
@@ -170,8 +189,12 @@
                                                         @if(!Auth::user())
                                                         <img src="{{url('/')}}/images/default.png" width="100%" alt="">
                                                         @else
+                                                        @if(Auth::user()->avatar == "")
+                                                        <img src="{{url('/')}}/images/default.png" width="100%" alt="">
+                                                        @else
                                                         <img src="{{url('/')}}/{{Auth::user()->avatar}}" width="100%"
                                                             alt="">
+                                                        @endif
                                                         @endif
                                                     </div>
                                                     <div class="col-11">

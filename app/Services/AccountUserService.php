@@ -13,9 +13,15 @@ class AccountUserService
     public function newAccount(Request $request)
     {
 //        dd($request->all());
+        if($request->hasFile('avatar')){
         $filename = $request->avatar->getClientOriginalName();
         $filename = str_replace(' ', '-', $filename);
         $filename = uniqid() . '-' . $filename;
+        $filename = 'images/user/'.$filename;
+    } 
+    else {
+        $filename = "";
+    }
         $user = new User();
         $data = [
             'name' => $request->name,

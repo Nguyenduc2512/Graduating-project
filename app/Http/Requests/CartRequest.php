@@ -35,7 +35,7 @@ class CartRequest extends FormRequest
         return[
         'size.required' => 'Bạn chưa chọn size',
         'color_id.required' => 'Bạn chưa chọn màu',
-        'amount.required' => 'Bạn chưa chọn màu'
+        'amount.required' => 'Bạn chưa số lượng mua hàng'
         ];
     }
 }

@@ -64,9 +64,6 @@
                                             @endif
                                         </td>
                                         <td><img src="{{url('/')}}/{{$user->avatar}}" width="100px"></td>
-                                        <td><a href="#" class="btn btn-xs btn-danger btn-remove">
-                                                <i class="fa fa-trash"></i> Xoá
-                                            </a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

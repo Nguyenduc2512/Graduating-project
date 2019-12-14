@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <p><i class="fas fa-phone"></i> Hotline: <a href="tel:0123.456.789">{{$webs->hotline}}</a></p>
+                    <p><i class="fas fa-phone"></i> Hotline: {{$webs->hotline}}</p>
                 </div>
                 <div class="col-6">
                     <div class="mn0">
