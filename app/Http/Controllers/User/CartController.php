@@ -59,6 +59,7 @@ class CartController extends Controller
 
     public function order(Request $request)
     {
+        dd($request);
         $order = $this->orderService->order($request);
         $cart = $this->cartService->order($request);
         $promo = $this->promoService->usePromo($request);
