@@ -38,22 +38,22 @@
         <div class="row">
             <div class="col-md-3 wow fadeInLeft" data-wow-duration="3s">
                 <div class="img_cate">
-                    <a href="{{route('cate', 1)}}"> <img src="client/images/cate1.jpg" width="100%" alt=""></a>
+                    <img src="client/images/cate1.jpg" width="100%" alt="">
                 </div>
             </div>
             <div class="col-md-6 wow fadeInUp" data-wow-duration="3s">
                 <div class="w90">
                     <div class="img_cate">
-                        <a href="cate.html"> <img src="client/images/cate3.jpg" width="100%" alt=""></a>
+                        <img src="client/images/cate3.jpg" width="100%" alt="">
                     </div>
                     <div class="img_cate">
-                        <a href="cate.html"><img src="client/images/cate5.jpg" width="100%" alt=""></a>
+                        <img src="client/images/cate5.jpg" width="100%" alt="">
                     </div>
                 </div>
             </div>
             <div class="col-md-3 wow fadeInRight" data-wow-duration="3s">
                 <div class="img_cate">
-                    <a href="cate.html"><img src="client/images/cate2.jpg" width="100%" alt=""></a>
+                    <img src="client/images/cate2.jpg" width="100%" alt="">
                 </div>
             </div>
         </div>
@@ -115,9 +115,9 @@
 @if (session('change'))
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
-    Swal.fire(
-  'Thay đổi mật khẩu thành công!',
-  'Ok'
+Swal.fire(
+    'Thay đổi mật khẩu thành công!',
+    'Ok'
 )
 </script>
 @endif
@@ -125,14 +125,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-    var showModal = {!!json_encode($showModal)!!};
+    var showModal = {
+        !!json_encode($showModal) !!
+    };
     if (showModal)
         $('#dangnhap').modal('show');
 });
 </script>
 <script>
 $(document).ready(function() {
-    var showModal = {!!json_encode($showModalSignup)!!};
+    var showModal = {
+        !!json_encode($showModalSignup) !!
+    };
     if (showModal)
         $('#dangky').modal('show');
 });
