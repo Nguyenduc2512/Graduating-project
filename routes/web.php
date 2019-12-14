@@ -86,6 +86,7 @@ Route::group(
 
     Route::get('user', 'Admin\AdminController@listUser')->name('list_member');
 
+
     Route::get('comment', 'Admin\CommentController@listComment')->name('list_comment');
 
     Route::get('comment/{id}', 'Admin\CommentController@removeComment')->name('remove_comment');

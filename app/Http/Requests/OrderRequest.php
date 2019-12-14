@@ -35,7 +35,7 @@ class OrderRequest extends FormRequest
         return [
             'color_id_order.required' => 'Bạn chưa chọn màu',
             'size_order.required' => 'Bạn chưa chọn size',
-            'amount_order.required' => 'Bạn chưa chọn size'
+            'amount_order.required' => 'Bạn chưa chọn số lượng mua hàng'
         ];
     }
 }
