@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AccountAdmintRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\RoleMail;
+use Mail;
 
 class UserService
 {
@@ -31,7 +33,7 @@ class UserService
         $favorite->fill($data);
         $favorite->save();
         }
-    }
+    } 
 
     public function updateRole($id)
     {
@@ -50,16 +52,20 @@ class UserService
         } elseif ($total >= 5000000) {
             $user = User::find($user_id);
             $user->role = 200;
+            $role="Bạc";
+            Mail::to($user)->send(new RoleMail($role));
             $user->save();
         } elseif ($total >= 10000000) {
             $user = User::find($user_id);
             $user->role = 300;
+            Mail::to($user)->send(new RoleMail($role));
             $user->save();
         } elseif ($total >= 20000000) {
             $user = User::find($user_id);
             $user->role = 400;
+            Mail::to($user)->send(new RoleMail($role));
             $user->save();
         }
-
-    }
+        
+}
 }
