@@ -30,10 +30,6 @@
                         </div>
                         <div class="col-md-2">
                             <h5>
-                                <a href="{{route('admin.new_picture', ['id' => $product->id])}}"
-                                    class="btn btn-xs btn-success">
-                                    <i class="fa fa-plus"></i> Thêm mới
-                                </a>
                             </h5>
                         </div>
                     </div>
